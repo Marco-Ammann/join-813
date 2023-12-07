@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="./style/templates.css" />
+    <link rel="stylesheet" href="./style/fonts.css" />
+    <link rel="stylesheet" href="./style/add_task.css" />
+  </head>
+
+  <body>
+    <div class="headerTemplate">
+      <div class="sidebar">Sidebar</div>
+      <div class="header">Korban Project Managment Tool</div>
+    </div>
+
+    <div class="content">
+      <section class="add-tasks">
+        <h1 class="content-title">Add Task</h1>
+
+        <div class="forms">
+          <div class="form">
+
+
+            <div class="task-title-form">
+                <span>Title*</span>
+                <textarea name="title" class="task-title" id="task-title" cols="30" rows="1" placeholder="Enter a title"></textarea>
+            </div>
+
+
+            <div class="task-title-form">
+                <span>Description</span>
+                <textarea name="title" class="task-description" id="task-description" cols="30" rows="1" placeholder="Enter a Description"></textarea>
+            </div>
+
+            <div class="task-title-form">
+                <label for="task-assigned">Assigned to</label>
+                <select name="assigned" class="task-assigned" id="task-assigned">
+                    <option value="" selected disabled>Select contacts to assign</option>
+                    <option value="user1">Sebastian Treittinger</option>
+                    <option value="user2">Ghulammustafa Kakar</option>
+                    <option value="user2">Joost Heidrich</option>
+                    <option value="user2">Marco Ammann</option>
+                </select>
+            </div>
+
+
+          </div>
+          <div class="seperator-vertical"></div>
+          <div class="form">right
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
