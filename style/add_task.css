@@ -2,8 +2,6 @@ h1 {
   margin: 0;
 }
 
-
-
 .headerTemplate {
   z-index: -1;
 }
@@ -38,12 +36,12 @@ h1 {
 }
 
 .form span {
-    font-size: 20px;
-    font-weight: 400;
+  font-size: 20px;
+  font-weight: 400;
 }
 
-.task-title-form textarea{
-    margin-top: 8px;
+.task-title-form textarea {
+  margin-top: 8px;
 }
 
 .task-title {
@@ -65,60 +63,74 @@ h1 {
   border-color: #29abe2;
 }
 
-
 .task-description {
-    width: 440px;
-    height: 120px;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    padding: 12px 21px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    resize: none;
-    outline: none;
+  width: 440px;
+  height: 120px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 21px;
+  resize: none;
+  outline: none;
+  padding: 18px 16px 18px 16px;
 }
 
-.task-description::placeholder{
-    color: #d1d1d1;
+.task-description::placeholder {
+  color: #d1d1d1;
+  font-size: 21px;
 }
-
 
 .task-description:focus {
-    border-color: #29abe2;
-  }
-
-
-
-  .task-assigned {
-    width: 484px;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    padding: 12px 21px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    resize: none;
-    outline: none;
+  border-color: #29abe2;
 }
 
-.task-assigned::placeholder{
-    color: #000000;
+.task-assigned {
+  width: 484px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 12px 21px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  resize: none;
+  outline: none;
 }
 
+.task-assigned::placeholder {
+  color: #000000;
+}
 
 .task-assigned:focus {
-    border-color: #d1d1d1;
-  }
-
-
-
-
-
-
-
+  border-color: #29abe2;
+}
 
 .seperator-vertical {
   height: 100px;
   width: 1px;
   background-color: #d1d1d1;
   margin: 0 24px;
+}
+
+.add_task_prio{
+  display: flex;
+  flex-direction: column;
+}
+
+.add_task_prio_buttons{
+  display: flex;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+
+.prio-btn{
+  padding: 16px 10px 16px 10px;
+  height: 56px;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
