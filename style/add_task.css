@@ -1,143 +1,177 @@
-h1 {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
-.headerTemplate {
-  z-index: -1;
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.d-none {
+  display: none;
 }
 
 .add-tasks {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  max-width: 1024px;
-  margin: 3% 10%;
+  padding-left: calc(20.5rem - 14.5rem);
+  padding-top: calc(12.88rem - 6rem);
 }
 
 .content-title {
-  font-size: 73px;
-  width: 100%;
-  text-align: left;
-  margin-bottom: 30px;
+  color: #000;
+  font-size: 3.8125rem;
+  font-weight: 700;
 }
 
-.forms {
+.task-forms {
   display: flex;
+  justify-content: flex-start;
+  margin-top: 3rem;
 }
 
-.form {
-  flex: 1;
-  height: 376px;
-  background-color: rgb(245, 245, 245);
+/* general form styles */
+input {
+  border: 1px solid #D1D1D1;
+  background-color: white;
+  border-radius: 0.625rem;
+  outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #D1D1D1;
+  font-size: 1.25rem;
+}
+
+textarea {
+  border: 1px solid #D1D1D1;
+  background-color: white;
+  border-radius: 0.625rem;
+  resize: vertical;
+}
+
+textarea:focus, input:focus {
+  border-color: #29ABE2;
+  outline: none;
+}
+
+.form-span {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.required-asteriks::after {
+  content: '*';
+  color: #FF8190;
+}
+
+.form-div {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
-.form span {
-  font-size: 20px;
+.arrow-div{
+  position: absolute;
+}
+
+.forms-sides {
+  display: flex;
+  min-width: 27.5rem;
+  height: 23.5rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.input-required-warning {
+  font-family: "Poppins";
+  font-size: 0.75rem;
   font-weight: 400;
+  color: #ff8190;
+  max-height: 1rem;
 }
 
-.task-title-form textarea {
-  margin-top: 8px;
+.form-subcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 0.25rem;
 }
 
-.task-title {
-  width: 440px;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
-  padding: 12px 21px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  resize: none;
-  outline: none;
+
+/* image styles */
+
+.arrow-symbol {
+  padding: 2px;
 }
 
-.task-title::placeholder {
-  color: #d1d1d1;
+.arrow-symbol:hover {
+  background-color: #F6F7F8;
 }
 
-.task-title:focus {
-  border-color: #29abe2;
+.input-symbol {
+  cursor: pointer;
+  overflow: visible;
+  border-radius: 50%;
+  position: relative;
+  top: 4.5rem;
+  transform: translateY(-100%);
+  left: 24.5rem;
 }
 
-.task-description {
-  width: 440px;
-  height: 120px;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-size: 21px;
-  resize: none;
-  outline: none;
-  padding: 18px 16px 18px 16px;
+
+
+/* leftside forms */
+.task-title-input {
+  padding: 0.75rem 1.3125rem;
+  font-size: 1.25rem;
+  align-self: stretch;
 }
 
-.task-description::placeholder {
-  color: #d1d1d1;
-  font-size: 21px;
+.task-description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  align-self: stretch;
 }
 
-.task-description:focus {
-  border-color: #29abe2;
+.task-description-textarea {
+  height: 7.5rem;
+  padding: 1.125rem 1rem;
+  font-size: 1.25rem;
+  align-self: stretch;
 }
 
-.task-assigned {
-  width: 484px;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
-  padding: 12px 21px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  resize: none;
-  outline: none;
+
+.add-contact-input {
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  align-self: stretch;
+  cursor: pointer;
 }
 
-.task-assigned::placeholder {
-  color: #000000;
-}
-
-.task-assigned:focus {
-  border-color: #29abe2;
-}
-
+/* seperator */
 .seperator-vertical {
-  flex: 1;
   width: 1px;
-  background-color: #d1d1d1;
-  margin: 0 24px;
+  height: 26.5rem;
+  flex-shrink: 0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  background-color: #D1D1D1;
 }
 
-.add_task_prio {
-  display: flex;
-  flex-direction: column;
+
+/* rightside forms */
+.due-date-input {
+  padding: 0.75rem 1.3125rem;
+  font-size: 1.25rem;
+  align-self: stretch;
 }
 
-.add_task_prio_buttons {
-  display: flex;
-  margin-bottom: 20px;
-  gap: 16px;
-}
-
-.prio-btn {
-  padding: 16px 10px 16px 10px;
-  height: 56px;
-  font-size: 20px;
-  font-weight: 400;
-  border-radius: 10px;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-select {
-  margin-top: 8px;
-  padding: 12px 16px 12px 16px;
-}
-
-label {
-  font-size: 20px;
-}
