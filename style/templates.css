@@ -80,6 +80,7 @@ body {
 .sidebarMainButton p {
     width: 3.3125rem;
     flex-shrink: 0;
+    white-space: nowrap;
 }
 
 
