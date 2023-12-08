@@ -1,25 +1,22 @@
 body {
     margin: 0;
     font-family: 'Inter';
+    overflow: hidden;
 }
-
-
-.headerTemplate {
-    display: flex;
-    position: fixed;
-    z-index: -1;
-}
-
 
 .sidebar {
     display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     color: white;
     background-color: #2A3647;
-    height: 100vh;
-    width: 15vw;
+    width: 14.5rem;
+    z-index: 1;
 }
 
 
@@ -38,15 +35,16 @@ body {
 
 
 .sidebar img {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
 }
 
 
 .sidebarImg {
-    width: 8vw !important;
-    height: auto !important;
-    margin-top: 10vh;
+    width: 6.25213rem !important;
+    height: 7.62288rem !important;
+    flex-shrink: 0;
+    padding-top: 4rem;
 }
 
 
@@ -62,33 +60,46 @@ body {
 
 .sidebarMainButton {
     display: flex;
-    align-items: center;
+    width: 14.5rem;
+    height: 2.875rem;
+    padding: 0.5rem 0;
     justify-content: center;
-    gap: 3vh;
-    width: 15vw;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.menuButtons {
+    display: flex;
+    padding: 0.5rem 3.5rem;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 
 .sidebarMainButton p {
-    width: 7vw;
-    font-size: 1.2vw;
+    width: 3.3125rem;
+    flex-shrink: 0;
 }
 
 
 .header {
     background-color: white;
-    height: 15vh;
-    width: 85vw;
     box-shadow: 0px 4px 4px 0px #0000001A;
     display: flex;
+    position: fixed;
+    height: 6rem;
+    left: 0;
+    top: 0;
+    right: 0;
     align-items: center;
     justify-content: space-between;
 }
 
 
 .header p {
-    margin-left: 10vh;
-    font-size: 2vw;
+    margin-left: 21.75rem;
+    font-size: 1.25rem;
 }
 
 
@@ -96,7 +107,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-right: 20px;
+    padding-right: 2.5rem;
     gap: 8px;
 }
 
@@ -104,16 +115,19 @@ body {
 #headerIcon {
     border-radius: 50px;
     border: solid black;
-    width: 5.5vw;
+    width: 3rem;
 }
 
 
 .content {
-    padding-top: 15vh;
-    padding-left: 15vw;
+    margin-top: 6rem;
+    margin-left: 14.5rem;
+    height: 100vh;
+    background-color: #F6F7F8;
 }
 
 
 .sidebarFooterButtons {
-    margin-bottom: 5vh;
+    padding-top: 15.1875rem;
+    padding-bottom: 4rem;
 }
