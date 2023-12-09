@@ -76,8 +76,9 @@
       <form class="add-tasks">
         <h1 class="content-title">Add Task</h1>
 
-        <div class="task-forms">
+        <section class="task-forms">
           <div class="forms-sides">
+
             <div class="form-div">
               <span class="form-span required-asteriks">Title</span>
               <div class="form-subcontainer">
@@ -149,11 +150,21 @@
                   required=""
                 />
                 <p class="input-required-warning">This field is required</p>
+
+                
+              <div class="arrow-div">
+                <img
+                  class="calendar-symbol input-symbol-calendar"
+                  id="arrowDownSymbol"
+                  src="assets/img/Desktop/add_task/calendar_icon.svg"
+                  alt="Pfeil runter"
+                />
+              </div>
               </div>
             </div>
 
             <div class="form-div">
-              <span>Prio</span>
+              <span class="form-span">Prio</span>
 
               <div class="prio_buttons">
                 <button type="button" class="prio-btn" id="urgent">
@@ -172,13 +183,16 @@
                 </button>
                 <button type="button" class="prio-btn" id="low">
                   Low
-                  <img src="./assets/img/Desktop/add_task/priority_icons/low_green.svg" id="lowSymbol" />
+                  <img
+                    src="./assets/img/Desktop/add_task/priority_icons/low_green.svg"
+                    id="lowSymbol"
+                  />
                 </button>
               </div>
             </div>
 
             <div class="form-div">
-              <span class="form-span">Category</span>
+              <span class="form-span required-asteriks">Category</span>
 
               <input
                 id="add-contact-input"
@@ -205,20 +219,58 @@
             </div>
 
             <div class="form-div">
-              <span>Subtasks</span>
-              <textarea
-                name="subtask"
-                class="subtask-textarea"
-                id="subtask-textarea"
-                cols="30"
-                rows="1"
-                placeholder="Add new subtask"
-              ></textarea>
+              <span class="form-span">Subtasks</span>
+              <div class="form-subcontainer">
+                <input
+                  id="subtask-input"
+                  maxlength="48"
+                  class="subtask-input"
+                  type="text"
+                  placeholder="Add new subtask"
+                  required=""
+                />
+
+                <div class="subtask-svgs">
+                  <img
+                    class="plus-symbol input-symbol-plus"
+                    id="arrowDownSymbol"
+                    src="assets/img/Desktop/add_task/subtasks_icons/add.svg"
+                    alt="plus"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div><br /><br /><br /><br /><br /><br /><br />asdasdsad</div>
+        </section>
+        
+
+
+        <div class="footer-container">
+          <span class="footer-required-field required-asteriks-before">This field is required</span>
+
+          <div class="footer-btn-container">
+              <button id="clearBtn" type="button" class="addTaskBtn clearBtn">
+                  Clear
+                  <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken">
+              </button>
+
+              <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
+                  Create Task
+                  <img src="assets/img/Desktop/add_task/check.svg" alt="weißer Haken">
+              </button>
+              <div id="okBtnDiv">
+
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
       </form>
     </div>
   </body>
