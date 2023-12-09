@@ -1,9 +1,9 @@
 .boardHeader {
     display: flex;
-    width: 66rem;
     justify-content: space-between;
     align-items: center;
     padding-top: 4.97rem;
+    padding-bottom: 2.97rem;
     margin-left: 4rem;
     margin-right: 5.5rem;
 }
@@ -12,6 +12,7 @@
     font-size: 3.8125rem;
     font-style: normal;
     font-weight: 700;
+    margin: 0;
 }
 
 .boardHeaderControll {
