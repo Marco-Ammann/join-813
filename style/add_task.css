@@ -270,6 +270,10 @@ input:focus {
   background-color: transparent;
   color: #2a3647;
 }
+:-moz-ui-invalid
+
+
+
 
 .clearBtn:hover {
   color: #29abe2;
