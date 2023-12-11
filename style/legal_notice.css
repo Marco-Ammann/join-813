@@ -10,6 +10,14 @@ li {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+body {
+  overflow: auto !important;
+}
+
+.content {
+  height: unset !important;
+}
+
 .legal-notice {
   display: flex;
   flex-direction: column;
@@ -18,8 +26,6 @@ li {
   padding-right: 6rem;
   padding-top: 6.87rem;
   max-width: 75.5rem;
-  height: 58rem;
-  overflow: auto;
 }
 
 .legal-notice-content {
@@ -29,6 +35,7 @@ li {
   align-items: flex-start;
   gap: 1.5rem;
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .content-title {
@@ -45,4 +52,19 @@ li {
   font-weight: 700;
   line-height: 120%;
   margin-bottom: 1rem;
+}
+
+.legal-notice-content a:link {
+  color: #29abe2;
+  text-decoration: none !important;
+}
+
+.legal-notice-content a:visited {
+  color: #29abe2;
+  text-decoration: none;
+}
+
+.legal-notice-content a:hover {
+  color: #31c1ff;
+  text-decoration: underline !important;
 }
