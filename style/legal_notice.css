@@ -10,13 +10,6 @@ li {
   -webkit-tap-highlight-color: transparent !important;
 }
 
-body {
-  overflow: auto !important;
-}
-
-.content {
-  height: unset !important;
-}
 
 .legal-notice {
   display: flex;
