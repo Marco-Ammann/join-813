@@ -122,7 +122,6 @@ body {
 .content {
     margin-top: 6rem;
     margin-left: 14.5rem;
-    height: calc(100vh - 6rem);
     background-color: #F6F7F8;
 }
 
