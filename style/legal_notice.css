@@ -44,6 +44,27 @@ body {
   font-weight: 700;
 }
 
+.content-title-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 63.375rem;
+}
+
+.arrow-left{
+    cursor: pointer;
+    height: min-content;
+}
+
+.arrow-left:hover {
+    cursor: pointer;
+    height: min-content;
+    background-image: url('./assets/img/Desktop/general_elements/arrow_left/hover.svg');
+    background-color: #EEEEEE;
+    scale: 1.1;
+    border-radius: 50%;
+}
+
 .content-sub-title {
   color: #000000;
   font-family: Inter;
