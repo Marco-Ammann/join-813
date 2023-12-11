@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: 'Inter';
-    overflow: hidden;
 }
 
 .sidebar {
@@ -123,7 +122,7 @@ body {
 .content {
     margin-top: 6rem;
     margin-left: 14.5rem;
-    height: 100vh;
+    height: calc(100vh - 6rem);
     background-color: #F6F7F8;
 }
 

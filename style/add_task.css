@@ -9,6 +9,7 @@ p {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+
 .d-none {
   display: none;
 }
@@ -131,7 +132,6 @@ input:focus {
 
 .input-symbol {
   cursor: pointer;
-  overflow: visible;
   border-radius: 50%;
   position: relative;
   top: 4.5rem;
@@ -141,7 +141,6 @@ input:focus {
 
 .input-symbol-plus {
   cursor: pointer;
-  overflow: visible;
   border-radius: 50%;
   position: relative;
   top: -0.9rem;
@@ -151,7 +150,6 @@ input:focus {
 
 .input-symbol-calendar {
   cursor: pointer;
-  overflow: visible;
   border-radius: 50%;
   position: relative;
   top: -0.7rem;
@@ -270,10 +268,9 @@ input:focus {
   background-color: transparent;
   color: #2a3647;
 }
-:-moz-ui-invalid
 
 
-
+/* footer of add task section */
 
 .clearBtn:hover {
   color: #29abe2;
@@ -311,4 +308,16 @@ input:focus {
 .footer-btn-container {
   display: flex;
   gap: 1rem;
+}
+
+
+/* "assign to" dropdown */
+
+.assignDropdown {
+  width: 27.5rem;
+  height: 21rem;
+  background-color: rgb(118, 255, 64);
+  position: relative;
+  top: 0rem;
+  display: none;
 }
