@@ -321,3 +321,23 @@ input:focus {
   top: 0rem;
   display: none;
 }
+
+
+
+
+
+
+
+@media (max-width: 1320px) {
+  .task-forms {
+    flex-direction: column;
+  }
+
+  .seperator-vertical {
+    display: none;
+  }
+
+  .forms-sides {
+    height: auto;
+  }
+}

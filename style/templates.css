@@ -123,6 +123,7 @@ body {
     margin-top: 6rem;
     margin-left: 14.5rem;
     background-color: #F6F7F8;
+    min-height: calc(100vh - 6rem);
 }
 
 
