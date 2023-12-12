@@ -389,6 +389,7 @@ input:focus {
 
 .checkbox {
   cursor: pointer;
+  z-index: 10;
 }
 
 

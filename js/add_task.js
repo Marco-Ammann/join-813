@@ -7,6 +7,7 @@ const contacts = [
 
 
 let dropdownState = "closed";
+let isClicked = false;
 
 
 // switch between open/close state of the Dropdownmenu
@@ -49,6 +50,32 @@ function generateAssignContacts() {
     }
 }
 
-function assignClickedClass() {
-    
+
+
+function switchClickedState(index) {
+    const contactDiv = document.getElementById(`contact${index}`);
+    const checkboxImg = document.getElementById(`checkbox${index}`);
+
+    if (!isClicked) {
+        assignClass(contactDiv, 'contactDivClicked');
+        changeSrc(checkboxImg, './assets/img/Desktop/add_task/check button_checked_white.svg');
+        isClicked = true;
+    } else {
+        removeClass(contactDiv, 'contactDivClicked');
+        changeSrc(checkboxImg, './assets/img/Desktop/add_task/check_button.svg');
+        isClicked = false;
+    }
+}
+
+
+function assignClass(element, classname) {
+    element.classList.add(classname);
+}
+
+function removeClass(element, classname) {
+    element.classList.remove(classname);
+}
+
+function changeSrc(element, src) {
+    element.src = src;
 }
