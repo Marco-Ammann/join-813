@@ -9,7 +9,7 @@ const contacts = [
 let dropdownState = "closed";
 
 
-// open/close the Dropdown
+// switch between open/close state of the Dropdownmenu
 function switchDropdownState(dropdownId, inputfieldId, svgId) {
     const dropdown = document.getElementById(dropdownId);
     const inputfield = document.getElementById(inputfieldId);
@@ -21,6 +21,7 @@ function switchDropdownState(dropdownId, inputfieldId, svgId) {
         openAssignDropdown(dropdown, inputfield, arrowImage);
     }
 }
+
 
 
 function openAssignDropdown(dropdown, inputfield, arrowImage) {
@@ -48,11 +49,6 @@ function generateAssignContacts() {
     }
 }
 
-
-function generateAssignContactsHTML(contact, index) {
-    return /*HTML*/`
-    <div class="contactDiv contact${index}">${contact.name}
-        <img class="checkbox" src="./assets/img/Desktop/add_task/check_button.svg" alt="">
-    </div>
-    `;
+function assignClickedClass() {
+    
 }

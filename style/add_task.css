@@ -337,7 +337,8 @@ input:focus {
 
 /* "assign to" dropdown */
 .assignDropdown {
-  width: 27.5rem;
+  box-sizing: border-box;
+  width: 27.6rem;
   height: 9rem;
   border-bottom-left-radius: 0.625rem;
   border-bottom-right-radius: 0.625rem;
@@ -351,26 +352,44 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-bottom: 1rem;
+  gap: 1.25rem;
+  padding: 1.25rem;
 }
 
 .contactDiv {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 1rem 0rem 1rem;
+  align-items: center;
+  padding: 0.4375rem 1rem;
+  border-radius: 0.625rem;
   cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.contactDiv:hover {
+  background-color: var(--background-default);
+}
+
+.contactDivClicked {
+  background-color: var(--default-color)!important;
+  color: white!important;
+}
+
+.contactDivClicked:hover {
+  background-color: var(--clicked-color)!important;
+  color: white!important;
+}
+
+.contactDiv-sub {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }
 
 .checkbox {
   cursor: pointer;
 }
-
-
-
-
-
-
-
 
 
 
