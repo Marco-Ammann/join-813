@@ -1,6 +1,6 @@
-.privacy-policy {
-    background-color: #F6F7F8;
+.content {
     padding: 6.87rem 6rem 6rem 6rem;
+    min-height: calc(100vh - 6rem - 6.87rem - 6rem);
 }
 
 .privacy-policy div {

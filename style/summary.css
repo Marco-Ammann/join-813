@@ -1,0 +1,163 @@
+.content {
+    padding: 6.88rem 0 8rem 6rem;
+    min-height: calc(100vh - 6rem - 6.88rem - 8rem);
+}
+
+.summary-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-title {
+    display: flex;
+    gap: 1.875rem;
+    align-items: center;
+    margin-bottom: 3.5rem;
+}
+
+.summary-title h1 {
+    font-size: 3.8125rem;
+}
+
+.summary-title img {
+    height: 3.6875rem;
+}
+
+.summary-title span {
+    font-size: 1.6875rem;
+}
+
+.summary-board {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.summary-todos {
+    display: flex;
+    gap: 2rem;
+}
+
+.summary-todos span {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.summary-todos-badge {
+    display: flex;
+    height: 5.75rem;
+    width: 9.25rem;
+    padding: 2.375rem 3.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.125rem;
+    border-radius: 1.875rem;
+    background-color: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.summary-todos-badge div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-todos-badge p {
+    font-size: 1.25rem;
+}
+
+.summary-todos-badge img {
+    height: 4.3125rem;
+}
+
+.summary-urgent {
+    display: flex;
+    width: 29rem;
+    height: 7rem;
+    padding: 1.75rem 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 3.8125rem;
+    border-radius: 1.875rem;
+    background-color: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.summary-urgent img {
+    height: 6.37644rem;
+}
+
+.summary-urgent-badge {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+}
+
+.summary-urgent-badge img {
+    height: 3.75rem;
+}
+
+.summary-urgent-badge span {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.summary-urgent-badge div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-urgent h6 {
+    font-size: 1.3125rem;
+    margin-bottom: 0.81rem;
+}
+
+.summary-overview {
+    display: flex;
+    gap: 1.75rem;
+}
+
+.summary-overview-badge {
+    display: flex;
+    width: 10.5rem;
+    height: 7.375rem;
+    padding: 1.5625rem 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8125rem;
+    border-radius: 1.875rem;
+    background-color: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.summary-overview-badge span {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.summary-overview-badge p {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.summary-greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.summary-greeting h2 {
+    font-size: 2.9375rem;
+    font-weight: 500;
+}
+
+.summary-greeting h1 {
+    font-size: 4rem;
+    color: #29ABE2;
+}
