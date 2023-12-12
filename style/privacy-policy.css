@@ -1,5 +1,32 @@
 .privacy-policy {
     background-color: #F6F7F8;
-    height: 100vh;
+    padding: 6.87rem 6rem 6rem 6rem;
 }
+
+.privacy-policy div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.privacy-policy img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.privacy-policy h1 {
+    font-size: 3.8125rem;
+    margin: 0 0 2rem 0;
+}
+
+.privacy-policy h2 {
+    font-size: 1.6875rem;
+    margin: 0.62rem 0;
+}
+
+.privacy-policy p {
+    margin: 0 0 2.19rem 0;
+}
+
+
 
