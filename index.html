@@ -16,20 +16,54 @@
 </head>
 
 <body>
-    <header class="login-header">
-        <span>Not a Join user?</span>
-        <button>Sign up</button>
-    </header>
+    <div class="login-content-body">
 
-    <img class="join-logo" src="assets/img/Desktop/login_signup/Capa 2.svg" alt="Join-Logo">
+        <header class="login-header">
+            <span>Not a Join user?</span>
+            <button>Sign up</button>
+        </header>
 
-    <div class="login-content">
-        <h1> Log in</h1>
+        <img class="join-logo" src="assets/img/Desktop/login_signup/Capa 2.svg" alt="Join-Logo">
+
+        <div class="login-content-border">
+            <div class="login-content">
+                <div class="login-content-header">
+                    <h1>Log in</h1>
+                    <img src="assets/img/Desktop/login_signup/Vector 5.svg" alt="">
+                </div>
+
+                <form onsubmit="loginUser(); return false;" class="login-content-form">
+                    <div class="input-email">
+                        <input type="text" placeholder="Email" required style="border: none; outline: none;">
+                        <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
+                    </div>
+                    <div class="input-password">
+                        <input type="password" placeholder="Password" required style="border: none; outline: none;">
+                        <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
+                    </div>
+                    <span class="fail-login">Wrong password Ups! Try again.</span>
+                </form>
+
+                <div class="login-content-checkbox">
+                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" alt="empty checkbox">
+                    <span>Remember me</span>
+                </div>
+
+                <div class="login-content-btn">
+                    <button class="btn-login">Log in</button>
+                    <button class="btn-guest">Guest Log in</button>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="login-footer">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="legal_notice.html">Legal notice</a>
+        </div>
 
     </div>
-
-
-
 </body>
 
 </html>

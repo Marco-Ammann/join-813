@@ -1,23 +1,40 @@
-body {
+html {
+    font-size: 16px;
+}
+
+body, h1, h2, h3 {
     margin: 0;
-    background-color: #F6F7F8;;
+}
+
+body {
+    background-color: #F6F7F8;
     font-family: 'Inter';
+    font-weight: 400;
+    font-style: normal;
     font-size: 1rem;
 }
 
+.login-content-body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .login-header {
-    margin-top: 4.19rem;
-    margin-right: 7.62rem;
+    position: absolute;
+    top: 4.19rem;
+    right: 7.62rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 2.19rem;
 }
 
-.login-header p {
+.login-header span {
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
     line-height: 120%;
 }
 
@@ -30,14 +47,165 @@ body {
     border-radius: 0.5rem;
     background: #2A3647;
     color: white;
+    border: unset;
 }
 
-.join-logo{
+.join-logo {
     position: absolute;
     top: 5rem;
     left: 4.81rem;
 }
 
-.login-content{
-    
+.login-content-border {
+    display: inline-flex;
+    padding: 3rem 7.1875rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 1.875rem;
+    background: var(--white, #FFF);
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.login-content-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.login-content-header h1 {
+    font-size: 3.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.login-content-form {
+    display: flex;
+    height: 9.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.login-content-form input {
+    width: inherit;
+}
+
+.login-content-form input::placeholder {
+    color: #D1D1D1;
+}
+
+.input-email {
+    margin-bottom: 2rem;
+}
+
+.input-password, .input-email  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.625rem;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    display: flex;
+    width: 23.679rem;
+    padding: 0.75rem 1.3125rem;
+   
+    gap: 0.625rem;
+}
+
+.fail-login {
+    width: 26.375rem;
+    height: 0.75rem;
+    font-family: Poppins;
+    font-size: 0.75rem;
+    line-height: 120%;
+    color: #FF8190;
+    padding-top: 0.5rem;
+}
+
+.login-content-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+    padding-left: 2.44rem;
+}
+
+.login-content-checkbox img:hover {
+    background-color: #EDF2FA;
+    border-radius: 4px;
+}
+
+.login-content-btn {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.19rem;
+    padding-top: 2rem;
+    margin-left: 3.19rem;
+}
+
+.btn-login {
+    display: flex;
+    height: 3rem;
+    padding: 0.9375rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.5rem;
+    background: #2A3647;
+    color: #FFF;
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 120%;
+    border: unset;
+}
+
+.btn-login:hover, .login-header button:hover {
+    background: #29ABE2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn-guest {
+    display: flex;
+    height: 3rem;
+    padding: 0.9375rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.5rem;
+    border: 1px solid #2A3647;
+    background: #FFF;
+    color: #2A3647;
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.btn-guest:hover {
+    border: 2px solid #29ABE2;
+    color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.login-footer {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 2.5rem;
+}
+
+.login-footer a {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #A8A8A8;
+    line-height: 120%;
+}
+
+.login-footer a:hover {
+    color: #29ABE2;
+    font-weight: 700;
 }
