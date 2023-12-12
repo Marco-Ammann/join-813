@@ -40,15 +40,19 @@ function closeAssignDropdown(dropdown, inputfield, arrowImage) {
 
 
 function generateAssignContacts() {
-let dropdowncontainer = document.getElementById('assignDropdown');
-dropdowncontainer.innerHTML ="";
-for (let i = 0; i < contacts.length; i++) {
-    const selectableContact = contacts[i];
-    dropdowncontainer.innerHTML += /*HTML*/`
-    <div class="contactDiv contact${i}">${selectableContact.name}
+    let dropdowncontainer = document.getElementById('assignDropdown');
+    dropdowncontainer.innerHTML = "";
+    for (let i = 0; i < contacts.length; i++) {
+        const selectableContact = contacts[i];
+        dropdowncontainer.innerHTML += generateAssignContactsHTML(selectableContact, i)
+    }
+}
+
+
+function generateAssignContactsHTML(contact, index) {
+    return /*HTML*/`
+    <div class="contactDiv contact${index}">${contact.name}
         <img class="checkbox" src="./assets/img/Desktop/add_task/check_button.svg" alt="">
     </div>
     `;
 }
-}
-
