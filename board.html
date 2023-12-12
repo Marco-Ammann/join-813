@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
@@ -9,69 +10,53 @@
     <link rel="stylesheet" href="./style/board.css" />
     <script src="./js/array.js"></script>
     <script src="./js/board.js"></script>
-  </head>
+</head>
 
-  <body onload="init()">
+<body onload="init()">
     <div class="headerTemplate">
-      <div class="sidebar">
-        <div>
-          <img
-            class="sidebarImg"
-            src="./assets/img/Desktop/general_elements/join_light.svg"
-          />
-        </div>
-        <div class="sidebarMainButtons">
-          <a class="sidebarMainButton" href="summary.html">
-            <div class="menuButtons">
-              <img
-                src="./assets\img\Desktop\general_elements\menu_symbols/summary_light.svg"
-              />
-              <p>Summary</p>
+        <div class="sidebar">
+            <div>
+                <img class="sidebarImg" src="./assets/img/Desktop/general_elements/join_light.svg" />
             </div>
-          </a>
-          <a class="sidebarMainButton" href="add_task.html">
-            <div class="menuButtons">
-              <img
-                src="./assets\img\Desktop\general_elements\menu_symbols/add_task_light.svg"
-              />
-              <p>Add Task</p>
+            <div class="sidebarMainButtons">
+                <a class="sidebarMainButton" href="summary.html">
+                    <div class="menuButtons">
+                        <img src="./assets\img\Desktop\general_elements\menu_symbols/summary_light.svg" />
+                        <p>Summary</p>
+                    </div>
+                </a>
+                <a class="sidebarMainButton" href="add_task.html">
+                    <div class="menuButtons">
+                        <img src="./assets\img\Desktop\general_elements\menu_symbols/add_task_light.svg" />
+                        <p>Add Task</p>
+                    </div>
+                </a>
+                <a class="sidebarMainButton" href="board.html">
+                    <div class="menuButtons">
+                        <img src="./assets\img\Desktop\general_elements\menu_symbols/board_light.svg" />
+                        <p>Board</p>
+                    </div>
+                </a>
+                <a class="sidebarMainButton" href="contacs.html">
+                    <div class="menuButtons">
+                        <img src="./assets\img\Desktop\general_elements\menu_symbols/contacts_light.svg" />
+                        <p>Contacts</p>
+                    </div>
+                </a>
             </div>
-          </a>
-          <a class="sidebarMainButton" href="board.html">
-            <div class="menuButtons">
-              <img
-                src="./assets\img\Desktop\general_elements\menu_symbols/board_light.svg"
-              />
-              <p>Board</p>
+            <div class="sidebarFooterButtons">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="legal_notice.html">Legal notice</a>
             </div>
-          </a>
-          <a class="sidebarMainButton" href="contacs.html">
-            <div class="menuButtons">
-              <img
-                src="./assets\img\Desktop\general_elements\menu_symbols/contacts_light.svg"
-              />
-              <p>Contacts</p>
+        </div>
+        <div class="header">
+            <p>Kanban Project Managment Tool</p>
+            <div class="headerButtons">
+                <a href="#"><img src="./assets/img/Desktop/general_elements/Help/default.svg" /></a>
+                <a href="#"><img id="headerIcon"
+                        src=".\assets\Please sort in i dont know where to put it\Frame 31.svg" /></a>
             </div>
-          </a>
         </div>
-        <div class="sidebarFooterButtons">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="legal_notice.html">Legal notice</a>
-        </div>
-      </div>
-      <div class="header">
-        <p>Kanban Project Managment Tool</p>
-        <div class="headerButtons">
-          <a href="#"
-            ><img src="./assets/img/Desktop/general_elements/Help/default.svg"
-          /></a>
-          <a href="#"
-            ><img
-              id="headerIcon"
-              src=".\assets\Please sort in i dont know where to put it\Frame 31.svg"
-          /></a>
-        </div>
-      </div>
     </div>
 
 
@@ -106,12 +91,12 @@
             </div>
         </div>
         <div class="toDoList">
-            <div>
+            <div id="ToDoContainer">
                 <div class="toDoListCategories">
                     <p>To do</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <table>
+                <!-- <table>
                     <tr>
                         <th>
                             <div class="noTaskFound">
@@ -119,116 +104,24 @@
                             </div>
                         </th>
                     </tr>
-                </table>
+                </table> -->
             </div>
-            <div>
+            <div id="InProgressContainer">
                 <div class="toDoListCategories">
                     <p>In progress</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <table>
-                    <tr>
-                        <th>
-                            <div class="toDoCard">
-                                <div class="headerUserStory">User Story</div>
-                                <div>
-                                    <h3>Kochwelt Page & Recipe Recommender</h3>
-                                    <p>Build start page with recipe recommendation...</p>
-                                </div>
-                                <div>
-                                    <progress max="100" value="50"></progress>
-                                    <span>1/2 Subtaks</span>
-                                </div>
-                                <div class="toDoCardFooter">
-                                    <div class="userIcon">
-                                        <div class="icon">AM</div>
-                                        <div class="icon">EM</div>
-                                        <div class="icon">MB</div>
-                                    </div>
-                                    <img src="./assets/img/Desktop/board/priority_symbols/medium.svg">
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
             </div>
-            <div>
+            <div id="AwaitFeedbackContainer">
                 <div class="toDoListCategories">
                     <p>Await feedback</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <table>
-                    <tr>
-                        <th>
-                            <div class="toDoCard">
-                                <div class="headerTechnicalTask">Technical Task</div>
-                                <div>
-                                    <h3>HTML Base Template Creation</h3>
-                                    <p>Create reusable HTML base templates...</p>
-                                </div>
-                                <div class="toDoCardFooter">
-                                    <div class="userIcon">
-                                        <div class="icon">AM</div>
-                                        <div class="icon">EM</div>
-                                        <div class="icon">MB</div>
-                                    </div>
-                                    <img src="./assets/img/Desktop/board/priority_symbols/low.svg">
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <th>
-                            <div class="toDoCard">
-                                <div class="headerUserStory">User Story</div>
-                                <div>
-                                    <h3>Daily Kochwelt Recipe</h3>
-                                    <p>Implement daily recipe and portion calculator....</p>
-                                </div>
-                                <div class="toDoCardFooter">
-                                    <div class="userIcon">
-                                        <div class="icon">AM</div>
-                                        <div class="icon">EM</div>
-                                        <div class="icon">MB</div>
-                                    </div>
-                                    <img src="./assets/img/Desktop/board/priority_symbols/medium.svg">
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
             </div>
-            <div>
+            <div id="DoneContainer">
                 <div class="toDoListCategories">
                     <p>Done</p>
                 </div>
-                <table>
-                    <tr>
-                        <th>
-                            <div class="toDoCard">
-                                <div class="headerTechnicalTask">Technical Task</div>
-                                <div>
-                                    <h3>CSS Architecture Planning</h3>
-                                    <p>Define CSS naming conventions and structure...</p>
-                                </div>
-                                <div>
-                                    <progress max="100" value="100"></progress>
-                                    <span>2/2 Subtaks</span>
-                                </div>
-                                <div class="toDoCardFooter">
-                                    <div class="userIcon">
-                                        <div class="icon">AM</div>
-                                        <div class="icon">EM</div>
-                                        <div class="icon">MB</div>
-                                    </div>
-                                    <img src="./assets/img/Desktop/board/priority_symbols/high.svg">
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
             </div>
         </div>
     </div>
