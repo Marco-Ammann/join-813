@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style/templates.css" />
     <link rel="stylesheet" href="./style/fonts.css" />
     <link rel="stylesheet" href="./style/add_task.css" />
+    <script src="js/add_task.js"></script>
   </head>
 
   <body>
@@ -116,7 +117,7 @@
                 type="text"
                 value="Select contacts to assign"
                 required=""
-                onclick="openAssignDropdown()"
+                onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowDownSymbol')"
               />
               <div class="arrow-div">
                 <img
@@ -124,20 +125,13 @@
                   id="arrowDownSymbol"
                   src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                   alt="Pfeil runter"
-                />
-                <img
-                  class="arrow-symbol input-symbol d-none"
-                  id="arrowUpSymbol"
-                  src="assets/img/Desktop/add_task/arrow_dropdown_up.svg"
-                  alt="Pfeil hoch"
+                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowDownSymbol')"
                 />
               </div>
 
-              <div class="assignDropdown">
+              <div class="assignDropdown d-none" id="assignDropdown">
 
               </div>
-
-
             </div>
           </div>
 

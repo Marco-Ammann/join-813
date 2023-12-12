@@ -10,7 +10,7 @@ p {
 }
 
 .d-none {
-  display: none;
+  display: none!important;
 }
 
 .add-tasks {
@@ -323,16 +323,38 @@ input:focus {
 /* "assign to" dropdown */
 
 .assignDropdown {
-  width: 27.5rem;
+  width: 27.4rem;
   height: 9rem;
   border-bottom-left-radius: 0.625rem;
   border-bottom-right-radius: 0.625rem;
-  background-color: rgba(144, 248, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   border: 1px solid #d1d1d1;
   border-top: none;
-  position: relative;
-  top: -0.9rem;
+  position: absolute;
+  z-index: 5;
+  top: 46.6rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: space-between;
+  padding-bottom: 1rem;
 }
+
+
+.contactDiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem 0rem 1rem;
+}
+
+
+.checkbox {
+  cursor: pointer;
+}
+
+
+/* mediaquerrys */
 
 @media (max-width: 1320px) {
   .task-forms {
