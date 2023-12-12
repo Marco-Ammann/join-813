@@ -15,7 +15,7 @@
     color: white;
     background-color: #2A3647;
     width: 14.5rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -94,6 +94,7 @@
     right: 0;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 }
 
 
@@ -130,4 +131,8 @@
 .sidebarFooterButtons {
     padding-top: 15.1875rem;
     padding-bottom: 4rem;
+}
+
+.d-flex {
+    display: flex;
 }
