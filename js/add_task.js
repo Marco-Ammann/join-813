@@ -9,6 +9,7 @@ const contacts = [
 let dropdownState = "closed";
 const clickedStates = [];
 
+
 // switch between open/close state of the Dropdownmenu
 function switchDropdownState(dropdownId, inputfieldId, svgId) {
     const dropdown = document.getElementById(dropdownId);
@@ -61,18 +62,17 @@ function switchClickedState(index) {
     } else {
         handleClickedState(contactDiv, checkboxImg);
     }
-    
     updateClickedState(index, !isClicked);
 }
 
 
-function handleClickedState(contactDiv, checkboxImg) {
-    assignClass(contactDiv, 'contactDivClicked');
-    changeSrc(checkboxImg, './assets/img/Desktop/add_task/check button_checked_white.svg');
+function handleClickedState(div, img) {
+    assignClass(div, 'contactDivClicked');
+    changeSrc(img, './assets/img/Desktop/add_task/check button_checked_white.svg');
 }
 
 
-function handleUnClickedState(contactDiv, checkboxImg) {
-    removeClass(contactDiv, 'contactDivClicked');
-    changeSrc(checkboxImg, './assets/img/Desktop/add_task/check_button.svg');
+function handleUnClickedState(div, img) {
+    removeClass(div, 'contactDivClicked');
+    changeSrc(img, './assets/img/Desktop/add_task/check_button.svg');
 }
