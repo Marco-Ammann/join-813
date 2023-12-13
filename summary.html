@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="./style/fonts.css">
-    <link rel="stylesheet" href="./style/templates.css">
     <link rel="stylesheet" href="./style/summary.css">
+
+    <link rel="stylesheet" href="./assets/templates/templates.css">
+    <script src="script.js"></script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
 </head>
 
-<body>
-    <div class="headerTemplate">
-        <div class="sidebar">Sidebar</div>
-        <div class="header">Korban Project Managment Tool</div>
-    </div>
+<body onload="init()">
+
+    <!-- Header template -->
+    <div w3-include-html="./assets/templates/desktop_template.html"></div>
+
+    <!-- Content -->
     <div class="content">
         <section class="summary">
             <div class="summary-title">
