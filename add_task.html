@@ -12,7 +12,7 @@
     <script src="js/add_task.js"></script>
   </head>
 
-  <body>
+  <body onload="init()">
     <div class="headerTemplate">
       <div class="sidebar">
         <div>
@@ -69,6 +69,8 @@
 
     <div class="content">
       <form class="add-tasks">
+
+        <div>
         <h1 class="content-title">Add Task</h1>
 
         <section class="task-forms">
@@ -109,13 +111,13 @@
                   type="text"
                   value="Select contacts to assign"
                   required
-                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign')" />
+                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                 <img
                   class="arrow-symbol input-symbol"
                   id="arrowAssign"
                   src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                   alt="Pfeil runter"
-                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign')" />
+                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
               </div>
 
               <div class="assignDropdown d-none" id="assignDropdown"></div>
@@ -179,18 +181,21 @@
               <span class="form-span required-asteriks">Category</span>
               <div class="input-div">
                 <input
+                  onclick="switchVisibility('categoryDropdown')"
                   id="add-category-input"
                   class="add-category-input"
                   type="text"
                   value="Select task category"
-                  required />
+                  required/>
 
                 <img
+                  onclick="switchVisibility('categoryDropdown')"
                   class="arrow-symbol input-symbol"
                   id="arrowCategory"
                   src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                   alt="Pfeil runter" />
               </div>
+              <div class="categoryDropdown d-none" id="categoryDropdown"></div>
             </div>
 
             <div class="form-div">
@@ -214,6 +219,8 @@
               </div>
             </div>
           </section>
+        </div>
+
           <div class="footer-container">
             <span class="footer-required-field required-asteriks-before">This
               field is required</span>
