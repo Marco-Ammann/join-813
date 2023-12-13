@@ -16,7 +16,7 @@ let dropdownState = "closed";
 const clickedStates = [];
 
 
-function initAddTaskPage() {
+function loadAddTaskPage() {
     generateAssignContacts();
     generateCategoryOptions();
 }

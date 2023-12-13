@@ -1,8 +1,7 @@
-// init function befindet sich in: <script src="script.js"></script>
-// function init() {
-//     console.log(tasks);
-//     sortTaks()
-// }
+function loadBoard() {
+    console.log(tasks);
+    sortTaks()
+}
 
 
 function sortTaks() {
