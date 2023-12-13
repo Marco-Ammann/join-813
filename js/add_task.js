@@ -7,8 +7,7 @@ const contacts = [
 
 
 let dropdownState = "closed";
-let isClicked = false;
-
+const clickedStates = [];
 
 // switch between open/close state of the Dropdownmenu
 function switchDropdownState(dropdownId, inputfieldId, svgId) {
@@ -22,7 +21,6 @@ function switchDropdownState(dropdownId, inputfieldId, svgId) {
         openAssignDropdown(dropdown, inputfield, arrowImage);
     }
 }
-
 
 
 function openAssignDropdown(dropdown, inputfield, arrowImage) {
@@ -51,31 +49,30 @@ function generateAssignContacts() {
 }
 
 
-
 function switchClickedState(index) {
+    initializeClickedState(index);
+
     const contactDiv = document.getElementById(`contact${index}`);
     const checkboxImg = document.getElementById(`checkbox${index}`);
+    let isClicked = getClickedState(index);
 
-    if (!isClicked) {
-        assignClass(contactDiv, 'contactDivClicked');
-        changeSrc(checkboxImg, './assets/img/Desktop/add_task/check button_checked_white.svg');
-        isClicked = true;
+    if (isClicked) {
+        handleUnClickedState(contactDiv, checkboxImg);
     } else {
-        removeClass(contactDiv, 'contactDivClicked');
-        changeSrc(checkboxImg, './assets/img/Desktop/add_task/check_button.svg');
-        isClicked = false;
+        handleClickedState(contactDiv, checkboxImg);
     }
+    
+    updateClickedState(index, !isClicked);
 }
 
 
-function assignClass(element, classname) {
-    element.classList.add(classname);
+function handleClickedState(contactDiv, checkboxImg) {
+    assignClass(contactDiv, 'contactDivClicked');
+    changeSrc(checkboxImg, './assets/img/Desktop/add_task/check button_checked_white.svg');
 }
 
-function removeClass(element, classname) {
-    element.classList.remove(classname);
-}
 
-function changeSrc(element, src) {
-    element.src = src;
+function handleUnClickedState(contactDiv, checkboxImg) {
+    removeClass(contactDiv, 'contactDivClicked');
+    changeSrc(checkboxImg, './assets/img/Desktop/add_task/check_button.svg');
 }
