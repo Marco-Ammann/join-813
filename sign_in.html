@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="style/login_signup.css">
     <link rel="stylesheet" href="style/fonts.css">
 
-    <!-- cookiebot -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="0460a567-6eba-4899-a055-0b271c957ca6"
-        data-blockingmode="auto" type="text/javascript">
-        </script>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
 </head>
 
 <body>
@@ -21,7 +23,8 @@
         <img class="join-logo" src="assets/img/Desktop/login_signup/Capa 2.svg" alt="Join-Logo">
 
         <div class="signUp-content-border">
-            <img class="arrow-left-default" src="assets/img/Desktop/login_signup/arrow-left-default.svg" alt="Zurückpfeil">
+            <img class="arrow-left-default" src="assets/img/Desktop/login_signup/arrow-left-default.svg"
+                alt="Zurückpfeil">
             <div class="signUp-content">
                 <div class="login-content-header">
                     <h1>Sign up</h1>
@@ -59,7 +62,8 @@
                 </div>
 
                 <div class="signup-content-btn">
-                    <button class="btn-login">Sign up</button>
+                    <button class="btn-login" onclick="nextQuestion()" disabled>Sign up</button>
+                    <!-- button mit Javascript so hovern, dass dieser nach privat-policy erst funktioniert -->
                 </div>
 
 
