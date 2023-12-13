@@ -37,6 +37,8 @@ p {
   align-items: flex-start;
   padding-left: 6rem;
   padding-top: 6.87rem;
+  min-height: calc(100vh - 6rem - 6.87rem - 3rem);
+  justify-content: space-between;
 }
 
 .content-title {
@@ -274,7 +276,7 @@ input:focus {
 
 
 
-/* footer of add task section */
+/* ----------------------------------------footer of add task section */
 .addTaskBtn {
   display: flex;
   align-items: center;
@@ -318,7 +320,6 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 4.5rem;
   gap: 32rem;
 }
 
@@ -335,11 +336,11 @@ input:focus {
 }
 
 
-/* "assign to" dropdown */
+/* -------------------------------------"assign to" dropdown */
 .assignDropdown {
   box-sizing: border-box;
   width: 27.6rem;
-  height: 9rem;
+  height: 22vh;
   border-bottom-left-radius: 0.625rem;
   border-bottom-right-radius: 0.625rem;
   background-color: rgba(255, 255, 255, 1);
@@ -393,6 +394,25 @@ input:focus {
 }
 
 
+/*--------------------------"Category" Dropdown*/
+.categoryDropdown {
+  box-sizing: border-box;
+  width: 27.6rem;
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid var(--border-default);
+  border-top: none;
+  position: absolute;
+  z-index: 5;
+  top: 38.5rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
 
 /* mediaquerrys */
 @media (max-width: 1320px) {

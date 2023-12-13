@@ -9,3 +9,12 @@ function generateAssignContactsHTML(contact, index) {
     </div>
     `;
 }
+
+
+function generateCategoryOptionsHTML(category, index) {
+    return /*HTML*/`
+    <div class="categoryDiv" id="categoryOption${index}">
+    ${category}
+  </div>
+    `;
+}

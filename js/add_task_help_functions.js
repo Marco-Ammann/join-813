@@ -15,13 +15,14 @@ function updateClickedState(index, value) {
 }
 
 
-function assignClass(element, classname) {
-    element.classList.add(classname);
+
+function assignClass(element, className) {
+    element.classList.add(className);
 }
 
 
-function removeClass(element, classname) {
-    element.classList.remove(classname);
+function removeClass(element, className) {
+    element.classList.remove(className);
 }
 
 

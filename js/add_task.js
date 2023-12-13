@@ -6,35 +6,86 @@ const contacts = [
 ];
 
 
+const categorys = [
+    "User Story",
+    "Technical Task"
+];
+
+
 let dropdownState = "closed";
 const clickedStates = [];
 
 
-// switch between open/close state of the Dropdownmenu
-function switchDropdownState(dropdownId, inputfieldId, svgId) {
+function init() {
+    generateAssignContacts();
+    generateCategoryOptions();
+}
+
+
+// switch between opend/closed state of the Dropdownmenu
+function switchDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
     const dropdown = document.getElementById(dropdownId);
     const inputfield = document.getElementById(inputfieldId);
     const arrowImage = document.getElementById(svgId);
-    generateAssignContacts()
+
     if (dropdownState === "open") {
-        closeAssignDropdown(dropdown, inputfield, arrowImage);
+        closeDropdown(dropdown, inputfield, arrowImage, standardValue);
     } else {
-        openAssignDropdown(dropdown, inputfield, arrowImage);
+        openDropdown(dropdown, inputfield, arrowImage);
     }
 }
 
 
-function openAssignDropdown(dropdown, inputfield, arrowImage) {
+function switchVisibility(elementId) {
+    const element = document.getElementById(elementId);
+
+    if (element.classList.contains('d-none')) {
+        removeClass(element, 'd-none');
+    } else {
+        assignClass(element, 'd-none');
+    }
+}
+
+
+function switchTaskCategoryClickedState(index) {
+    const element = document.getElementById(`contact${index}`);
+
+    if (element.classList.contains('contactDivClicked')) {
+        removeClass(element, 'contactDivClicked');
+    } else {
+        assignClass(element, 'contactDivClicked');
+    }
+}
+
+
+
+// function switchClickedState(index) {
+//     initializeClickedState(index);
+
+//     const contactDiv = document.getElementById(`contact${index}`);
+//     const checkboxImg = document.getElementById(`checkbox${index}`);
+//     let isClicked = getClickedState(index);
+
+//     if (isClicked) {
+//         handleUnClickedState(contactDiv, checkboxImg);
+//     } else {
+//         handleClickedState(contactDiv, checkboxImg);
+//     }
+//     updateClickedState(index, !isClicked);
+// }
+
+
+function openDropdown(dropdown, selectedElement, arrowImage) {
     dropdown.classList.remove('d-none');
-    inputfield.value = "";
+    selectedElement.value = "";
     dropdownState = "open";
     arrowImage.src = "assets/img/Desktop/add_task/arrow_dropdown_up.svg";
 }
 
 
-function closeAssignDropdown(dropdown, inputfield, arrowImage) {
+function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
     dropdown.classList.add('d-none');
-    inputfield.value = "Select contacts to assign";
+    inputfield.value = `${setValue}`;
     dropdownState = "closed";
     arrowImage.src = "./assets/img/Desktop/add_task/arrow_dropdown_down.svg";
 }
@@ -50,26 +101,24 @@ function generateAssignContacts() {
 }
 
 
-function switchClickedState(index) {
-    initializeClickedState(index);
-
-    const contactDiv = document.getElementById(`contact${index}`);
-    const checkboxImg = document.getElementById(`checkbox${index}`);
-    let isClicked = getClickedState(index);
-
-    if (isClicked) {
-        handleUnClickedState(contactDiv, checkboxImg);
-    } else {
-        handleClickedState(contactDiv, checkboxImg);
+function generateCategoryOptions() {
+    let dropdowncontainer = document.getElementById('categoryDropdown');
+    dropdowncontainer.innerHTML = "";
+    for (let i = 0; i < categorys.length; i++) {
+        let category = categorys[i];
+        dropdowncontainer.innerHTML += generateCategoryOptionsHTML(category, i);
     }
-    updateClickedState(index, !isClicked);
 }
+
+
+
 
 
 function handleClickedState(div, img) {
     assignClass(div, 'contactDivClicked');
     changeSrc(img, './assets/img/Desktop/add_task/check button_checked_white.svg');
 }
+
 
 
 function handleUnClickedState(div, img) {
