@@ -1,7 +1,5 @@
 async function init(){
     await includeHTML();
-    console.log(tasks);
-    sortTaks()
 }
 
 // Template
