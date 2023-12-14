@@ -16,7 +16,7 @@ function render(taskStatus, i) {
     console.log(taskStatus)
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML +=/*html*/`    
-<table>
+<table draggable="true" ondragstart="startDraggin()">
     <tr>
         <th>
             <div class="toDoCard">
