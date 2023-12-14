@@ -56,6 +56,21 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.summary-todos-badge:hover,
+.summary-urgent:hover,
+.summary-overview-badge:hover {
+    background-color: #2A3647;
+    color: #FFF;
+    transform: scale(1.075);
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.summary-todos-badge,
+.summary-urgent,
+.summary-overview-badge {
+    transition: 80ms ease-out;
+}
+
 .summary-todos-badge div {
     display: flex;
     flex-direction: column;
@@ -69,6 +84,10 @@
 
 .summary-todos-badge img {
     height: 4.3125rem;
+}
+
+.summary-todos-badge:hover img {
+    filter: invert(100) brightness(1.3);
 }
 
 .summary-urgent {
