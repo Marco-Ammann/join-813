@@ -7,7 +7,6 @@ function loadBoard() {
 
 
 function sortTaks() {
-    console.log('sortTaks')
     document.getElementById('ToDoContainer').innerHTML = '';
     document.getElementById('InProgressContainer').innerHTML = '';
     document.getElementById('AwaitFeedbackContainer').innerHTML = '';
@@ -44,6 +43,7 @@ function render(taskStatus, i) {
             </div>
         </div>
 `;
+    checkAndAddTasks(tasks);
 }
 
 function startDraggin(id) {
@@ -66,4 +66,25 @@ function highlight(id) {
 
 function removeHighlight(id) {
     // document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+function checkAndAddTasks(tasks) {
+    const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
+
+    states.forEach(state => {
+        const filteredTasks = tasks.filter(task => task.state === state);
+
+        if (filteredTasks.length === 0) {
+            addNoTaskHTML(state + "Container");
+        }
+    });
+}
+
+function addNoTaskHTML(containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML =/*html*/`
+     <div id="ToDoContainerfillter" class="noTaskFound">
+        <p> No task To do</p>
+    </div >
+    `
 }
