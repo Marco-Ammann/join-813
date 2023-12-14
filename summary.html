@@ -7,6 +7,9 @@
     <title>Join</title>
     <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/summary.css">
+    <script src="./js/summary.js"></script>
+
+    <script src="./js/array.js"></script>
 
     <link rel="stylesheet" href="./assets/templates/templates.css">
     <script src="script.js"></script>
@@ -19,7 +22,7 @@
 
 </head>
 
-<body onload="init()">
+<body onload="init(), initSummary()">
 
     <!-- Header template -->
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
@@ -38,14 +41,14 @@
                         <div class="summary-todos-badge">
                             <img src="./assets/img/Desktop/summary/pencil_dark_circle.svg">
                             <div>
-                                <span>1</span>
+                                <span id="toDoNum">1</span>
                                 <p>To-Do</p>
                             </div>
                         </div>
                         <div class="summary-todos-badge">
                             <img src="./assets/img/Desktop/summary/pencil_dark_circle.svg">
                             <div>
-                                <span>1</span>
+                                <span id="doneNum">1</span>
                                 <p>Done</p>
                             </div>
                         </div>
@@ -54,27 +57,27 @@
                         <div class="summary-urgent-badge">
                             <img src="./assets/img/Desktop/summary/urgent_high_circle.svg">
                             <div>
-                                <span>1</span>
+                                <span id="urgentNum">1</span>
                                 <p>Urgent</p>
                             </div>
                         </div>
                         <img src="./assets/img/Desktop/general_elements/bar/vector_gray.svg">
                         <div>
-                            <h6>October 16, 2022</h6>
+                            <h6 id="deadlineDate">October 16, 2022</h6>
                             <p>Upcoming Deadline</p>
                         </div>
                     </div>
                     <div class="summary-overview">
                         <div class="summary-overview-badge">
-                            <span>5</span>
+                            <span id="tasksNum">5</span>
                             <p>Tasks in<br>Board</p>
                         </div>
                         <div class="summary-overview-badge">
-                            <span>2</span>
+                            <span id="inProgressNum">2</span>
                             <p>Tasks in<br>Progress</p>
                         </div>
                         <div class="summary-overview-badge">
-                            <span>2</span>
+                            <span id="awaitFeedbackNum">2</span>
                             <p>Awaiting Feedback</p>
                         </div>
                     </div>
