@@ -90,17 +90,11 @@ h3 {
     border-radius: 50%;
 }
 
-.help-notice-content a:link {
+.help-notice-content span {
     color: #29abe2;
     text-decoration: none !important;
 }
 
-.help-notice-content a:visited {
-    color: #29abe2;
-    text-decoration: none;
-}
-
-.help-notice-content a:hover {
+.help-notice-content span:hover {
     color: #31c1ff;
-    text-decoration: underline !important;
 }

@@ -67,17 +67,11 @@ li {
   margin-bottom: 1rem;
 }
 
-.legal-notice-content a:link {
+.legal-notice-content span{
   color: #29abe2;
   text-decoration: none !important;
 }
 
-.legal-notice-content a:visited {
-  color: #29abe2;
-  text-decoration: none;
-}
-
 .legal-notice-content a:hover {
   color: #31c1ff;
-  text-decoration: underline !important;
 }
