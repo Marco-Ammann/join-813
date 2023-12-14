@@ -53,30 +53,7 @@ p {
   margin-top: 3rem;
 }
 
-/* --------------------------------general form styles */
-/* -----------scrollbar */
-/* width */
-::-webkit-scrollbar {
-  width: 0.6rem;
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--background-default);
-  border-radius: 0.3rem;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--border-default);
-  border-radius: 0.3rem;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--border-focus);
-}
-/* --------scrollbar  END*/
 
 input,
 textarea {
