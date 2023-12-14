@@ -1,20 +1,18 @@
-
 :root {
-  --background-default:#F0F0F0;
-  --default-color: #2A3647;
-  --hover-color:#29ABE2;
+  --background-default: #f0f0f0;
+  --default-color: #2a3647;
+  --hover-color: #29abe2;
   --clicked-color: #091931;
-  --alert-color: #FF81AB;
-  --border-default:#D1D1D1;
-  --border-focus:#29ABE2;
-  --border-hover:#A8A8A8;
-  --border-error:#FF8190;
-  --urgent:#FF3D00;
-  --medium:#FFA800;
-  --low:#7AE229;
-  --black:#000000;
+  --alert-color: #ff81ab;
+  --border-default: #d1d1d1;
+  --border-focus: #29abe2;
+  --border-hover: #a8a8a8;
+  --border-error: #ff8190;
+  --urgent: #ff3d00;
+  --medium: #ffa800;
+  --low: #7ae229;
+  --black: #000000;
 }
-
 
 h1,
 h2,
@@ -52,8 +50,6 @@ p {
   justify-content: flex-start;
   margin-top: 3rem;
 }
-
-
 
 input,
 textarea {
@@ -93,7 +89,6 @@ textarea::placeholder {
 .input-div:focus {
   border: 1px solid var(--border-focus);
 }
-
 
 textarea:focus,
 input:focus {
@@ -192,7 +187,6 @@ input:focus {
   border: none;
 }
 
-
 /* ----------------------------------seperator */
 .seperator-vertical {
   width: 1px;
@@ -250,8 +244,6 @@ input:focus {
   outline: none;
   border: none;
 }
-
-
 
 /* ----------------------------------------footer of add task section */
 .addTaskBtn {
@@ -312,7 +304,6 @@ input:focus {
   gap: 1rem;
 }
 
-
 /* -------------------------------------"assign to" dropdown */
 .assignDropdown {
   box-sizing: border-box;
@@ -349,13 +340,13 @@ input:focus {
 }
 
 .contactDivClicked {
-  background-color: var(--default-color)!important;
-  color: white!important;
+  background-color: var(--default-color) !important;
+  color: white !important;
 }
 
 .contactDivClicked:hover {
-  background-color: var(--clicked-color)!important;
-  color: white!important;
+  background-color: var(--clicked-color) !important;
+  color: white !important;
 }
 
 .contactDiv-sub {
@@ -369,7 +360,6 @@ input:focus {
   cursor: pointer;
   z-index: 10;
 }
-
 
 /*--------------------------"Category" Dropdown*/
 .categoryDropdown {
@@ -391,7 +381,6 @@ input:focus {
   padding: 1rem;
 }
 
-
 .categoryDiv {
   display: flex;
   justify-content: space-between;
@@ -402,19 +391,46 @@ input:focus {
   font-size: 1.25rem;
 }
 
+.prio-btn {
+  background-color: #ffffff;
+  font-size: 1.3125rem;
+  color: black;
+  font-weight: 400;
+  width: 8.5rem;
+}
 
 .urgent {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
+  font-size: 1.3125rem;
+  color: white;
+  font-weight: 700;
 }
 
-.medium{
-  background-color: #FFA800;
-
+.medium {
+  background-color: #ffa800;
+  font-size: 1.3125rem;
+  color: white;
+  font-weight: 700;
 }
 
-.low{
-  background-color: #7AE229;
+.low {
+  background-color: #7ae229;
+  font-size: 1.3125rem;
+  color: white;
+  font-weight: 700;
+}
 
+
+.urgent svg {
+  color: white;
+}
+
+.medium svg {
+  color: white;
+}
+
+.low svg {
+  color: white;
 }
 
 /* mediaquerrys */
