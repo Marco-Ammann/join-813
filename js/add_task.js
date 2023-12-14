@@ -58,6 +58,20 @@ function switchTaskCategoryClickedState(index) {
 }
 
 
+
+function switchButtonColor(elementId){
+    const element = document.getElementById(elementId);
+
+    if (element.classList.contains(elementId)) {
+        removeClass(element, elementId);
+    } else {
+        assignClass(element, elementId);
+    }
+}
+
+
+
+
 function switchClickedState(index) {
     initializeClickedState(index);
 
