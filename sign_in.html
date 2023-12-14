@@ -23,8 +23,9 @@
         <img class="join-logo" src="assets/img/Desktop/login_signup/Capa 2.svg" alt="Join-Logo">
 
         <div class="signUp-content-border">
-            <img class="arrow-left-default" src="assets/img/Desktop/login_signup/arrow-left-default.svg"
-                alt="Zurückpfeil">
+            <a class="arrow-left-default" href="index.html"><img src="assets/img/Desktop/login_signup/arrow-left-default.svg"
+                alt="Zurückpfeil"></a>
+            
             <div class="signUp-content">
                 <div class="login-content-header">
                     <h1>Sign up</h1>
@@ -33,23 +34,22 @@
 
                 <form onsubmit="loginUser(); return false;" class="signUp-content-form">
                     <div class="input-name">
-                        <input type="text" placeholder="Name" required style="border: none; outline: none;">
+                        <input type="text" placeholder="Name" required class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/person.svg" alt="Name Icon">
                     </div>
 
                     <div class="input-email signUp-email">
-                        <input type="email" placeholder="Email" required style="border: none; outline: none;">
+                        <input type="email" placeholder="Email" required class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
 
                     <div class="input-password">
-                        <input type="password" placeholder="Password" required style="border: none; outline: none;">
+                        <input type="password" placeholder="Password" required class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
                     </div>
 
                     <div class="input-password-confirm">
-                        <input type="password" placeholder="Confirm Password" required
-                            style="border: none; outline: none;">
+                        <input type="password" placeholder="Confirm Password" required class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
                     </div>
                 </form>

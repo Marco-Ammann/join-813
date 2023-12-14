@@ -102,6 +102,11 @@ body {
     color: #D1D1D1;
 }
 
+.input-remove-border{
+    border: none; 
+    outline: none;
+}
+
 .input-email {
     margin-bottom: 2rem;
 }
