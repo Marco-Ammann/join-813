@@ -1,3 +1,5 @@
+let currentDragedElement;
+
 function loadBoard() {
     console.log(tasks);
     sortTaks()
@@ -5,6 +7,11 @@ function loadBoard() {
 
 
 function sortTaks() {
+    console.log('sortTaks')
+    document.getElementById('ToDoContainer').innerHTML = '';
+    document.getElementById('InProgressContainer').innerHTML = '';
+    document.getElementById('AwaitFeedbackContainer').innerHTML = '';
+    document.getElementById('DoneContainer').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         const taskStatus = tasks[i][`state`];
         render(taskStatus, i);
@@ -13,12 +20,9 @@ function sortTaks() {
 
 function render(taskStatus, i) {
     taskStatus = taskStatus + 'Container';
-    console.log(taskStatus)
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML +=/*html*/`    
-<table draggable="true" ondragstart="startDraggin()">
-    <tr>
-        <th>
+        <div draggable="true" ondragstart="startDraggin(${tasks[i][`id`]})">
             <div class="toDoCard">
                 <div class="headerUserStory">User Story</div>
                 <div>
@@ -38,8 +42,28 @@ function render(taskStatus, i) {
                     <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]}.svg">
                 </div>
             </div>
-        </th>
-    </tr>
-</table>
+        </div>
 `;
+}
+
+function startDraggin(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(category) {
+    tasks[currentDraggedElement]['state'] = category;
+    sortTaks();
+}
+
+function highlight(id) {
+    // document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+    // document.getElementById(id).classList.remove('drag-area-highlight');
 }

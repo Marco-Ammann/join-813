@@ -128,7 +128,8 @@
 
 .toDoListCategories {
     display: flex;
-    width: 15.25rem;
+    width: 15.75rem;
+    padding: 1rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -140,6 +141,7 @@
     padding: 1rem;
     border-radius: 1.5rem;
     gap: 1.5rem;
+    width: 15.75rem;
 }
 
 .noTaskFound {
@@ -238,4 +240,15 @@
 .toDoCardFooter {
     display: flex;
     justify-content: space-between;
+}
+
+.drag-area-highlight {
+    background-color: red;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 32rem;
+    gap: 1rem;
 }

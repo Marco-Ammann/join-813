@@ -25,7 +25,7 @@
 </head>
 
 <body onload="init(), loadBoard()">
-    
+
     <!-- Header template -->
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
 
@@ -39,7 +39,7 @@
                     <div class="sortTasksButton">
                         <div class="sortTasksSpacer"></div>
                         <button>
-                            <img src=".\assets\img\Desktop\board\search\default.svg">
+                            <img src=".\assets\img/desktop\board\search\default.svg">
                         </button>
                     </div>
                 </div>
@@ -59,11 +59,15 @@
                 </button>
             </div>
         </div>
+
         <div class="toDoList">
-            <div id="ToDoContainer">
+            <div>
                 <div class="toDoListCategories">
                     <p>To do</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
+                </div>
+                <div class="listContainer" id="ToDoContainer" ondrop="moveTo('ToDo')" ondragleave="removeHighlight('open')"
+                    ondragover="allowDrop(event)">
                 </div>
                 <!-- <table>
                     <tr>
@@ -75,22 +79,31 @@
                     </tr>
                 </table> -->
             </div>
-            <div id="InProgressContainer">
+            <div>
+
                 <div class="toDoListCategories">
                     <p>In progress</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
+                <div class="listContainer" id="InProgressContainer" ondrop="moveTo('InProgress')" ondragleave="removeHighlight('open')"
+                    ondragover="allowDrop(event)"></div>
             </div>
-            <div id="AwaitFeedbackContainer">
+
+            <div>
                 <div class="toDoListCategories">
                     <p>Await feedback</p>
                     <a><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
+                <div class="listContainer" id="AwaitFeedbackContainer" ondrop="moveTo('AwaitFeedback')" ondragleave="removeHighlight('open')"
+                    ondragover="allowDrop(event)"></div>
             </div>
-            <div id="DoneContainer">
+
+            <div>
                 <div class="toDoListCategories">
                     <p>Done</p>
                 </div>
+                <div class="listContainer" id="DoneContainer" ondrop="moveTo('Done')" ondragleave="removeHighlight('open')"
+                    ondragover="allowDrop(event)"></div>
             </div>
         </div>
     </div>
