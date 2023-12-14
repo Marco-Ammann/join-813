@@ -52,27 +52,29 @@ function switchTaskCategoryClickedState(index) {
 
     if (element.classList.contains('contactDivClicked')) {
         removeClass(element, 'contactDivClicked');
+        changeSrc(element, './assets/img/Desktop/add_task/check_button.svg');
     } else {
         assignClass(element, 'contactDivClicked');
+        changeSrc(element, './assets/img/Desktop/add_task/check_button_checked.svg');
     }
 }
 
 
 
-// function switchClickedState(index) {
-//     initializeClickedState(index);
+function switchClickedState(index) {
+    initializeClickedState(index);
 
-//     const contactDiv = document.getElementById(`contact${index}`);
-//     const checkboxImg = document.getElementById(`checkbox${index}`);
-//     let isClicked = getClickedState(index);
+    const contactDiv = document.getElementById(`contact${index}`);
+    const checkboxImg = document.getElementById(`checkbox${index}`);
+    let isClicked = getClickedState(index);
 
-//     if (isClicked) {
-//         handleUnClickedState(contactDiv, checkboxImg);
-//     } else {
-//         handleClickedState(contactDiv, checkboxImg);
-//     }
-//     updateClickedState(index, !isClicked);
-// }
+    if (isClicked) {
+        handleUnClickedState(contactDiv, checkboxImg);
+    } else {
+        handleClickedState(contactDiv, checkboxImg);
+    }
+    updateClickedState(index, !isClicked);
+}
 
 
 function openDropdown(dropdown, selectedElement, arrowImage) {
