@@ -1,27 +1,27 @@
 :root {
-    --background-default:#F0F0F0;
+    --background-default: #F0F0F0;
     --default-color: #2A3647;
-    --hover-color:#29ABE2;
+    --hover-color: #29ABE2;
     --clicked-color: #091931;
     --alert-color: #FF81AB;
-    --border-default:#D1D1D1;
-    --border-focus:#29ABE2;
-    --border-hover:#A8A8A8;
-    --border-error:#FF8190;
-    --urgent:#FF3D00;
-    --medium:#FFA800;
-    --low:#7AE229;
-    --black:#000000;
-  }
+    --border-default: #D1D1D1;
+    --border-focus: #29ABE2;
+    --border-hover: #A8A8A8;
+    --border-error: #FF8190;
+    --urgent: #FF3D00;
+    --medium: #FFA800;
+    --low: #7AE229;
+    --black: #000000;
+}
 
 
 
 
-html{
+html {
     font-size: 16px;
 }
 
-body{
+body {
     height: 100dvh;
     display: flex;
 }
@@ -41,25 +41,26 @@ a {
 /* width */
 ::-webkit-scrollbar {
     width: 0.6rem;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: var(--background-default);
     border-radius: 0.3rem;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--border-default);
     border-radius: 0.3rem;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: var(--border-focus);
-  }
-  /* --------scrollbar  END*/
+}
+
+/* --------scrollbar  END*/
 
 .sidebar {
     display: flex;
