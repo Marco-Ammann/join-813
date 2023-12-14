@@ -21,7 +21,17 @@ function renderSummaryBoard() {
 
 
 function renderSummaryGreeting() {
-    
+    let greet = document.getElementById('greeting');
+    let time = new Date();
+    time = time.getHours();
+
+    if (time < 12 && time > 4) {
+        greet.firstElementChild.innerHTML = 'Good morning,';
+    } else if (time < 18 && time > 12) {
+        greet.firstElementChild.innerHTML = 'Good afternoon,';
+    } else if (time < 24 || time < 4) {
+        greet.firstElementChild.innerHTML = 'Good evening,';
+    }
     // TODO: Change username when logged in or guest
 }
 
