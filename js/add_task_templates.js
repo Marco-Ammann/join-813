@@ -13,8 +13,8 @@ function generateAssignContactsHTML(contact, index) {
 
 function generateCategoryOptionsHTML(category, index) {
     return /*HTML*/`
-    <div class="categoryDiv" id="categoryOption${index}">
-    ${category}
-  </div>
+    <div class="categoryDiv" id="categoryOption${index}" onclick="switchTaskCategoryClickedState('${index}')">
+        ${category}
+    </div>
     `;
 }

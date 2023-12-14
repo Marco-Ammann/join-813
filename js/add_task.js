@@ -48,17 +48,14 @@ function switchVisibility(elementId) {
 
 
 function switchTaskCategoryClickedState(index) {
-    const element = document.getElementById(`contact${index}`);
+    const element = document.getElementById(`categoryOption${index}`);
 
     if (element.classList.contains('contactDivClicked')) {
         removeClass(element, 'contactDivClicked');
-        changeSrc(element, './assets/img/Desktop/add_task/check_button.svg');
     } else {
         assignClass(element, 'contactDivClicked');
-        changeSrc(element, './assets/img/Desktop/add_task/check_button_checked.svg');
     }
 }
-
 
 
 function switchClickedState(index) {
@@ -113,14 +110,10 @@ function generateCategoryOptions() {
 }
 
 
-
-
-
 function handleClickedState(div, img) {
     assignClass(div, 'contactDivClicked');
     changeSrc(img, './assets/img/Desktop/add_task/check button_checked_white.svg');
 }
-
 
 
 function handleUnClickedState(div, img) {
