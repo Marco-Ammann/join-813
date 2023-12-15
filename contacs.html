@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/contacts.css">
+    <script src="./js/contacts.js"></script>
 
     <link rel="stylesheet" href="./assets/templates/templates.css">
     <script src="./assets/templates/template.js"></script>
@@ -21,7 +22,7 @@
 
 </head>
 
-<body onload="init()">
+<body onload="init(), initContacts()">
 
     <!-- Header template -->
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
@@ -131,10 +132,39 @@
             </div>
         </div>
         <div class="contacts-main">
-            <section class="contacts">
+            <section class="contacts-title">
                 <h1>Contacts</h1>
                 <img src="./assets/img/Desktop/general_elements/bar/vector_blue.svg">
                 <span>Better with a team</span>
+            </section>
+            <section class="contacts-info">
+                <div class="contacts-info-title">
+                    <div class="contacts-user-icon icon-big" style="background-color: #FF7A00;">AM</div>
+                    <div class="contacts-info-name">
+                        <h2>Anton Mayer</h2>
+                        <div class="contacts-info-buttons">
+                            <div>
+                                <img src="./assets/img/Desktop/general_elements/contacts/edit.svg" alt="Edit">
+                                <span>Edit</span>
+                            </div>
+                            <div>
+                                <img src="./assets/img/Desktop/general_elements/contacts/delete.svg" alt="Delete">
+                                <span>Delete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6>Contact Information</h6>
+                <div class="contacts-info-me">
+                    <div>
+                        <h4>Email</h4>
+                        <a href="#">antom@gmail.com</a>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <span>+49 1111 111 11 1</span>
+                    </div>
+                </div>
             </section>
         </div>
     </div>
