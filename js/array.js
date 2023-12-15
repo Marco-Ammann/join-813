@@ -75,58 +75,58 @@ let contacts = [
         "id": 0,
         "color": "#FF7A00",
         "name": "Anton Mayer",
-        "email": "antom@gmail.com"
+        "email": "antom@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 1,
         "color": "#9327FF",
         "name": "Anja Schulz",
-        "email": "schulz@hotmail.com"
+        "email": "schulz@hotmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 2,
         "color": "#6E52FF",
         "name": "Benedikt Ziegler",
-        "email": "benedikt@gmail.com"
+        "email": "benedikt@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 3,
         "color": "#FC71FF",
         "name": "David Eisenberg",
-        "email": "davidberg@gmail.com"
+        "email": "davidberg@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 4,
         "color": "#FFBB2B",
         "name": "Eva Fischer",
-        "email": "eva@gmail.com"
+        "email": "eva@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 5,
         "color": "#1FD7C1",
         "name": "Emmanuel Mauer",
-        "email": "emmanuelma@gmail.com"
+        "email": "emmanuelma@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 6,
         "color": "#462F8A",
         "name": "Marcel Bauer",
-        "email": "bauer@gmail.com"
+        "email": "bauer@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 7,
         "color": "#FF4646",
         "name": "Tatjana Wolf",
-        "email": "wolf@gmail.com"
+        "email": "wolf@gmail.com",
         "phone": "+49 1111 111 11 1"
-    },
+    }
 ];
 
 
