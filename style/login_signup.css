@@ -65,7 +65,7 @@ body {
     background-color: #F6F7F8;
     position: absolute;
     z-index: 10;
-    animation: fadeOutBackground 0.7s forwards;
+    /* animation: fadeOutBackground 0.7s forwards; */
 }
 
 .logo-container {
@@ -73,7 +73,7 @@ body {
     top: calc(50% + 20.8795rem/2);
     left: calc(50% + 17.125rem/2);
     transform: translate(-50%, -50%);
-    animation: moveLogo 0.7s forwards;
+    /* animation: moveLogo 0.7s forwards; */
 }
 
 .join-logo-static {
@@ -83,11 +83,17 @@ body {
     left: 4.81rem;
 }
 
+.join-logo-static-signup{
+    position: absolute;
+    top: 5rem;
+    left: 4.81rem;
+}
+
 .join-logo {
     width: 17.125rem;
     height: 20.8795rem;
     transition: width 0.7s, height 0.7s;
-    animation: moveLogo 0.7s forwards;
+    /* animation: moveLogo 0.7s forwards; */
 }
 
 @keyframes moveLogo {
