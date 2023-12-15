@@ -19,7 +19,9 @@ function renderSummaryBoard() {
     document.getElementById('awaitFeedbackNum').innerHTML = findTaskQuantitys('state', 'AwaitFeedback');
 }
 
-
+/**
+ * Gets the daytime and displays a daytime specific greeting with the username or guest
+ */
 function renderSummaryGreeting() {
     let greet = document.getElementById('greeting');
     let time = new Date();

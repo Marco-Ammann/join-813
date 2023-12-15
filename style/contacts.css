@@ -238,3 +238,10 @@
     flex-direction: column;
     gap: 0.9375rem;
 }
+
+/* Interactive Styles */
+
+.contact-selected {
+    background-color: #2A3647;
+    color: #FFF;
+}
