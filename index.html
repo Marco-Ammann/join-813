@@ -19,6 +19,7 @@
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="0460a567-6eba-4899-a055-0b271c957ca6"
         data-blockingmode="auto" type="text/javascript">
         </script>
+
 </head>
 
 <body>
@@ -29,7 +30,13 @@
             <a href="sign_in.html"><button>Sign up</button></a>
         </header>
 
-        <img class="join-logo" src="assets/img/Desktop/login_signup/Capa 2.svg" alt="Join-Logo">
+        <!-- Logo Dialog und Animation -->
+        <div class="animation-container" id="animationContainer">
+            <div class="logo-container">
+                <img class="join-logo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
+            </div>
+        </div>
+        <img class="join-logo-static" id="join-logo-static" src="./assets/img/Desktop/login_signup/Capa 2.svg" alt="Join Logo">
 
         <div class="login-content-border">
             <div class="login-content">
@@ -70,6 +77,8 @@
         </div>
 
     </div>
+
+    <script src="./js/login_signup.js"></script>
 </body>
 
 </html>

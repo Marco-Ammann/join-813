@@ -54,10 +54,80 @@ body {
     border: unset;
 }
 
-.join-logo {
+.d-none{
+    display: none;
+}
+
+/* Logo Dialog und Animation */
+.animation-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #F6F7F8;
+    position: absolute;
+    z-index: 10;
+    animation: fadeOutBackground 0.7s forwards;
+}
+
+.logo-container {
+    position: absolute;
+    top: calc(50% + 20.8795rem/2);
+    left: calc(50% + 17.125rem/2);
+    transform: translate(-50%, -50%);
+    animation: moveLogo 0.7s forwards;
+}
+
+.join-logo-static {
+    display: none;
     position: absolute;
     top: 5rem;
     left: 4.81rem;
+}
+
+.join-logo {
+    width: 17.125rem;
+    height: 20.8795rem;
+    transition: width 0.7s, height 0.7s;
+    animation: moveLogo 0.7s forwards;
+}
+
+@keyframes moveLogo {
+    0% {
+        top: calc(50% + 20.8795rem/2);
+        left: calc(50% + 17.125rem/2);
+        transform: translate(-50%, -50%);
+        width: 17.125rem;
+        height: 20.8795rem;
+    }
+
+    50% {
+        top: calc(50% + 20.8795rem/2);
+        left: calc(50% + 17.125rem/2);
+        transform: translate(-50%, -50%);
+        width: 17.125rem;
+        height: 20.8795rem;
+    }
+
+    100% {
+        top: 5rem;
+        left: 4.81rem;
+        transform: translate(0, 0);
+        width: 6.25213rem;
+        height: 7.62288rem;
+    }
+}
+
+@keyframes fadeOutBackground {
+    0% {
+        background-color: #F6F7F8;
+    }
+
+    60% {
+        background-color: #F6F7F8;
+    }
+
+    100% {
+        background-color: transparent;
+    }
 }
 
 .login-content-border {
@@ -102,8 +172,8 @@ body {
     color: #D1D1D1;
 }
 
-.input-remove-border{
-    border: none; 
+.input-remove-border {
+    border: none;
     outline: none;
 }
 
