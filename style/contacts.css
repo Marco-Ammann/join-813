@@ -2,7 +2,7 @@
     min-height: calc(100vh - 6rem);
 }
 
-.contacts-list {
+.contact-list {
     width: 24rem;
     background-color: #FFF;
     overflow-y: scroll;
@@ -12,54 +12,54 @@
 }
 
 /* Scrollbar */
-.contacts-list::-webkit-scrollbar {
+.contact-list::-webkit-scrollbar {
     width: 8px;
 }
 
-.contacts-list::-webkit-scrollbar-thumb {
+.contact-list::-webkit-scrollbar-thumb {
     background-color: #a8a8a8be;
     border-radius: 10rem;
 }
 
-.contacts-list::-webkit-scrollbar-track {
+.contact-list::-webkit-scrollbar-track {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
 }
 
 
-.contacts-list::-webkit-scrollbar-button:single-button {
+.contact-list::-webkit-scrollbar-button:single-button {
     display: block;
     border-style: solid;
     height: 1.5rem;
 }
 
 /* Up */
-.contacts-list::-webkit-scrollbar-button:single-button:vertical:start:decrement {
+.contact-list::-webkit-scrollbar-button:single-button:vertical:start:decrement {
     border-width: 2rem 5px 5px 5px;
     border-color: transparent transparent #a8a8a8be transparent;
 }
 
-.contacts-list::-webkit-scrollbar-button:single-button:vertical:start:decrement:hover {
+.contact-list::-webkit-scrollbar-button:single-button:vertical:start:decrement:hover {
     border-color: transparent transparent #a8a8a8 transparent;
 }
 
 /* Down */
-.contacts-list::-webkit-scrollbar-button:single-button:vertical:end:increment {
+.contact-list::-webkit-scrollbar-button:single-button:vertical:end:increment {
     border-width: 5px 5px 0 5px;
     border-color: #a8a8a8be transparent transparent transparent;
 }
 
-.contacts-list::-webkit-scrollbar-button:vertical:single-button:end:increment:hover {
+.contact-list::-webkit-scrollbar-button:vertical:single-button:end:increment:hover {
     border-color: #a8a8a8 transparent transparent transparent;
 }
 
-.contacts-list::-webkit-scrollbar-thumb:hover {
+.contact-list::-webkit-scrollbar-thumb:hover {
     background-color: #a8a8a8;
 }
 
 /* TODO: Firefox & Safari compatibility */
 
-.contacts-main {
+.main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -68,25 +68,25 @@
     gap: 2rem;
 }
 
-.contacts-title {
+.title {
     display: flex;
     align-items: center;
     gap: 1.88rem;
 }
 
-.contacts-title h1 {
+.title h1 {
     font-size: 3.8125rem;
 }
 
-.contacts-title img {
+.title img {
     height: 3.6875rem;
 }
 
-.contacts-title span {
+.title span {
     font-size: 1.6875rem;
 }
 
-.contacts-add-new {
+.add-new {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,7 +96,7 @@
     background-color: #FFF;
 }
 
-.contacts-add-new-button {
+.add-new-button {
     display: flex;
     width: 22rem;
     padding: 0.75rem 0rem;
@@ -108,40 +108,40 @@
     background-color: #2A3647;
 }
 
-.contacts-add-new-button span {
+.add-new-button span {
     font-size: 1.3125rem;
     font-weight: 700;
     color: #FFF;
 }
 
-.contacts-add-new-button img {
+.add-new-button img {
     height: 2rem;
 }
 
-.contacts-sorted {
+.sorted {
     display: flex;
     flex-direction: column;
 }
 
-.contacts-sorted img {
+.sorted img {
     padding: 0.5rem 0;
 }
 
-.contacts-list-padding {
+.contact-list-padding {
     height: 6.3125rem;
 }
 
-.contacts-border {
+.border {
     display: flex;
     padding: 0.5rem 0;
 }
 
-.contacts-letter {
+.letter {
     padding: 1.0625rem 2.25rem;
     font-size: 1.25rem;
 }
 
-.contacts-user {
+.user {
     display: flex;
     gap: 2.1875rem;
     padding: 0.9375rem 1.5rem;
@@ -149,7 +149,7 @@
     border-radius: 0.625rem;
 }
 
-.contacts-user-icon {
+.user-icon {
     display: flex;
     color: #FFF;
     font-size: 0.75rem;
@@ -168,27 +168,27 @@
     border-width: 0.3rem;
 }
 
-.contacts-username {
+.username {
     display: flex;
     flex-direction: column;
     gap: 0.3125rem;
 }
 
-.contacts-username span {
+.username span {
     font-size: 1.25rem;
 }
 
-.contacts-username a {
+.username a {
     color: #007CEE;
 }
 
-.contacts-info {
+.info {
     display: flex;
     flex-direction: column;
     gap: 1.3125rem;
 }
 
-.contacts-info h6 {
+.info h6 {
     display: flex;
     align-items: center;
     font-size: 1.25rem;
@@ -196,52 +196,212 @@
     height: 4.625rem;
 }
 
-.contacts-info-title {
+.info-title {
     display: flex;
     gap: 3.375rem;
     align-items: center;
 }
 
-.contacts-info-name {
+.info-name {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.contacts-info-name h2 {
+.info-name h2 {
     font-size: 2.9375rem;
     font-weight: 500;
 }
 
-.contacts-info-buttons {
+.info-buttons {
     display: flex;
     gap: 1rem;
 }
 
-.contacts-info-buttons div {
+.info-buttons div {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.contacts-info-buttons div img {
+.info-buttons div img {
     width: 1.5rem;
 }
 
-.contacts-info-me {
+.info-me {
     display: flex;
     flex-direction: column;
     gap: 1.375rem;
 }
 
-.contacts-info-me a {
+.info-me a {
     color: #007CEE;
 }
 
-.contacts-info-me div {
+.info-me div {
     display: flex;
     flex-direction: column;
     gap: 0.9375rem;
+}
+
+.popup-bg {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    width: 75.75rem;
+    height: 37rem;
+    border-radius: 5rem 1.875rem 1.875rem 5rem;
+    background: #FFF;
+    display: flex;
+}
+
+.popup-title {
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4.125rem 3rem;
+    border-radius: 1.875rem 0 0 1.875rem;
+}
+
+.popup-title h1 {
+    color: #FFF;
+    font-size: 3.8125rem;
+    margin-bottom: 0.5rem;
+}
+
+.popup-title span {
+    color: #FFF;
+    font-size: 1.6875rem;
+    margin-bottom: 1rem;
+}
+
+.popup-title img:not(.popup-logo) {
+    width: 5.625rem;
+}
+
+.popup-logo {
+    position: absolute;
+    width: 3.475rem;
+    height: 4.15519rem;
+    bottom: 0.75rem;
+}
+
+.popup-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    gap: 3.56rem;
+    padding: 3rem 3rem 0 5.19rem;
+}
+
+.popup-fields img {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+}
+
+.popup-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0.3rem solid #FFF;
+    font-size: 2.9375rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    background-color: #D1D1D1;
+    margin-bottom: 4rem;
+}
+
+.popup-profile img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.popup-input {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.popup-input input {
+    display: flex;
+    width: calc(25.0625rem - 2.8125rem);
+    padding: 0.8125rem 2.8125rem 0.8125rem 1.3125rem;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid var(--Style, #D1D1D1);
+    font-size: 1.25rem;
+    background: url(../assets/img/Desktop/contacts/person-grey.svg) no-repeat scroll calc(100% - 1.3125rem) 50%;
+}
+
+.popup-input input:focus {
+    outline: none;
+    border: 1px solid #29ABE2;
+}
+
+.popup-input input:nth-child(2) {
+    background-image: url(../assets/img/Desktop/contacts/mail-grey.svg);
+}
+
+.popup-input input:nth-child(3) {
+    background-image: url(../assets/img/Desktop/contacts/call-grey.svg);
+}
+
+.popup-input input::placeholder {
+    color: var(--Style, #D1D1D1);
+}
+
+.popup-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.popup-buttons button {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 0.625rem;
+}
+
+.popup-buttons button img {
+    padding: 0;
+}
+
+.popup-buttons button:first-child {
+    font-size: 1.25rem;
+    color: #2A3647;
+    background-color: #FFF;
+    border: 1px solid #2A3647;
+}
+
+.popup-buttons button:last-child {
+    color: #FFF;
+    font-size: 1.3125rem;
+    font-weight: 700;
+    background: #2A3647;
+    border: 0;
 }
 
 /* Interactive Styles */
