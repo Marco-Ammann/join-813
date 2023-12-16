@@ -29,10 +29,61 @@ function renderContactsList() {
     }
 }
 
-
+/**
+ * Renders pop up and changes html and styles to add new contact design
+ */
 function openAddNewContact() {
-
+    const popUpProfile = document.getElementById('popUpProfile');
+    document.getElementById('popUpTitle').innerHTML = 'Add contact'
+    document.getElementById('popUpVector').classList.remove('vector-margin');
+    popUpProfile.style.backgroundColor = '#D1D1D1';
+    popUpProfile.innerHTML = /* html */ `<img src="./assets/img/Desktop/contacts/person.svg"
+    alt="Profile-Image"></div>`;
+    document.getElementById('popUpSubtitle').classList.remove('d-none');
+    document.getElementById('popUpSubmit').innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
+    alt="Create Contact">`
+    document.getElementById('popUp').classList.remove('d-none');
 }
+
+/**
+ * Renders pop up and changes html and styles to edit contact design with the given contact
+ * @param {number} i 
+ */
+function openEditContact(i) {
+    const contact = contacts[i]
+    const popUpProfile = document.getElementById('popUpProfile');
+    document.getElementById('popUpTitle').innerHTML = 'Edit contact';
+    document.getElementById('popUpVector').classList.add('vector-margin');
+    popUpProfile.style.backgroundColor = contact['color'];
+    popUpProfile.innerHTML = getInitials(contact['name']);
+    document.getElementById('popUpSubtitle').classList.add('d-none');
+    document.getElementById('popUpSubmit').innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
+    alt="Create Contact">`
+    document.getElementById('popUpName').value = contact['name'];
+    document.getElementById('popUpEmail').value = contact['email'];
+    document.getElementById('popUpPhone').value = contact['phone'];
+    document.getElementById('popUp').classList.remove('d-none');
+}
+
+/**
+ * Closes the pop up and cleans the input fields
+ */
+function closePopUp() {
+    document.getElementById('popUp').classList.add('d-none')
+    document.getElementById('popUpName').value = '';
+    document.getElementById('popUpEmail').value = '';
+    document.getElementById('popUpPhone').value = '';
+}
+
+
+/**
+ * Stops the clicked element from starting onclick function of the parent div
+ * @param {event} event 
+ */
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
 
 /**
  * Opens the clicked contact and deselects previous one if it exists
@@ -46,6 +97,7 @@ function openContact(i) {
     document.getElementById(`contact${i}`).classList.add('contact-selected');
     document.getElementById('contactsInfo').innerHTML = returnContactsInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
 }
+
 
 /**
  * Deletes the clicked contact and removes open contact info
@@ -119,7 +171,7 @@ function returnContactsInfoHTML(color, initials, name, email, phone, i) {
         <div class="info-name">
             <h2>${name}</h2>
             <div class="info-buttons">
-                <div>
+                <div onclick="openEditContact(${i})">
                     <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
                     <span>Edit</span>
                 </div>

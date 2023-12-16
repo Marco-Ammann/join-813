@@ -33,7 +33,7 @@
     <div class="content d-flex">
         <div>
             <div class="add-new">
-                <div class="add-new-button">
+                <div onclick="openAddNewContact()" class="add-new-button">
                     <span>Add new contact</span>
                     <img src="./assets/img/Desktop/contacts/person_add.svg">
                 </div>
@@ -52,31 +52,32 @@
 
             </section>
         </div>
-        <div id="#">
-            <div class="popup-bg">
-                <div class="popup">
-                    <div class="popup-title">
-                        <div class="p-relative">
-                            <img class="popup-logo" src="./assets/img/Desktop/general_elements/join_light.svg" alt="Logo">
-                        </div>
-                        <h1>Add contact</h1>
-                        <span>Tasks are better with a team!</span>
-                        <img src="./assets/img/Desktop/general_elements/bar/vector_blue_vertical.svg">
+        <div id="popUp" onclick="closePopUp()" class="popup-bg d-none">
+            <div class="popup" onclick="doNotClose(event)">
+                <div class="popup-title">
+                    <div class="p-relative">
+                        <img class="popup-logo" src="./assets/img/Desktop/general_elements/join_light.svg" alt="Logo">
                     </div>
-                    <div class="popup-fields">
-                        <div>
-                            <img src="./assets/img/Desktop/contacts/close.svg" alt="Close">
-                        </div>
-                        <div class="popup-section">
-                            <div class="popup-profile"><img src="./assets/img/Desktop/contacts/person.svg" alt="Profile-Image"></div>
-                            <div class="popup-input">
-                                <input type="text" placeholder="Name" id="">
-                                <input type="text" placeholder="Email" id="">
-                                <input type="text" placeholder="Phone" id="">
-                                <div class="popup-buttons">
-                                    <button>Cancel <img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel"></button>
-                                    <button>Create contact <img src="./assets/img/Desktop/contacts/check.svg" alt="Create Contact"></button>
-                                </div>
+                    <h1 id="popUpTitle">Add contact</h1>
+                    <span id="popUpSubtitle">Tasks are better with a team!</span>
+                    <img id="popUpVector" src="./assets/img/Desktop/general_elements/bar/vector_blue_vertical.svg">
+                </div>
+                <div class="popup-fields">
+                    <div>
+                        <img onclick="closePopUp()" src="./assets/img/Desktop/contacts/close.svg" alt="Close">
+                    </div>
+                    <div class="popup-section">
+                        <div id="popUpProfile" class="popup-profile"><img src="./assets/img/Desktop/contacts/person.svg"
+                                alt="Profile-Image"></div>
+                        <div class="popup-input">
+                            <input type="text" placeholder="Name" id="popUpName">
+                            <input type="email" placeholder="Email" id="popUpEmail">
+                            <input type="tel" placeholder="Phone" id="popUpPhone">
+                            <div class="popup-buttons">
+                                <button onclick="closePopUp()">Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg"
+                                        alt="Cancel"></button>
+                                <button id="popUpSubmit">Create contact<img src="./assets/img/Desktop/contacts/check.svg"
+                                        alt="Create Contact"></button>
                             </div>
                         </div>
                     </div>

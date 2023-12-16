@@ -200,3 +200,7 @@ a {
 .p-relative {
     position: relative;
 }
+
+.d-none {
+    display: none !important
+}
