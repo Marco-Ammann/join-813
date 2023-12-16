@@ -101,19 +101,14 @@ function generateCategoryOptions() {
 
 
 function filterContacts() {
-    const inputField = document.getElementById('add-contact-input');
-    const inputValue = inputField.value.toLowerCase();
-
-    const dropdownContainer = document.getElementById('assignDropdown');
-    const contacts = dropdownContainer.getElementsByClassName('contactDiv');
+    const input = document.getElementById('add-contact-input');
+    const value = input.value.toLowerCase();
+    const dropdown = document.getElementById('assignDropdown');
+    const contacts = dropdown.getElementsByClassName('contactDiv');
 
     for (const contact of contacts) {
-        const contactName = contact.textContent.toLowerCase();
-        if (contactName.includes(inputValue)) {
-            contact.style.display = 'flex';
-        } else {
-            contact.style.display = 'none';
-        }
+        const name = contact.textContent.toLowerCase();
+        contact.style.display = name.includes(value) ? 'flex' : 'none';
     }
 }
 
