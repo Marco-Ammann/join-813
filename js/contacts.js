@@ -2,14 +2,14 @@
  * Initializes the contacts.html
  */
 function initContacts() {
-    renderContactsList();
+    renderContactList();
 }
 
 
 /**
  * Renders the contact list sorted by the first name
  */
-function renderContactsList() {
+function renderContactList() {
     let contactList = document.getElementById('contactList');
     contactList.innerHTML = /* html */ `<div class="contact-list-padding"></div>`;
 
@@ -22,10 +22,10 @@ function renderContactsList() {
         const firstLetter = element['name'].charAt(0);
 
         if (letters.indexOf(firstLetter) == -1) {
-            contactList.innerHTML += returnContactsListHTML(0, firstLetter);
+            contactList.innerHTML += returnContactListHTML(0, firstLetter);
             letters.push(firstLetter);
         }
-        contactList.innerHTML += returnContactsListHTML(1, 0, i, element['color'], getInitials(element['name']), element['name'], element['email']);
+        contactList.innerHTML += returnContactListHTML(1, 0, i, element['color'], getInitials(element['name']), element['name'], element['email']);
     }
 }
 
@@ -52,18 +52,35 @@ function openAddNewContact() {
 function openEditContact(i) {
     const contact = contacts[i]
     const popUpProfile = document.getElementById('popUpProfile');
+    const popUpSubmit = document.getElementById('popUpSubmit');
     document.getElementById('popUpTitle').innerHTML = 'Edit contact';
     document.getElementById('popUpVector').classList.add('vector-margin');
     popUpProfile.style.backgroundColor = contact['color'];
     popUpProfile.innerHTML = getInitials(contact['name']);
     document.getElementById('popUpSubtitle').classList.add('d-none');
-    document.getElementById('popUpSubmit').innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
-    alt="Create Contact">`
+    popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
+    alt="Create Contact">`;
+    popUpSubmit.onclick = function() {editContact(i)};
     document.getElementById('popUpName').value = contact['name'];
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
     document.getElementById('popUp').classList.remove('d-none');
 }
+
+
+/**
+ * Opens the clicked contact and deselects previous one if it exists
+ * @param {number} i 
+ */
+function openContact(i) {
+    renderContactList();
+    document.getElementById('contactsInfo').innerHTML = '';
+
+    let contact = contacts[i];
+    document.getElementById(`contact${i}`).classList.add('contact-selected');
+    document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
+}
+
 
 /**
  * Closes the pop up and cleans the input fields
@@ -77,37 +94,24 @@ function closePopUp() {
 
 
 /**
- * Stops the clicked element from starting onclick function of the parent div
- * @param {event} event 
- */
-function doNotClose(event) {
-    event.stopPropagation();
-}
-
-
-/**
- * Opens the clicked contact and deselects previous one if it exists
- * @param {number} i 
- */
-function openContact(i) {
-    renderContactsList();
-    document.getElementById('contactsInfo').innerHTML = '';
-
-    let contact = contacts[i];
-    document.getElementById(`contact${i}`).classList.add('contact-selected');
-    document.getElementById('contactsInfo').innerHTML = returnContactsInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
-}
-
-
-/**
  * Deletes the clicked contact and removes open contact info
  * @param {number} i 
  */
 function deleteContact(i) {
     contacts.splice(i, 1);
 
-    renderContactsList();
+    renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
+}
+
+
+function editContact(i) {
+    closePopUp();
+}
+
+
+function addNewContact() {
+        //TODO: TODO in renderContactList
 }
 
 
@@ -125,6 +129,15 @@ function getInitials(name) {
 
 
 /**
+ * Stops the clicked element from starting onclick function of the parent div
+ * @param {event} event 
+ */
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
+
+/**
  * Return the requested HTML Code for the contact list
  * @param {number} num 
  * @param {string} letter 
@@ -135,7 +148,7 @@ function getInitials(name) {
  * @param {string} email 
  * @returns - HTML Code as string
  */
-function returnContactsListHTML(num, letter, i, color, initials, name, email) {
+function returnContactListHTML(num, letter, i, color, initials, name, email) {
     if (num == 0) {
         return /* html */ `
             <div class="letter">
@@ -165,7 +178,7 @@ function returnContactsListHTML(num, letter, i, color, initials, name, email) {
  * @param {number} i 
  * @returns - HTML Code as string
  */
-function returnContactsInfoHTML(color, initials, name, email, phone, i) {
+function returnContactInfoHTML(color, initials, name, email, phone, i) {
     return /* html */ `<div class="info-title">
         <div class="user-icon icon-big" style="background-color: ${color};">${initials}</div>
         <div class="info-name">
