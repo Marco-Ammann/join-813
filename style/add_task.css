@@ -372,7 +372,7 @@ input:focus {
   border-top: none;
   position: absolute;
   z-index: 5;
-  top: 38.5rem;
+  top: 39.0rem;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -420,15 +420,8 @@ input:focus {
   font-weight: 700;
 }
 
-
-.urgent svg {
-  color: white;
-}
-
-.medium svg {
-  color: white;
-}
-
+.urgent svg,
+.medium svg,
 .low svg {
   color: white;
 }

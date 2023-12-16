@@ -29,3 +29,6 @@ function removeClass(element, className) {
 function changeSrc(element, src) {
     element.src = src;
 }
+
+
+

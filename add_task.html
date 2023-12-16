@@ -11,6 +11,7 @@
 
   <script src="js/add_task_help_functions.js"></script>
   <script src="js/add_task_templates.js"></script>
+  <script src="js/add_task_priorities.js"></script>
   <script src="js/add_task.js"></script>
   <script src="./assets/templates/template.js"></script>
   
@@ -99,22 +100,21 @@
 
           <div class="form-div">
             <span class="form-span">Prio</span>
-
             <div class="prio_buttons">
-              <button type="button" class="prio-btn" id="urgent" onclick="switchButtonColor('urgent')">
-                Urgent
-                <img src="./assets/img/Desktop/add_task/priority_icons/high_red.svg" id="urgentSymbol" />
-              </button>
-              <button type="button" class="prio-btn" id="medium" onclick="switchButtonColor('medium')">
-                Medium
-                <img src="./assets/img/Desktop/add_task/priority_icons/medium_orange.svg" id="mediumSymbol" />
-              </button>
-              <button type="button" class="prio-btn" id="low" onclick="switchButtonColor('low')">
-                Low
-                <img src="./assets/img/Desktop/add_task/priority_icons/low_green.svg" id="lowSymbol" />
-              </button>
+                <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
+                    Urgent
+                    <img src="./assets/img/Desktop/add_task/priority_icons/high.svg" id="urgentSymbol" />
+                </button>
+                <button type="button" class="prio-btn" id="mediumBtn" onclick="setPrio('medium')">
+                    Medium
+                    <img src="./assets/img/Desktop/add_task/priority_icons/medium.svg" id="mediumSymbol" />
+                </button>
+                <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
+                    Low
+                    <img src="./assets/img/Desktop/add_task/priority_icons/low.svg" id="lowSymbol" />
+                </button>
             </div>
-          </div>
+        </div>
 
             <div class="form-div">
               <span class="form-span required-asteriks">Category</span>
