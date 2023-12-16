@@ -15,7 +15,6 @@ function updateClickedState(index, value) {
 }
 
 
-
 function assignClass(element, className) {
     element.classList.add(className);
 }
@@ -31,4 +30,13 @@ function changeSrc(element, src) {
 }
 
 
+function switchVisibility(elementId) {
+    const element = document.getElementById(elementId);
+
+    if (element.classList.contains('d-none')) {
+        removeClass(element, 'd-none');
+    } else {
+        assignClass(element, 'd-none');
+    }
+}
 

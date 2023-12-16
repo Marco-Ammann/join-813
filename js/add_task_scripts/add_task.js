@@ -6,16 +6,17 @@ const categorys = [
 
 
 let dropdownState = "closed";
-const clickedStates = [];
+let clickedStates = [];
 
 
 function loadAddTaskPage() {
     generateAssignContacts();
     generateCategoryOptions();
+    setupDropdownCloseListener();
+    setupFilterListener();
 }
 
 
-// switch between opend/closed state of the Dropdownmenu
 function switchDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
     const dropdown = document.getElementById(dropdownId);
     const inputfield = document.getElementById(inputfieldId);
@@ -25,17 +26,6 @@ function switchDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
         closeDropdown(dropdown, inputfield, arrowImage, standardValue);
     } else {
         openDropdown(dropdown, inputfield, arrowImage);
-    }
-}
-
-
-function switchVisibility(elementId) {
-    const element = document.getElementById(elementId);
-
-    if (element.classList.contains('d-none')) {
-        removeClass(element, 'd-none');
-    } else {
-        assignClass(element, 'd-none');
     }
 }
 
@@ -56,14 +46,21 @@ function switchClickedState(index) {
 
     const contactDiv = document.getElementById(`contact${index}`);
     const checkboxImg = document.getElementById(`checkbox${index}`);
-    let isClicked = getClickedState(index);
+    const isClicked = getClickedState(index);
 
     if (isClicked) {
-        handleUnClickedState(contactDiv, checkboxImg);
+        handleState(contactDiv, checkboxImg, false, './assets/img/Desktop/add_task/check_button.svg');
     } else {
-        handleClickedState(contactDiv, checkboxImg);
+        handleState(contactDiv, checkboxImg, true, './assets/img/Desktop/add_task/check button_checked_white.svg');
     }
+
     updateClickedState(index, !isClicked);
+}
+
+
+function handleState(div, img, clicked, src) {
+    div.classList.toggle('contactDivClicked', clicked);
+    img.src = src;
 }
 
 
@@ -103,13 +100,38 @@ function generateCategoryOptions() {
 }
 
 
-function handleClickedState(div, img) {
-    assignClass(div, 'contactDivClicked');
-    changeSrc(img, './assets/img/Desktop/add_task/check button_checked_white.svg');
+function filterContacts() {
+    const inputField = document.getElementById('add-contact-input');
+    const inputValue = inputField.value.toLowerCase();
+
+    const dropdownContainer = document.getElementById('assignDropdown');
+    const contacts = dropdownContainer.getElementsByClassName('contactDiv');
+
+    for (const contact of contacts) {
+        const contactName = contact.textContent.toLowerCase();
+        if (contactName.includes(inputValue)) {
+            contact.style.display = 'flex';
+        } else {
+            contact.style.display = 'none';
+        }
+    }
 }
 
 
-function handleUnClickedState(div, img) {
-    removeClass(div, 'contactDivClicked');
-    changeSrc(img, './assets/img/Desktop/add_task/check_button.svg');
+function setupDropdownCloseListener() {
+    document.addEventListener('click', function (event) {
+        const dropdown = document.getElementById('assignDropdown');
+        const inputField = document.getElementById('add-contact-input');
+        const arrowImage = document.getElementById('arrowAssign');
+
+        if (!dropdown.contains(event.target) && event.target !== inputField && event.target !== arrowImage) {
+            closeDropdown(dropdown, inputField, arrowImage, 'Select contacts to assign');
+        }
+    });
+}
+
+
+function setupFilterListener() {
+    const inputField = document.getElementById('add-contact-input');
+    inputField.addEventListener('input', filterContacts);
 }
