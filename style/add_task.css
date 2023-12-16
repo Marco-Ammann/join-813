@@ -361,6 +361,21 @@ input:focus {
   z-index: 10;
 }
 
+.contact-avatar {
+  cursor: pointer;
+  z-index: 10;
+  height: 2.625rem;
+  width: 2.625rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
 /*--------------------------"Category" Dropdown*/
 .categoryDropdown {
   box-sizing: border-box;

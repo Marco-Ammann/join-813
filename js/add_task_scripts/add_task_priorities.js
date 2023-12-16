@@ -1,5 +1,5 @@
-function setPrio(prio) { 
-    resetPriorityClasses(prio);
+function setPrio(prio) {
+    resetPriorityClasses();
 
     const elementId = `${prio}Btn`;
     switchButtonColor(elementId, prio);
@@ -19,7 +19,7 @@ function switchButtonColor(elementId, elementClass) {
     }
 }
 
-function resetPriorityClasses(prioToReset) {
+function resetPriorityClasses() {
     let priorities = ['urgent', 'medium', 'low'];
 
     for (let i = 0; i < priorities.length; i++) {
@@ -29,7 +29,7 @@ function resetPriorityClasses(prioToReset) {
 
         removeClass(document.getElementById(elementId), prio);
         const imgElement = document.getElementById(imgId);
-        const imagePath = `./assets/img/Desktop/add_task/priority_icons/${prio}.svg`; 
+        const imagePath = `./assets/img/Desktop/add_task/priority_icons/${prio}.svg`;
         changeSrc(imgElement, imagePath);
     }
 }
