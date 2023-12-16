@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
 
+    <script src="./js/login_signup.js"></script>
+
     <link rel="stylesheet" href="style/login_signup.css">
     <link rel="stylesheet" href="style/fonts.css">
 
@@ -17,55 +19,53 @@
 
 </head>
 
-<body>
+<body onload="registerInit()">
     <div class="login-content-body">
 
         <img class="join-logo-static-signup" src="./assets/img/Desktop/login_signup/Capa 2.svg" alt="Join Logo">
 
         <div class="signUp-content-border">
-            <a class="arrow-left-default" href="index.html"><img src="assets/img/Desktop/login_signup/arrow-left-default.svg"
-                alt="Zurückpfeil"></a>
-            
+            <a class="arrow-left-default" href="index.html"><img
+                    src="assets/img/Desktop/login_signup/arrow-left-default.svg" alt="Zurückpfeil"></a>
+
             <div class="signUp-content">
                 <div class="login-content-header">
                     <h1>Sign up</h1>
                     <img src="assets/img/Desktop/login_signup/Vector 5.svg" alt="">
                 </div>
 
-                <form onsubmit="loginUser(); return false;" class="signUp-content-form">
+                <form onsubmit="register(); return false;" class="signUp-content-form">
                     <div class="input-name">
-                        <input type="text" placeholder="Name" required class="input-remove-border">
+                        <input required id="userName" type="text" placeholder="Name" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/person.svg" alt="Name Icon">
                     </div>
 
-                    <div class="input-email signUp-email">
-                        <input type="email" placeholder="Email" required class="input-remove-border">
+                    <div class="input-email signUp-email margin-top">
+                        <input required id="email" type="email" placeholder="Email" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
 
-                    <div class="input-password">
-                        <input type="password" placeholder="Password" required class="input-remove-border">
+                    <div class="input-password margin-top">
+                        <input required id="password" type="password" placeholder="Password" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
                     </div>
 
-                    <div class="input-password-confirm">
-                        <input type="password" placeholder="Confirm Password" required class="input-remove-border">
+                    <div class="input-password-confirm margin-top">
+                        <input required id="confirmPassword" type="password" onkeyup="checkConfirmPassword()" placeholder="Confirm Password" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
+                    </div>
+
+                    <span class="fail-confirm-password" id="fail-confirm-password">Ups! your password don’t match</span>
+
+                    <div class="privacy-policy-content-checkbox">
+                        <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" alt="empty checkbox">
+                        <span>I accept the <a href="privacy-policy.html">Privacy policy</a></span>
+                    </div>
+
+                    <div class="signup-content-btn">
+                        <button id="registerBtn" class="btn-login">Sign up</button>
                     </div>
                 </form>
-
-                <span class="fail-confirm-password">Ups! your password don’t match</span>
-
-                <div class="privacy-policy-content-checkbox">
-                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" alt="empty checkbox">
-                    <span>I accept the <a href="privacy-policy.html">Privacy policy</a></span>
-                </div>
-
-                <div class="signup-content-btn">
-                    <button class="btn-login" onclick="nextQuestion()" disabled>Sign up</button>
-                    <!-- button mit Javascript so hovern, dass dieser nach privat-policy erst funktioniert -->
-                </div>
-
 
             </div>
         </div>
@@ -76,6 +76,10 @@
         </div>
 
     </div>
+
+
+    <script src="js/storage.js"></script>
+    <script src="js/regiester.js"></script>
 </body>
 
 </html>

@@ -58,6 +58,10 @@ body {
     display: none;
 }
 
+.margin-top{
+    margin-top: 1.5rem;
+}
+
 /* Logo Dialog und Animation */
 .animation-container {
     height: 100vh;
@@ -325,16 +329,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
 }
 
 .fail-confirm-password {
+    color: transparent;
     align-self: stretch;
     font-family: Poppins;
     font-size: 0.75rem;
     line-height: 120%;
     margin-top: 0.5rem;
-    color: #FF8190;
 }
 
 .signUp-email {
@@ -354,6 +357,7 @@ body {
     color: #A8A8A8;
     font-size: 1rem;
     line-height: 120%;
+    width: -webkit-fill-available;
 }
 
 .privacy-policy-content-checkbox span a {
