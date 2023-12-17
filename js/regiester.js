@@ -5,6 +5,7 @@ let email = document.getElementById("email");
 let password = document.getElementById("firstPassword");
 let confirmPassword = document.getElementById("confirmPassword");
 let registerBtn = document.getElementById("registerBtn");
+let policyImage = document.getElementById('privacyPolicyImage');
 
 async function registerInit() {
     loadUsers();
@@ -52,6 +53,7 @@ function resetForm() {
     password.value = "";
     confirmPassword.value = "";
     registerBtn.disabled = false;
+    policyImage.src = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 }
 
 /**
@@ -119,7 +121,6 @@ function checkConfirmPassword() {
  * 
  */
 function confirmPrivacyPolicy(){
-    let policyImage = document.getElementById('privacyPolicyImage');
     let emptyImagePath = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 
     if (policyImage.src.endsWith(emptyImagePath)) {
@@ -129,4 +130,17 @@ function confirmPrivacyPolicy(){
         policyImage.src = emptyImagePath;
         registerBtn.disabled = true;
     } 
+}
+
+/**
+ * Successfully Registration
+ * TODO: implementieren
+ */
+function openRegistrationModal() {
+    let modal = document.getElementById("registrationModal");
+    modal.style.display = "block";
+
+    setTimeout(function () {
+        window.location.href = "index.html";
+    }, 2000);
 }

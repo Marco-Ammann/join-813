@@ -46,20 +46,25 @@
                     </div>
 
                     <div class="input-password margin-top">
-                        <input required id="firstPassword" type="password" placeholder="Password" class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/lock.svg" id="imagePassword" onclick="visibilityOnOffImage('', 'first')" alt="Schloss Icon">
+                        <input required id="firstPassword" type="password" placeholder="Password"
+                            class="input-remove-border">
+                        <img src="assets/img/Desktop/login_signup/lock.svg" id="imagePassword"
+                            onclick="visibilityOnOffImage('', 'first')" alt="Schloss Icon">
                     </div>
 
                     <div class="input-password-confirm margin-top">
-                        <input required id="confirmPassword" type="password" onkeyup="checkConfirmPassword()" placeholder="Confirm Password" class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/lock.svg" id="imageConfirmPassword" onclick="visibilityOnOffImage('Confirm', 'confirm')" alt="Schloss Icon">
+                        <input required id="confirmPassword" type="password" onkeyup="checkConfirmPassword()"
+                            placeholder="Confirm Password" class="input-remove-border">
+                        <img src="assets/img/Desktop/login_signup/lock.svg" id="imageConfirmPassword"
+                            onclick="visibilityOnOffImage('Confirm', 'confirm')" alt="Schloss Icon">
                     </div>
                     <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" title="Mindestens 8 Zeichen, 1 Buchstabe, 1 Zahl, 1 Sonderzeichen, keine Leerzeichen" -->
 
                     <span class="fail-confirm-password" id="fail-confirm-password">Ups! your password don’t match</span>
 
                     <div class="privacy-policy-content-checkbox">
-                        <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="privacyPolicyImage" onclick="confirmPrivacyPolicy()" alt="empty checkbox">
+                        <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="privacyPolicyImage"
+                            onclick="confirmPrivacyPolicy()" alt="empty checkbox">
                         <span>I accept the <a href="privacy-policy.html">Privacy policy</a></span>
                     </div>
 
@@ -81,6 +86,14 @@
 
     <script src="js/storage.js"></script>
     <script src="js/regiester.js"></script>
+
+
+    <!-- Modal-Fenster -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <p>You Signed Up successfully</p>
+        </div>
+    </div>
 </body>
 
 </html>
