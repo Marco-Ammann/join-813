@@ -445,6 +445,11 @@ input:focus {
   color: white;
 }
 
+
+.assigned-contacts {
+  display: flex;
+}
+
 /* mediaquerrys */
 @media (max-width: 1320px) {
   .task-forms {

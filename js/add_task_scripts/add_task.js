@@ -41,6 +41,11 @@ function switchTaskCategoryClickedState(index) {
 }
 
 
+function handleClickOnAssignedContact(index){
+    switchClickedState(index);
+    createAvatar(index);
+}
+
 function switchClickedState(index) {
     initializeClickedState(index);
 
@@ -55,6 +60,17 @@ function switchClickedState(index) {
     }
     updateClickedState(index, !isClicked);
 
+}
+
+function createAvatar(index) {
+    let avatarContainer = document.getElementById("assigned-contacts");
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        let isClicked = clickedStates[i];
+        if (isClicked && i === index) {
+            avatarContainer.innerHTML += generateAvatar(contact);
+        }
+    }
 }
 
 
@@ -83,10 +99,13 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
 function generateAssignContacts() {
     let dropdowncontainer = document.getElementById('assignDropdown');
     dropdowncontainer.innerHTML = "";
+
     for (let i = 0; i < contacts.length; i++) {
         const selectableContact = contacts[i];
-        dropdowncontainer.innerHTML += generateAssignContactsHTML(selectableContact, i)
+        dropdowncontainer.innerHTML += generateAssignContactsHTML(selectableContact, i);
     }
+
+    clickedStates = Array(contacts.length).fill(false);
 }
 
 
