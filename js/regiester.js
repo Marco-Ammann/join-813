@@ -1,9 +1,19 @@
 let users = [];
 
+let userName = document.getElementById("userName");
+let email = document.getElementById("email");
+let password = document.getElementById("firstPassword");
+let confirmPassword = document.getElementById("confirmPassword");
+let registerBtn = document.getElementById("registerBtn");
+
 async function registerInit() {
     loadUsers();
 }
 
+/**
+ * Load User
+ * 
+ */
 async function loadUsers() {
     try {
         users = JSON.parse(await getItem("users"));
@@ -12,17 +22,19 @@ async function loadUsers() {
     }
 }
 
+/**
+ * Registration
+ * 
+ */
 async function register() {
-    let firstPassword = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-    if (firstPassword === confirmPassword) {
+    if (password.value === confirmPassword.value) {
         registerBtn.disabled = true;
         users.push({
             name: userName.value,
             email: email.value,
-            password: firstPassword,
+            password: password.value,
         });
-
+        console.log(users);
         await setItem("users", JSON.stringify(users));
         resetForm();
     } else {
@@ -30,6 +42,10 @@ async function register() {
     }
 }
 
+/**
+ * Deletet the value of the inputfields
+ * 
+ */
 function resetForm() {
     userName.value = "";
     email.value = "";
@@ -38,13 +54,79 @@ function resetForm() {
     registerBtn.disabled = false;
 }
 
-function checkConfirmPassword() {
-    let password = document.getElementById(`password`).value.trim();
-    let passwordConfirm = document.getElementById(`confirmPassword`).value.trim();
+/**
+ * HandleImageFocus of the two Inputfields
+ * 
+ * @param {HTMLElement} passwordField - This is the ID for the respective passwordfield
+ * @param {String} imageId - This is the ID for the Image
+ */
+function handleImageFocus(passwordField, imageId) {
+    let passwordImage = document.getElementById(imageId);
 
-    if (!password.includes(passwordConfirm)) {
-        document.getElementById("fail-confirm-password").style.color = "#FF8190";
-    } else{
-        document.getElementById("fail-confirm-password").style.color = "transparent";
-    }; 
+    passwordField.addEventListener("click", function () {
+        if (passwordField.value === "") {
+            passwordImage.src = "./assets/img/Desktop/login_signup/visibility_off.svg";
+        }
+    });
+
+    passwordField.addEventListener("blur", function () {
+        if (passwordField.value === "") {
+            passwordImage.src = "./assets/img/Desktop/login_signup/lock.svg";
+        }
+    });
+}
+handleImageFocus(password, "imagePassword");
+handleImageFocus(confirmPassword, "imageConfirmPassword");
+
+
+/**
+ * Images of visibility - transfer with onclick
+ * 
+ * @param {string} Which - the first letter is capitalized
+ * @param {string} which - normaly string
+ */
+function visibilityOnOffImage(Which, which) {
+    let passwordImage = document.getElementById(`image${Which}Password`);
+    let password = document.getElementById(`${which}Password`);
+    
+    if (password.type === "password") {
+        passwordImage.src = "./assets/img/Desktop/login_signup/visibility_on.svg";
+        password.type = "text";
+    } else {
+        password.type = "password";
+        passwordImage.src = "./assets/img/Desktop/login_signup/visibility_off.svg";
+    }
+}
+
+/**
+ * Checked the Passwords
+ * 
+ */
+function checkConfirmPassword() {
+    let firstPassword = password.value.trim();
+    let secondPassword = confirmPassword.value.trim();
+    let failConfirmPassword = document.getElementById("fail-confirm-password");
+
+    if (!firstPassword.startsWith(secondPassword)) {
+        failConfirmPassword.style.color = "#FF8190";
+    } else {
+        failConfirmPassword.style.color = "transparent";
+    }
+}
+
+/**
+ * Checked confirm Privacy Policy and enabled Button
+ * 
+ */
+function confirmPrivacyPolicy(){
+    let policyImage = document.getElementById('privacyPolicyImage');
+    let emptyImagePath = "assets/img/Desktop/login_signup/checkbox/empty.svg";
+
+    if (policyImage.src.endsWith(emptyImagePath)) {
+        policyImage.src = "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+        registerBtn.disabled = false;
+    } else {
+        policyImage.src = emptyImagePath;
+        registerBtn.disabled = true;
+    } 
 }

@@ -185,6 +185,7 @@ body {
 .input-remove-border {
     border: none;
     outline: none;
+    flex: 1;
 }
 
 .input-email {
@@ -261,7 +262,7 @@ body {
     border: unset;
 }
 
-.btn-login:hover, .login-header button:hover {
+.btn-login:hover:enabled, .login-header button:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
