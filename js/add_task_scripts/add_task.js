@@ -47,14 +47,16 @@ function switchClickedState(index) {
     const contactDiv = document.getElementById(`contact${index}`);
     const checkboxImg = document.getElementById(`checkbox${index}`);
     const isClicked = getClickedState(index);
-
+    const contact = document.getElementById(`contact${index}`);
     if (isClicked) {
         handleState(contactDiv, checkboxImg, false, './assets/img/Desktop/add_task/check_button.svg');
+        generateAssignedContactAvatarHTML(contact, index)
     } else {
         handleState(contactDiv, checkboxImg, true, './assets/img/Desktop/add_task/check button_checked_white.svg');
-    }
 
+    }
     updateClickedState(index, !isClicked);
+
 }
 
 

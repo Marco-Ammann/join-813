@@ -1,7 +1,7 @@
 function generateAssignContactsHTML(contact, index) {
     const name = contact.name;
     return `
-    <div class="contactDiv" id="contact${index}" onclick="switchClickedState(${index})">
+    <div class="contactDiv" id="contact${index}" onclick="switchClickedState(contact, ${index})">
         <div class="contactDiv-sub">
             <div class="contact-avatar" style="background-color: ${contact.color};">${getInitials(name)}</div>
             ${contact.name}
@@ -17,5 +17,13 @@ function generateCategoryOptionsHTML(category, index) {
     <div class="categoryDiv" id="categoryOption${index}" onclick="switchTaskCategoryClickedState('${index}')">
         ${category}
     </div>
+    `;
+}
+
+
+function generateAssignedContactAvatarHTML(contact){
+    const name = contact.name;
+    return `
+            <div class="contact-avatar" style="background-color: ${contact.color};">${getInitials(name)}</div>
     `;
 }
