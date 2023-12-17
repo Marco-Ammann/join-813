@@ -21,9 +21,8 @@ function generateCategoryOptionsHTML(category, index) {
 }
 
 
-function generateAvatar(contact){
-    return`
+function generateAvatar(contact) {
+    return `
     <div class="contact-avatar" style="background-color: ${contact.color};">${getInitials(contact.name)}</div>
-
     `;
 }
