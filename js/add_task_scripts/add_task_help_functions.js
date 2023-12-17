@@ -40,6 +40,10 @@ function switchVisibility(elementId) {
     }
 }
 
+function setPriority(priority) {
+    clickedPriority = priority;
+}
+
 
 function addAvatar(contact) {
     assignedContacts.push(contact);

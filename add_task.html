@@ -89,11 +89,8 @@
             <div class="form-subcontainer">
 
               <div class="input-div">
-                <input id="due-date-input" maxlength="48" class="due-date-input" type="text" placeholder="dd/mm/yyyy"
+                <input id="due-date-input" maxlength="48" class="due-date-input" type="date" placeholder="dd/mm/yyyy"
                   required />
-
-                <img class="input-symbol" id="calendarSymbol" src="assets/img/Desktop/add_task/calendar_icon.svg"
-                  alt="Pfeil runter" />
               </div>
 
               <p class="input-required-warning">This field is required</p>
@@ -103,7 +100,7 @@
 
           <div class="form-div">
             <span class="form-span">Prio</span>
-            <div class="prio_buttons">
+            <div class="prio-buttons">
                 <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                     Urgent
                     <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
@@ -147,11 +144,12 @@
               <div class="input-div">
                 <input id="subtask-input" maxlength="48" class="subtask-input" type="text"
                   placeholder="Add new subtask" />
-                <img class="plus-symbol input-symbol" id="arrowSubtasks>"
+                <img class="plus-symbol input-symbol" id="arrowSubtasks>" onclick="setSubtask()"
                   src="assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
               </div>
 
               </div>
+              <div id="subTasks" class="subTasks"></div>
             </div>
           </section>
         </div>

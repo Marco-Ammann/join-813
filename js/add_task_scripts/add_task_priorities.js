@@ -1,4 +1,5 @@
 function setPrio(prio) {
+    clickedPriority = prio;
     resetPriorityClasses();
 
     const elementId = `${prio}Btn`;

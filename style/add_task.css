@@ -25,6 +25,11 @@ p {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+
+
+
+
+
 .d-none {
   display: none !important;
 }
@@ -204,7 +209,7 @@ input:focus {
   outline: none;
 }
 
-.prio_buttons {
+.prio-buttons {
   display: flex;
   justify-content: space-around;
   gap: 16px;

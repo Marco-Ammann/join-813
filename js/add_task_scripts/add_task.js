@@ -1,13 +1,14 @@
 const categorys = [
-    "User Story",
-    "Technical Task"
+    "Work",
+    "Personal"
 ];
 
 
 let dropdownState = "closed";
 let clickedStates = [];
 let assignedContacts = [];
-
+let subtasks = [];
+let clickedPriority = "medium";
 
 function loadAddTaskPage() {
     generateAssignContacts();
@@ -15,6 +16,136 @@ function loadAddTaskPage() {
     setupDropdownCloseListener();
     setupFilterListener();
 }
+
+
+
+
+
+function getTaskTitle(){
+   let taskTitle = document.getElementById('task-title-input').value;
+    return taskTitle;
+}
+
+function getTaskDescription(){
+    let taskDescription = document.getElementById('task-description-textarea').value;
+    return taskDescription;
+}
+
+function getAssignedContacts() {
+    const contactNames = [];
+    for (const contact of assignedContacts) {
+        contactNames.push(contact.name);
+    }
+    return contactNames;
+}
+
+function getDueDate() {
+    let dueDate = document.getElementById('due-date-input').value;
+    let parts = dueDate.split('-');
+    if (parts.length === 3) {
+        return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    } else {
+        return dueDate;
+    }
+}
+
+function getPriority() {
+    return clickedPriority;
+}
+
+function getCategory(){
+    let categoryDropdown = document.getElementById('categoryDropdown');
+    let selectedCategory = categoryDropdown.querySelector('.contactDivClicked');
+    if (selectedCategory) {
+        return selectedCategory.textContent.trim();
+    } else {
+        return '';
+    }
+}
+
+function getSubtask() {
+    return subtasks;
+}
+
+
+function setSubtask() {
+    const subtaskInput = document.getElementById('subtask-input');
+    const subtaskText = subtaskInput.value.trim(); // Den Text ohne führende und abschließende Leerzeichen speichern
+
+    if (subtaskText) {
+        // Subtask zum Array hinzufügen
+        subtasks.push(subtaskText);
+
+        // Subtask-Liste aktualisieren
+        updateSubtaskList();
+
+        // Eingabefeld leeren
+        subtaskInput.value = '';
+    }
+}
+
+
+function validateDueDate() {
+    const dueDateInput = document.getElementById('due-date-input');
+    const datePattern = /^\d{2}\/\d{2}\/\d{4}$/; // Das erwartete Datumsmuster (dd/mm/yyyy)
+
+    if (!datePattern.test(dueDateInput.value)) {
+        alert('Ungültiges Datumsformat. Bitte verwenden Sie das Format dd/mm/yyyy.');
+        dueDateInput.value = '';
+    }
+}
+
+
+
+
+// Funktion zum Aktualisieren der Subtask-Liste
+function updateSubtaskList() {
+    const subtaskContainer = document.getElementById('subTasks');
+    subtaskContainer.innerHTML = '';
+
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+
+        // Subtask-Element erstellen
+        const subtaskElement = document.createElement('div');
+        subtaskElement.classList.add('subtask-item');
+
+        // Subtask-Text hinzufügen
+        subtaskElement.innerText = subtask;
+
+        // Bearbeitungs- und Löschsymbole hinzufügen
+        subtaskElement.innerHTML += /*HTML*/`
+            <img class="edit-symbol" onclick="editSubtask(${i})" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="Edit">
+            <img class="delete-symbol" onclick="deleteSubtask(${i})" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="Delete">
+        `;
+
+        // Subtask-Element zur Liste hinzufügen
+        subtaskContainer.appendChild(subtaskElement);
+    }
+}
+
+
+// Funktion zum Bearbeiten eines Subtasks
+function editSubtask(index) {
+    const editedSubtask = prompt('Bearbeite den Subtask:', subtasks[index]);
+
+    if (editedSubtask !== null) {
+        subtasks[index] = editedSubtask;
+        updateSubtaskList();
+    }
+}
+
+
+// Funktion zum Löschen eines Subtasks
+function deleteSubtask(index) {
+    const confirmDelete = confirm('Möchtest du diesen Subtask löschen?');
+
+    if (confirmDelete) {
+        subtasks.splice(index, 1);
+        updateSubtaskList();
+    }
+}
+
 
 
 function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
@@ -35,11 +166,14 @@ function handleClickOnAssignedContact(index) {
 function switchTaskCategoryClickedState(index) {
     const element = document.getElementById(`categoryOption${index}`);
 
-    if (element.classList.contains('contactDivClicked')) {
-        removeClass(element, 'contactDivClicked');
-    } else {
-        assignClass(element, 'contactDivClicked');
+    // Alle Kategorien deaktivieren
+    const categoryOptions = document.getElementsByClassName('categoryDiv');
+    for (const option of categoryOptions) {
+        removeClass(option, 'contactDivClicked');
     }
+
+    // Die ausgewählte Kategorie aktivieren
+    assignClass(element, 'contactDivClicked');
 }
 
 
