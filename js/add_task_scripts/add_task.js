@@ -18,15 +18,12 @@ function loadAddTaskPage() {
 }
 
 
-
-
-
-function getTaskTitle(){
-   let taskTitle = document.getElementById('task-title-input').value;
+function getTaskTitle() {
+    let taskTitle = document.getElementById('task-title-input').value;
     return taskTitle;
 }
 
-function getTaskDescription(){
+function getTaskDescription() {
     let taskDescription = document.getElementById('task-description-textarea').value;
     return taskDescription;
 }
@@ -53,7 +50,7 @@ function getPriority() {
     return clickedPriority;
 }
 
-function getCategory(){
+function getCategory() {
     let categoryDropdown = document.getElementById('categoryDropdown');
     let selectedCategory = categoryDropdown.querySelector('.contactDivClicked');
     if (selectedCategory) {
@@ -70,16 +67,11 @@ function getSubtask() {
 
 function setSubtask() {
     const subtaskInput = document.getElementById('subtask-input');
-    const subtaskText = subtaskInput.value.trim(); // Den Text ohne führende und abschließende Leerzeichen speichern
+    const subtaskText = subtaskInput.value.trim();
 
     if (subtaskText) {
-        // Subtask zum Array hinzufügen
         subtasks.push(subtaskText);
-
-        // Subtask-Liste aktualisieren
         updateSubtaskList();
-
-        // Eingabefeld leeren
         subtaskInput.value = '';
     }
 }
@@ -105,22 +97,8 @@ function updateSubtaskList() {
 
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
+        subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i);
 
-        // Subtask-Element erstellen
-        const subtaskElement = document.createElement('div');
-        subtaskElement.classList.add('subtask-item');
-
-        // Subtask-Text hinzufügen
-        subtaskElement.innerText = subtask;
-
-        // Bearbeitungs- und Löschsymbole hinzufügen
-        subtaskElement.innerHTML += /*HTML*/`
-            <img class="edit-symbol" onclick="editSubtask(${i})" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="Edit">
-            <img class="delete-symbol" onclick="deleteSubtask(${i})" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="Delete">
-        `;
-
-        // Subtask-Element zur Liste hinzufügen
-        subtaskContainer.appendChild(subtaskElement);
     }
 }
 
@@ -135,6 +113,10 @@ function editSubtask(index) {
     }
 }
 
+function cancelSubtask() {
+    let subTaskInput = document.getElementById('subtask-input');
+    subTaskInput.value = "";
+}
 
 // Funktion zum Löschen eines Subtasks
 function deleteSubtask(index) {
@@ -277,4 +259,37 @@ function setupDropdownCloseListener() {
 function setupFilterListener() {
     const inputField = document.getElementById('add-contact-input');
     inputField.addEventListener('input', filterContacts);
+}
+
+
+function addFocusClass() {
+    const inputDiv = document.getElementById('subtask-input-div');
+    inputDiv.classList.add('input-div-focused');
+
+    const plusSymbolDiv = document.getElementById('plus-symbol-div');
+    plusSymbolDiv.classList.add('d-none');
+
+    const createTaskDiv = document.getElementById('create-task-div');
+    createTaskDiv.classList.remove('d-none');
+
+    document.addEventListener('mousedown', handleMouseDown);
+}
+
+function removeFocusClass() {
+    const inputDiv = document.getElementById('subtask-input-div');
+    inputDiv.classList.remove('input-div-focused');
+
+    const plusSymbolDiv = document.querySelector('.plus-symbol-div');
+    plusSymbolDiv.classList.remove('d-none');
+
+    const createTaskDiv = document.querySelector('.create-task-div');
+    createTaskDiv.classList.add('d-none');
+}
+
+function handleMouseDown(event) {
+    const inputDiv = document.getElementById('subtask-input-div');
+    if (!inputDiv.contains(event.target)) {
+        removeFocusClass();
+        document.removeEventListener('mousedown', handleMouseDown);
+    }
 }

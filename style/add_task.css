@@ -25,11 +25,6 @@ p {
   -webkit-tap-highlight-color: transparent !important;
 }
 
-
-
-
-
-
 .d-none {
   display: none !important;
 }
@@ -89,10 +84,6 @@ textarea::placeholder {
 
 .input-div:hover {
   border: 1px solid var(--border-hover);
-}
-
-.input-div:focus {
-  border: 1px solid var(--border-focus);
 }
 
 textarea:focus,
@@ -162,6 +153,16 @@ input:focus {
   cursor: pointer;
   border-radius: 50%;
   margin-right: 0.3rem;
+}
+
+.subTask-icons {
+  cursor: pointer;
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.subTask-icons:hover {
+  background-color: var(--border-default);
 }
 
 /* ---------------------------------leftside forms */
@@ -250,6 +251,50 @@ input:focus {
   border: none;
 }
 
+.subTaskDiv:hover .subTask-subDiv {
+  display: flex;
+}
+
+.input-div-focused {
+  border: 1px solid var(--border-focus) !important; /* Apply the blue border to .input-div when focused */
+}
+
+.input-div:focus {
+  border-color: var(--hover-color);
+}
+
+.plus-symbol-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-task-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subTasks {
+  width: 100%;
+}
+
+.subTaskDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  border-radius: 0.625rem;
+}
+
+.subTaskDiv:hover {
+  background-color: var(--background-default);
+}
+
+.subTask-subDiv {
+  display: none;
+}
+
 /* ----------------------------------------footer of add task section */
 .addTaskBtn {
   display: flex;
@@ -330,7 +375,6 @@ input:focus {
   padding: 1.25rem;
 }
 
-
 .assigned-contacts {
   display: flex;
   z-index: 0;
@@ -398,7 +442,7 @@ input:focus {
   border-top: none;
   position: absolute;
   z-index: 5;
-  top: 39.0rem;
+  top: 39rem;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -455,8 +499,6 @@ input:focus {
 .low svg {
   color: white;
 }
-
-
 
 /* mediaquerrys */
 @media (max-width: 1320px) {
