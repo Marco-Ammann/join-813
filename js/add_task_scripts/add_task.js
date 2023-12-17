@@ -7,6 +7,7 @@ const categorys = [
 
 let dropdownState = "closed";
 let clickedStates = [];
+let assignedContacts = [];
 
 
 function loadAddTaskPage() {
@@ -43,7 +44,7 @@ function switchTaskCategoryClickedState(index) {
 
 function handleClickOnAssignedContact(index){
     switchClickedState(index);
-    createAvatar(index);
+    updateAvatars(index);
 }
 
 function switchClickedState(index) {
@@ -52,25 +53,38 @@ function switchClickedState(index) {
     const contactDiv = document.getElementById(`contact${index}`);
     const checkboxImg = document.getElementById(`checkbox${index}`);
     const isClicked = getClickedState(index);
+    
+    const contact = contacts[index];
+
     if (isClicked) {
         handleState(contactDiv, checkboxImg, false, './assets/img/Desktop/add_task/check_button.svg');
+        removeAvatar(contact);
     } else {
         handleState(contactDiv, checkboxImg, true, './assets/img/Desktop/add_task/check button_checked_white.svg');
-
+        addAvatar(contact);
     }
     updateClickedState(index, !isClicked);
-
 }
 
-function createAvatar(index) {
-    let avatarContainer = document.getElementById("assigned-contacts");
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        let isClicked = clickedStates[i];
-        if (isClicked && i === index) {
-            avatarContainer.innerHTML += generateAvatar(contact);
-        }
+
+function addAvatar(contact) {
+    assignedContacts.push(contact);
+    updateAvatars();
+}
+
+function removeAvatar(contact) {
+    const index = assignedContacts.indexOf(contact);
+    if (index !== -1) {
+        assignedContacts.splice(index, 1);
+        updateAvatars();
     }
+}
+
+
+
+function updateAvatars() {
+    let avatarContainer = document.getElementById("assigned-contacts");
+    avatarContainer.innerHTML = assignedContacts.map(contact => generateAvatar(contact)).join('');
 }
 
 
