@@ -1,4 +1,3 @@
-
 const categorys = [
     "User Story",
     "Technical Task"
@@ -18,16 +17,18 @@ function loadAddTaskPage() {
 }
 
 
-function switchDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
-    const dropdown = document.getElementById(dropdownId);
-    const inputfield = document.getElementById(inputfieldId);
-    const arrowImage = document.getElementById(svgId);
-
-    if (dropdownState === "open") {
-        closeDropdown(dropdown, inputfield, arrowImage, standardValue);
+function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
+    if (dropdownState === "closed") {
+        openDropdownState(dropdownId, inputfieldId, svgId);
     } else {
-        openDropdown(dropdown, inputfield, arrowImage);
+        closeDropdownState(dropdownId, inputfieldId, svgId, standardValue);
     }
+}
+
+
+function handleClickOnAssignedContact(index) {
+    switchClickedState(index);
+    updateAvatars(index);
 }
 
 
@@ -42,18 +43,13 @@ function switchTaskCategoryClickedState(index) {
 }
 
 
-function handleClickOnAssignedContact(index){
-    switchClickedState(index);
-    updateAvatars(index);
-}
-
 function switchClickedState(index) {
     initializeClickedState(index);
 
     const contactDiv = document.getElementById(`contact${index}`);
     const checkboxImg = document.getElementById(`checkbox${index}`);
     const isClicked = getClickedState(index);
-    
+
     const contact = contacts[index];
 
     if (isClicked) {
@@ -65,21 +61,6 @@ function switchClickedState(index) {
     }
     updateClickedState(index, !isClicked);
 }
-
-
-function addAvatar(contact) {
-    assignedContacts.push(contact);
-    updateAvatars();
-}
-
-function removeAvatar(contact) {
-    const index = assignedContacts.indexOf(contact);
-    if (index !== -1) {
-        assignedContacts.splice(index, 1);
-        updateAvatars();
-    }
-}
-
 
 
 function updateAvatars() {

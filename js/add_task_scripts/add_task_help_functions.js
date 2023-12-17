@@ -40,3 +40,33 @@ function switchVisibility(elementId) {
     }
 }
 
+
+function addAvatar(contact) {
+    assignedContacts.push(contact);
+    updateAvatars();
+}
+
+
+function removeAvatar(contact) {
+    const index = assignedContacts.indexOf(contact);
+    if (index !== -1) {
+        assignedContacts.splice(index, 1);
+        updateAvatars();
+    }
+}
+
+
+function openDropdownState(dropdownId, inputfieldId, svgId) {
+    const dropdown = document.getElementById(dropdownId);
+    const inputfield = document.getElementById(inputfieldId);
+    const arrowImage = document.getElementById(svgId);
+    openDropdown(dropdown, inputfield, arrowImage);
+}
+
+
+function closeDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
+    const dropdown = document.getElementById(dropdownId);
+    const inputfield = document.getElementById(inputfieldId);
+    const arrowImage = document.getElementById(svgId);
+    closeDropdown(dropdown, inputfield, arrowImage, standardValue);
+}
