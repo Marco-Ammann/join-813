@@ -134,8 +134,9 @@ function confirmPrivacyPolicy(){
 
 /**
  * Successfully Registration
- * TODO: implementieren
+ * 
  */
+//TODO: implementieren
 function openRegistrationModal() {
     let modal = document.getElementById("registrationModal");
     modal.style.display = "block";
