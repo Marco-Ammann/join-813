@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join - Add Task</title>
+
+  <link rel="stylesheet" href="./style/fonts.css" />
+  <link rel="stylesheet" href="./style/add_task.css" />
+
+  <script src="js/add_task_scripts/add_task_help_functions.js"></script>
+  <script src="js/add_task_scripts/add_task_templates.js"></script>
+  <script src="js/add_task_scripts/add_task_priorities.js"></script>
+  <script src="js/add_task_scripts/add_task.js"></script>
+  <script src="js/array.js"></script>
+  <script src="js/contacts.js"></script>
+  <script src="./assets/templates/template.js"></script>
+  
+  <link rel="stylesheet" href="./assets/templates/templates.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+</head>
+
+<body onload="init(), loadAddTaskPage()">
+
+  <!-- Header template -->
+  <div w3-include-html="./assets/templates/desktop_template.html"></div>
+
+  <!-- Content -->
+  <div class="content">
+    <form class="add-tasks">
+      <div>
+      <h1 class="content-title">Add Task</h1>
+
+      <section class="task-forms">
+        <div class="forms-sides">
+          <div class="form-div">
+            <span class="form-span required-asteriks">Title</span>
+            <div class="form-subcontainer">
+              <input id="task-title-input" maxlength="48" class="task-title-input" type="text"
+                placeholder="Enter a title" required />
+              <p class="input-required-warning">This field is required</p>
+            </div>
+          </div>
+
+          <div class="form-div">
+            <span class="form-span">Description</span>
+            <div class="form-subcontainer">
+              <textarea id="task-description-textarea" class="task-description-textarea" name="inputDescription"
+                placeholder="Enter a Description" required></textarea>
+              <p class="input-required-warning">This field is required</p>
+            </div>
+          </div>
+
+            <div class="form-div">
+              <span class="form-span">Assigned to</span>
+              <div class="input-div">
+                <input
+                  id="add-contact-input"
+                  class="add-contact-input"
+                  type="text"
+                  value="Select contacts to assign"
+                  required
+                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                <img
+                  class="arrow-symbol input-symbol"
+                  id="arrowAssign"
+                  src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                  alt="Pfeil runter"
+                  onclick="switchDropdownState('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+              </div>
+
+            <div class="assignDropdown d-none" id="assignDropdown"></div>
+          </div>
+        </div>
+
+        <div class="seperator-vertical"></div>
+
+        <div class="forms-sides">
+          <div class="form-div">
+            <span class="form-span required-asteriks">Due date</span>
+            <div class="form-subcontainer">
+
+              <div class="input-div">
+                <input id="due-date-input" maxlength="48" class="due-date-input" type="text" placeholder="dd/mm/yyyy"
+                  required />
+
+                <img class="input-symbol" id="calendarSymbol" src="assets/img/Desktop/add_task/calendar_icon.svg"
+                  alt="Pfeil runter" />
+              </div>
+
+              <p class="input-required-warning">This field is required</p>
+
+            </div>
+          </div>
+
+          <div class="form-div">
+            <span class="form-span">Prio</span>
+            <div class="prio_buttons">
+                <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
+                    Urgent
+                    <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
+                </button>
+                <button type="button" class="prio-btn" id="mediumBtn" onclick="setPrio('medium')">
+                    Medium
+                    <img src="./assets/img/Desktop/add_task/priority_icons/medium.svg" id="mediumSymbol" />
+                </button>
+                <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
+                    Low
+                    <img src="./assets/img/Desktop/add_task/priority_icons/low.svg" id="lowSymbol" />
+                </button>
+            </div>
+        </div>
+
+            <div class="form-div">
+              <span class="form-span required-asteriks">Category</span>
+              <div class="input-div">
+                <input
+                  onclick="switchVisibility('categoryDropdown')"
+                  id="add-category-input"
+                  class="add-category-input"
+                  type="text"
+                  value="Select task category"
+                  required/>
+
+                <img
+                  onclick="switchVisibility('categoryDropdown')"
+                  class="arrow-symbol input-symbol"
+                  id="arrowCategory"
+                  src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                  alt="Pfeil runter" />
+              </div>
+              <div class="categoryDropdown d-none" id="categoryDropdown"></div>
+            </div>
+
+          <div class="form-div">
+            <span class="form-span">Subtasks</span>
+            <div class="form-subcontainer">
+
+              <div class="input-div">
+                <input id="subtask-input" maxlength="48" class="subtask-input" type="text"
+                  placeholder="Add new subtask" />
+                <img class="plus-symbol input-symbol" id="arrowSubtasks>"
+                  src="assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
+              </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+
+          <div class="footer-container">
+            <span class="footer-required-field required-asteriks-before">This
+              field is required</span>
+
+        <div class="footer-btn-container">
+          <button id="clearBtn" type="button" class="addTaskBtn clearBtn">
+            Clear
+            <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
+          </button>
+
+          <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
+            Create Task
+            <img src="assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+          </button>
+          <div id="okBtnDiv"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
