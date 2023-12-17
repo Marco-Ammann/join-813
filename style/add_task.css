@@ -406,6 +406,10 @@ input:focus {
   font-size: 1.25rem;
 }
 
+.categoryDiv:hover {
+  background-color: var(--background-default);
+}
+
 .prio-btn {
   background-color: #ffffff;
   font-size: 1.3125rem;
