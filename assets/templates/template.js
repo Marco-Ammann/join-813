@@ -16,3 +16,11 @@ async function includeHTML() {
         }
     }
 }
+
+function withoutSidebarLinks(){
+    
+
+
+
+    
+}

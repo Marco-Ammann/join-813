@@ -5,19 +5,23 @@ let email = document.getElementById("email");
 let password = document.getElementById("firstPassword");
 let confirmPassword = document.getElementById("confirmPassword");
 let registerBtn = document.getElementById("registerBtn");
-let policyImage = document.getElementById('privacyPolicyImage');
+let policyImage = document.getElementById("privacyPolicyImage");
 
 async function registerInit() {
     loadUsers();
 }
 
 /**
- * Load User
- * 
+ * Control the register and load User
+ *
+ * @param {string} ok - string from the function in the registry
  */
-async function loadUsers() {
+async function loadUsers(ok) {
     try {
         users = JSON.parse(await getItem("users"));
+        if (ok === "successfully") {
+            openRegistrationModal();
+        }
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -25,27 +29,32 @@ async function loadUsers() {
 
 /**
  * Registration
- * 
+ *
  */
 async function register() {
     if (password.value === confirmPassword.value) {
         registerBtn.disabled = true;
-        users.push({
-            name: userName.value,
-            email: email.value,
-            password: password.value,
-        });
+        generateArrayUsers();
         console.log(users);
         await setItem("users", JSON.stringify(users));
+        await loadUsers("successfully");
         resetForm();
     } else {
-        console.log("Passwort confirm ist falsch!");
+        document.getElementById("fail-confirm-password").style.color = "#FF8190";
     }
+}
+
+function generateArrayUsers() {
+    return users.push({
+        name: userName.value,
+        email: email.value,
+        password: password.value,
+    });
 }
 
 /**
  * Deletet the value of the inputfields
- * 
+ *
  */
 function resetForm() {
     userName.value = "";
@@ -58,7 +67,7 @@ function resetForm() {
 
 /**
  * HandleImageFocus of the two Inputfields
- * 
+ *
  * @param {HTMLElement} passwordField - This is the ID for the respective passwordfield
  * @param {String} imageId - This is the ID for the Image
  */
@@ -80,17 +89,16 @@ function handleImageFocus(passwordField, imageId) {
 handleImageFocus(password, "imagePassword");
 handleImageFocus(confirmPassword, "imageConfirmPassword");
 
-
 /**
  * Images of visibility - transfer with onclick
- * 
+ *
  * @param {string} Which - the first letter is capitalized
  * @param {string} which - normaly string
  */
 function visibilityOnOffImage(Which, which) {
     let passwordImage = document.getElementById(`image${Which}Password`);
     let password = document.getElementById(`${which}Password`);
-    
+
     if (password.type === "password") {
         passwordImage.src = "./assets/img/Desktop/login_signup/visibility_on.svg";
         password.type = "text";
@@ -102,7 +110,7 @@ function visibilityOnOffImage(Which, which) {
 
 /**
  * Checked the Passwords
- * 
+ *
  */
 function checkConfirmPassword() {
     let firstPassword = password.value.trim();
@@ -118,9 +126,9 @@ function checkConfirmPassword() {
 
 /**
  * Checked confirm Privacy Policy and enabled Button
- * 
+ *
  */
-function confirmPrivacyPolicy(){
+function confirmPrivacyPolicy() {
     let emptyImagePath = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 
     if (policyImage.src.endsWith(emptyImagePath)) {
@@ -129,14 +137,13 @@ function confirmPrivacyPolicy(){
     } else {
         policyImage.src = emptyImagePath;
         registerBtn.disabled = true;
-    } 
+    }
 }
 
 /**
  * Successfully Registration
- * 
+ *
  */
-//TODO: implementieren
 function openRegistrationModal() {
     let modal = document.getElementById("registrationModal");
     modal.style.display = "block";

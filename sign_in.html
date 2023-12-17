@@ -7,6 +7,7 @@
     <title>Join</title>
 
     <script src="./js/login_signup.js"></script>
+    <script src="assets/templates/template.js"></script>
 
     <link rel="stylesheet" href="style/login_signup.css">
     <link rel="stylesheet" href="style/fonts.css">
@@ -59,7 +60,7 @@
                             onclick="visibilityOnOffImage('Confirm', 'confirm')" alt="Schloss Icon">
                     </div>
                     <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" title="Mindestens 8 Zeichen, 1 Buchstabe, 1 Zahl, 1 Sonderzeichen, keine Leerzeichen" -->
-
+<!-- TODO: add pattern in passwordinputfield -->
                     <span class="fail-confirm-password" id="fail-confirm-password">Ups! your password don’t match</span>
 
                     <div class="privacy-policy-content-checkbox">
@@ -77,16 +78,11 @@
         </div>
 
         <div class="login-footer">
-            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="privacy-policy.html" onclick="withoutSidebarLinks()">Privacy Policy</a>
             <a href="legal_notice.html">Legal notice</a>
         </div>
 
     </div>
-
-
-    <script src="js/storage.js"></script>
-    <script src="js/regiester.js"></script>
-
 
     <!-- Modal-Fenster -->
     <div id="registrationModal" class="modal">
@@ -94,6 +90,9 @@
             <p>You Signed Up successfully</p>
         </div>
     </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/regiester.js"></script>
 </body>
 
 </html>
