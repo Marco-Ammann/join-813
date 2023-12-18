@@ -163,3 +163,16 @@ function createTask(event) {
     let newTask = getValues();
     tasks.push(newTask);
 }
+
+
+function clearForm(event) {
+    event.preventDefault();
+    document.getElementById('task-title-input').value = '';
+    document.getElementById('task-description-textarea').value = '';
+    document.getElementById('due-date-input').value = '';
+    clickedPriority = 'medium';
+    assignedContacts = [];
+    updateAvatars();
+    subtasks = [];
+    updateSubtaskList();
+}
