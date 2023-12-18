@@ -1,7 +1,13 @@
 let ArrayToSave = [];
 let registerUsers = [];
+let currentUser =[];
 let registerUser = false;
 let saveRememberMe = "false";
+let guest = {
+    name: 'Sofia Müller',
+    email: 'sofiam@gmail.com',
+    password: 'mypassword123',
+};
 
 /**
  * add Fokus/ blur Fokus - Passwordfield change Image
@@ -74,20 +80,23 @@ function loginCheckEmailAndPassword() {
 }
 
 /**
- * is the User in the Array of RegisterUser
+ * is the User in the Array of RegisterUser; save currentUser in Backend
  * 
  * @param {string} email - string from the inputfield email
  * @param {string} password - sting from the inputfield password
  */
-function isUserOfRegisertUser (email, password){
+async function isUserOfRegisertUser (email, password){
     for (let user of registerUsers) {
         if (user.email === email && user.password === password) {
+
             registerUser = true;
-            console.log(user); //TODO; User for summary
+            currentUser = user;
+            await setItem("currentUser", JSON.stringify(currentUser));
+
             if (saveRememberMe === "true") {
                 RememberMeSaveToLocalStorage();
             }
-            emailAndPasswordIsValid(); //TODO: Weiterleitung zu summary
+            emailAndPasswordIsValid();
         }
     }
 }
@@ -101,6 +110,7 @@ function emailAndPasswordIsValid() {
     document.getElementById(`loginPassword`).value = "";
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/empty.svg";
+    console.log(currentUser);
     window.location.href = "summary.html"; 
 }
 
@@ -179,4 +189,14 @@ function loadFillInput() {
     document.getElementById("loginPassword").value = ArrayToSave["password"];
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+}
+
+
+function guestAccount(){
+    document.getElementById("loginEmail").value = guest["email"];
+    document.getElementById("loginPassword").value = guest["password"];
+    setTimeout(function() {
+        window.location.href = "summary.html";
+    }, 500);
+    
 }

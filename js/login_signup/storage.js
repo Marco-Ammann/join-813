@@ -18,6 +18,10 @@ async function getItem(key) {
     });
 }
 
-// async function deleteItem(){
-//     await setItem("users", []);
+/**
+ * Make the Array empty = []; key = 'users'; key = 'currentUser';
+ * 
+ */
+// async function deleteItem(key){
+//     await setItem("key", []);
 // }
