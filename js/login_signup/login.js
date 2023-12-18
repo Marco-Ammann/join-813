@@ -1,7 +1,7 @@
+let ArrayToSave = [];
 let registerUsers = [];
 let registerUser = false;
-let saveRememberMe = 'false';
-
+let saveRememberMe = "false";
 
 /**
  * add Fokus/ blur Fokus - Passwordfield change Image
@@ -69,9 +69,9 @@ function loginCheckEmailAndPassword() {
             if (user.email === email && user.password === password) {
                 registerUser = true;
                 console.log(user); //TODO; User for summary
-                if (saveRememberMe === 'true') {
+                if (saveRememberMe === "true") {
                     RememberMeSaveToLocalStorage();
-                } 
+                }
                 emailAndPasswordIsValid();
             }
         }
@@ -85,7 +85,8 @@ function loginCheckEmailAndPassword() {
 function emailAndPasswordIsValid() {
     document.getElementById("loginEmail").value = "";
     document.getElementById(`loginPassword`).value = "";
-    document.getElementById("rememberMeEmptyImageBox").src = "assets/img/Desktop/login_signup/checkbox/empty.svg";
+    document.getElementById("rememberMeEmptyImageBox").src =
+        "assets/img/Desktop/login_signup/checkbox/empty.svg";
     // window.location.href = "summary.html"; TODO; aktiv for submit
 }
 
@@ -106,42 +107,39 @@ function addRememberMe() {
     let currentImagebox = document.getElementById("rememberMeEmptyImageBox");
     if (currentImagebox.src.endsWith(emptyImagebox)) {
         currentImagebox.src = "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
-        saveRememberMe = 'true';
+        saveRememberMe = "true";
     } else {
         currentImagebox.src = emptyImagebox;
-        saveRememberMe = 'false';
+        saveRememberMe = "false";
     }
 }
 
 /**
  * Remember me - save in LocalStorage for the next Login
- * 
+ *
  */
-//TODO: Bugfixen!
-let inputsArray = [];    
-function RememberMeSaveToLocalStorage(){
+function RememberMeSaveToLocalStorage() {
     let email = document.getElementById("loginEmail").value;
     let password = document.getElementById("loginPassword").value;
-    
-    console.log(email, password);
 
-    inputsArray.push({
+    ArrayToSave.push({
         email: email,
         password: password,
-        // save: saveRememberMe,
+        save: saveRememberMe,
     });
 
-    console.log(inputs);
-
-    let inputsAsText = JSON.stringify(inputsArray);
-    localStorage.setItem("joinInputs", inputsAsText); 
+    let ArrayAsText = JSON.stringify(ArrayToSave);
+    localStorage.setItem("joinInputs", ArrayAsText);
 }
 
 function loadStorage() {
-    try {
-        let inputsAsText = localStorage.getItem("joinInputs");
-        inputsArray = JSON.parse(inputsAsText); 
-    } catch (error){
-        console.log('kein Eintrag im LocalStorage');
+    let ArrayAsText = localStorage.getItem("joinInputs");
+    if (ArrayAsText === null) {
+        loadUsers();
+    } else {
+        ArrayToSave = JSON.parse(ArrayAsText);
+        // loadFillInput();
     }
 }
+
+
