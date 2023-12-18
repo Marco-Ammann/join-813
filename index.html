@@ -46,11 +46,11 @@
 
                 <form onsubmit="loginUser(); return false;" class="login-content-form">
                     <div class="input-email">
-                        <input type="text" placeholder="Email" id="loginEmail" required class="input-remove-border">
+                        <input type="text" placeholder="Email" id="loginEmail" required onkeyup="changeShowTextFailLogin()" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
                     <div class="input-password">
-                        <input type="password" placeholder="Password" id="loginPassword" required class="input-remove-border">
+                        <input type="password" placeholder="Password" id="loginPassword" required onkeyup="changeShowTextFailLogin()" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/lock.svg" id="passwordImage" onclick="visibilityOnOffImage()" alt="Schloss Icon">
                     </div>
                     <span id="fail-login" class="fail-login">Wrong password Ups! Try again.</span>
@@ -83,6 +83,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             loginInit();
             loadUsers();
+            loadStorage();
         });
     </script>
 </body>
