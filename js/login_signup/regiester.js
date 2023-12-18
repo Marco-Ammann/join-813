@@ -1,4 +1,5 @@
 let users = [];
+let userEmailNotfound = true;
 
 let userName = document.getElementById("userName");
 let email = document.getElementById("email");
@@ -34,13 +35,20 @@ async function loadUsers(ok) {
 async function register() {
     if (password.value === confirmPassword.value) {
         registerBtn.disabled = true;
-        generateArrayUsers();
-        console.log(users);
-        await setItem("users", JSON.stringify(users));
-        await loadUsers("successfully");
-        resetForm();
-    } else {
-        document.getElementById("fail-confirm-password").style.color = "#FF8190";
+        for (let user of users) {
+            if (user.email === email.value) {
+                userEmailNotfound = false;
+            }
+        }
+        if (userEmailNotfound == true) {
+            generateArrayUsers();
+            console.log(users);
+            await setItem("users", JSON.stringify(users));
+            await loadUsers("successfully");
+            resetForm();
+        } else {
+            document.getElementById("fail-confirm-password").style.color = "#FF8190";
+        }
     }
 }
 

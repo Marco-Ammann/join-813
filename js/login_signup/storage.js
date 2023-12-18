@@ -17,3 +17,7 @@ async function getItem(key) {
         } throw `Could not find data with key "${key}".`;
     });
 }
+
+// async function deleteItem(){
+//     await setItem("users", []);
+// }
