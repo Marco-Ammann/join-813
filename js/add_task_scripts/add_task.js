@@ -18,55 +18,6 @@ function loadAddTaskPage() {
 }
 
 
-function getTaskTitle() {
-    let taskTitle = document.getElementById('task-title-input').value;
-    return taskTitle;
-}
-
-function getTaskDescription() {
-    let taskDescription = document.getElementById('task-description-textarea').value;
-    return taskDescription;
-}
-
-function getAssignedContacts() {
-    const contactNames = [];
-    for (const contact of assignedContacts) {
-        contactNames.push(contact.name);
-    }
-    return contactNames;
-}
-
-function getDueDate() {
-    let dueDate = document.getElementById('due-date-input').value;
-    let parts = dueDate.split('-');
-    if (parts.length === 3) {
-        return `${parts[2]}/${parts[1]}/${parts[0]}`;
-    } else {
-        return dueDate;
-    }
-}
-
-function getPriority() {
-    return clickedPriority;
-}
-
-function getCategory() {
-    let categoryDropdown = document.getElementById('categoryDropdown');
-    let selectedCategory = categoryDropdown.querySelector('.contactDivClicked');
-    if (selectedCategory) {
-        return selectedCategory.textContent.trim();
-    } else {
-        return '';
-    }
-}
-
-function getSubtask() {
-    return subtasks;
-}
-
-
-
-
 function validateDueDate() {
     const dueDateInput = document.getElementById('due-date-input');
     const datePattern = /^\d{2}\/\d{2}\/\d{4}$/; // Das erwartete Datumsmuster (dd/mm/yyyy)
@@ -76,66 +27,6 @@ function validateDueDate() {
         dueDateInput.value = '';
     }
 }
-
-
-function setSubtask() {
-    const subtaskInput = document.getElementById('subtask-input');
-    const subtaskText = subtaskInput.value.trim();
-
-    if (subtaskText) {
-        subtasks.push(subtaskText);
-        updateSubtaskList();
-        subtaskInput.value = '';
-    }
-}
-
-
-// Funktion zum Aktualisieren der Subtask-Liste
-function updateSubtaskList() {
-    const subtaskContainer = document.getElementById('subTasks');
-    subtaskContainer.innerHTML = '';
-
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i);
-
-    }
-}
-
-
-// Funktion zum Bearbeiten eines Subtasks
-function editSubtask(index) {
-    const subtaskContainer = document.getElementById(`task${index}`);
-    const subtaskText = subtasks[index];
-
-    const inputElement = document.createElement('input');
-    inputElement.type = 'text';
-    inputElement.value = subtaskText;
-    inputElement.classList.add('edit-subtask-input');
-
-    subtaskContainer.textContent = '';
-    subtaskContainer.appendChild(inputElement);
-
-    inputElement.focus();
-
-    inputElement.addEventListener('blur', () => {
-        const editedSubtask = inputElement.value.trim();
-        subtasks[index] = editedSubtask;
-        updateSubtaskList();
-    });
-}
-
-function cancelSubtask() {
-    let subTaskInput = document.getElementById('subtask-input');
-    subTaskInput.value = "";
-}
-
-// Funktion zum Löschen eines Subtasks
-function deleteSubtask(index) {
-    subtasks.splice(index, 1);
-    updateSubtaskList();
-}
-
 
 
 function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
@@ -148,7 +39,7 @@ function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
 
 
 function handleClickOnAssignedContact(index) {
-    switchClickedState(index);
+    toggleContact(index);
     updateAvatars(index);
 }
 
@@ -156,18 +47,15 @@ function handleClickOnAssignedContact(index) {
 function switchTaskCategoryClickedState(index) {
     const element = document.getElementById(`categoryOption${index}`);
 
-    // Alle Kategorien deaktivieren
     const categoryOptions = document.getElementsByClassName('categoryDiv');
     for (const option of categoryOptions) {
         removeClass(option, 'contactDivClicked');
     }
-
-    // Die ausgewählte Kategorie aktivieren
     assignClass(element, 'contactDivClicked');
 }
 
 
-function switchClickedState(index) {
+function toggleContact(index) {
     initializeClickedState(index);
 
     const contactDiv = document.getElementById(`contact${index}`);
@@ -267,37 +155,4 @@ function setupDropdownCloseListener() {
 function setupFilterListener() {
     const inputField = document.getElementById('add-contact-input');
     inputField.addEventListener('input', filterContacts);
-}
-
-
-function addFocusClass() {
-    const inputDiv = document.getElementById('subtask-input-div');
-    inputDiv.classList.add('input-div-focused');
-
-    const plusSymbolDiv = document.getElementById('plus-symbol-div');
-    plusSymbolDiv.classList.add('d-none');
-
-    const createTaskDiv = document.getElementById('create-task-div');
-    createTaskDiv.classList.remove('d-none');
-
-    document.addEventListener('mousedown', handleMouseDown);
-}
-
-function removeFocusClass() {
-    const inputDiv = document.getElementById('subtask-input-div');
-    inputDiv.classList.remove('input-div-focused');
-
-    const plusSymbolDiv = document.querySelector('.plus-symbol-div');
-    plusSymbolDiv.classList.remove('d-none');
-
-    const createTaskDiv = document.querySelector('.create-task-div');
-    createTaskDiv.classList.add('d-none');
-}
-
-function handleMouseDown(event) {
-    const inputDiv = document.getElementById('subtask-input-div');
-    if (!inputDiv.contains(event.target)) {
-        removeFocusClass();
-        document.removeEventListener('mousedown', handleMouseDown);
-    }
 }
