@@ -72,7 +72,7 @@ function loginCheckEmailAndPassword() {
                 if (saveRememberMe === "true") {
                     RememberMeSaveToLocalStorage();
                 }
-                emailAndPasswordIsValid();
+                emailAndPasswordIsValid(); //TODO: Weiterleitung zu summary
             }
         }
         if (registerUser == false) {
@@ -87,7 +87,7 @@ function emailAndPasswordIsValid() {
     document.getElementById(`loginPassword`).value = "";
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/empty.svg";
-    // window.location.href = "summary.html"; TODO; aktiv for submit
+    window.location.href = "summary.html"; 
 }
 
 function showTextFailLogin() {
@@ -111,6 +111,7 @@ function addRememberMe() {
     } else {
         currentImagebox.src = emptyImagebox;
         saveRememberMe = "false";
+        deleteJoinInputs();
     }
 }
 
@@ -122,24 +123,46 @@ function RememberMeSaveToLocalStorage() {
     let email = document.getElementById("loginEmail").value;
     let password = document.getElementById("loginPassword").value;
 
-    ArrayToSave.push({
+    ArrayToSave = {
         email: email,
         password: password,
         save: saveRememberMe,
-    });
+    };
 
     let ArrayAsText = JSON.stringify(ArrayToSave);
     localStorage.setItem("joinInputs", ArrayAsText);
 }
 
+/**
+ * Load from LocalStorage
+ * 
+ */
 function loadStorage() {
     let ArrayAsText = localStorage.getItem("joinInputs");
     if (ArrayAsText === null) {
         loadUsers();
     } else {
         ArrayToSave = JSON.parse(ArrayAsText);
-        // loadFillInput();
+        loadUsers();
+        loadFillInput();
     }
 }
 
+/**
+ * Delete from LocalStorage
+ * 
+ */
+function deleteJoinInputs() {
+    localStorage.removeItem("joinInputs");
+}
 
+/**
+ * Automaic fillout from LocalStorage
+ * 
+ */
+function loadFillInput() {
+    document.getElementById("loginEmail").value = ArrayToSave["email"];
+    document.getElementById("loginPassword").value = ArrayToSave["password"];
+    document.getElementById("rememberMeEmptyImageBox").src =
+        "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+}
