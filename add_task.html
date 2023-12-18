@@ -12,13 +12,13 @@
   <script src="js/add_task_scripts/add_task_help_functions.js"></script>
   <script src="js/add_task_scripts/add_task_templates.js"></script>
   <script src="js/add_task_scripts/add_task_priorities.js"></script>
-  <script src="js/add_task_scripts/add_task.js"></script>
-  <script src="js/add_task_scripts/add_task_get_values"></script>
-  <script src="js/add_task_scripts/add_task_subtask_handling"></script>
+  <script src="js/add_task_scripts/add_task_get_values.js"></script>
+  <script src="js/add_task_scripts/add_task_subtask_handling.js"></script>
   <script src="js/contacts.js"></script>
   <script src="./assets/templates/template.js"></script>
   <script src="js/array.js"></script>
-
+  <script src="js/add_task_scripts/add_task.js"></script>
+  
   <link rel="stylesheet" href="./assets/templates/templates.css">
 
   <!-- Favicon -->
@@ -36,7 +36,7 @@
 
   <!-- Content -->
   <div class="content">
-    <form class="add-tasks">
+    <form class="add-tasks" onsubmit="createTask(event)">
       <div>
         <h1 class="content-title">Add Task</h1>
 

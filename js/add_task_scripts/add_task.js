@@ -6,9 +6,7 @@ const categorys = [
 
 let dropdownState = "closed";
 let clickedStates = [];
-let assignedContacts = [];
-let subtasks = [];
-let clickedPriority = "medium";
+
 
 function loadAddTaskPage() {
     generateAssignContacts();
@@ -155,4 +153,13 @@ function setupDropdownCloseListener() {
 function setupFilterListener() {
     const inputField = document.getElementById('add-contact-input');
     inputField.addEventListener('input', filterContacts);
+}
+
+
+
+function createTask(event) {
+    event.preventDefault();
+    console.log('createTask wurde aufgerufen');
+    let newTask = getValues();
+    tasks.push(newTask);
 }
