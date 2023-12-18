@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
 
-    <script src="./js/login_signup.js"></script>
+    <script src="./js/login_signup/join_animation.js"></script>
 
     <link rel="stylesheet" href="style/login_signup.css">
     <link rel="stylesheet" href="style/fonts.css">
@@ -24,7 +24,7 @@
 
 </head>
 
-<body onload="init()">
+<body>
     
     <div class="login-content-body">
 
@@ -46,23 +46,23 @@
 
                 <form onsubmit="loginUser(); return false;" class="login-content-form">
                     <div class="input-email">
-                        <input type="text" placeholder="Email" required class="input-remove-border">
+                        <input type="text" placeholder="Email" id="loginEmail" required class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
                     <div class="input-password">
-                        <input type="password" placeholder="Password" required class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/lock.svg" alt="Schloss Icon">
+                        <input type="password" placeholder="Password" id="loginPassword" required class="input-remove-border">
+                        <img src="assets/img/Desktop/login_signup/lock.svg" id="passwordImage" onclick="visibilityOnOffImage()" alt="Schloss Icon">
                     </div>
-                    <span class="fail-login">Wrong password Ups! Try again.</span>
+                    <span id="fail-login" class="fail-login">Wrong password Ups! Try again.</span>
                 </form>
 
                 <div class="login-content-checkbox">
-                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" alt="empty checkbox">
+                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox" onclick="addRememberMe()" alt="empty checkbox">
                     <span>Remember me</span>
                 </div>
 
                 <div class="login-content-btn">
-                    <button class="btn-login">Log in</button>
+                    <button class="btn-login" onclick="loginCheckEmailAndPassword()">Log in</button>
                     <button class="btn-guest">Guest Log in</button>
                 </div>
 
@@ -77,6 +77,14 @@
 
     </div>
 
+    <script src="js/login_signup/storage.js"></script>
+    <script src="./js/login_signup/login.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loginInit();
+            loadUsers();
+        });
+    </script>
 </body>
 
 </html>

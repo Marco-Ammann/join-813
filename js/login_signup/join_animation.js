@@ -1,7 +1,11 @@
-function init() {
+function loginInit() {
     checkAndPlayAnimation();
 }
 
+/**
+ * Join Animation
+ * 
+ */
 function checkAndPlayAnimation() {
     let animationPlayed = sessionStorage.getItem("animationPlayed");
     let animationContainer = document.getElementById("animationContainer");
@@ -18,6 +22,11 @@ function checkAndPlayAnimation() {
     }
 }
 
+/**
+ * Animation - Container
+ * 
+ * @param {ID} animationContainer - create Container for/with JoinLogo
+ */
 function generateAnimationContainer(animationContainer) {
     animationContainer.innerHTML = "";
     animationContainer.innerHTML = `
@@ -26,6 +35,13 @@ function generateAnimationContainer(animationContainer) {
         </div>`;
 }
 
+/**
+ * Style Animation
+ * 
+ * @param {ID} animationContainer - Dialogfenster
+ * @param {ID} logoContainer - Container for JoinLogo
+ * @param {ID} joinLogo - JoinLogo
+ */
 function styleAnimation(animationContainer, logoContainer, joinLogo) {
     animationContainer.style.animation = "fadeOutBackground 1s forwards";
     logoContainer.style.animation = "moveLogo 1s forwards";
@@ -35,7 +51,3 @@ function styleAnimation(animationContainer, logoContainer, joinLogo) {
         document.getElementById("join-logo-static").style.display = "block";
     }, 1000);
 }
-
-
-
-
