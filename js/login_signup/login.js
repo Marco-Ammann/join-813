@@ -65,16 +65,7 @@ function loginCheckEmailAndPassword() {
     if (email === "" || password === "") {
         showTextFailLogin();
     } else {
-        for (let user of registerUsers) {
-            if (user.email === email && user.password === password) {
-                registerUser = true;
-                console.log(user); //TODO; User for summary
-                if (saveRememberMe === "true") {
-                    RememberMeSaveToLocalStorage();
-                }
-                emailAndPasswordIsValid(); //TODO: Weiterleitung zu summary
-            }
-        }
+        isUserOfRegisertUser (email, password);
         if (registerUser == false) {
             showTextFailLogin();
         }
@@ -82,6 +73,29 @@ function loginCheckEmailAndPassword() {
     }
 }
 
+/**
+ * is the User in the Array of RegisterUser
+ * 
+ * @param {string} email - string from the inputfield email
+ * @param {string} password - sting from the inputfield password
+ */
+function isUserOfRegisertUser (email, password){
+    for (let user of registerUsers) {
+        if (user.email === email && user.password === password) {
+            registerUser = true;
+            console.log(user); //TODO; User for summary
+            if (saveRememberMe === "true") {
+                RememberMeSaveToLocalStorage();
+            }
+            emailAndPasswordIsValid(); //TODO: Weiterleitung zu summary
+        }
+    }
+}
+
+/**
+ * Forward to the next Page, if the email and password are valid
+ * 
+ */
 function emailAndPasswordIsValid() {
     document.getElementById("loginEmail").value = "";
     document.getElementById(`loginPassword`).value = "";
