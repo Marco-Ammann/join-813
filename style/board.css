@@ -64,6 +64,10 @@
     gap: 1rem;
 }
 
+.sortTasksButton :hover{
+    cursor: pointer;
+}
+
 .addTaskButton {
     display: flex;
     padding: 0.5rem 1rem;
@@ -255,4 +259,9 @@
 
 .dNone{
     display: none;
+}
+
+.searchInput{
+    color: black !important;
+    outline: none;
 }

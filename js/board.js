@@ -21,7 +21,7 @@ function render(taskStatus, i) {
     taskStatus = taskStatus + 'Container';
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML +=/*html*/`    
-        <div draggable="true" ondragstart="startDraggin(${tasks[i][`id`]})">
+        <div id="card${i}" draggable="true" ondragstart="startDraggin(${tasks[i][`id`]})">
             <div class="toDoCard">
                 <div class="headerUserStory">User Story</div>
                 <div>
@@ -88,3 +88,20 @@ function addNoTaskHTML(containerId) {
     </div >
     `
 }
+
+    function sortAndFilterCards() {
+        const searchTerm = document.getElementById('sortTasksInput').value.toLowerCase(); // Den eingegebenen Suchbegriff abrufen und in Kleinbuchstaben umwandeln
+        const cards = document.querySelectorAll('.toDoCard'); // Alle Karten mit der Klasse 'toDoCard' abrufen
+    
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase(); // Den Titel der Karte abrufen und in Kleinbuchstaben umwandeln
+            const description = card.querySelector('p').textContent.toLowerCase(); // Die Beschreibung der Karte abrufen und in Kleinbuchstaben umwandeln
+    
+            // Überprüfen, ob der Suchbegriff im Titel oder in der Beschreibung der Karte enthalten ist
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.parentNode.style.display = 'block'; // Karte anzeigen, falls der Suchbegriff enthalten ist
+            } else {
+                card.parentNode.style.display = 'none'; // Karte ausblenden, falls der Suchbegriff nicht enthalten ist
+            }
+        });
+    }
