@@ -48,15 +48,27 @@ function handleClickOnAssignedContact(index) {
 
 
 function switchTaskCategoryClickedState(index) {
-  const element = document.getElementById(`categoryOption${index}`);
-
-  const categoryOptions = document.getElementsByClassName("categoryDiv");
-  for (const option of categoryOptions) {
-    removeClass(option, "contactDivClicked");
+    const element = document.getElementById(`categoryOption${index}`);
+  
+    const categoryOptions = document.getElementsByClassName("categoryDiv");
+    for (const option of categoryOptions) {
+      removeClass(option, "contactDivClicked");
+    }
+    assignClass(element, "contactDivClicked");
+  
+    const selectedCategory = element.textContent;
+    updateCategoryInput(selectedCategory);
   }
-  assignClass(element, "contactDivClicked");
-}
 
+
+function updateCategoryInput(selectedCategory) {
+    const categoryInput = document.getElementById("add-category-input");
+    const categoryDropdown = document.getElementById("categoryDropdown");
+  
+    categoryInput.value = `${selectedCategory}`;
+    categoryDropdown.classList.add("d-none");
+}
+  
 
 function toggleContact(index) {
   initializeClickedState(index);
@@ -138,7 +150,7 @@ function generateCategoryOptions() {
   let dropdowncontainer = document.getElementById("categoryDropdown");
   dropdowncontainer.innerHTML = "";
   for (let i = 0; i < categorys.length; i++) {
-    let category = categorys[i];
+    let category = categorys[i].trim();
     dropdowncontainer.innerHTML += generateCategoryOptionsHTML(category, i);
   }
 }

@@ -299,6 +299,11 @@ input:focus {
 .edit-subtask-input{
   margin-left: -2.3rem;
   height: 1.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid #29abe2;
 }
 
 /* ----------------------------------------footer of add task section */
@@ -466,6 +471,7 @@ input:focus {
   cursor: pointer;
   font-size: 1.25rem;
 }
+
 
 .categoryDiv:hover {
   background-color: var(--background-default);

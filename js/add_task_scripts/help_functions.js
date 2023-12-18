@@ -32,13 +32,8 @@ function changeSrc(element, src) {
 
 function switchVisibility(elementId) {
     const element = document.getElementById(elementId);
-
-    if (element.classList.contains('d-none')) {
-        removeClass(element, 'd-none');
-    } else {
-        assignClass(element, 'd-none');
-    }
-}
+    element.classList.toggle("d-none");
+  }
 
 function setPriority(priority) {
     clickedPriority = priority;
