@@ -161,10 +161,6 @@ input:focus {
   border-radius: 50%;
 }
 
-.subTask-icons:hover {
-  background-color: var(--border-default);
-}
-
 /* ---------------------------------leftside forms */
 .task-title-input {
   padding: 0.75rem 1.3125rem;
@@ -285,14 +281,24 @@ input:focus {
   align-items: center;
   padding: 0.25rem 1rem;
   border-radius: 0.625rem;
+  height: 1.25rem;
+  transition: 0.3s ease-in-out;
 }
 
 .subTaskDiv:hover {
   background-color: var(--background-default);
+  transition: 0.3s ease-in-out;
 }
 
 .subTask-subDiv {
   display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-subtask-input{
+  margin-left: -2.3rem;
+  height: 1.5rem;
 }
 
 /* ----------------------------------------footer of add task section */

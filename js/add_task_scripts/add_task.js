@@ -65,6 +65,19 @@ function getSubtask() {
 }
 
 
+
+
+function validateDueDate() {
+    const dueDateInput = document.getElementById('due-date-input');
+    const datePattern = /^\d{2}\/\d{2}\/\d{4}$/; // Das erwartete Datumsmuster (dd/mm/yyyy)
+    
+    if (!datePattern.test(dueDateInput.value)) {
+        alert('Ungültiges Datumsformat. Bitte verwenden Sie das Format dd/mm/yyyy.');
+        dueDateInput.value = '';
+    }
+}
+
+
 function setSubtask() {
     const subtaskInput = document.getElementById('subtask-input');
     const subtaskText = subtaskInput.value.trim();
@@ -75,19 +88,6 @@ function setSubtask() {
         subtaskInput.value = '';
     }
 }
-
-
-function validateDueDate() {
-    const dueDateInput = document.getElementById('due-date-input');
-    const datePattern = /^\d{2}\/\d{2}\/\d{4}$/; // Das erwartete Datumsmuster (dd/mm/yyyy)
-
-    if (!datePattern.test(dueDateInput.value)) {
-        alert('Ungültiges Datumsformat. Bitte verwenden Sie das Format dd/mm/yyyy.');
-        dueDateInput.value = '';
-    }
-}
-
-
 
 
 // Funktion zum Aktualisieren der Subtask-Liste
@@ -105,12 +105,24 @@ function updateSubtaskList() {
 
 // Funktion zum Bearbeiten eines Subtasks
 function editSubtask(index) {
-    const editedSubtask = prompt('Bearbeite den Subtask:', subtasks[index]);
+    const subtaskContainer = document.getElementById(`task${index}`);
+    const subtaskText = subtasks[index];
 
-    if (editedSubtask !== null) {
+    const inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.value = subtaskText;
+    inputElement.classList.add('edit-subtask-input');
+
+    subtaskContainer.textContent = '';
+    subtaskContainer.appendChild(inputElement);
+
+    inputElement.focus();
+
+    inputElement.addEventListener('blur', () => {
+        const editedSubtask = inputElement.value.trim();
         subtasks[index] = editedSubtask;
         updateSubtaskList();
-    }
+    });
 }
 
 function cancelSubtask() {
@@ -120,12 +132,8 @@ function cancelSubtask() {
 
 // Funktion zum Löschen eines Subtasks
 function deleteSubtask(index) {
-    const confirmDelete = confirm('Möchtest du diesen Subtask löschen?');
-
-    if (confirmDelete) {
-        subtasks.splice(index, 1);
-        updateSubtaskList();
-    }
+    subtasks.splice(index, 1);
+    updateSubtaskList();
 }
 
 
