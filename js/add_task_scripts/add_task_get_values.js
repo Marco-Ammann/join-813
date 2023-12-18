@@ -18,6 +18,7 @@ function getValues() {
   };
 }
 
+
 function createTaskId() {
   let maxId = -1;
   for (let i = 0; i < tasks.length; i++) {
@@ -30,10 +31,12 @@ function createTaskId() {
   return newID;
 }
 
+
 function getTaskTitle() {
   let taskTitle = document.getElementById("task-title-input").value;
   return taskTitle;
 }
+
 
 function getTaskDescription() {
   let taskDescription = document.getElementById(
@@ -42,6 +45,7 @@ function getTaskDescription() {
   return taskDescription;
 }
 
+
 function getAssignedContacts() {
   const contactNames = [];
   for (const contact of assignedContacts) {
@@ -49,6 +53,7 @@ function getAssignedContacts() {
   }
   return contactNames;
 }
+
 
 function getDueDate() {
   let dueDate = document.getElementById("due-date-input").value;
@@ -60,9 +65,11 @@ function getDueDate() {
   }
 }
 
+
 function getPriority() {
   return clickedPriority;
 }
+
 
 function getCategory() {
   let categoryDropdown = document.getElementById("categoryDropdown");
@@ -73,6 +80,7 @@ function getCategory() {
     return "";
   }
 }
+
 
 function getSubtask() {
   return subtasks;
