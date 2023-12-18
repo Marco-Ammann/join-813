@@ -159,9 +159,9 @@ function setupFilterListener() {
 
 function createTask(event) {
     event.preventDefault();
-    console.log('createTask wurde aufgerufen');
     let newTask = getValues();
     tasks.push(newTask);
+    clearForm(event)
 }
 
 
