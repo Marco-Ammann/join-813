@@ -70,9 +70,8 @@ async function loadUsers() {
  *
  */
 function loginCheckEmailAndPassword() {
-    abledDisabledBtn(true);
     let email = loginEmail.value.trim();
-    let password = document.getElementById(`loginPassword`).value.trim();
+    let password = passwordLogin.value.trim();
     if (email === "" || password === "") {
         showTextFailLogin();
     } else {
@@ -103,6 +102,7 @@ abledDisabledBtn(false);
  * @param {string} password - sting from the inputfield password
  */
 async function isUserOfRegisertUser(email, password) {
+    abledDisabledBtn(true);
     for (let user of registerUsers) {
         if (user.email === email && user.password === password) {
             registerUser = true;
