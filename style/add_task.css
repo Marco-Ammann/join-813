@@ -51,8 +51,13 @@ p {
   margin-top: 3rem;
 }
 
-input,
-textarea {
+.task-title-input,
+.task-description-textarea,
+.add-contact-input,
+.due-date-input,
+.add-category-input,
+.subtask-input,
+.edit-subtask-input {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--border-default);
@@ -66,8 +71,13 @@ textarea {
   resize: vertical;
 }
 
-input::placeholder,
-textarea::placeholder {
+.task-title-input:placeholder,
+.task-description-textarea:placeholder,
+.add-contact-input:placeholder,
+.due-date-input:placeholder,
+.add-category-input:placeholder,
+.subtask-input:placeholder,
+.edit-subtask-input:placeholder {
   color: var(--border-default);
   font-size: 1.25rem;
 }
@@ -86,8 +96,13 @@ textarea::placeholder {
   border: 1px solid var(--border-hover);
 }
 
-textarea:focus,
-input:focus {
+.task-title-input:hover,
+.task-description-textarea:hover,
+.add-contact-input:hover,
+.due-date-input:hover,
+.add-category-input:hover,
+.subtask-input:hover,
+.edit-subtask-input:hover{
   border-color: var(--border-focus);
   outline: none;
 }
