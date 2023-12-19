@@ -1,13 +1,17 @@
 let ArrayToSave = [];
 let registerUsers = [];
-let currentUser =[];
+let currentUser = [];
 let registerUser = false;
 let saveRememberMe = "false";
 let guest = {
-    name: 'Sofia Müller',
-    email: 'sofiam@gmail.com',
-    password: 'mypassword123',
+    name: "Sofia Müller",
+    email: "sofiam@gmail.com",
+    password: "mypassword123",
 };
+let loginBtn = document.getElementById("btn-login");
+let guestBtn = document.getElementById("btn-guest");
+let loginEmail = document.getElementById("loginEmail");
+let passwordLogin = document.getElementById("loginPassword");
 
 /**
  * add Fokus/ blur Fokus - Passwordfield change Image
@@ -15,7 +19,7 @@ let guest = {
  */
 function handleImageFocus() {
     let passwordImage = document.getElementById("passwordImage");
-    let passwordField = document.getElementById("loginPassword");
+    let passwordField = passwordLogin;
 
     passwordField.addEventListener("click", function () {
         if (passwordField.value === "") {
@@ -66,29 +70,41 @@ async function loadUsers() {
  *
  */
 function loginCheckEmailAndPassword() {
-    let email = document.getElementById("loginEmail").value.trim();
+    abledDisabledBtn(true);
+    let email = loginEmail.value.trim();
     let password = document.getElementById(`loginPassword`).value.trim();
     if (email === "" || password === "") {
         showTextFailLogin();
     } else {
-        isUserOfRegisertUser (email, password);
-        if (registerUser == false) {
+        isUserOfRegisertUser(email, password);
+        if (registerUser === false) {
             showTextFailLogin();
         }
         registerUser = false;
+        abledDisabledBtn(false);
     }
 }
 
 /**
+ * Button Login und Guestlogin abled/ disabled
+ *
+ * @param {Boolean} boolean - boolean true or false
+ */
+function abledDisabledBtn(boolean) {
+    loginBtn.disabled = boolean;
+    guestBtn.disabled = boolean;
+}
+abledDisabledBtn(false);
+
+/**
  * is the User in the Array of RegisterUser; save currentUser in Backend
- * 
+ *
  * @param {string} email - string from the inputfield email
  * @param {string} password - sting from the inputfield password
  */
-async function isUserOfRegisertUser (email, password){
+async function isUserOfRegisertUser(email, password) {
     for (let user of registerUsers) {
         if (user.email === email && user.password === password) {
-
             registerUser = true;
             currentUser = user;
             await setItem("currentUser", JSON.stringify(currentUser));
@@ -103,15 +119,15 @@ async function isUserOfRegisertUser (email, password){
 
 /**
  * Forward to the next Page, if the email and password are valid
- * 
+ *
  */
 function emailAndPasswordIsValid() {
-    document.getElementById("loginEmail").value = "";
+    loginEmail.value = "";
     document.getElementById(`loginPassword`).value = "";
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/empty.svg";
     console.log(currentUser);
-    window.location.href = "summary.html"; 
+    window.location.href = "summary.html";
 }
 
 function showTextFailLogin() {
@@ -144,8 +160,8 @@ function addRememberMe() {
  *
  */
 function RememberMeSaveToLocalStorage() {
-    let email = document.getElementById("loginEmail").value;
-    let password = document.getElementById("loginPassword").value;
+    let email = loginEmail.value;
+    let password = passwordLogin.value;
 
     ArrayToSave = {
         email: email,
@@ -159,7 +175,7 @@ function RememberMeSaveToLocalStorage() {
 
 /**
  * Load from LocalStorage
- * 
+ *
  */
 function loadStorage() {
     let ArrayAsText = localStorage.getItem("joinInputs");
@@ -174,7 +190,7 @@ function loadStorage() {
 
 /**
  * Delete from LocalStorage
- * 
+ *
  */
 function deleteJoinInputs() {
     localStorage.removeItem("joinInputs");
@@ -182,21 +198,28 @@ function deleteJoinInputs() {
 
 /**
  * Automaic fillout from LocalStorage
- * 
+ *
  */
 function loadFillInput() {
-    document.getElementById("loginEmail").value = ArrayToSave["email"];
-    document.getElementById("loginPassword").value = ArrayToSave["password"];
+    loginEmail.value = ArrayToSave["email"];
+    passwordLogin.value = ArrayToSave["password"];
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
 }
 
+/**
+ * Login Guest
+ *
+ */
+async function guestAccount() {
+    loginEmail.value = guest["email"];
+    passwordLogin.value = guest["password"];
+    currentUser = guest;
+    await setItem("currentUser", JSON.stringify(currentUser));
 
-function guestAccount(){
-    document.getElementById("loginEmail").value = guest["email"];
-    document.getElementById("loginPassword").value = guest["password"];
-    setTimeout(function() {
+    setTimeout(function () {
+        loginEmail.value = "";
+        passwordLogin.value = "";
         window.location.href = "summary.html";
-    }, 500);
-    
+    }, 300);
 }

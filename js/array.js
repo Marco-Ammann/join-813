@@ -1,5 +1,3 @@
-// Eingelogter User:
-let currentUser = [];
 
 // nicht verändern bitte :)
 

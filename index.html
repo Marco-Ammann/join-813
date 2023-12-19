@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    
+
     <div class="login-content-body">
 
         <header class="login-header">
@@ -34,8 +34,9 @@
         </header>
 
         <!-- Logo Dialog und Animation -->
-        <div class="animation-container" id="animationContainer"></div>     
-        <img class="join-logo-static" id="join-logo-static" src="./assets/img/Desktop/login_signup/Capa 2.svg" alt="Join Logo">
+        <div class="animation-container" id="animationContainer"></div>
+        <img class="join-logo-static" id="join-logo-static" src="./assets/img/Desktop/login_signup/Capa 2.svg"
+            alt="Join Logo">
 
         <div class="login-content-border">
             <div class="login-content">
@@ -46,24 +47,28 @@
 
                 <form onsubmit="loginUser(); return false;" class="login-content-form">
                     <div class="input-email">
-                        <input type="text" placeholder="Email" id="loginEmail" required onkeyup="changeShowTextFailLogin()" class="input-remove-border">
+                        <input type="text" placeholder="Email" id="loginEmail" required
+                            onkeyup="changeShowTextFailLogin()" class="input-remove-border">
                         <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
                     <div class="input-password">
-                        <input type="password" placeholder="Password" id="loginPassword" required onkeyup="changeShowTextFailLogin()" class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/lock.svg" id="passwordImage" onclick="visibilityOnOffImage()" alt="Schloss Icon">
+                        <input type="password" placeholder="Password" id="loginPassword" required
+                            onkeyup="changeShowTextFailLogin()" class="input-remove-border">
+                        <img src="assets/img/Desktop/login_signup/lock.svg" id="passwordImage"
+                            onclick="visibilityOnOffImage()" alt="Schloss Icon">
                     </div>
                     <span id="fail-login" class="fail-login">Wrong password Ups! Try again.</span>
                 </form>
 
                 <div class="login-content-checkbox">
-                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox" onclick="addRememberMe()" alt="empty checkbox">
+                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox"
+                        onclick="addRememberMe()" alt="empty checkbox">
                     <span>Remember me</span>
                 </div>
 
                 <div class="login-content-btn">
-                    <button class="btn-login" onclick="loginCheckEmailAndPassword()">Log in</button>
-                    <button class="btn-guest" onclick="guestAccount()">Guest Log in</button>
+                    <button class="btn-login" id="btn-login" onclick="loginCheckEmailAndPassword()" disabled>Log in</button>
+                    <button class="btn-guest" id="btn-guest" onclick="guestAccount()" disabled>Guest Log in</button>
                 </div>
 
 
@@ -78,13 +83,15 @@
     </div>
 
     <script src="js/login_signup/storage.js"></script>
-    <script src="./js/login_signup/login.js"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             loginInit();
             loadStorage();
         });
     </script>
+
+    <script src="./js/login_signup/login.js"></script>
 </body>
 
 </html>
