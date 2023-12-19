@@ -54,6 +54,7 @@ async function loadCurrentUser(greet) {
         console.error("Loading error:", e);
         nameElement.remove();
         timeElement.innerHTML = timeElement.innerHTML.slice(0, -1);
+        // TODO: Remove "Guest"?
     }
 }
 

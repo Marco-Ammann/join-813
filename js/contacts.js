@@ -58,7 +58,7 @@ function openEditContact(i) {
     document.getElementById('popUpSubtitle').classList.add('d-none');
     popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
     alt="Create Contact">`;
-    popUpSubmit.onclick = function() {editContact(i)};
+    popUpSubmit.onclick = function () { editContact(i) };
     document.getElementById('popUpName').value = contact['name'];
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
@@ -128,7 +128,9 @@ function addNewContact() {
 
 
 function randomColor() {
-    
+    let colors = ['#FF6358', '#FBA24F', '#FFD246', '#78D237', '#28B4C8', '#2D73F5', '#1B4887', '#AA46BE', '#F978AA', '#D33D50'];
+    let num = Math.floor(Math.random() * 10);
+    return colors[num];
 }
 
 
