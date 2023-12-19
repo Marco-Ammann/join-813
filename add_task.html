@@ -19,7 +19,7 @@
   <script src="./js/add_task_scripts/clear_values.js"></script>
   <script src="js/array.js"></script>
   <script src="js/add_task_scripts/add_task.js"></script>
-  
+
   <link rel="stylesheet" href="./assets/templates/templates.css">
 
   <!-- Favicon -->
@@ -138,15 +138,16 @@
                   </div>
 
                   <div class="create-task-div d-none" id="create-task-div">
-                    <img class="plus-symbol input-symbol" id="close-symbol-subtask>" onclick="cancelSubtask()"
+                    <img class="plus-symbol input-symbol" id="close-symbol-subtask" onclick="clearSubtaskInput()"
                       src="assets/img/Desktop/add_task/subtasks_icons/close.svg" alt="cancel-symbol" />
+
                     <img class="check-symbol input-symbol" id="check-symbol-subtask" onclick="setSubtask()"
                       src="assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
                   </div>
 
 
 
-                  
+
 
                 </div>
 
@@ -176,4 +177,5 @@
     </form>
   </div>
 </body>
+
 </html>

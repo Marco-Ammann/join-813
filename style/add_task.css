@@ -290,6 +290,11 @@ p {
   width: 100%;
 }
 
+.subTask-Wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .subTaskDiv {
   display: flex;
   justify-content: space-between;
@@ -298,6 +303,22 @@ p {
   border-radius: 0.625rem;
   height: 1.25rem;
   transition: 0.3s ease-in-out;
+}
+
+.edit-subtask-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  border-radius: 0.625rem;
+  height: 1.25rem;
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid #29abe2;
 }
 
 .subTaskDiv:hover {
@@ -311,16 +332,19 @@ p {
   align-items: center;
 }
 
-.edit-subtask-input{
-  margin-left: -2.3rem;
+.edit-subTask-subDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editInput{
+  width: 100%;
+  border: none;
   height: 1.5rem;
   position: relative;
   z-index: 10;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
-  border-bottom: 1px solid #29abe2;
+  outline: none;
 }
 
 /* ----------------------------------------footer of add task section */
@@ -364,10 +388,10 @@ p {
 }
 
 .footer-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32rem;
 }
 
 .footer-required-field {
@@ -542,4 +566,23 @@ p {
   .forms-sides {
     height: auto;
   }
+
+  .categoryDropdown {
+    box-sizing: border-box;
+    width: 27.6rem;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid var(--border-default);
+    border-top: none;
+    position: absolute;
+    z-index: 5;
+    top: 64rem;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+}
 }

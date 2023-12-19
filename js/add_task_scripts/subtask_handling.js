@@ -22,40 +22,64 @@ function updateSubtaskList() {
     }
 }
 
-
-// Funktion zum Bearbeiten eines Subtasks
-function editSubtask(index) {
-    const subtaskContainer = document.getElementById(`task${index}`);
-    const subtaskText = subtasks[index];
-  
-    const inputElement = document.createElement('input');
-    inputElement.type = 'text';
-    inputElement.value = subtaskText;
-    inputElement.classList.add('edit-subtask-input');
-  
-    subtaskContainer.textContent = '';
-    subtaskContainer.appendChild(inputElement);
-  
-    inputElement.focus();
-  
-    inputElement.addEventListener('blur', () => {
-      const editedSubtask = inputElement.value.trim();
-      subtasks[index] = editedSubtask;
-      updateSubtaskList();
-    });
+function clearSubtaskInput() {
+    const subtaskInput = document.getElementById('subtask-input');
+    subtaskInput.value = '';
 }
 
 
-//cancel creating subtask
-function cancelSubtask() {
-    let subTaskInput = document.getElementById('subtask-input');
-    subTaskInput.value = "";
+// Funktion zum Bearbeiten eines Subtasks
+function editSubtask(index) {
+    const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
+    const editSubtaskInput = document.getElementById(`editInput${index}`);
+    const editSubtaskDivEdit = document.getElementById(`edit-subtask-div${index}`);
+    const taskText = document.getElementById(`task${index}`);
+    
+    // Verbergen Sie das Anzeige-Div und zeigen Sie das Bearbeitungs-Div
+    editSubtaskDiv.classList.add('d-none');
+    editSubtaskDivEdit.classList.remove('d-none');
+
+    // Setzen Sie den Wert des Eingabefelds auf den aktuellen Subtask-Text
+    editSubtaskInput.value = taskText.textContent;
+
+    // Setzen Sie den Fokus auf das Eingabefeld
+    editSubtaskInput.focus();
+}
+
+// Funktion zum Speichern eines bearbeiteten Subtasks
+function saveEditedSubtask(index) {
+    const editSubtaskInput = document.getElementById(`editInput${index}`);
+    
+    // Speichern Sie das bearbeitete Subtask-Text in der subtasks-Liste
+    subtasks[index] = editSubtaskInput.value;
+
+    // Aktualisieren Sie die Anzeige der Subtasks
+    updateSubtaskList();
+}
+
+
+
+// Funktion zum Abbrechen der Bearbeitung eines Subtasks
+function cancelEditSubtask(index) {
+    const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
+    const editSubtaskInput = document.getElementById(`editInput${index}`);
+    const editSubtaskDivEdit = document.getElementById(`edit-subtask-div${index}`);
+
+    editSubtaskDiv.style.display = 'block';
+    editSubtaskDivEdit.style.display = 'none';
+    editSubtaskInput.value = '';
 }
 
 
 // Funktion zum Löschen eines Subtasks
 function deleteSubtask(index) {
+    const subTaskDiv = document.getElementById(`subTaskDiv${index}`);
+    subTaskDiv.remove();
+
+    // Aktualisieren Sie die subtasks-Liste, um den gelöschten Subtask zu entfernen
     subtasks.splice(index, 1);
+
+    // Aktualisieren Sie die Anzeige der Subtasks
     updateSubtaskList();
 }
 
@@ -91,5 +115,33 @@ function handleMouseDown(event) {
     if (!inputDiv.contains(event.target)) {
         removeFocusClass();
         document.removeEventListener('mousedown', handleMouseDown);
+    }
+}
+
+// Funktion zum Speichern des bearbeiteten Subtasks
+function handleCheckClick(index) {
+    const editSubtaskInput = document.getElementById(`editInput${index}`);
+    
+    // Speichern Sie das bearbeitete Subtask-Text in der subtasks-Liste
+    subtasks[index] = editSubtaskInput.value;
+
+    // Aktualisieren Sie die Anzeige der Subtasks
+    updateSubtaskList();
+}
+
+// Event-Handler für das Klicken außerhalb des bearbeiteten Subtasks
+function handleOutsideClick(event, index) {
+    const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
+    const inputElement = document.getElementById(`editInput${index}`);
+    const taskText = document.getElementById(`task${index}`);
+    
+    // Überprüfen Sie, ob das Klicken außerhalb des bearbeiteten Subtasks erfolgte
+    if (!editSubtaskDiv.contains(event.target)) {
+        // Speichern Sie den bearbeiteten Subtask-Text in das <li>-Element
+        taskText.textContent = inputElement.value;
+
+        // Verbergen Sie das Eingabefeld und zeigen Sie das Anzeige-Div
+        editSubtaskDiv.classList.remove('d-none');
+        inputElement.value = '';
     }
 }

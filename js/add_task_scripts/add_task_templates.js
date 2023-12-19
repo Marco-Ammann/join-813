@@ -28,14 +28,30 @@ function generateAvatar(contact) {
 }
 
 function generateSubtaskHTML(subtask, index) {
-    return `
-      <div class="subTaskDiv">
-          <li id="task${index}" onclick="editSubtask(${index})">${subtask}</li>
-          <div class="subTask-subDiv">
-              <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${index})">
-              <div class="subtasks-Seperator">|</div>
-              <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${index})">
-          </div>
-      </div>
-    `;
-  }
+  return /*HTML*/`
+
+<div class="subTask-Wrapper">
+
+  <div class="subTaskDiv" id="subTaskDiv${index}">
+    <li id="task${index}" onclick="editSubtask(${index})">${subtask}</li>
+    <div class="subTask-subDiv" id="subTask-subDiv${index}">
+    <img class="subTask-icons" id="editSubtaskSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${index})">
+      <div class="subtasks-Seperator">|</div>
+      <img class="subTask-icons" id="deleteSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${index})">
+    </div>
+  </div>
+
+  <div class="edit-subtask-div d-none" id="edit-subtask-div${index}">
+    <input type="text" class="editInput" id="editInput${index}">
+    <div class="edit-subTask-subDiv" id="edit-subTask-subDiv${index}">
+      <img class="subTask-icons" id="deleteEditSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="edit" onclick="cancelEditSubtask(${index})">
+      <div class="subtasks-Seperator">|</div>
+      <img class="subTask-icons" id="saveSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="delete" onclick="handleCheckClick(${index})">
+    </div>
+  </div>
+</div>
+
+</div>
+
+  `;
+}
