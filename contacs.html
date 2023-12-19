@@ -69,17 +69,19 @@
                     <div class="popup-section">
                         <div id="popUpProfile" class="popup-profile"><img src="./assets/img/Desktop/contacts/person.svg"
                                 alt="Profile-Image"></div>
-                        <div class="popup-input">
-                            <input type="text" placeholder="Name" id="popUpName">
-                            <input type="email" placeholder="Email" id="popUpEmail">
-                            <input type="tel" placeholder="Phone" id="popUpPhone">
+                        <form class="popup-input" onsubmit=" return addNewContact()">
+                            <input required type="text" placeholder="Name" id="popUpName">
+                            <input required type="email" placeholder="Email"
+                                id="popUpEmail">
+                            <input required type="tel" placeholder="Phone" id="popUpPhone">
                             <div class="popup-buttons">
-                                <button onclick="closePopUp()">Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg"
-                                        alt="Cancel"></button>
-                                <button id="popUpSubmit">Create contact<img src="./assets/img/Desktop/contacts/check.svg"
-                                        alt="Create Contact"></button>
+                                <button onclick="closePopUp()">Cancel<img
+                                        src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel"></button>
+                                <button id="popUpSubmit" type="submit">Create contact<img
+                                        src="./assets/img/Desktop/contacts/check.svg" alt="Create Contact"></button>
                             </div>
-                        </div>
+                        </form>
+                        <!-- TODO: Form Validation -->
                     </div>
                 </div>
             </div>

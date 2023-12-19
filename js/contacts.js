@@ -13,8 +13,6 @@ function renderContactList() {
     let contactList = document.getElementById('contactList');
     contactList.innerHTML = /* html */ `<div class="contact-list-padding"></div>`;
 
-    //TODO: Apply sort function directly at creating new contacts! 
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
     let letters = [];
 
     for (let i = 0; i < contacts.length; i++) {
@@ -111,7 +109,26 @@ function editContact(i) {
 
 
 function addNewContact() {
-        //TODO: TODO in renderContactList
+    event.preventDefault();
+    let id = contacts.length;
+    let color = randomColor();
+    let name = document.getElementById('popUpName').value;
+    let email = document.getElementById('popUpEmail').value;
+    let phone = document.getElementById('popUpPhone').value;
+    let newContact = {
+        "id": id,
+        "color": color,
+        "name": name,
+        "email": email,
+        "phone": phone
+    }
+    contacts.push(newContact);
+    contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+
+function randomColor() {
+    
 }
 
 

@@ -74,16 +74,16 @@ let tasks = [
 let contacts = [
     {
         "id": 0,
-        "color": "#FF7A00",
-        "name": "Anton Mayer",
-        "email": "antom@gmail.com",
+        "color": "#9327FF",
+        "name": "Anja Schulz",
+        "email": "schulz@hotmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 1,
-        "color": "#9327FF",
-        "name": "Anja Schulz",
-        "email": "schulz@hotmail.com",
+        "color": "#FF7A00",
+        "name": "Anton Mayer",
+        "email": "antom@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
@@ -102,16 +102,16 @@ let contacts = [
     },
     {
         "id": 4,
-        "color": "#FFBB2B",
-        "name": "Eva Fischer",
-        "email": "eva@gmail.com",
+        "color": "#1FD7C1",
+        "name": "Emmanuel Mauer",
+        "email": "emmanuelma@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
         "id": 5,
-        "color": "#1FD7C1",
-        "name": "Emmanuel Mauer",
-        "email": "emmanuelma@gmail.com",
+        "color": "#FFBB2B",
+        "name": "Eva Fischer",
+        "email": "eva@gmail.com",
         "phone": "+49 1111 111 11 1"
     },
     {
