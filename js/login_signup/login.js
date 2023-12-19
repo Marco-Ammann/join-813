@@ -4,7 +4,7 @@ let currentUser = [];
 let registerUser = false;
 let saveRememberMe = "false";
 let guest = {
-    name: "Guest",
+    name: '',
     email: "guest@gmail.com",
     password: "mypassword123",
 };
