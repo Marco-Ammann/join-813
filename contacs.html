@@ -8,12 +8,12 @@
 
     <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/contacts.css">
-    <script src="./js/contacts.js"></script>
+    <script defer src="./js/contacts.js"></script>
 
-    <script src="./js/array.js"></script>
+    <script defer src="./js/array.js"></script>
 
     <link rel="stylesheet" href="./assets/templates/templates.css">
-    <script src="./assets/templates/template.js"></script>
+    <script defer src="./assets/templates/template.js"></script>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
@@ -70,10 +70,10 @@
                         <div id="popUpProfile" class="popup-profile"><img src="./assets/img/Desktop/contacts/person.svg"
                                 alt="Profile-Image"></div>
                         <form class="popup-input" onsubmit="return addNewContact()">
-                            <input required type="text" placeholder="Name" id="popUpName">
-                            <input required type="email" placeholder="Email"
-                                id="popUpEmail">
-                            <input required type="tel" placeholder="Phone" id="popUpPhone">
+                            <input pattern="[a-zA-Z ]+" type="text" placeholder="Name" id="popUpName" required>
+                            <input type="email" placeholder="Email" id="popUpEmail" required>
+                            <input title="Only +, numbers & spaces are allowed" pattern="[+]?[\d ]*" type="tel"
+                                placeholder="Phone" id="popUpPhone" required>
                             <div class="popup-buttons">
                                 <button onclick="closePopUp()">Cancel<img
                                         src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel"></button>
@@ -81,7 +81,6 @@
                                         src="./assets/img/Desktop/contacts/check.svg" alt="Create Contact"></button>
                             </div>
                         </form>
-                        <!-- TODO: Form Validation -->
                     </div>
                 </div>
             </div>

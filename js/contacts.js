@@ -79,7 +79,9 @@ function openContact(i) {
     document.getElementById('contactsInfo').innerHTML = '';
 
     let contact = contacts[i];
-    document.getElementById(`contact${i}`).classList.add('contact-selected');
+    let contactElement = document.getElementById(`contact${i}`);
+    contactElement.classList.add('contact-selected');
+    contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
 }
 
@@ -171,15 +173,19 @@ function randomColor() {
 
 
 /**
- * Returns the first letter of the first and last name
+ * Returns the first letter of the first and last name in upper case
  * @param {string} name 
  * @returns - name initials
  */
 function getInitials(name) {
     let firstLastName = name.split(' ');
-    let firstLetter = firstLastName[0].charAt(0);
-    let secondLetter = firstLastName[1].charAt(0);
-    return firstLetter + secondLetter;
+    let firstLetter = firstLastName[0].charAt(0).toLocaleUpperCase();
+    if (firstLastName[1]) {
+        let secondLetter = firstLastName[1].charAt(0).toLocaleUpperCase();
+        return firstLetter + secondLetter;
+    } else {
+        return firstLetter;
+    }
 }
 
 
