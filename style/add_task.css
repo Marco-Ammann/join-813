@@ -67,7 +67,7 @@ p {
   padding: 1.125rem 1rem;
 }
 
-textarea {
+.task-description-textarea{
   resize: vertical;
 }
 
