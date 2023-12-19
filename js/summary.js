@@ -6,6 +6,7 @@ function initSummary() {
     renderSummaryGreeting();
 }
 
+
 /**
  * Replaces the numbers and "urgent"/deadline box
  */
@@ -18,6 +19,7 @@ function renderSummaryBoard() {
     document.getElementById('inProgressNum').innerHTML = findTaskQuantitys('state', 'InProgress');
     document.getElementById('awaitFeedbackNum').innerHTML = findTaskQuantitys('state', 'AwaitFeedback');
 }
+
 
 /**
  * Gets the daytime and displays a daytime specific greeting with the username or guest
@@ -34,8 +36,27 @@ function renderSummaryGreeting() {
     } else if (time < 24 || time < 4) {
         greet.firstElementChild.innerHTML = 'Good evening,';
     }
-    // TODO: Change username when logged in or guest
+    loadCurrentUser(greet);
 }
+
+
+/**
+ * Displays the name of the registered user in the greeting or leaves it blank
+ * @param {DOM element} greet 
+ */
+async function loadCurrentUser(greet) {
+    let nameElement = greet.lastElementChild;
+    let timeElement = greet.firstElementChild;
+    try {
+        let currentUser = JSON.parse(await getItem("currentUser"));
+        nameElement.innerHTML = currentUser['name'];
+    } catch (e) {
+        console.error("Loading error:", e);
+        nameElement.remove();
+        timeElement.innerHTML = timeElement.innerHTML.slice(0, -1);
+    }
+}
+
 
 /**
  *  Searches in the tasks-array for matches in the subcategory
@@ -55,6 +76,7 @@ function findTaskQuantitys(subcategory, match) {
     return count;
 }
 
+
 /**
  * Replaces the date in the deadline box
  */
@@ -73,6 +95,7 @@ function renderDeadlineBox() {
     document.getElementById('deadlineDate').innerHTML = sortDates(dates);
 }
 
+
 /**
  * Sorts Dates from closest to farthest and formats it in 'month DD, YYYY'
  * @param {array} dates 
@@ -84,6 +107,7 @@ function sortDates(dates) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };
     return convertToDate(dates[0]).toLocaleDateString('en-US', options);
 }
+
 
 /**
  * Formats date to be compatible with javascript date methods
