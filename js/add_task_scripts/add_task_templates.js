@@ -28,14 +28,14 @@ function generateAvatar(contact) {
 }
 
 function generateSubtaskHTML(subtask, index) {
-  return /*HTML */ `
-    <div class="subTaskDiv">
-        <li id="task${index}">${subtask}</li>
-        <div class="subTask-subDiv">
-            <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${index})">
-                <div class="subtasks-Seperator">|</div>
-            <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${index})">
-        </div>
-    </div>
+    return `
+      <div class="subTaskDiv">
+          <li id="task${index}" onclick="editSubtask(${index})">${subtask}</li>
+          <div class="subTask-subDiv">
+              <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${index})">
+              <div class="subtasks-Seperator">|</div>
+              <img class="subTask-icons" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${index})">
+          </div>
+      </div>
     `;
-}
+  }

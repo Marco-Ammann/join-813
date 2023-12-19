@@ -299,6 +299,8 @@ input:focus {
 .edit-subtask-input{
   margin-left: -2.3rem;
   height: 1.5rem;
+  position: relative;
+  z-index: 10;
   border-top: none;
   border-left: none;
   border-right: none;

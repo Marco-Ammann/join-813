@@ -27,23 +27,23 @@ function updateSubtaskList() {
 function editSubtask(index) {
     const subtaskContainer = document.getElementById(`task${index}`);
     const subtaskText = subtasks[index];
-
+  
     const inputElement = document.createElement('input');
     inputElement.type = 'text';
     inputElement.value = subtaskText;
     inputElement.classList.add('edit-subtask-input');
-
+  
     subtaskContainer.textContent = '';
     subtaskContainer.appendChild(inputElement);
-
+  
     inputElement.focus();
-
+  
     inputElement.addEventListener('blur', () => {
-        const editedSubtask = inputElement.value.trim();
-        subtasks[index] = editedSubtask;
-        updateSubtaskList();
+      const editedSubtask = inputElement.value.trim();
+      subtasks[index] = editedSubtask;
+      updateSubtaskList();
     });
-}
+  }
 
 
 //cancel creating subtask
