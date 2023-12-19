@@ -17,6 +17,7 @@
 
 html {
     font-size: 16px;
+    font-weight: 400;
 }
 
 
@@ -80,16 +81,7 @@ a {
 
 
 .sidebar a {
-    display: flex;
     text-decoration: none;
-    color: white;
-}
-
-
-.sidebar p {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
 }
 
 
@@ -111,35 +103,43 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 32px;
-    width: 15vw;
-    gap: 1vh;
+    width: 14.5rem;
+    gap: 0.94rem;
 }
 
 
 .sidebarMainButton {
     display: flex;
-    width: 14.5rem;
     height: 2.875rem;
-    padding: 0.5rem 0;
     justify-content: center;
     align-items: center;
     gap: 1.25rem;
 }
 
+.menuButtons:hover{
+    background: #2A3D59;
+    /* background: #091931; */
+    /* color: #FFF; */
+}
+
 .menuButtons {
     display: flex;
-    padding: 0.5rem 3.5rem;
     align-items: center;
     gap: 0.5rem;
     flex-shrink: 0;
+    color: #CDCDCD;
+    width: 14.5rem;
+    height: 2.875rem;
+    justify-content: center;
 }
 
-
-.sidebarMainButton p {
-    width: 3.3125rem;
-    flex-shrink: 0;
-    white-space: nowrap;
+.menuButtons span {
+    width: 5.125rem;
+    height: 1.875rem;
+    font-size: 1rem;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -192,6 +192,20 @@ a {
 .sidebarFooterButtons {
     padding-top: 15.1875rem;
     padding-bottom: 4rem;
+}
+
+.sidebarFooterButtons a {
+    font-size: 1rem;
+    line-height: 120%;
+    color: #A8A8A8;
+    padding: 0.5rem;
+    display: inline-block;
+    padding-left: 3.25rem;
+}
+
+.sidebarFooterButtons a:hover {
+    color: #29ABE2;
+    font-weight: 700;
 }
 
 .d-flex {
