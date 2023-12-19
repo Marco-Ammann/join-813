@@ -10,6 +10,7 @@ function setPrio(prio) {
     changeSrc(imgId, imagePath);
 }
 
+
 function switchButtonColor(elementId, elementClass) {
     const element = document.getElementById(elementId);
 
@@ -19,6 +20,7 @@ function switchButtonColor(elementId, elementClass) {
         assignClass(element, elementClass);
     }
 }
+
 
 function resetPriorityClasses() {
     let priorities = ['urgent', 'medium', 'low'];

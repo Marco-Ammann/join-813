@@ -33,7 +33,8 @@ function changeSrc(element, src) {
 function switchVisibility(elementId) {
     const element = document.getElementById(elementId);
     element.classList.toggle("d-none");
-  }
+}
+
 
 function setPriority(priority) {
     clickedPriority = priority;

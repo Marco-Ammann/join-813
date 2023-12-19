@@ -43,7 +43,7 @@ function editSubtask(index) {
       subtasks[index] = editedSubtask;
       updateSubtaskList();
     });
-  }
+}
 
 
 //cancel creating subtask
