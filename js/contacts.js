@@ -7,7 +7,7 @@ function initContacts() {
 
 
 /**
- * Renders the contact list sorted by the first name
+ * Renders the contact list sorted by their names
  */
 function renderContactList() {
     let contactList = document.getElementById('contactList');
@@ -27,21 +27,25 @@ function renderContactList() {
     }
 }
 
+
 /**
  * Renders pop up and changes html and styles to add new contact design
  */
 function openAddNewContact() {
     const popUpProfile = document.getElementById('popUpProfile');
+    const popUpSubmit = document.getElementById('popUpSubmit');
     document.getElementById('popUpTitle').innerHTML = 'Add contact'
     document.getElementById('popUpVector').classList.remove('vector-margin');
     popUpProfile.style.backgroundColor = '#D1D1D1';
     popUpProfile.innerHTML = /* html */ `<img src="./assets/img/Desktop/contacts/person.svg"
     alt="Profile-Image"></div>`;
     document.getElementById('popUpSubtitle').classList.remove('d-none');
-    document.getElementById('popUpSubmit').innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
+    popUpSubmit.innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
     alt="Create Contact">`
+    popUpSubmit.parentNode.parentNode.onsubmit = function () { return addNewContact() };
     document.getElementById('popUp').classList.remove('d-none');
 }
+
 
 /**
  * Renders pop up and changes html and styles to edit contact design with the given contact
@@ -58,7 +62,7 @@ function openEditContact(i) {
     document.getElementById('popUpSubtitle').classList.add('d-none');
     popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
     alt="Create Contact">`;
-    popUpSubmit.onclick = function () { editContact(i) };
+    popUpSubmit.parentNode.parentNode.onsubmit = function () { return editContact(i) };
     document.getElementById('popUpName').value = contact['name'];
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
@@ -103,11 +107,30 @@ function deleteContact(i) {
 }
 
 
+/**
+ * Changes the edited contact information like entered and sorts the contacts by their names
+ * @param {number} i 
+ */
 function editContact(i) {
+    event.preventDefault();
+
+    let lastId = contacts[i]['id'];
+
+    contacts[i].name = document.getElementById('popUpName').value;
+    contacts[i].email = document.getElementById('popUpEmail').value;
+    contacts[i].phone = document.getElementById('popUpPhone').value;
+
+    contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
+    let index = contacts.findIndex(c => c.id == lastId);
+
     closePopUp();
+    openContact(index);
 }
 
 
+/**
+ * Adds the new contact sorted by the name
+ */
 function addNewContact() {
     event.preventDefault();
     let id = contacts.length;
@@ -122,11 +145,24 @@ function addNewContact() {
         "email": email,
         "phone": phone
     }
+
+    let lastId = id;
+
     contacts.push(newContact);
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
+    let index = contacts.findIndex(c => c.id == lastId);
+
+    closePopUp();
+    // TODO: "Contact successfully created"
+    renderContactList();
+    openContact(index);
 }
 
 
+/**
+ * Returns 1 of 10 random colors
+ * @returns - random HEX color code
+ */
 function randomColor() {
     let colors = ['#FF6358', '#FBA24F', '#FFD246', '#78D237', '#28B4C8', '#2D73F5', '#1B4887', '#AA46BE', '#F978AA', '#D33D50'];
     let num = Math.floor(Math.random() * 10);
