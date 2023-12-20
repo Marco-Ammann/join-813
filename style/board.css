@@ -288,8 +288,8 @@
 
 .addTaskMenu {
     position: absolute;
-    right: 0;
+    right: -100rem;
     transform-origin: right;
-    transform: translateX(-300px) translateY(0);
+    transform: translateX(-120rem) translateY(0);
     transition: transform 0.6s ease-in-out;
 }
