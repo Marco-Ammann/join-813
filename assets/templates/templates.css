@@ -116,10 +116,12 @@ a {
     gap: 1.25rem;
 }
 
-.menuButtons:hover{
+.hover-menu-btn:hover{
     background: #2A3D59;
-    /* background: #091931; */
-    /* color: #FFF; */
+}
+
+.current-color-hover{
+    background: #091931;
 }
 
 .menuButtons {
@@ -179,6 +181,10 @@ a {
     border-radius: 50px;
     border: solid black;
     width: 3rem;
+}
+
+#helpImageDefault:hover{
+    content:url("../img/Desktop/general_elements/Help/hover.svg");
 }
 
 

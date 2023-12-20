@@ -1,5 +1,9 @@
+let nameOfPage = ['Summary', 'Add_task', 'Board', 'Contacts'];
+
+
 async function init(){
     await includeHTML();
+    whichPageisCurrent();
 }
 
 // Template
@@ -17,10 +21,32 @@ async function includeHTML() {
     }
 }
 
-function withoutSidebarLinks(){
-    
+/**
+ * Find the currentpage with Url and Names of Content
+ * 
+ */
+function whichPageisCurrent(){
+    let url = window.location.pathname;
+    for (let i = 0; i < nameOfPage.length; i++) {
+        const element = nameOfPage[i];
+        let smalLetter = element.toLowerCase();
+        if (url.includes(smalLetter)) {
+            currentLinkUsed(element)
+        }
+    }
+}
 
-
-
-    
+/**
+ * Add and Remove Attributes
+ * 
+ * @param {string} x - the string is the name of the page includes in the URL
+ */
+function currentLinkUsed (x){
+    let link = document.getElementById(`link${x}`);
+    link.classList.remove('hover-menu-btn');
+    link.classList.add('current-color-hover');
+    document.getElementById(`text${x}`).style = ('color: #FFF');
+    let image = document.getElementById(`image${x}`);
+    y = x.toLowerCase();
+    image.src = `./assets/img/Desktop/general_elements/menu_symbols/${y}_light.svg`; 
 }
