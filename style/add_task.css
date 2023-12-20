@@ -2,7 +2,6 @@
   --background-default: #f0f0f0;
   --default-color: #2a3647;
   --hover-color: #29abe2;
-  --clicked-color: #091931;
   --alert-color: #ff81ab;
   --border-default: #d1d1d1;
   --border-focus: #29abe2;
@@ -11,7 +10,7 @@
   --urgent: #ff3d00;
   --medium: #ffa800;
   --low: #7ae229;
-  --black: #000000;
+  --black: #000;
 }
 
 
@@ -37,19 +36,16 @@ h1, h2, h3, p {
   align-items: flex-start;
   min-height: calc(100vh - 6rem - 6.87rem - 3rem);
   justify-content: space-between;
-  padding-left: 6rem;
-  padding-top: 6.87rem;
+  padding: 6.87rem 0 0 6rem;
 }
 
 .content-title {
   color: var(--black);
-  font-size: 3.8rem;
-  font-weight: 700;
+  font: 700 3.8rem/1 'inter';
 }
 
 .task-forms {
   display: flex;
-  justify-content: flex-start;
   margin-top: 3rem;
 }
 
@@ -63,12 +59,12 @@ h1, h2, h3, p {
   align-items: center;
   width: 27.5rem;
   background-color: white;
-  border-radius: 0.625rem;
   border: 1px solid var(--border-default);
+  border-radius: 0.625rem;
 }
 
 .input-div:hover {
-  border: 1px solid var(--border-hover);
+  border-color: var(--border-hover);
 }
 
 .input-div-focused {
@@ -79,13 +75,7 @@ h1, h2, h3, p {
   border-color: var(--hover-color);
 }
 
-.task-title-input,
-.task-description-textarea,
-.add-contact-input,
-.due-date-input,
-.add-category-input,
-.subtask-input,
-.edit-subtask-input {
+.task-title-input,.task-description-textarea,.add-contact-input,.due-date-input,.add-category-input,.subtask-input,.edit-subtask-input {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--border-default);
@@ -95,24 +85,12 @@ h1, h2, h3, p {
   padding: 1.125rem 1rem;
 }
 
-.task-title-input:placeholder,
-.task-description-textarea:placeholder,
-.add-contact-input:placeholder,
-.due-date-input:placeholder,
-.add-category-input:placeholder,
-.subtask-input:placeholder,
-.edit-subtask-input:placeholder {
+.task-title-input:placeholder,.task-description-textarea:placeholder,.add-contact-input:placeholder,.due-date-input:placeholder,.add-category-input:placeholder,.subtask-input:placeholder,.edit-subtask-input:placeholder {
   color: var(--border-default);
   font-size: 1.25rem;
 }
 
-.task-title-input:hover,
-.task-description-textarea:hover,
-.add-contact-input:hover,
-.due-date-input:hover,
-.add-category-input:hover,
-.subtask-input:hover,
-.edit-subtask-input:hover {
+.task-title-input:hover,.task-description-textarea:hover,.add-contact-input:hover,.due-date-input:hover,.add-category-input:hover,.subtask-input:hover,.edit-subtask-input:hover {
   border-color: var(--border-focus);
   outline: none;
 }
@@ -120,7 +98,6 @@ h1, h2, h3, p {
 .form-span {
   font-size: 1.25rem;
   font-weight: 400;
-  line-height: 120%;
 }
 
 .form-subcontainer {
@@ -156,8 +133,7 @@ h1, h2, h3, p {
 }
 
 .input-required-warning {
-  font-family: "Poppins";
-  font-size: 0.75rem;
+  font: 400 0.75rem/1 'poppins';
   color: var(--border-error);
   max-height: 1rem;
 }
@@ -322,7 +298,7 @@ seperator
 }
 
 
-/*####################################################
+/*##################################################
 rightside forms
 ###################################################*/
 
@@ -405,22 +381,21 @@ rightside forms
 
 /*--------------------------"Category" Dropdown*/
 .categoryDropdown {
-  box-sizing: border-box;
   width: 27.6rem;
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
+  padding: 1rem;
+  box-sizing: border-box;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
+  border-radius: 0.625rem 0.625rem 0 0;
   border-top: none;
   position: absolute;
-  z-index: 5;
   top: 39rem;
-  overflow: auto;
+  z-index: 5;
+  overflow-y: auto;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
 }
 
 .categoryDropdown:hover {
@@ -485,15 +460,12 @@ rightside forms
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem 1rem;
-  border-radius: 0.625rem;
   height: 1.25rem;
   background-color: white;
-  transition: 0.3s ease-in-out;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
+  transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  border: none;
   border-bottom: 1px solid #29abe2;
+  border-radius: 0;
 }
 
 .subTaskDiv:hover {

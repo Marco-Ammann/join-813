@@ -137,6 +137,7 @@ a {
     width: 5.125rem;
     height: 1.875rem;
     font-size: 1rem;
+    font-family: 'Inter';
     line-height: 120%;
     display: flex;
     align-items: center;
@@ -161,6 +162,7 @@ a {
 .header p {
     margin-left: 21.75rem;
     font-size: 1.25rem;
+    font-family: 'Inter';
 }
 
 
