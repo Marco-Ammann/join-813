@@ -208,18 +208,15 @@ leftside forms
   box-sizing: border-box;
   width: 27.6rem;
   max-height: 21vh;
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
+  border-radius: 0 0 0.625rem 0.625rem;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
   border-top: none;
   position: absolute;
   z-index: 5;
-  top: 44.1rem;
+  top: 43rem;
   overflow: auto;
-  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 1.25rem;
   padding: 1.25rem;
 }
@@ -386,10 +383,10 @@ rightside forms
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
-  border-radius: 0.625rem 0.625rem 0 0;
+  border-radius:0 0 0.625rem 0.625rem;
   border-top: none;
   position: absolute;
-  top: 39rem;
+  top: 38.2rem;
   z-index: 5;
   overflow-y: auto;
   gap: 1rem;
