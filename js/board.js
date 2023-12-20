@@ -89,19 +89,36 @@ function addNoTaskHTML(containerId) {
     `
 }
 
-    function sortAndFilterCards() {
-        const searchTerm = document.getElementById('sortTasksInput').value.toLowerCase(); // Den eingegebenen Suchbegriff abrufen und in Kleinbuchstaben umwandeln
-        const cards = document.querySelectorAll('.toDoCard'); // Alle Karten mit der Klasse 'toDoCard' abrufen
-    
-        cards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase(); // Den Titel der Karte abrufen und in Kleinbuchstaben umwandeln
-            const description = card.querySelector('p').textContent.toLowerCase(); // Die Beschreibung der Karte abrufen und in Kleinbuchstaben umwandeln
-    
-            // Überprüfen, ob der Suchbegriff im Titel oder in der Beschreibung der Karte enthalten ist
-            if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                card.parentNode.style.display = 'block'; // Karte anzeigen, falls der Suchbegriff enthalten ist
-            } else {
-                card.parentNode.style.display = 'none'; // Karte ausblenden, falls der Suchbegriff nicht enthalten ist
-            }
-        });
-    }
+function sortAndFilterCards() {
+    const searchTerm = document.getElementById('sortTasksInput').value.toLowerCase(); // Den eingegebenen Suchbegriff abrufen und in Kleinbuchstaben umwandeln
+    const cards = document.querySelectorAll('.toDoCard'); // Alle Karten mit der Klasse 'toDoCard' abrufen
+
+    cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase(); // Den Titel der Karte abrufen und in Kleinbuchstaben umwandeln
+        const description = card.querySelector('p').textContent.toLowerCase(); // Die Beschreibung der Karte abrufen und in Kleinbuchstaben umwandeln
+
+        // Überprüfen, ob der Suchbegriff im Titel oder in der Beschreibung der Karte enthalten ist
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            card.parentNode.style.display = 'block'; // Karte anzeigen, falls der Suchbegriff enthalten ist
+        } else {
+            card.parentNode.style.display = 'none'; // Karte ausblenden, falls der Suchbegriff nicht enthalten ist
+        }
+    });
+}
+
+function openAddTaskMenu() {
+    const div = document.getElementById('animationDiv');
+    div.classList.remove('hidden');
+
+    const transitionDiv = document.getElementById('transition');
+    setTimeout(() => {
+        transitionDiv.classList.add('addTaskMenu');
+    }, 1);
+}
+
+function addDnonToAddTaks() {
+    const transitionDiv = document.getElementById('transition');
+    transitionDiv.classList.remove('addTaskMenu');
+    const div = document.getElementById('animationDiv');
+    div.classList.add('hidden');
+}

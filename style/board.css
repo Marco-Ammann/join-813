@@ -64,7 +64,7 @@
     gap: 1rem;
 }
 
-.sortTasksButton :hover{
+.sortTasksButton :hover {
     cursor: pointer;
 }
 
@@ -257,11 +257,38 @@
     gap: 1rem;
 }
 
-.dNone{
+.dNone {
     display: none;
 }
 
-.searchInput{
+.searchInput {
     color: black !important;
     outline: none;
+    padding: 0 !important;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+.mainAddTaksContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.add-tasks {
+    background-color: white;
+    padding: 0 0 0 0 !important;
+}
+
+.addTaskMenu {
+    position: absolute;
+    right: 0;
+    transform-origin: right;
+    transform: translateX(-300px) translateY(0);
+    transition: transform 0.6s ease-in-out;
 }
