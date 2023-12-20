@@ -1,9 +1,16 @@
-let nameOfPage = ['Summary', 'Add_task', 'Board', 'Contacts'];
+let nameOfPage = [
+    "Summary",
+    "Add_task",
+    "Board",
+    "Contacts",
+    "help",
+    "privacy-policy",
+    "legal_notice",
+];
 
-
-async function init(){
+async function init() {
     await includeHTML();
-    whichPageisCurrent();
+    await whichPageisCurrent();
 }
 
 // Template
@@ -23,30 +30,51 @@ async function includeHTML() {
 
 /**
  * Find the currentpage with Url and Names of Content
- * 
+ *
  */
-function whichPageisCurrent(){
+async function whichPageisCurrent() {
     let url = window.location.pathname;
     for (let i = 0; i < nameOfPage.length; i++) {
         const element = nameOfPage[i];
         let smalLetter = element.toLowerCase();
         if (url.includes(smalLetter)) {
-            currentLinkUsed(element)
+            if (smalLetter === "help") {
+                partDisplayNone();
+            }
+            if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
+                markEffects(smalLetter);
+                headerBtnNone();
+            } else {
+                currentLinkUsed(element);
+            }
         }
     }
 }
 
 /**
  * Add and Remove Attributes
- * 
- * @param {string} x - the string is the name of the page includes in the URL
+ *
+ * @param {string} x - the string is the name of the page includes in the URL; the first letter is capitalized
  */
-function currentLinkUsed (x){
+function currentLinkUsed(x) {
     let link = document.getElementById(`link${x}`);
-    link.classList.remove('hover-menu-btn');
-    link.classList.add('current-color-hover');
-    document.getElementById(`text${x}`).style = ('color: #FFF');
+    link.classList.remove("hover-menu-btn");
+    link.classList.add("current-color-hover");
+    document.getElementById(`text${x}`).style = "color: #FFF";
     let image = document.getElementById(`image${x}`);
     y = x.toLowerCase();
-    image.src = `./assets/img/Desktop/general_elements/menu_symbols/${y}_light.svg`; 
+    image.src = `./assets/img/Desktop/general_elements/menu_symbols/${y}_light.svg`;
+}
+
+function partDisplayNone() {
+    document.getElementById("helpImageDefault").style = "display: none";
+}
+
+function headerBtnNone() {
+    document.getElementById("headerButtons").style = "display:none";
+}
+
+function markEffects(x){
+    document.getElementById(`${x}`).classList.remove(`${x}`);
+    document.getElementById(`${x}`).classList.add("current-color-hover");
 }

@@ -206,12 +206,19 @@ a {
     font-size: 1rem;
     line-height: 120%;
     color: #A8A8A8;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     display: inline-block;
-    padding-left: 3.25rem;
+    width: 14.5rem;
+    text-align: center;
 }
 
-.sidebarFooterButtons a:hover {
+.privacy-policy:hover {
+    color: #29ABE2;
+    font-weight: 700;
+}
+
+.legal_notice:hover {
     color: #29ABE2;
     font-weight: 700;
 }
