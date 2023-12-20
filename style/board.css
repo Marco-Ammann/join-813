@@ -272,7 +272,7 @@
     display: none !important;
 }
 
- {
+.mainAddTaksContainer {
     display: flex;
     align-items: center;
     position: absolute;
