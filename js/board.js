@@ -107,15 +107,28 @@ function sortAndFilterCards() {
 }
 
 function openAddTaskMenu() {
+    const transout = document.getElementById('transition');
+    transout.classList.remove('transout');
+
     const div = document.getElementById('animationDiv');
     div.classList.remove('hidden');
+
     const transitionDiv = document.getElementById('transition');
     transitionDiv.classList.add('addTaskMenu');
+
 }
 
 function addDnonToAddTaks() {
     const transitionDiv = document.getElementById('transition');
     transitionDiv.classList.remove('addTaskMenu');
-    const div = document.getElementById('animationDiv');
-    div.classList.add('hidden');
+
+    const transout = document.getElementById('transition');
+    transout.classList.add('transout');
+    setTimeout(() => {
+        const div = document.getElementById('animationDiv');
+        div.classList.add('hidden');
+    }, 300);
+
+
+
 }
