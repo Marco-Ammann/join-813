@@ -109,11 +109,8 @@ function sortAndFilterCards() {
 function openAddTaskMenu() {
     const div = document.getElementById('animationDiv');
     div.classList.remove('hidden');
-
     const transitionDiv = document.getElementById('transition');
-    setTimeout(() => {
-        transitionDiv.classList.add('addTaskMenu');
-    }, 1);
+    transitionDiv.classList.add('addTaskMenu');
 }
 
 function addDnonToAddTaks() {
