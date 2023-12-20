@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./style/board.css" />
     <link rel="stylesheet" href="./style/add_task.css" />
 
-    <script src="./js/array.js"></script>
     <script src="./js/board.js"></script>
     <script src="js/add_task_scripts/help_functions.js"></script>
     <script src="js/add_task_scripts/add_task_templates.js"></script>
@@ -21,6 +20,7 @@
     <script src="./assets/templates/template.js"></script>
     <script src="./js/add_task_scripts/clear_values.js"></script>
     <script src="js/add_task_scripts/add_task.js"></script>
+    <script src="./js/array.js"></script>
 
     <link rel="stylesheet" href="./assets/templates/templates.css">
     <script src="./assets/templates/template.js"></script>
@@ -205,7 +205,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu()">
+                <button class="addTaskButton" onclick="openAddTaskMenu(), loadAddTaskPage()">
                     <p>Add taks</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"

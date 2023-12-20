@@ -213,7 +213,7 @@ leftside forms
   border: 1px solid var(--border-default);
   border-top: none;
   position: absolute;
-  z-index: 5;
+  z-index: 999;
   top: 43rem;
   overflow: auto;
   flex-direction: column;
@@ -387,7 +387,7 @@ rightside forms
   border-top: none;
   position: absolute;
   top: 38.2rem;
-  z-index: 5;
+  z-index: 999;
   overflow-y: auto;
   gap: 1rem;
   display: flex;
