@@ -272,12 +272,13 @@
     display: none !important;
 }
 
-.mainAddTaksContainer {
+ {
     display: flex;
     align-items: center;
     position: absolute;
     width: 100vw !important;
     height: 100vh !important;
+    overflow-x: hidden;
 }
 
 .add-tasks {
