@@ -43,6 +43,8 @@ function openAddNewContact() {
     popUpSubmit.innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
     alt="Create Contact">`
     popUpSubmit.parentNode.parentNode.onsubmit = function () { return addNewContact() };
+    popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
+    popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
     document.getElementById('popUp').classList.remove('d-none');
 }
 
@@ -52,7 +54,7 @@ function openAddNewContact() {
  * @param {number} i 
  */
 function openEditContact(i) {
-    const contact = contacts[i]
+    const contact = contacts[i];
     const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
     document.getElementById('popUpTitle').innerHTML = 'Edit contact';
@@ -63,6 +65,8 @@ function openEditContact(i) {
     popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
     alt="Create Contact">`;
     popUpSubmit.parentNode.parentNode.onsubmit = function () { return editContact(i) };
+    popUpSubmit.previousElementSibling.innerHTML = 'Delete'
+    popUpSubmit.previousElementSibling.onclick = function () { deleteContact(i) };
     document.getElementById('popUpName').value = contact['name'];
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
@@ -155,9 +159,24 @@ function addNewContact() {
     let index = contacts.findIndex(c => c.id == lastId);
 
     closePopUp();
-    // TODO: "Contact successfully created"
     renderContactList();
     openContact(index);
+    showMessageAni();
+}
+
+
+/**
+ * Displays the "Contact succesfully created" message for 2.5s
+ */
+function showMessageAni() {
+    let message = document.getElementById('message');
+    void message.offsetWidth; // trigger reflow
+    message.classList.remove('d-none');
+    message.classList.add('message-animation'); // start animation
+    setTimeout(function () { 
+        message.classList.remove('message-animation'); // reset animation
+        message.classList.add('d-none');
+     }, 2500);
 }
 
 
