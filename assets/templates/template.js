@@ -8,12 +8,14 @@ let nameOfPage = [
     "legal_notice",
 ];
 
+let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
+
 let currentUser = [];
 
 async function init() {
     await includeHTML();
     await loadCurrentUser();
-    await whichPageisCurrent();
+    await whichPageIsCurrent();
 }
 
 /**
@@ -51,7 +53,7 @@ async function loadCurrentUser() {
  * Find the currentpage with Url and Names of Content
  *
  */
-async function whichPageisCurrent() {
+async function whichPageIsCurrent() {
     let url = window.location.pathname;
     let currentUserName = currentUser["name"];
     for (let i = 0; i < nameOfPage.length; i++) {
@@ -70,7 +72,8 @@ async function whichPageisCurrent() {
                     markEffects(smalLetter);
                     partDisplayNone("headerButtons");
                 }
-            } else {
+            }
+            if (!filterExcludePages.includes(smalLetter)) {
                 currentLinkUsed(element);
             }
         }
