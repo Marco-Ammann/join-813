@@ -14,7 +14,7 @@ function renderSummaryBoard() {
     document.getElementById('toDoNum').innerHTML = findTaskQuantitys('state', 'ToDo');
     document.getElementById('doneNum').innerHTML = findTaskQuantitys('state', 'Done');
     document.getElementById('urgentNum').innerHTML = findTaskQuantitys('priority', 'high');
-    renderDeadlineBox()
+    renderDeadlineBox();
     document.getElementById('tasksNum').innerHTML = tasks.length;
     document.getElementById('inProgressNum').innerHTML = findTaskQuantitys('state', 'InProgress');
     document.getElementById('awaitFeedbackNum').innerHTML = findTaskQuantitys('state', 'AwaitFeedback');
@@ -35,8 +35,8 @@ function renderSummaryGreeting() {
         greet.firstElementChild.innerHTML = 'Good afternoon,';
     } else if (time < 24 || time < 4) {
         greet.firstElementChild.innerHTML = 'Good evening,';
-    }
-    loadCurrentUser(greet);
+    };
+    loadUserGreeting(greet);
 }
 
 
@@ -44,7 +44,8 @@ function renderSummaryGreeting() {
  * Displays the name of the registered user in the greeting or leaves it blank
  * @param {DOM element} greet 
  */
-async function loadCurrentUser(greet) {
+async function loadUserGreeting(greet) {
+    console.log('run current user');
     let nameElement = greet.lastElementChild;
     let timeElement = greet.firstElementChild;
     try {
