@@ -223,3 +223,12 @@ async function guestAccount() {
         window.location.href = "summary.html";
     }, 300);
 }
+
+/**
+ * legal_notice and privacy policy for everyone (without Login)
+ * 
+ */
+async function withoutSidebarLinks(){
+    currentUser = ['#everyone'];
+    await setItem("currentUser", JSON.stringify(currentUser));
+}

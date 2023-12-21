@@ -64,7 +64,7 @@ General CSS
   border-color: var(--hover-color);
 }
 
-.task-title-input,.task-description-textarea,.add-contact-input,.due-date-input,.add-category-input,.subtask-input,.edit-subtask-input {
+.task-title-input, .task-description-textarea, .add-contact-input, .due-date-input, .add-category-input, .subtask-input, .edit-subtask-input {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--border-default);
@@ -74,12 +74,12 @@ General CSS
   padding: 1.125rem 1rem;
 }
 
-.task-title-input:placeholder,.task-description-textarea:placeholder,.add-contact-input:placeholder,.due-date-input:placeholder,.add-category-input:placeholder,.subtask-input:placeholder,.edit-subtask-input:placeholder {
+.task-title-input:placeholder, .task-description-textarea:placeholder, .add-contact-input:placeholder, .due-date-input:placeholder, .add-category-input:placeholder, .subtask-input:placeholder, .edit-subtask-input:placeholder {
   color: var(--border-default);
   font-size: 1.25rem;
 }
 
-.task-title-input:hover,.task-description-textarea:hover,.add-contact-input:hover,.due-date-input:hover,.add-category-input:hover,.subtask-input:hover,.edit-subtask-input:hover {
+.task-title-input:hover, .task-description-textarea:hover, .add-contact-input:hover, .due-date-input:hover, .add-category-input:hover, .subtask-input:hover, .edit-subtask-input:hover {
   border-color: var(--border-focus);
   outline: none;
 }
@@ -203,7 +203,7 @@ leftside forms
   border-top: none;
   position: absolute;
   z-index: 999;
-  top: 43rem;
+  top: 41rem;
   overflow: auto;
   flex-direction: column;
   gap: 1.25rem;
@@ -372,10 +372,10 @@ rightside forms
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
-  border-radius:0 0 0.625rem 0.625rem;
+  border-radius: 0 0 0.625rem 0.625rem;
   border-top: none;
   position: absolute;
-  top: 38.2rem;
+  top: 36.1rem;
   z-index: 999;
   overflow-y: auto;
   gap: 1rem;
@@ -543,6 +543,10 @@ footer of add task section
   gap: 1rem;
 }
 
+
+.invisible {
+  visibility: hidden;
+}
 
 /*####################################################
 mediaquerrys

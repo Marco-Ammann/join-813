@@ -51,8 +51,10 @@
                                 fill="#2A3647" />
                         </g>
                     </svg></button>
-                <form onsubmit="createTask(event)">
+                <div>
                     <div>
+                        <h1 class="content-title">Add Task</h1>
+
                         <section class="task-forms">
                             <div class="forms-sides">
                                 <div class="form-div">
@@ -60,7 +62,8 @@
                                     <div class="form-subcontainer">
                                         <input id="task-title-input" maxlength="48" class="task-title-input" type="text"
                                             placeholder="Enter a title" required />
-                                        <p class="input-required-warning">This field is required</p>
+                                        <p class="input-required-warning invisible" id="requiredTextTitle">This field is
+                                            required</p>
                                     </div>
                                 </div>
 
@@ -70,7 +73,8 @@
                                         <textarea id="task-description-textarea" class="task-description-textarea"
                                             name="inputDescription" placeholder="Enter a Description"
                                             required></textarea>
-                                        <p class="input-required-warning">This field is required</p>
+                                        <p class="input-required-warning invisible" id="requiredTextDescription">This
+                                            field is required</p>
                                     </div>
                                 </div>
 
@@ -102,7 +106,8 @@
                                                 placeholder="dd/mm/yyyy" required />
                                         </div>
 
-                                        <p class="input-required-warning">This field is required</p>
+                                        <p class="input-required-warning invisible" id="requiredTextDueDate">This field
+                                            is required</p>
 
                                     </div>
                                 </div>
@@ -142,6 +147,8 @@
                                             src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                                             alt="Pfeil runter" />
                                     </div>
+                                    <p class="input-required-warning invisible" id="requiredTextCategory">This field is
+                                        required</p>
                                     <div class="categoryDropdown d-none" id="categoryDropdown"></div>
                                 </div>
 
@@ -161,10 +168,11 @@
                                             </div>
 
                                             <div class="create-task-div d-none" id="create-task-div">
-                                                <img class="plus-symbol input-symbol" id="close-symbol-subtask>"
-                                                    onclick="cancelSubtask()"
+                                                <img class="plus-symbol input-symbol" id="close-symbol-subtask"
+                                                    onclick="clearSubtaskInput()"
                                                     src="assets/img/Desktop/add_task/subtasks_icons/close.svg"
                                                     alt="cancel-symbol" />
+
                                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
                                                     onclick="setSubtask()"
                                                     src="assets/img/Desktop/add_task/subtasks_icons/check.svg"
@@ -188,19 +196,20 @@
                             field is required</span>
 
                         <div class="footer-btn-container">
-                            <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm(event)">
+                            <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm()">
                                 Clear
                                 <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
                             </button>
 
-                            <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
+                            <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
+                                onclick="validateAndCreateTask()">
                                 Create Task
                                 <img src="assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
                             </button>
                             <div id="okBtnDiv"></div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

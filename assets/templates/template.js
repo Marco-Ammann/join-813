@@ -32,7 +32,6 @@ async function includeHTML() {
             element.innerHTML = await resp.text();
         } else {
             element.innerHTML = "Page not found";
-            currentUser = "";
         }
     }
 }
@@ -46,6 +45,7 @@ async function loadCurrentUser() {
         currentUser = JSON.parse(await getItem("currentUser"));
     } catch (e) {
         console.error("Loading error:", e);
+        console.log('CurrentUserFail');
     }
 }
 
@@ -53,9 +53,9 @@ async function loadCurrentUser() {
  * Find the currentpage with Url and Names of Content
  *
  */
+//TODO: Clean Code
 async function whichPageIsCurrent() {
     let url = window.location.pathname;
-    let currentUserName = currentUser["name"];
     for (let i = 0; i < nameOfPage.length; i++) {
         const element = nameOfPage[i];
         let smalLetter = element.toLowerCase();
@@ -64,14 +64,13 @@ async function whichPageIsCurrent() {
                 partDisplayNone("helpImageDefault");
             }
             if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
-                if (currentUserName.toLowerCase() === "guest" || currentUser === "") {
+                if (currentUser == "#everyone") {
+                    partDisplayNone("headerButtons");
                     partDisplayNone("sidebarMainButtons");
                     markEffects(smalLetter);
-                    partDisplayNone("headerButtons");
-                } else {
-                    markEffects(smalLetter);
-                    partDisplayNone("headerButtons");
                 }
+                markEffects(smalLetter);
+                partDisplayNone("headerButtons");
             }
             if (!filterExcludePages.includes(smalLetter)) {
                 currentLinkUsed(element);
@@ -110,6 +109,6 @@ function partDisplayNone(x) {
  * @param {string} x - the string are the names of the ID`s, who will designed
  */
 function markEffects(x) {
-    document.getElementById(`${x}`).classList.remove(`${x}`);
+    document.getElementById(`${x}`).classList.remove(`${x}-link`);
     document.getElementById(`${x}`).classList.add("current-color-hover");
 }
