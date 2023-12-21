@@ -54,7 +54,7 @@ function openAddNewContact() {
  * @param {number} i 
  */
 function openEditContact(i) {
-    const contact = contacts[i]
+    const contact = contacts[i];
     const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
     document.getElementById('popUpTitle').innerHTML = 'Edit contact';
@@ -165,6 +165,9 @@ function addNewContact() {
 }
 
 
+/**
+ * Displays the "Contact succesfully created" message for 2.5s
+ */
 function showMessageAni() {
     let message = document.getElementById('message');
     void message.offsetWidth; // trigger reflow

@@ -7,7 +7,7 @@
     background-color: #FFF;
     overflow-y: scroll;
     height: calc(100vh - 6rem);
-    padding: 0 calc(1.5rem + 8px) 0 3rem;
+    padding: 0 calc(1.5rem + 8px) 0 3.25rem;
     border-right: 8px solid #FFF;
 }
 
@@ -19,6 +19,10 @@
 .contact-list::-webkit-scrollbar-thumb {
     background-color: #a8a8a8be;
     border-radius: 10rem;
+}
+
+.contact-list {
+    scrollbar-width: auto;
 }
 
 .contact-list::-webkit-scrollbar-track {
@@ -90,7 +94,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.40625rem 3.25rem;
+    padding: 1.40625rem 3rem 1.40625rem 3.25rem;
     position: absolute;
     width: 22rem;
     background-color: #FFF;
@@ -134,6 +138,7 @@
 .border {
     display: flex;
     padding: 0.5rem 0;
+    width: 22rem;
 }
 
 .letter {
