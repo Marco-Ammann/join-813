@@ -13,13 +13,16 @@ function loadAddTaskPage() {
 
 function validateAndCreateTask() {
   var isValid = true;
-  isValid = validateField('task-title-input', 'requiredTextTitle') && isValid;
-  isValid = validateField('task-description-textarea', 'requiredTextDescription') && isValid;
-  isValid = validateField('due-date-input', 'requiredTextDueDate') && isValid;
-  isValid = validateDropdown('add-category-input', 'requiredTextCategory') && isValid;
+  isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
+  isValid =
+    validateField("task-description-textarea", "requiredTextDescription") &&
+    isValid;
+  isValid = validateField("due-date-input", "requiredTextDueDate") && isValid;
+  isValid =
+    validateDropdown("add-category-input", "requiredTextCategory") && isValid;
 
   if (isValid) {
-      createTask();
+    createTask();
   }
 }
 
@@ -38,52 +41,39 @@ function validateDueDate() {
 
 
 function switchTaskCategoryClickedState(index) {
-    const element = document.getElementById(`categoryOption${index}`);
-  
-    const categoryOptions = document.getElementsByClassName("categoryDiv");
-    for (const option of categoryOptions) {
-      removeClass(option, "contactDivClicked");
-    }
-    assignClass(element, "contactDivClicked");
-  
-    const selectedCategory = element.textContent;
-    updateCategoryInput(selectedCategory);
+  const element = document.getElementById(`categoryOption${index}`);
+
+  const categoryOptions = document.getElementsByClassName("categoryDiv");
+  for (const option of categoryOptions) {
+    removeClass(option, "contactDivClicked");
   }
+  assignClass(element, "contactDivClicked");
+
+  const selectedCategory = element.textContent;
+  updateCategoryInput(selectedCategory);
+}
 
 
 function updateCategoryInput(selectedCategory) {
-    const categoryInput = document.getElementById("add-category-input");
-    const categoryDropdown = document.getElementById("categoryDropdown");
-  
-    categoryInput.value = `${selectedCategory}`;
-    categoryDropdown.classList.add("d-none");
+  const categoryInput = document.getElementById("add-category-input");
+  const categoryDropdown = document.getElementById("categoryDropdown");
+
+  categoryInput.value = `${selectedCategory}`;
+  categoryDropdown.classList.add("d-none");
 }
-  
+
 
 function toggleContact(index) {
   initializeClickedState(index);
-
   const contactDiv = document.getElementById(`contact${index}`);
   const checkboxImg = document.getElementById(`checkbox${index}`);
   const isClicked = getClickedState(index);
-
   const contact = contacts[index];
-
   if (isClicked) {
-    handleClickedState(
-      contactDiv,
-      checkboxImg,
-      false,
-      "./assets/img/Desktop/add_task/check_button.svg"
-    );
+    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
     removeAvatar(contact);
   } else {
-    handleClickedState(
-      contactDiv,
-      checkboxImg,
-      true,
-      "./assets/img/Desktop/add_task/check button_checked_white.svg"
-    );
+    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
     addAvatar(contact);
   }
   updateClickedState(index, !isClicked);
@@ -125,7 +115,6 @@ function generateAssignContacts() {
       i
     );
   }
-
   clickedStates = Array(contacts.length).fill(false);
 }
 

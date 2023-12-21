@@ -2,8 +2,6 @@ let subtasks = [];
 let assignedContacts = [];
 let clickedPriority = "medium";
 
-
-
 function getValues() {
   return {
     id: createTaskId(),

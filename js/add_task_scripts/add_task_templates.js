@@ -13,11 +13,13 @@ function generateAssignContactsHTML(contact, index) {
     `;
 }
 
+
 function generateCategoryOptionsHTML(category, index) {
-    return `
+  return `
       <div class="categoryDiv" id="categoryOption${index}" onclick="switchTaskCategoryClickedState('${index}')">${category}</div>
     `;
-  }
+}
+
 
 function generateAvatar(contact) {
   return `
@@ -27,8 +29,9 @@ function generateAvatar(contact) {
     `;
 }
 
+
 function generateSubtaskHTML(subtask, index) {
-  return /*HTML*/`
+  return /*HTML*/ `
 
 <div class="subTask-Wrapper">
 
