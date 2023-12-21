@@ -70,3 +70,79 @@ function closeDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
     const arrowImage = document.getElementById(svgId);
     closeDropdown(dropdown, inputfield, arrowImage, standardValue);
 }
+
+
+function isFieldEmpty(field) {
+    return field.value.trim() === '';
+}
+
+
+function showWarning(warningElement) {
+    warningElement.classList.remove('invisible');
+}
+
+
+function hideWarning(warningElement) {
+    warningElement.classList.add('invisible');
+}
+
+
+function isDropdownUnselected(dropdown) {
+    return dropdown.value === 'Select task category' || dropdown.value.trim() === '';
+}
+
+
+function validateField(inputId, warningId) {
+    var inputElement = document.getElementById(inputId);
+    var warningElement = document.getElementById(warningId);
+  
+    if (isFieldEmpty(inputElement)) {
+        showWarning(warningElement);
+        return false;
+    } else {
+        hideWarning(warningElement);
+        return true;
+    }
+}
+
+
+  function validateDropdown(inputId, warningId) {
+    var dropdownElement = document.getElementById(inputId);
+    var warningElement = document.getElementById(warningId);
+  
+    if (isDropdownUnselected(dropdownElement)) {
+        showWarning(warningElement);
+        return false;
+    } else {
+        hideWarning(warningElement);
+        return true;
+    }
+}
+
+
+function createTask() {
+    let newTask = getValues();
+    tasks.push(newTask);
+    clearForm();
+}
+
+
+function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
+    if (dropdownState === "closed") {
+      openDropdownState(dropdownId, inputfieldId, svgId);
+    } else {
+      closeDropdownState(dropdownId, inputfieldId, svgId, standardValue);
+    }
+  }
+
+
+  function handleClickOnAssignedContact(index) {
+    toggleContact(index);
+    updateAvatars(index);
+  }
+
+
+  function handleClickedState(div, img, clicked, src) {
+    div.classList.toggle("contactDivClicked", clicked);
+    img.src = src;
+  }

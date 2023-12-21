@@ -11,12 +11,17 @@ function loadAddTaskPage() {
 }
 
 
-function createTask(event) {
-    event.preventDefault();
-    let newTask = getValues();
-    tasks.push(newTask);
-    clearForm(event);
+function validateAndCreateTask() {
+  var isValid = true;
+  isValid = validateField('task-title-input', 'requiredTextTitle') && isValid;
+  isValid = validateField('task-description-textarea', 'requiredTextDescription') && isValid;
+  isValid = validateField('due-date-input', 'requiredTextDueDate') && isValid;
+  isValid = validateDropdown('add-category-input', 'requiredTextCategory') && isValid;
+
+  if (isValid) {
+      createTask();
   }
+}
 
 
 function validateDueDate() {
@@ -29,21 +34,6 @@ function validateDueDate() {
     );
     dueDateInput.value = "";
   }
-}
-
-
-function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
-  if (dropdownState === "closed") {
-    openDropdownState(dropdownId, inputfieldId, svgId);
-  } else {
-    closeDropdownState(dropdownId, inputfieldId, svgId, standardValue);
-  }
-}
-
-
-function handleClickOnAssignedContact(index) {
-  toggleContact(index);
-  updateAvatars(index);
 }
 
 
@@ -105,12 +95,6 @@ function updateAvatars() {
   avatarContainer.innerHTML = assignedContacts
     .map((contact) => generateAvatar(contact))
     .join("");
-}
-
-
-function handleClickedState(div, img, clicked, src) {
-  div.classList.toggle("contactDivClicked", clicked);
-  img.src = src;
 }
 
 

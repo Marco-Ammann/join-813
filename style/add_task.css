@@ -203,7 +203,7 @@ leftside forms
   border-top: none;
   position: absolute;
   z-index: 999;
-  top: 43rem;
+  top: 41rem;
   overflow: auto;
   flex-direction: column;
   gap: 1.25rem;
@@ -375,7 +375,7 @@ rightside forms
   border-radius:0 0 0.625rem 0.625rem;
   border-top: none;
   position: absolute;
-  top: 38.2rem;
+  top: 36.1rem;
   z-index: 999;
   overflow-y: auto;
   gap: 1rem;
@@ -543,6 +543,10 @@ footer of add task section
   gap: 1rem;
 }
 
+
+.invisible {
+  visibility: hidden;
+}
 
 /*####################################################
 mediaquerrys

@@ -1,5 +1,4 @@
-function clearForm(event) {
-  event.preventDefault();
+function clearForm() {
   clearTaskTitle();
   clearTaskDescription();
   clearTaskDueDate();
