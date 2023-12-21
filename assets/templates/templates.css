@@ -400,8 +400,8 @@ a {
     }
 } */
 
-/* @media (max-width: 1372px) {
+@media (max-width: 428px) {
     :root {
-        font-size: 15px
+        font-size: 16px
     }
-} */
+}

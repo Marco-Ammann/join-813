@@ -346,6 +346,8 @@
     gap: 2rem;
 }
 
+/* TODO: Add hover and click styles to all pages */
+
 .popup-input input {
     display: flex;
     width: calc(25.0625rem - 2.8125rem);
@@ -463,3 +465,6 @@
         transform: translateX(0);
     }
 }
+
+/* Media Queries */
+/* TODO: Add Mobile Design */
