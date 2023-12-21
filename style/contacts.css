@@ -156,7 +156,7 @@
     justify-content: center;
     align-items: center;
     height: 2.475rem;
-    width: 2.475rem;
+    min-width: 2.475rem;
     border-radius: 50%;
     border: 0.15rem solid #FFF;
 }
@@ -177,6 +177,7 @@
 
 .username span {
     font-size: 1.25rem;
+    word-break: break-word;
 }
 
 .username a {
@@ -212,6 +213,7 @@
 .info-name h2 {
     font-size: 2.9375rem;
     font-weight: 500;
+    word-break: break-word;
 }
 
 .info-buttons {
@@ -411,9 +413,50 @@
     border: 0;
 }
 
+.message-container {
+    height: 100%;
+    display: flex;
+    margin-top: -2rem;
+    align-items: center;
+}
+
+.message {
+    display: flex;
+    width: 20.375rem;
+    height: 4.625rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.25rem;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    transform: translateX(calc(44.5rem + 8px));
+}
+
+.message span {
+    font-size: 1.25rem;
+    color: #FFF;
+}
+
+.message-animation {
+    animation: slideInOut 2.5s ease-in;
+}
+
 /* Interactive Styles */
 
 .contact-selected {
     background-color: #2A3647;
     color: #FFF;
+}
+
+/* Animations */
+
+@keyframes slideInOut {
+    0%, 100% {
+        transform: translateX(calc(44.5rem + 8px));
+    }
+
+    10%,
+    90% {
+        transform: translateX(0);
+    }
 }
