@@ -14,15 +14,16 @@ function loadAddTaskPage() {
 function validateAndCreateTask() {
   var isValid = true;
   isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
-  isValid =
-    validateField("task-description-textarea", "requiredTextDescription") &&
-    isValid;
+  isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
   isValid = validateField("due-date-input", "requiredTextDueDate") && isValid;
-  isValid =
-    validateDropdown("add-category-input", "requiredTextCategory") && isValid;
+  isValid = validateDropdown("add-category-input", "requiredTextCategory") && isValid;
 
   if (isValid) {
     createTask();
+    animateTaskAdded();     
+    setTimeout(function() {
+      window.location.href = 'board.html';
+    }, 1500);
   }
 }
 
@@ -167,4 +168,11 @@ function setupDropdownCloseListener() {
 function setupFilterListener() {
   const inputField = document.getElementById("add-contact-input");
   inputField.addEventListener("input", filterContacts);
+}
+
+
+
+function animateTaskAdded() {
+  const taskAddedContainer = document.querySelector('.task-added-container');
+  taskAddedContainer.classList.add('task-added-animate');
 }

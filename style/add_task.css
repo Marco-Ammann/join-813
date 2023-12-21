@@ -21,6 +21,10 @@ General CSS
   padding: 4rem 6rem 0 6rem;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .add-tasks {
   display: flex;
   flex-direction: column;
@@ -544,9 +548,53 @@ footer of add task section
 }
 
 
-.invisible {
-  visibility: hidden;
+/*####################################################
+Task Added Message
+###################################################*/
+
+
+.task-added-container {
+  display: flex;
+  width: 20.375rem;
+  height: 4.625rem; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.25rem; 
+  background: #2A3647;
+  color: #ffffff;
+  font-family: 'Inter';
+  font-size: 1.25rem;
+  gap: 10px; 
+  position: absolute;
+  bottom: -100%; /* Startposition außerhalb des Bildschirms */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s ease-in-out; /* weiches Ein- und Ausblenden */
 }
+
+
+.task-added-icon {
+  width: 24px;
+  height: 24px; 
+  background-size: cover;
+}
+
+@keyframes slideUp {
+  0% {
+    bottom: -100%; /* Startposition: unterhalb des Bildschirms */
+    opacity: 0; /* Startet unsichtbar */
+  }
+  100% {
+    bottom: 50%; /* Endposition: in der Mitte des Bildschirms */
+    opacity: 1; /* vollständig sichtbar */
+  }
+}
+
+
+.task-added-animate {
+  animation: slideUp 0.5s ease forwards; /* forwards behält den Endzustand bei */
+}
+
 
 /*####################################################
 mediaquerrys
