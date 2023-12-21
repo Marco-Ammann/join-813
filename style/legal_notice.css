@@ -1,24 +1,11 @@
-h1,
-h2,
-h3,
-p,
-li {
-  margin: 0;
+.content {
+  padding: 4rem 6rem 0 6rem;
 }
-
-* {
-  -webkit-tap-highlight-color: transparent !important;
-}
-
 
 .legal-notice {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-right: 6rem;
-  padding-left: 6rem;
-  padding-top: 6.87rem;
-  max-width: 75.5rem;
 }
 
 .legal-notice-content {
@@ -44,17 +31,17 @@ li {
   width: 100%;
 }
 
-.arrow-left {
+.content-title-div img {
+  width: 2rem;
+  height: 2rem;
+  transition: 80ms ease-out;
+  border-radius: 50%;
   cursor: pointer;
-  height: min-content;
 }
 
-.arrow-left:hover {
-  cursor: pointer;
-  height: min-content;
-  background-color: #EEEEEE;
-  scale: 1.1;
-  border-radius: 50%;
+.content-title-div img:hover {
+  transform: scale(1.25);
+  background-color: #EEE;
 }
 
 .content-sub-title {

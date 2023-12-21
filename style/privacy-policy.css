@@ -1,13 +1,12 @@
+.content {
+    padding: 4rem 6rem 0 6rem;
+}
 
 .privacy-policy {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding-right: 6rem;
-    padding-left: 6rem;
-    padding-top: 6.87rem;
-    max-width: 75.5rem;
 }
 
 .privacy-policy-title{

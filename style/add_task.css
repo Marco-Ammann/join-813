@@ -17,31 +17,20 @@
 /*###################################################
 General CSS
 ###################################################*/
-
-h1, h2, h3, p {
-  margin: 0;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-.d-none {
-  display: none !important;
+.content {
+  padding: 4rem 6rem 0 6rem;
 }
 
 .add-tasks {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  min-height: calc(100vh - 6rem - 6.87rem - 3rem);
+  gap: 8.62rem;
   justify-content: space-between;
-  padding: 6.87rem 0 0 6rem;
 }
 
 .content-title {
   color: var(--black);
-  font: 700 3.8rem/1 'inter';
+  font-size: 3.8125rem;
 }
 
 .task-forms {

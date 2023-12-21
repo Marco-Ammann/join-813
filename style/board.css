@@ -1,5 +1,5 @@
 .content {
-    padding: 4rem 4rem 0 4rem;
+    padding: 4rem 4rem 0 4rem !important;
     max-height: calc(100vh - 6rem - 4rem);
 }
 
