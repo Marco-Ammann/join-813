@@ -61,14 +61,12 @@
     background-color: #a8a8a8;
 }
 
-/* TODO: Firefox & Safari compatibility */
-
 .main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex: 1;
-    padding: 4rem 0 0 6rem;
+    padding: 4rem 4rem 0;
     gap: 2rem;
 }
 

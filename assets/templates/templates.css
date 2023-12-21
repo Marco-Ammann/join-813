@@ -116,11 +116,11 @@ a {
     gap: 1.25rem;
 }
 
-.hover-menu-btn:hover{
+.hover-menu-btn:hover {
     background: #2A3D59;
 }
 
-.current-color-hover{
+.current-color-hover {
     background: #091931;
 }
 
@@ -183,8 +183,8 @@ a {
     width: 3rem;
 }
 
-#helpImageDefault:hover{
-    content:url("../img/Desktop/general_elements/Help/hover.svg");
+#helpImageDefault:hover {
+    content: url("../img/Desktop/general_elements/Help/hover.svg");
 }
 
 
@@ -235,3 +235,173 @@ a {
 .d-none {
     display: none !important
 }
+
+/* Media Queries */
+
+@media (min-width: 2541px) {
+    :root {
+        font-size: 29px
+    }
+}
+
+@media (max-width: 2541px) {
+    :root {
+        font-size: 27.5px
+    }
+}
+
+@media (max-width: 2410px) {
+    :root {
+        font-size: 26px
+    }
+}
+
+@media (max-width: 2279px) {
+    :root {
+        font-size: 25px
+    }
+}
+
+@media (max-width: 2192px) {
+    :root {
+        font-size: 24px
+    }
+}
+
+@media (max-width: 2105px) {
+    :root {
+        font-size: 23px
+    }
+}
+
+@media (max-width: 2018px) {
+    :root {
+        font-size: 22px
+    }
+}
+
+@media (max-width: 1931px) {
+    :root {
+        font-size: 21px
+    }
+}
+
+@media (max-width: 1844px) {
+    :root {
+        font-size: 20px
+    }
+}
+
+@media (max-width: 1757px) {
+    :root {
+        font-size: 19px
+    }
+}
+
+@media (max-width: 1670px) {
+    :root {
+        font-size: 18px
+    }
+}
+
+@media (max-width: 1583px) {
+    :root {
+        font-size: 17px
+    }
+}
+
+@media (max-width: 1496px) {
+    :root {
+        font-size: 16px
+    }
+}
+
+@media (max-width: 1410px) {
+    :root {
+        font-size: 15px
+    }
+}
+
+@media (max-width: 1322px) {
+    :root {
+        font-size: 14px
+    }
+}
+
+@media (max-width: 1235px) {
+    :root {
+        font-size: 13px
+    }
+}
+
+@media (max-width: 1148px) {
+    :root {
+        font-size: 12px
+    }
+}
+
+@media (max-width: 1059px) {
+    :root {
+        font-size: 11px
+    }
+}
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
+
+/* @media (max-width: 1372px) {
+    :root {
+        font-size: 15px
+    }
+} */
