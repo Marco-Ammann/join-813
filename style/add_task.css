@@ -566,8 +566,9 @@ Task Added Message
   font-size: 1.25rem;
   gap: 10px; 
   position: absolute;
-  bottom: -100%; /* Startposition außerhalb des Bildschirms */
+  bottom: 0%; /* Startposition außerhalb des Bildschirms */
   left: 50%;
+  opacity: 0;
   transform: translateX(-50%);
   transition: all 0.5s ease-in-out; /* weiches Ein- und Ausblenden */
 }
@@ -581,8 +582,13 @@ Task Added Message
 
 @keyframes slideUp {
   0% {
-    bottom: -100%; /* Startposition: unterhalb des Bildschirms */
+    bottom: 0%; /* Startposition: unterhalb des Bildschirms */
     opacity: 0; /* Startet unsichtbar */
+  }
+
+  1% {
+    bottom: 1%; /* Startposition: unterhalb des Bildschirms */
+    opacity: 1; /* Startet unsichtbar */
   }
   100% {
     bottom: 50%; /* Endposition: in der Mitte des Bildschirms */
