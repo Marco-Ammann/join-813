@@ -8,12 +8,18 @@ let nameOfPage = [
     "legal_notice",
 ];
 
+let currentUser = [];
+
 async function init() {
     await includeHTML();
+    await loadCurrentUser();
     await whichPageisCurrent();
 }
 
-// Template
+/**
+ * load Template Header and Sidebar in some pages
+ * 
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]");
     for (let i = 0; i < includeElements.length; i++) {
@@ -24,7 +30,20 @@ async function includeHTML() {
             element.innerHTML = await resp.text();
         } else {
             element.innerHTML = "Page not found";
+            currentUser = '';
         }
+    }
+}
+
+/**
+ * load CurrentUser from the Backend
+ * 
+ */
+async function loadCurrentUser () {
+    try {
+        currentUser = JSON.parse(await getItem("currentUser"));
+    } catch (e) {
+        console.error("Loading error:", e);
     }
 }
 
@@ -34,16 +53,21 @@ async function includeHTML() {
  */
 async function whichPageisCurrent() {
     let url = window.location.pathname;
+    let currentUserName = currentUser["name"];
     for (let i = 0; i < nameOfPage.length; i++) {
         const element = nameOfPage[i];
         let smalLetter = element.toLowerCase();
         if (url.includes(smalLetter)) {
             if (smalLetter === "help") {
-                partDisplayNone();
+                partDisplayNone("helpImageDefault");
             }
             if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
-                markEffects(smalLetter);
-                headerBtnNone();
+                if (currentUserName.toLowerCase() === "guest" || currentUser === "") {
+                    partDisplayNone("sidebarMainButtons");
+                } else {
+                    markEffects(smalLetter);
+                    partDisplayNone("headerButtons");
+                }
             } else {
                 currentLinkUsed(element);
             }
@@ -52,7 +76,7 @@ async function whichPageisCurrent() {
 }
 
 /**
- * Add and Remove Attributes
+ * Add and Remove Attributes (Hovereffects) and parts hide
  *
  * @param {string} x - the string is the name of the page includes in the URL; the first letter is capitalized
  */
@@ -66,15 +90,21 @@ function currentLinkUsed(x) {
     image.src = `./assets/img/Desktop/general_elements/menu_symbols/${y}_light.svg`;
 }
 
-function partDisplayNone() {
-    document.getElementById("helpImageDefault").style = "display: none";
+/**
+ * This function hide same parts of the header and sidebar
+ * 
+ * @param {string} x the string are the names of ID´s from the parts
+ */
+function partDisplayNone(x) {
+    document.getElementById(x).style = "display: none";
 }
 
-function headerBtnNone() {
-    document.getElementById("headerButtons").style = "display:none";
-}
-
-function markEffects(x){
+/**
+ * This function designed same parts of the header and sidebar
+ * 
+ * @param {string} x - the string are the names of the ID`s, who will designed
+ */
+function markEffects(x) {
     document.getElementById(`${x}`).classList.remove(`${x}`);
     document.getElementById(`${x}`).classList.add("current-color-hover");
 }
