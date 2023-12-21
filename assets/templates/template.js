@@ -18,7 +18,7 @@ async function init() {
 
 /**
  * load Template Header and Sidebar in some pages
- * 
+ *
  */
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]");
@@ -30,16 +30,16 @@ async function includeHTML() {
             element.innerHTML = await resp.text();
         } else {
             element.innerHTML = "Page not found";
-            currentUser = '';
+            currentUser = "";
         }
     }
 }
 
 /**
  * load CurrentUser from the Backend
- * 
+ *
  */
-async function loadCurrentUser () {
+async function loadCurrentUser() {
     try {
         currentUser = JSON.parse(await getItem("currentUser"));
     } catch (e) {
@@ -64,6 +64,8 @@ async function whichPageisCurrent() {
             if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
                 if (currentUserName.toLowerCase() === "guest" || currentUser === "") {
                     partDisplayNone("sidebarMainButtons");
+                    markEffects(smalLetter);
+                    partDisplayNone("headerButtons");
                 } else {
                     markEffects(smalLetter);
                     partDisplayNone("headerButtons");
@@ -92,7 +94,7 @@ function currentLinkUsed(x) {
 
 /**
  * This function hide same parts of the header and sidebar
- * 
+ *
  * @param {string} x the string are the names of ID´s from the parts
  */
 function partDisplayNone(x) {
@@ -101,7 +103,7 @@ function partDisplayNone(x) {
 
 /**
  * This function designed same parts of the header and sidebar
- * 
+ *
  * @param {string} x - the string are the names of the ID`s, who will designed
  */
 function markEffects(x) {
