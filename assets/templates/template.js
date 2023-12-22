@@ -130,7 +130,7 @@ async function getInitialsCurrentUser() {
 function moveDropDownMenu() {
     let dropDownMenu = document.getElementById("dropDownMenu");
     let headerIcon = document.getElementById("headerIcon");
-    let container = document.getElementById('containerDropDown');
+    let container = document.getElementById("containerDropDown");
     if (dropDownIsOpen === false) {
         dropDownMenu.style.display = "block";
         headerIcon.style.background = "#0C2E621F";
@@ -144,7 +144,13 @@ function moveDropDownMenu() {
     }
 }
 
-function stopPropagation(event){
+function stopPropagation(event) {
     event.stopPropagation();
 }
 
+async function logOut() {
+    currentUser = '';
+    console.log(currentUser);
+    await setItem("currentUser", JSON.stringify(currentUser));
+    localStorage.removeItem("joinInputs");
+}
