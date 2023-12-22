@@ -1,3 +1,7 @@
+body {
+    max-height: 100vh;
+}
+
 .content {
     padding: 4rem 4rem 0 4rem !important;
     max-height: calc(100vh - 6rem - 4rem);
@@ -93,6 +97,10 @@
 .addTaskButton svg {
     width: 2rem;
     height: 2rem;
+}
+
+.addTaskButton :hover {
+    cursor: pointer;
 }
 
 .toDoList {
@@ -250,6 +258,8 @@
 .listContainer {
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    height: 480px;
     gap: 1rem;
 }
 
@@ -270,7 +280,6 @@
 
 .mainAddTaksContainer {
     display: flex;
-    align-items: center;
     position: absolute;
     width: 100vw !important;
     height: 100vh !important;
@@ -283,6 +292,7 @@
     padding: 4rem !important;
     border-radius: 50px !important;
     box-shadow: 0px 0px 100vw 0px rgba(0, 0, 0, 1);
+    gap: 0px !important;
 }
 
 .addTaskMenu {
@@ -290,7 +300,7 @@
     position: absolute;
     right: -100rem;
     transform-origin: right;
-    transform: translateX(-115rem) translateY(0);
+    transform: translateX(-110rem) translateY(0);
     transition: transform 0.6s ease-in-out;
 }
 
@@ -299,6 +309,28 @@
     position: absolute;
     right: -100rem;
     transform-origin: right;
-    transform: translateX(115rem) translateY(0);
+    transform: translateX(110rem) translateY(0);
     transition: transform 0.6s ease-in-out;
+}
+
+.addTaskHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#closeAddTaksButton {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    border: none;
+    padding: 0px;
+}
+
+#closeAddTaksButton :hover {
+    cursor: pointer;
+}
+
+@media (max-width: 428px) {
+    
 }

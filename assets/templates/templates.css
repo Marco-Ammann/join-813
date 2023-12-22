@@ -183,16 +183,16 @@ a {
     align-items: center;
     width: 3rem;
     height: 3rem;
-    border-radius:50%;
+    border-radius: 50%;
     background: #FFF;
-    border: solid 0.25rem  #2A3647;
+    border: solid 0.25rem #2A3647;
 }
 
-.header-icon:hover{
-    background:  #0C2E621F;
+.header-icon:hover {
+    background: #0C2E621F;
 }
 
-.header-icon-text{
+.header-icon-text {
     color: #29ABE2;
     font-size: 1.5rem;
     font-weight: 700;
@@ -202,7 +202,7 @@ a {
     content: url("../img/Desktop/general_elements/Help/hover.svg");
 }
 
-.container-drop-down{
+.container-drop-down {
     top: 0;
     bottom: 0;
     right: 0;
@@ -215,7 +215,7 @@ a {
     display: none;
 }
 
-.drop-down-menu{
+.drop-down-menu {
     z-index: 10;
     display: none;
     position: absolute;
@@ -231,19 +231,20 @@ a {
     align-items: flex-start;
 }
 
-.drop-down-link{
-line-height: 120%;
-color:#CDCDCD;
-display: flex;
-width: 6.125rem;
-height: 1.875rem;
-padding: 0.5rem 1rem;
-align-items: center;
-text-wrap: nowrap;
+.drop-down-link {
+    line-height: 120%;
+    color: #CDCDCD;
+    display: flex;
+    width: 6.125rem;
+    height: 1.875rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    text-wrap: nowrap;
 }
 
-.drop-down-link:hover{
-    background-color: #2A3D59;;
+.drop-down-link:hover {
+    background-color: #2A3D59;
+    ;
 }
 
 .content {
