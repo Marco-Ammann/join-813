@@ -7,29 +7,31 @@
 
         <div class="sidebarMainButtons" id="sidebarMainButtons">
             <a href="summary.html" class="sidebarMainButton">
-                <div class="menuButtons hover-menu-btn" id="linkSummary" >
+                <div class="menuButtons hover-menu-btn" id="linkSummary">
                     <img id="imageSummary" src="./assets\img\Desktop\general_elements\menu_symbols/summary_gray.svg" />
                     <span id="textSummary">Summary</span>
                 </div>
             </a>
 
-            <a href="add_task.html" class="sidebarMainButton" >
-                <div class="menuButtons hover-menu-btn" id="linkAdd_task" >
-                    <img id="imageAdd_task" src="./assets\img\Desktop\general_elements\menu_symbols/add_task_gray.svg" />
+            <a href="add_task.html" class="sidebarMainButton">
+                <div class="menuButtons hover-menu-btn" id="linkAdd_task">
+                    <img id="imageAdd_task"
+                        src="./assets\img\Desktop\general_elements\menu_symbols/add_task_gray.svg" />
                     <span id="textAdd_task">Add Task</span>
                 </div>
             </a>
 
-            <a href="board.html" class="sidebarMainButton" >
-                <div class="menuButtons hover-menu-btn" id="linkBoard" >
+            <a href="board.html" class="sidebarMainButton">
+                <div class="menuButtons hover-menu-btn" id="linkBoard">
                     <img id="imageBoard" src="./assets\img\Desktop\general_elements\menu_symbols/board_gray.svg" />
                     <span id="textBoard">Board</span>
                 </div>
             </a>
 
-            <a href="contacts.html" class="sidebarMainButton" >
-                <div class="menuButtons hover-menu-btn" id="linkContacts" >
-                    <img id="imageContacts" src="./assets\img\Desktop\general_elements\menu_symbols/contacts_gray.svg" />
+            <a href="contacts.html" class="sidebarMainButton">
+                <div class="menuButtons hover-menu-btn" id="linkContacts">
+                    <img id="imageContacts"
+                        src="./assets\img\Desktop\general_elements\menu_symbols/contacts_gray.svg" />
                     <span id="textContacts">Contacts</span>
                 </div>
             </a>
@@ -46,10 +48,33 @@
 
     <div class="header">
         <p>Kanban Project Managment Tool</p>
-        <div class="headerButtons" id="headerButtons">
-            <a href="help.html"><img id="helpImageDefault" src="./assets/img/Desktop/general_elements/Help/default.svg" /></a>
-            <a href="#"><img id="headerIcon"
-                    src=".\assets\Please sort in i dont know where to put it\Frame 31.svg" /></a>
+
+        <div class="header-buttons" id="headerButtons">
+
+            <a href="help.html"><img id="helpImageDefault"
+                    src="./assets/img/Desktop/general_elements/Help/default.svg" /></a>
+
+            <a href="#">
+                <div id="headerIcon" class="header-icon" onclick="moveDropDownMenu()">
+                    <div class="header-icon-text" id="headerIconText"></div>
+                </div>
+            </a>
+
+            <div class="container-drop-down" id="containerDropDown" onclick="moveDropDownMenu()">
+                <div class="drop-down-menu" id="dropDownMenu" onclick="stopPropagation(event)">
+                    <a href="legal_notice.html">
+                        <div class="drop-down-link">Legal Notice</div>
+                    </a>
+                    <a href="privacy-policy.html">
+                        <div class="drop-down-link">Privacy Policy</div>
+                    </a>
+                    <a href="index.html">
+                        <div class="drop-down-link" id="logOut">Log out</div>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
+
 </div>

@@ -7,14 +7,15 @@ let nameOfPage = [
     "privacy-policy",
     "legal_notice",
 ];
-
 let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
 
 let currentUser = [];
+let dropDownIsOpen = false;
 
 async function init() {
     await includeHTML();
     await loadCurrentUser();
+    await getInitialsCurrentUser();
     await whichPageIsCurrent();
 }
 
@@ -45,7 +46,7 @@ async function loadCurrentUser() {
         currentUser = JSON.parse(await getItem("currentUser"));
     } catch (e) {
         console.error("Loading error:", e);
-        console.log('CurrentUserFail');
+        console.log("CurrentUserFail");
     }
 }
 
@@ -112,3 +113,38 @@ function markEffects(x) {
     document.getElementById(`${x}`).classList.remove(`${x}-link`);
     document.getElementById(`${x}`).classList.add("current-color-hover");
 }
+
+async function getInitialsCurrentUser() {
+    let textArea = document.getElementById("headerIconText");
+    let userName = currentUser["name"];
+    let firstLastName = userName.split(" ");
+    let firstLetter = firstLastName[0].charAt(0).toLocaleUpperCase();
+    if (firstLastName[1]) {
+        let secondLetter = firstLastName[1].charAt(0).toLocaleUpperCase();
+        textArea.innerHTML = firstLetter + secondLetter;
+    } else {
+        textArea.innerHTML = firstLetter;
+    }
+}
+
+function moveDropDownMenu() {
+    let dropDownMenu = document.getElementById("dropDownMenu");
+    let headerIcon = document.getElementById("headerIcon");
+    let container = document.getElementById('containerDropDown');
+    if (dropDownIsOpen === false) {
+        dropDownMenu.style.display = "block";
+        headerIcon.style.background = "#0C2E621F";
+        container.style.display = "block";
+        dropDownIsOpen = true;
+    } else {
+        dropDownMenu.style.display = "none";
+        headerIcon.style.background = "#FFF";
+        container.style.display = "none";
+        dropDownIsOpen = false;
+    }
+}
+
+function stopPropagation(event){
+    event.stopPropagation();
+}
+
