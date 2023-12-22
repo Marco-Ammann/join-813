@@ -61,14 +61,12 @@
     background-color: #a8a8a8;
 }
 
-/* TODO: Firefox & Safari compatibility */
-
 .main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex: 1;
-    padding: 4rem 0 0 6rem;
+    padding: 4rem 4rem 0;
     gap: 2rem;
 }
 
@@ -348,6 +346,8 @@
     gap: 2rem;
 }
 
+/* TODO: Add hover and click styles to all pages */
+
 .popup-input input {
     display: flex;
     width: calc(25.0625rem - 2.8125rem);
@@ -465,3 +465,6 @@
         transform: translateX(0);
     }
 }
+
+/* Media Queries */
+/* TODO: Add Mobile Design */

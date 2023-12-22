@@ -45,16 +45,18 @@ function renderSummaryGreeting() {
  * @param {DOM element} greet 
  */
 async function loadUserGreeting(greet) {
-    console.log('run current user');
     let nameElement = greet.lastElementChild;
     let timeElement = greet.firstElementChild;
     try {
         let currentUser = JSON.parse(await getItem("currentUser"));
-        nameElement.innerHTML = currentUser['name'];
+        if (!currentUser['name']) {
+            nameElement.remove();
+            timeElement.innerHTML = timeElement.innerHTML.slice(0, -1);
+        } else {
+            nameElement.innerHTML = currentUser['name'];
+        };
     } catch (e) {
         console.error("Loading error:", e);
-        nameElement.remove();
-        timeElement.innerHTML = timeElement.innerHTML.slice(0, -1);
     }
 }
 
