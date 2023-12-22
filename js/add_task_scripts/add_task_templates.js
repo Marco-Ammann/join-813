@@ -1,3 +1,11 @@
+/**
+ * Generates HTML for each contact in the dropdown list for assigning contacts to a task.
+ * It creates a div element for each contact with their name and a checkbox for selection.
+ * 
+ * @param {Object} contact - The contact object containing name and color.
+ * @param {number} index - The index of the contact in the contacts array.
+ * @returns {string} - The HTML string for the contact div element.
+ */
 function generateAssignContactsHTML(contact, index) {
   const name = contact.name;
   return `
@@ -14,6 +22,14 @@ function generateAssignContactsHTML(contact, index) {
 }
 
 
+/**
+ * Creates HTML for each category option in the dropdown list for selecting a task category.
+ * It generates a div element for each category option, making it selectable.
+ * 
+ * @param {string} category - The category name.
+ * @param {number} index - The index of the category in the categories array.
+ * @returns {string} - The HTML string for the category div element.
+ */
 function generateCategoryOptionsHTML(category, index) {
   return `
       <div class="categoryDiv" id="categoryOption${index}" onclick="switchTaskCategoryClickedState('${index}')">${category}</div>
@@ -21,15 +37,30 @@ function generateCategoryOptionsHTML(category, index) {
 }
 
 
+/**
+ * Generates the HTML string for an avatar element based on the provided contact information.
+ * It creates a div element representing the contact's avatar, styled with the contact's color 
+ * and initials derived from their name.
+ * 
+ * @param {object} contact - The contact object containing the name and color.
+ * @returns {string} - The HTML string for the avatar div element.
+ */
 function generateAvatar(contact) {
   return `
-    <div class="contact-avatar" style="background-color: ${
-      contact.color
-    };">${getInitials(contact.name)}</div>
+    <div class="contact-avatar" style="background-color: ${contact.color};">${getInitials(contact.name)}</div>
     `;
 }
 
 
+/**
+ * Generates the HTML string for a subtask element. It creates a list item for the subtask
+ * with options to edit or delete it. The function also sets up an input field for editing
+ * the subtask, along with icons for saving or canceling the edit.
+ * 
+ * @param {string} subtask - The text of the subtask.
+ * @param {number} index - The index of the subtask, used for assigning unique IDs.
+ * @returns {string} - The HTML string for the subtask element, including editing controls.
+ */
 function generateSubtaskHTML(subtask, index) {
   return /*HTML*/ `
 

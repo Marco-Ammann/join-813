@@ -1,3 +1,10 @@
+let subtasks = [];
+
+
+/**
+ * Adds a subtask to the list of subtasks and updates the UI.
+ * The subtask text is trimmed and added only if it's not empty.
+ */
 function setSubtask() {
   const subtaskInput = document.getElementById("subtask-input");
   const subtaskText = subtaskInput.value.trim();
@@ -10,7 +17,10 @@ function setSubtask() {
 }
 
 
-// Funktion zum Aktualisieren der Subtask-Liste
+/**
+ * Updates the UI with the current list of subtasks.
+ * Iterates over the subtasks array and appends each subtask to the subtask container.
+ */
 function updateSubtaskList() {
   const subtaskContainer = document.getElementById("subTasks");
   subtaskContainer.innerHTML = "";
@@ -22,13 +32,21 @@ function updateSubtaskList() {
 }
 
 
+/**
+ * Clears the subtask input field.
+ */
 function clearSubtaskInput() {
   const subtaskInput = document.getElementById("subtask-input");
   subtaskInput.value = "";
 }
 
 
-// Funktion zum Bearbeiten eines Subtasks
+/**
+ * Initiates the editing of a subtask.
+ * Hides the subtask display element and shows the subtask input field with the current subtask value.
+ *
+ * @param {number} index - Index of the subtask being edited.
+ */
 function editSubtask(index) {
   const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
   const editSubtaskInput = document.getElementById(`editInput${index}`);
@@ -46,7 +64,11 @@ function editSubtask(index) {
 }
 
 
-// Funktion zum Speichern eines bearbeiteten Subtasks
+/**
+ * Saves the edited subtask text to the subtasks array and updates the UI.
+ *
+ * @param {number} index - Index of the subtask being saved.
+ */
 function saveEditedSubtask(index) {
   const editSubtaskInput = document.getElementById(`editInput${index}`);
   subtasks[index] = editSubtaskInput.value;
@@ -54,7 +76,12 @@ function saveEditedSubtask(index) {
 }
 
 
-// Funktion zum Abbrechen der Bearbeitung eines Subtasks
+/**
+ * Cancels the editing of a subtask.
+ * Hides the subtask input field and displays the original subtask text.
+ *
+ * @param {number} index - Index of the subtask being canceled.
+ */
 function cancelEditSubtask(index) {
   const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
   const editSubtaskInput = document.getElementById(`editInput${index}`);
@@ -68,7 +95,11 @@ function cancelEditSubtask(index) {
 }
 
 
-// Funktion zum Löschen eines Subtasks
+/**
+ * Deletes a subtask from the list and updates the UI.
+ *
+ * @param {number} index - Index of the subtask being deleted.
+ */
 function deleteSubtask(index) {
   const subTaskDiv = document.getElementById(`subTaskDiv${index}`);
   subTaskDiv.remove();
@@ -77,6 +108,10 @@ function deleteSubtask(index) {
 }
 
 
+/**
+ * Adds focus styling to the subtask input area.
+ * Hides the plus symbol and shows the subtask creation UI.
+ */
 function addFocusClass() {
   const inputDiv = document.getElementById("subtask-input-div");
   inputDiv.classList.add("input-div-focused");
@@ -91,6 +126,10 @@ function addFocusClass() {
 }
 
 
+/**
+ * Removes focus styling from the subtask input area.
+ * Shows the plus symbol and hides the subtask creation UI.
+ */
 function removeFocusClass() {
   const inputDiv = document.getElementById("subtask-input-div");
   inputDiv.classList.remove("input-div-focused");
@@ -103,6 +142,12 @@ function removeFocusClass() {
 }
 
 
+/**
+ * Handles mouse click events to detect clicks outside the subtask input area.
+ * Removes focus styling if a click outside is detected.
+ *
+ * @param {Event} event - The mouse event.
+ */
 function handleMouseDown(event) {
   const inputDiv = document.getElementById("subtask-input-div");
   if (!inputDiv.contains(event.target)) {
@@ -112,7 +157,11 @@ function handleMouseDown(event) {
 }
 
 
-// Funktion zum Speichern des bearbeiteten Subtasks
+/**
+ * Saves the currently edited subtask when the check icon is clicked.
+ *
+ * @param {number} index - Index of the subtask being saved.
+ */
 function handleCheckClick(index) {
   const editSubtaskInput = document.getElementById(`editInput${index}`);
   subtasks[index] = editSubtaskInput.value;
@@ -120,7 +169,13 @@ function handleCheckClick(index) {
 }
 
 
-// Event-Handler für das Klicken außerhalb des bearbeiteten Subtasks
+/**
+ * Handles clicks outside the subtask edit area.
+ * Saves the edited subtask text if a click outside the edit area is detected.
+ *
+ * @param {Event} event - The mouse event.
+ * @param {number} index - Index of the subtask being edited.
+ */
 function handleOutsideClick(event, index) {
   const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
   const inputElement = document.getElementById(`editInput${index}`);

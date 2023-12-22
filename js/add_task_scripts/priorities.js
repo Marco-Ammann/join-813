@@ -1,3 +1,8 @@
+/**
+ * Sets the priority for a task and updates the UI accordingly.
+ * 
+ * @param {string} prio - The priority level (e.g., 'urgent', 'medium', 'low').
+ */
 function setPrio(prio) {
   clickedPriority = prio;
   resetPriorityClasses();
@@ -11,6 +16,12 @@ function setPrio(prio) {
 }
 
 
+/**
+ * Toggles the color of a button based on its priority class.
+ * 
+ * @param {string} elementId - The ID of the button element.
+ * @param {string} elementClass - The class name representing the priority level.
+ */
 function switchButtonColor(elementId, elementClass) {
   const element = document.getElementById(elementId);
 
@@ -22,6 +33,9 @@ function switchButtonColor(elementId, elementClass) {
 }
 
 
+/**
+ * Resets the visual styles of all priority buttons to their default state.
+ */
 function resetPriorityClasses() {
   let priorities = ["urgent", "medium", "low"];
 
