@@ -110,6 +110,8 @@ function deleteContact(i) {
 
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
+
+    closePopUp();
 }
 
 
@@ -241,7 +243,7 @@ function returnContactListHTML(num, letter, i, color, initials, name, email) {
                 <div class="user-icon" style="background-color: ${color};">${initials}</div>
                 <div class="username">
                     <span>${name}</span>
-                    <a href="mailto:${email}">${email}</a>
+                    <a>${email}</a>
                 </div>
             </div>`;
     }
