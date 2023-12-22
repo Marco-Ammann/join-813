@@ -143,6 +143,11 @@ body {
     align-items: center;
 }
 
+.toDoListCategories img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .toDoCard {
     display: flex;
     flex-direction: column;
@@ -258,8 +263,8 @@ body {
 .listContainer {
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    height: 480px;
+    overflow-x: auto;
+    height: calc(100vh - 20.332390rem);
     gap: 1rem;
 }
 
