@@ -114,19 +114,29 @@ function markEffects(x) {
     document.getElementById(`${x}`).classList.add("current-color-hover");
 }
 
+/**
+ * get the first letter of the names from Users
+ *
+ */
 async function getInitialsCurrentUser() {
     let textArea = document.getElementById("headerIconText");
     let userName = currentUser["name"];
-    let firstLastName = userName.split(" ");
-    let firstLetter = firstLastName[0].charAt(0).toLocaleUpperCase();
-    if (firstLastName[1]) {
-        let secondLetter = firstLastName[1].charAt(0).toLocaleUpperCase();
-        textArea.innerHTML = firstLetter + secondLetter;
-    } else {
-        textArea.innerHTML = firstLetter;
+    if (!(currentUser == "#everyone")) {
+        let firstLastName = userName.split(" ");
+        let firstLetter = firstLastName[0].charAt(0).toLocaleUpperCase();
+        if (firstLastName[1]) {
+            let secondLetter = firstLastName[1].charAt(0).toLocaleUpperCase();
+            textArea.innerHTML = firstLetter + secondLetter;
+        } else {
+            textArea.innerHTML = firstLetter;
+        }
     }
 }
 
+/**
+ * open and close the dropdownmenu
+ *
+ */
 function moveDropDownMenu() {
     let dropDownMenu = document.getElementById("dropDownMenu");
     let headerIcon = document.getElementById("headerIcon");
@@ -144,12 +154,21 @@ function moveDropDownMenu() {
     }
 }
 
+/**
+ * add clickfunction about all the page
+ *
+ * @param {Event-Object} event - clickevent about the page, without dropdownmenu
+ */
 function stopPropagation(event) {
     event.stopPropagation();
 }
 
+/**
+ * User logout and earse datas
+ *
+ */
 async function logOut() {
-    currentUser = '';
+    currentUser = "";
     console.log(currentUser);
     await setItem("currentUser", JSON.stringify(currentUser));
     localStorage.removeItem("joinInputs");
