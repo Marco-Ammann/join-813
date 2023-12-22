@@ -110,6 +110,14 @@
     background-color: #2A3647;
 }
 
+.add-new-button:hover, .popup-buttons button:last-child:hover {
+    background: #29ABE2;
+    border: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* TODO: Remove Button Shifting on hover */
+
 .add-new-button span {
     font-size: 1.3125rem;
     font-weight: 700;
@@ -150,6 +158,18 @@
     padding: 0.9375rem 1.5rem;
     align-items: center;
     border-radius: 0.625rem;
+}
+
+.user:hover:not(.contact-selected) {
+    background: var(--Boton-gradient, linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%));
+}
+
+.user,
+.info-buttons div,
+.add-new-button,
+button,
+.x-button {
+    cursor: pointer;
 }
 
 .user-icon {
@@ -229,6 +249,13 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+.info-buttons div:hover {
+    filter: invert(61%) sepia(25%) saturate(1328%) hue-rotate(155deg) brightness(91%) contrast(94%);
+    font-weight: 700;
+}
+
+/* TODO: Remove button shifting */
 
 .info-buttons div img {
     width: 1.5rem;
@@ -320,6 +347,14 @@
     padding: 0.25rem;
 }
 
+.x-button {
+    border-radius: 50%;
+}
+
+.x-button:hover {
+    background-color: #EEE;
+}
+
 .popup-profile {
     display: flex;
     justify-content: center;
@@ -340,13 +375,13 @@
     height: 4rem;
 }
 
+/* TODO: Add Transitions and animations */
+
 .popup-input {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
-
-/* TODO: Add hover and click styles to all pages */
 
 .popup-input input {
     display: flex;
@@ -410,6 +445,18 @@
     border: 1px solid #2A3647;
 }
 
+.popup-buttons button:first-child:hover {
+    border: 2px solid #29ABE2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #29ABE2;
+}
+
+.popup-buttons button:first-child:hover img {
+    filter: invert(61%) sepia(25%) saturate(728%) hue-rotate(155deg) brightness(91%) contrast(94%);
+}
+
+/* TODO: Remove button Shifting */
+
 .popup-buttons button:last-child {
     color: #FFF;
     font-size: 1.3125rem;
@@ -456,7 +503,9 @@
 /* Animations */
 
 @keyframes slideInOut {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(calc(44.5rem + 8px));
     }
 
