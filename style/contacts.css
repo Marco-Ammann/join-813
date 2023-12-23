@@ -255,8 +255,16 @@ button,
 }
 
 .info-buttons div:hover {
-    filter: invert(61%) sepia(25%) saturate(1328%) hue-rotate(155deg) brightness(91%) contrast(94%);
+    color: #29ABE2;
     font-weight: 700;
+}
+
+.info-buttons div:first-child:hover img {
+    content: url('../assets/img/Desktop/contacts/edit_blue.svg');
+}
+
+.info-buttons div:last-child:hover img {
+    content: url('../assets/img/Desktop/contacts/delete_blue.svg');
 }
 
 .info-buttons div span::after {
@@ -270,6 +278,7 @@ button,
 
 .info-buttons div img {
     width: 1.5rem;
+    height: 1.5rem;
 }
 
 .info-me {
@@ -407,7 +416,7 @@ button,
     border-radius: 0.625rem;
     border: 1px solid var(--Style, #D1D1D1);
     font-size: 1.25rem;
-    background: url(../assets/img/Desktop/contacts/person-grey.svg) no-repeat scroll calc(100% - 1.3125rem) 50%;
+    background: url('../assets/img/Desktop/contacts/person-grey.svg') no-repeat scroll calc(100% - 1.3125rem) 50%;
 }
 
 .popup-input input:focus {
@@ -416,11 +425,11 @@ button,
 }
 
 .popup-input input:nth-child(2) {
-    background-image: url(../assets/img/Desktop/contacts/mail-grey.svg);
+    background-image: url('../assets/img/Desktop/contacts/mail-grey.svg');
 }
 
 .popup-input input:nth-child(3) {
-    background-image: url(../assets/img/Desktop/contacts/call-grey.svg);
+    background-image: url('../assets/img/Desktop/contacts/call-grey.svg');
 }
 
 .popup-input input::placeholder {
@@ -470,7 +479,7 @@ button,
 }
 
 .popup-buttons button:first-child:hover img {
-    filter: invert(61%) sepia(25%) saturate(728%) hue-rotate(155deg) brightness(91%) contrast(94%);
+    content: url('../assets/img/Desktop/contacts/iconoir_cancel_blue.svg');
     transition: 100ms ease-in-out;
 }
 
