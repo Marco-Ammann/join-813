@@ -54,29 +54,36 @@ async function loadCurrentUser() {
  * Find the currentpage with Url and Names of Content
  *
  */
-//TODO: Clean Code
 async function whichPageIsCurrent() {
     let url = window.location.pathname;
     for (let i = 0; i < nameOfPage.length; i++) {
         const element = nameOfPage[i];
         let smalLetter = element.toLowerCase();
         if (url.includes(smalLetter)) {
-            if (smalLetter === "help") {
-                partDisplayNone("helpImageDefault");
-            }
-            if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
-                if (currentUser == "#everyone") {
-                    partDisplayNone("headerButtons");
-                    partDisplayNone("sidebarMainButtons");
-                    markEffects(smalLetter);
-                }
-                markEffects(smalLetter);
-                partDisplayNone("headerButtons");
-            }
-            if (!filterExcludePages.includes(smalLetter)) {
-                currentLinkUsed(element);
-            }
+            nameOfPages(smalLetter, element);
         }
+    }
+}
+
+/**
+ * requiroments from the name of pages
+ * 
+ * @param {string} smalLetter - the name from the page
+ * @param {string} element - a Page from the Array nameOfPage
+ */
+function nameOfPages(smalLetter, element){
+    if (smalLetter === "help") {
+        partDisplayNone("helpImageDefault");
+    }
+    if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
+        if (currentUser == "#everyone") {
+            partDisplayNone("sidebarMainButtons");
+            markEffects(smalLetter);
+        }
+        markEffects(smalLetter);
+    }
+    if (!filterExcludePages.includes(smalLetter)) {
+        currentLinkUsed(element);
     }
 }
 

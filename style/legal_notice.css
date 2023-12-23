@@ -61,3 +61,7 @@
 .legal-notice-content a:hover {
   color: #31c1ff;
 }
+
+.header-buttons {
+  display: none;
+}

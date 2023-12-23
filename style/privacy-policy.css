@@ -43,5 +43,7 @@
     margin: 0 0 2.19rem 0;
 }
 
-
+.header-buttons {
+    display: none;
+}
 
