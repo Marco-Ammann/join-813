@@ -80,18 +80,20 @@
 
                                 <div class="form-div">
                                     <span class="form-span">Assigned to</span>
-                                    <div class="input-div">
-                                        <input id="add-contact-input" class="add-contact-input" type="text"
-                                            value="Select contacts to assign" required
-                                            onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                    <div class="input-div-wrapper">
+                                      <div class="input-div">
+                                        <input id="add-contact-input" class="add-contact-input" type="text" value="Select contacts to assign"
+                                          required
+                                          onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                         <img class="arrow-symbol input-symbol" id="arrowAssign"
-                                            src="assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                            onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                          src="assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
+                                          onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                      </div>
+                                      <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
                                     </div>
-
-                                    <div class="assignDropdown d-none" id="assignDropdown"></div>
                                     <div class="assigned-contacts" id="assigned-contacts"></div>
-                                </div>
+                      
+                                  </div>
                             </div>
 
                             <div class="seperator-vertical"></div>
@@ -137,20 +139,19 @@
 
                                 <div class="form-div">
                                     <span class="form-span required-asteriks">Category</span>
-                                    <div class="input-div">
+                                    <div class="input-div-wrapper">
+                                      <div class="input-div">
                                         <input onclick="switchVisibility('categoryDropdown')" id="add-category-input"
-                                            class="add-category-input" type="text" value="Select task category"
-                                            required />
-
-                                        <img onclick="switchVisibility('categoryDropdown')"
-                                            class="arrow-symbol input-symbol" id="arrowCategory"
-                                            src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
-                                            alt="Pfeil runter" />
+                                          class="add-category-input" type="text" value="Select task category" required />
+                      
+                                        <img onclick="switchVisibility('categoryDropdown')" class="arrow-symbol input-symbol"
+                                          id="arrowCategory" src="assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter" />
+                                      </div>
+                      
+                                      <div class="categoryDropdown-popup d-none" id="categoryDropdown"></div>
                                     </div>
-                                    <p class="input-required-warning invisible" id="requiredTextCategory">This field is
-                                        required</p>
-                                    <div class="categoryDropdown d-none" id="categoryDropdown"></div>
-                                </div>
+                                    <p class="input-required-warning invisible" id="requiredTextCategory">This field is required</p>
+                                  </div>
 
                                 <div class="form-div">
                                     <span class="form-span">Subtasks</span>
