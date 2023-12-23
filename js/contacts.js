@@ -268,11 +268,11 @@ function returnContactInfoHTML(color, initials, name, email, phone, i) {
             <div class="info-buttons">
                 <div onclick="openEditContact(${i})">
                     <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
-                    <span>Edit</span>
+                    <span name="Edit">Edit</span>
                 </div>
                 <div onclick="deleteContact(${i})">
                     <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
-                    <span>Delete</span>
+                    <span name="Delete">Delete</span>
                 </div>
             </div>
         </div>
