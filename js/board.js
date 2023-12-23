@@ -127,7 +127,7 @@ function addDnonToAddTaks() {
     setTimeout(() => {
         const div = document.getElementById('animationDiv');
         div.classList.add('hidden');
-    }, 300);
+    }, 400);
 
 
 
