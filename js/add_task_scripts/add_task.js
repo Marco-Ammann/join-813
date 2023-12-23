@@ -21,7 +21,7 @@ function loadAddTaskPage() {
  * It then triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
  */
-function validateAndCreateTaskPopup() {
+function validateAndCreateTask() {
   var isValid = true;
   isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
   isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
