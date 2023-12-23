@@ -308,6 +308,10 @@ button,
     animation: slideInPopUp 300ms ease-out;
 }
 
+.popup[closing] {
+    animation: slideOutPopUp 300ms ease-out;
+}
+
 .popup-title {
     background-color: #2A3647;
     display: flex;
@@ -388,7 +392,7 @@ button,
     height: 4rem;
 }
 
-/* TODO: Add Transitions and animations */
+/* TODO: Add Animations */
 
 .popup-input {
     display: flex;
@@ -469,6 +473,7 @@ button,
 
 .popup-buttons button:first-child:hover img {
     filter: invert(61%) sepia(25%) saturate(728%) hue-rotate(155deg) brightness(91%) contrast(94%);
+    transition: 100ms ease-in-out;
 }
 
 .popup-buttons button:last-child {
@@ -496,7 +501,7 @@ button,
     border-radius: 1.25rem;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-    transform: translateX(calc(44.5rem + 8px));
+    transform: translateX(calc(100vw - calc(47.25rem + 16px)));
 }
 
 .message span {
@@ -521,7 +526,7 @@ button,
 
     0%,
     100% {
-        transform: translateX(calc(44.5rem + 8px));
+        transform: translateX(calc(100vw - calc(47.25rem + 16px)));
     }
 
     10%,
@@ -536,12 +541,38 @@ button,
     }
 
     to {
-        transform: translateX(0)
+        transform: translateX(0);
     }
 }
 
-@keyframes slideOut {
+@keyframes slideOutPopUp {
+    from {
+        transform: translateX(0);
+    }
 
+    to {
+        transform: translateX(calc(75.75rem + calc(calc(100vw - 75.75rem) / 2)));
+    }
+}
+
+@keyframes slideInInfo {
+    from {
+        transform: translateX(calc(100vw - calc(47.25rem + 16px)));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutInfo {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100vw - calc(47.25rem + 16px)));
+    }
 }
 
 /* Media Queries */

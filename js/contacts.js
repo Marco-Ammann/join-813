@@ -34,6 +34,8 @@ function renderContactList() {
 function openAddNewContact() {
     const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
+    const popUp = document.getElementById('popUp');
+
     document.getElementById('popUpTitle').innerHTML = 'Add contact'
     document.getElementById('popUpVector').classList.remove('vector-margin');
     popUpProfile.style.backgroundColor = '#D1D1D1';
@@ -45,7 +47,8 @@ function openAddNewContact() {
     popUpSubmit.parentNode.parentNode.onsubmit = function () { return addNewContact() };
     popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
     popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
-    document.getElementById('popUp').classList.remove('d-none');
+    popUp.classList.remove('d-none');
+    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
 }
 
 
@@ -57,6 +60,9 @@ function openEditContact(i) {
     const contact = contacts[i];
     const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
+    const popUp = document.getElementById('popUp');
+
+    document.getElementById('popUp')
     document.getElementById('popUpTitle').innerHTML = 'Edit contact';
     document.getElementById('popUpVector').classList.add('vector-margin');
     popUpProfile.style.backgroundColor = contact['color'];
@@ -70,7 +76,9 @@ function openEditContact(i) {
     document.getElementById('popUpName').value = contact['name'];
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
-    document.getElementById('popUp').classList.remove('d-none');
+    popUp.classList.remove('d-none');
+    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+
 }
 
 
@@ -79,25 +87,43 @@ function openEditContact(i) {
  * @param {number} i 
  */
 function openContact(i) {
+    let contactsInfo = document.getElementById('contactsInfo');
     renderContactList();
-    document.getElementById('contactsInfo').innerHTML = '';
+    contactsInfo.innerHTML = '';
+    
 
     let contact = contacts[i];
     let contactElement = document.getElementById(`contact${i}`);
     contactElement.classList.add('contact-selected');
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
+    contactsInfo.style = 'animation: slideInInfo 100ms ease-in-out;';
+    setTimeout(function () {
+        contactsInfo.style = '';
+    }, 100);
 }
 
 
 /**
  * Closes the pop up and cleans the input fields
  */
-function closePopUp() {
-    document.getElementById('popUp').classList.add('d-none')
-    document.getElementById('popUpName').value = '';
-    document.getElementById('popUpEmail').value = '';
-    document.getElementById('popUpPhone').value = '';
+function closePopUp(submitted) {
+    let popUp = document.getElementById('popUp');
+
+    if (!submitted) {
+        popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
+        setTimeout(function () {
+            popUp.classList.add('d-none');
+            document.getElementById('popUpName').value = '';
+            document.getElementById('popUpEmail').value = '';
+            document.getElementById('popUpPhone').value = '';
+        }, 300);
+    } else {
+        popUp.classList.add('d-none');
+        document.getElementById('popUpName').value = '';
+        document.getElementById('popUpEmail').value = '';
+        document.getElementById('popUpPhone').value = '';
+    }
 }
 
 
@@ -111,7 +137,7 @@ function deleteContact(i) {
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
 
-    closePopUp();
+    closePopUp(true);
 }
 
 
@@ -131,7 +157,7 @@ function editContact(i) {
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     let index = contacts.findIndex(c => c.id == lastId);
 
-    closePopUp();
+    closePopUp(true);
     openContact(index);
 }
 
@@ -160,19 +186,18 @@ function addNewContact() {
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     let index = contacts.findIndex(c => c.id == lastId);
 
-    closePopUp();
+    closePopUp(true);
     renderContactList();
     openContact(index);
-    showMessageAni();
+    playMessageAni();
 }
 
 
 /**
  * Displays the "Contact succesfully created" message for 2.5s
  */
-function showMessageAni() {
+function playMessageAni() {
     let message = document.getElementById('message');
-    void message.offsetWidth; // trigger reflow
     message.classList.remove('d-none');
     message.classList.add('message-animation'); // start animation
     setTimeout(function () { 
