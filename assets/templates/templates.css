@@ -185,7 +185,7 @@ a {
     height: 3rem;
     border-radius: 50%;
     background: #FFF;
-    border: solid 0.25rem #2A3647;
+    border: solid 3px #2A3647;
 }
 
 .header-icon:hover {
@@ -469,9 +469,9 @@ a {
     }
 
     .content {
-        margin: 5.5rem 0 5rem 0;
+        margin: calc(5rem + 4px) 0 5rem 0;
         padding: 3rem 1rem;
-        min-height: calc(100vh - 16.5rem);
+        min-height: calc(100vh - 16rem - 4px);
     }
 
     .sidebar {
@@ -544,6 +544,7 @@ a {
     .header-icon {
         width: 2.5rem;
         height: 2.5rem;
+        border-width: 2px;
     }
 
     .header-buttons {
@@ -558,6 +559,6 @@ a {
 
     .drop-down-menu {
         right: 0.5rem;
-        top: 5.5rem;
+        top: calc(5rem + 4px);
     }
 }
