@@ -21,7 +21,7 @@ function loadAddTaskPage() {
  * It then triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
  */
-function validateAndCreateTask() {
+function validateAndCreateTaskPopup() {
   var isValid = true;
   isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
   isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
@@ -34,6 +34,28 @@ function validateAndCreateTask() {
     setTimeout(function() {
       window.location.href = 'board.html';
     }, 1500);
+  }
+}
+
+
+/**
+ * Exclusively for add-Task popup window
+ * Validates form fields and creates a task if all validations pass. 
+ * It then triggers an animation to indicate that the task has been added
+ * and closes the Popup after a short delay.
+ */
+function validateAndCreateTaskPopup() {
+  var isValid = true;
+  isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
+  isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
+  isValid = validateField("due-date-input", "requiredTextDueDate") && isValid;
+  isValid = validateDropdown("add-category-input", "requiredTextCategory") && isValid;
+
+  if (isValid) {
+    createTask();
+    setTimeout(function() {
+      addDnonToAddTaks();
+    }, 500);
   }
 }
 
