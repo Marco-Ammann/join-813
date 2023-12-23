@@ -314,3 +314,5 @@ function returnContactInfoHTML(color, initials, name, email, phone, i) {
         </div>
     </div>`;
 }
+
+// TODO: Clean coding (JSDoc + Funtion Length / Script Length)
