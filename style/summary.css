@@ -184,3 +184,125 @@
     font-size: 4rem;
     color: #29ABE2;
 }
+
+.mobile-vector {
+    display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 428px) {
+
+    .summary-greeting,
+    .summary-title img:not(.mobile-vector) {
+        display: none;
+    }
+
+    .summary-title {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .summary-title h1 {
+        font-size: 2.9375rem;
+    }
+
+    .summary-title span {
+        font-size: 1.25rem;
+    }
+
+    .summary-title img {
+        height: unset;
+    }
+
+    .mobile-vector {
+        display: block;
+        width: 5.625rem;
+        margin-top: 0.5rem;
+    }
+
+    .summary-todos {
+        gap: 1.5rem;
+        margin-bottom: 0.76rem;
+    }
+
+    .summary-todos-badge {
+        width: 9.25rem;
+        height: 2.125rem;
+        padding: 2.375rem 1.1875rem;
+        gap: 0.625rem;
+        border-radius: 1.25rem;
+    }
+
+    .summary-todos-badge img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .summary-todos span {
+        font-size: 2.9375rem;
+    }
+
+    .summary-todos-badge p {
+        font-size: 0.875rem;
+    }
+
+    .summary-urgent {
+        width: 24.75rem;
+        height: 3.375rem;
+        padding: 1.75rem 0rem;
+        gap: 1.25rem;
+        border-radius: 1.25rem;
+    }
+
+    .summary-urgent-badge img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .summary-urgent-badge span {
+        font-size: 2.9375rem;
+    }
+
+    .summary-urgent h6 {
+        font-size: 1rem;
+    }
+
+    .summary-urgent img:not(.summary-urgent-badge) {
+        height: 4.25rem;
+    }
+
+    .summary-urgent-badge p,
+    .summary-urgent p {
+        font-size: 0.875rem;
+    }
+
+    .summary-board {
+        width: 24.75rem;
+        height: 24rem;
+        gap: 1.12rem
+    }
+
+    .summary-overview {
+        gap: 1.5rem;
+    }
+
+    .summary-overview-badge {
+        width: 7.25rem;
+        height: 4.125rem;
+        padding: 1.5625rem 0rem;
+        border-radius: 1.25rem;
+        gap: 0;
+    }
+
+    .summary-overview-badge span {
+        font-size: 2.9375rem;
+    }
+
+    .summary-overview-badge p {
+        font-size: 0.875rem;
+    }
+}
