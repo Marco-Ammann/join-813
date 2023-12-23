@@ -295,6 +295,10 @@ a {
     display: none !important
 }
 
+.mobile-logo {
+    display: none;
+}
+
 /* Media Queries */
 
 @media (min-width: 2541px) {
@@ -462,5 +466,92 @@ a {
 @media (max-width: 428px) {
     :root {
         font-size: 16px
+    }
+
+    .sidebar {
+        top: unset;
+        right: 0;
+        flex-direction: row;
+        width: 100%;
+        height: 5rem;
+        justify-content: center;
+    }
+
+    .sidebar img {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .sidebarImg,
+    .sidebarFooterButtons,
+    .header p,
+    .help {
+        display: none;
+    }
+
+    .sidebarMainButtons {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        gap: 0;
+        padding: 0 1rem;
+    }
+
+    .sidebarMainButtons :nth-child(1) {
+        order: 1;
+    }
+
+    .sidebarMainButtons :nth-child(2) {
+        order: 3;
+    }
+
+    .sidebarMainButtons :nth-child(3) {
+        order: 2;
+    }
+
+    .sidebarMainButtons :nth-child(4) {
+        order: 4;
+    }
+
+    .menuButtons {
+        width: 4.75rem;
+        height: 2.875rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.9375rem 0rem;
+        border-radius: 0.5rem;
+    }
+
+    .menuButtons span {
+        height: unset;
+        width: unset;
+        font-size: 0.875rem;
+    }
+
+    .header {
+        height: unset;
+        padding: 1.25rem 1rem;
+    }
+
+    .header-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .header-buttons {
+        padding: 0;
+    }
+
+    .mobile-logo {
+        display: block;
+        width: 2rem;
+        height: 2.4385rem;
+    }
+
+    .drop-down-menu {
+        right: 0.5rem;
+        top: 5.5rem;
     }
 }
