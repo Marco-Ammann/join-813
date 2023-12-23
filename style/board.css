@@ -303,18 +303,20 @@ body {
 .addTaskMenu {
     z-index: 10;
     position: absolute;
-    right: -100rem;
+    top: 50%;
+    left: 50%;
     transform-origin: right;
-    transform: translateX(-110rem) translateY(0);
+    transform: translateX(-50%) translateY(-50%);
     transition: transform 0.6s ease-in-out;
 }
 
 .transout {
     z-index: 10;
     position: absolute;
-    right: -100rem;
+    top: 50%;
+    left: 50%;
     transform-origin: right;
-    transform: translateX(110rem) translateY(0);
+    transform: translateX(50%) translateY(-50%);
     transition: transform 0.6s ease-in-out;
 }
 
