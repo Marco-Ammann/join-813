@@ -296,6 +296,7 @@ button,
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .popup {
@@ -304,6 +305,7 @@ button,
     border-radius: 5rem 1.875rem 1.875rem 5rem;
     background: #FFF;
     display: flex;
+    animation: slideInPopUp 300ms ease-out;
 }
 
 .popup-title {
@@ -454,13 +456,15 @@ button,
     color: #2A3647;
     background-color: #FFF;
     border: 1px solid #2A3647;
+    outline: 1px solid transparent;
 }
 
 .popup-buttons button:first-child:hover {
-    border: 2px solid #29ABE2;
-    margin: -1px;
+    border-color: #29ABE2;
+    outline-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #29ABE2;
+    transition: 100ms ease-in-out;
 }
 
 .popup-buttons button:first-child:hover img {
@@ -473,6 +477,7 @@ button,
     font-weight: 700;
     background: #2A3647;
     border: 0;
+    transition: 100ms ease-in-out;
 }
 
 .message-container {
@@ -500,7 +505,7 @@ button,
 }
 
 .message-animation {
-    animation: slideInOut 2.5s ease-in;
+    animation: slideInOutMessage 2.5s ease-in;
 }
 
 /* Interactive Styles */
@@ -512,7 +517,7 @@ button,
 
 /* Animations */
 
-@keyframes slideInOut {
+@keyframes slideInOutMessage {
 
     0%,
     100% {
@@ -523,6 +528,20 @@ button,
     90% {
         transform: translateX(0);
     }
+}
+
+@keyframes slideInPopUp {
+    from {
+        transform: translateX(calc(75.75rem + calc(calc(100vw - 75.75rem) / 2)));
+    }
+
+    to {
+        transform: translateX(0)
+    }
+}
+
+@keyframes slideOut {
+
 }
 
 /* Media Queries */
