@@ -299,49 +299,49 @@ a {
 
 @media (min-width: 2541px) {
     :root {
-        font-size: 29px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2541px) {
     :root {
-        font-size: 27.5px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2410px) {
     :root {
-        font-size: 26px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2279px) {
     :root {
-        font-size: 25px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2192px) {
     :root {
-        font-size: 24px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2105px) {
     :root {
-        font-size: 23px
+        font-size: 20px
     }
 }
 
 @media (max-width: 2018px) {
     :root {
-        font-size: 22px
+        font-size: 20px
     }
 }
 
 @media (max-width: 1931px) {
     :root {
-        font-size: 21px
+        font-size: 20px
     }
 }
 

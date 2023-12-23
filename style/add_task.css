@@ -228,6 +228,7 @@ leftside forms
   position: absolute;
   z-index: 999;
   top: 41rem;
+  left: 20.5rem;
   overflow: auto;
   flex-direction: column;
   gap: 0.5rem;
@@ -651,14 +652,14 @@ mediaquerrys
 
 
 
-@media (max-width: 930px) {
+@media (max-width: 1024px) {
 
   .content {
     padding: 4rem 3rem 0 3rem!important;
   }
 
   .add-tasks {
-    gap: 4rem;
+    gap: 3rem;
   }
 
 
@@ -703,6 +704,12 @@ mediaquerrys
     width: 100%;
   }
 
+  .input-div-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   .prio-buttons {
     display: flex;
     justify-content: space-around;
@@ -716,41 +723,42 @@ mediaquerrys
     flex: 1;
   }
 
+  .assignDropdown {
+    position: relative;
+    top: -0.35rem;
+    left: 0rem;
+    width: calc(100% + 0.2rem);
+  }
+
   .categoryDropdown {
-    box-sizing: border-box;
-    width: 27.6rem;
-    border-bottom-left-radius: 0.625rem;
-    border-bottom-right-radius: 0.625rem;
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid var(--border-default);
-    border-top: none;
-    position: absolute;
-    z-index: 5;
-    top: 64rem;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 1rem;
+    width: calc(100% + 0.2rem);
+    position: relative;
+    top: -0.4rem;
+    left: 0rem;
   }
 
   .footer-container {
     width: 100%;
+    margin-bottom: 1rem;
   }
 }
 
 
 @media (max-width: 590px){
+  .add-tasks {
+    gap: 1rem;
+  }
+
   .content {
     padding: 3rem 2rem 1rem 2rem!important;
   }
 
   .footer-container {
     display: flex;
-    flex-direction: column-reverse;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
     justify-content: center;
+    margin-bottom: 0;
   }
 
   .footer-btn-container {
