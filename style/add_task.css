@@ -166,10 +166,12 @@ image styles
   height: 1.5rem;
   width: 1.5rem;
 }
+
 #mediumSymbol {
   height: 1.5rem;
   width: 1.5rem;
 }
+
 #lowSymbol {
   height: 1.5rem;
   width: 1.5rem;
@@ -582,49 +584,59 @@ Task Added Message
 .task-added-container {
   display: flex;
   width: 20.375rem;
-  height: 4.625rem; 
+  height: 4.625rem;
   justify-content: center;
   align-items: center;
-  border-radius: 1.25rem; 
+  border-radius: 1.25rem;
   background: #2A3647;
   color: #ffffff;
   font-family: 'Inter';
   font-size: 1.25rem;
-  gap: 10px; 
+  gap: 10px;
   position: absolute;
-  bottom: 0%; /* Startposition außerhalb des Bildschirms */
+  bottom: 0%;
+  /* Startposition außerhalb des Bildschirms */
   left: 50%;
   opacity: 0;
   transform: translateX(-50%);
-  transition: all 0.5s ease-in-out; /* weiches Ein- und Ausblenden */
+  transition: all 0.5s ease-in-out;
+  /* weiches Ein- und Ausblenden */
 }
 
 
 .task-added-icon {
   width: 1.5rem;
-  height: 1.5rem; 
+  height: 1.5rem;
   background-size: cover;
 }
 
 @keyframes slideUp {
   0% {
-    bottom: 0%; /* Startposition: unterhalb des Bildschirms */
-    opacity: 0; /* Startet unsichtbar */
+    bottom: 0%;
+    /* Startposition: unterhalb des Bildschirms */
+    opacity: 0;
+    /* Startet unsichtbar */
   }
 
   1% {
-    bottom: 1%; /* Startposition: unterhalb des Bildschirms */
-    opacity: 1; /* Startet unsichtbar */
+    bottom: 1%;
+    /* Startposition: unterhalb des Bildschirms */
+    opacity: 1;
+    /* Startet unsichtbar */
   }
+
   100% {
-    bottom: 50%; /* Endposition: in der Mitte des Bildschirms */
-    opacity: 1; /* vollständig sichtbar */
+    bottom: 50%;
+    /* Endposition: in der Mitte des Bildschirms */
+    opacity: 1;
+    /* vollständig sichtbar */
   }
 }
 
 
 .task-added-animate {
-  animation: slideUp 0.5s ease forwards; /* forwards behält den Endzustand bei */
+  animation: slideUp 0.5s ease forwards;
+  /* forwards behält den Endzustand bei */
 }
 
 
@@ -632,9 +644,32 @@ Task Added Message
 mediaquerrys
 ###################################################*/
 
-@media (max-width: 1320px) {
+
+
+@media (max-width: 428px) {}
+
+
+
+
+@media (max-width: 930px) {
+
+  .content {
+    padding: 4rem 3rem 0 3rem!important;
+  }
+
+  .add-tasks {
+    gap: 4rem;
+  }
+
+
+  .add-tasks-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
   .task-forms {
     flex-direction: column;
+    flex: 1;
   }
 
   .seperator-vertical {
@@ -643,6 +678,42 @@ mediaquerrys
 
   .forms-sides {
     height: auto;
+  }
+
+  .form-div {
+    flex: 1;
+  }
+
+
+  .form-subcontainer {
+    width: 100%;
+  }
+
+
+  .task-title-input, .task-description-textarea, .add-contact-input, .due-date-input, .add-category-input, .subtask-input, .edit-subtask-input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 0.625rem;
+    padding: 1.125rem 1rem;
+  }
+
+
+  .input-div {
+    width: 100%;
+  }
+
+  .prio-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    width: 100%;
+  }
+
+
+  .prio-btn {
+    gap: 1rem;
+    flex: 1;
   }
 
   .categoryDropdown {
@@ -663,4 +734,46 @@ mediaquerrys
     gap: 1rem;
     padding: 1rem;
   }
+
+  .footer-container {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 590px){
+  .content {
+    padding: 3rem 2rem 1rem 2rem!important;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .footer-btn-container {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.footer-required-field {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+}
+
+@media (max-width: 490px) {
+  .prio-buttons span{
+    display: none;
+  }
+
+  .createBtn img, .clearBtn img{
+    display: none;
+  }
+  
 }
