@@ -291,13 +291,18 @@ body {
     overflow-x: hidden;
 }
 
-.add-tasks {
+.add-tasks-popup {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 80vw;
     background-color: white;
     padding: 0 0 0 0 !important;
     padding: 4rem !important;
     border-radius: 50px !important;
     box-shadow: 0px 0px 100vw 0px rgba(0, 0, 0, 1);
-    gap: 0px !important;
+    gap: 0rem !important;
+    justify-content: space-between;
 }
 
 .addTaskMenu {
@@ -307,7 +312,7 @@ body {
     left: 50%;
     transform-origin: right;
     transform: translateX(-50%) translateY(-50%);
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.7s ease-in-out;
 }
 
 .transout {
@@ -316,8 +321,8 @@ body {
     top: 50%;
     left: 50%;
     transform-origin: right;
-    transform: translateX(100%) translateY(-50%);
-    transition: transform 0.6s ease-in-out;
+    transform: translateX(150%) translateY(-50%);
+    transition: transform 0.7s ease-in-out;
 }
 
 .addTaskHeader {
@@ -382,6 +387,12 @@ body {
   .footer-container {
     margin-top: 1rem;
   }
+
+  .subTasks {
+    height: 8rem;
+    width: 100%;
+    overflow: auto;
+}
 
 
 @media (max-width: 428px) {
