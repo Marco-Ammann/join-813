@@ -12,9 +12,13 @@ let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
 let currentUser = [];
 let dropDownIsOpen = false;
 
+/**
+ * automatic onload in HTML-Code
+ * 
+ */
 async function init() {
-    await includeHTML();
     await loadCurrentUser();
+    await includeHTML();
     await getInitialsCurrentUser();
     await whichPageIsCurrent();
 }
@@ -28,14 +32,24 @@ async function includeHTML() {
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         file = element.getAttribute("w3-include-html"); // "includes/desktop_template.html"
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = "Page not found";
-        }
+        
+        await loadTemplateAndExecuteFunctions(file, element);
     }
 }
+
+async function loadTemplateAndExecuteFunctions(file, element) {
+    let resp = await fetch(file);
+    if (resp.ok) {
+        let templateHTML = await resp.text();
+        element.innerHTML = templateHTML;
+        if (currentUser == "#everyone") {
+            partDisplayNone("sidebarMainButtons");
+        }
+    } else {
+        element.innerHTML = "Page not found";
+    }
+}
+
 
 /**
  * load CurrentUser from the Backend
@@ -76,10 +90,6 @@ function nameOfPages(smalLetter, element){
         partDisplayNone("helpImageDefault");
     }
     if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
-        if (currentUser == "#everyone") {
-            partDisplayNone("sidebarMainButtons");
-            markEffects(smalLetter);
-        }
         markEffects(smalLetter);
     }
     if (!filterExcludePages.includes(smalLetter)) {
