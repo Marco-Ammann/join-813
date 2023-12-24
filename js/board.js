@@ -47,13 +47,13 @@ function render(taskStatus, i) {
 
 function addProgressBar(i) {
     let taks = tasks[i]['subtasks'].length;
-    console.log(taks);
     if (taks > 1) {
-
+        let calculatetSubtaks = 100 / taks;
+        calculatetSubtaks = calculatetSubtaks * tasks[i]['subtasksDone'];
         content = document.getElementById(`progressbar${i}`);
         content.innerHTML =/*html*/`
-                <progress max="100" value="0"></progress>
-                <span>0/${tasks[i]['subtasks'].length} Subtaks</span>
+                <progress max="100" value="${calculatetSubtaks}"></progress>
+                <span>${tasks[i]['subtasksDone']}/${tasks[i]['subtasks'].length} Subtaks</span>
                 `
     };
 }
