@@ -3,6 +3,7 @@ let currentDragedElement;
 function loadBoard() {
     console.log(tasks);
     sortTaks()
+    addProgressBar()
 }
 
 
@@ -28,9 +29,7 @@ function render(taskStatus, i) {
                     <h3>${tasks[i][`taskTitle`]}</h3>
                     <p>${tasks[i][`description`]}</p>
                 </div>
-                <div>
-                    <progress max="100" value="50"></progress>
-                    <span>1/2 Subtaks</span>
+                <div id="progressbar${i}">
                 </div>
                 <div class="toDoCardFooter">
                     <div class="userIcon">
@@ -44,6 +43,22 @@ function render(taskStatus, i) {
         </div>
 `;
     checkAndAddTasks(tasks);
+}
+
+function addProgressBar() {
+    tasks.forEach(task => {
+        // Überprüfen, ob der Task mehr als eine Subtask hat
+        if (Array.isArray(task.subtasks) && task.subtasks.length > 1) {
+            let subtaksLenght = 100 / task.subtasks.length;
+            content = document.getElementById(`progressbar${task['id']}`);
+            content.innerHTML =/*html*/`
+        
+                <progress max="100" value="0"></progress>
+                <span>0/${task.subtasks.length} Subtaks</span>
+                `
+        }
+    });
+
 }
 
 function startDraggin(id) {
@@ -107,15 +122,18 @@ function sortAndFilterCards() {
 }
 
 function openAddTaskMenu() {
-    const transout = document.getElementById('transition');
-    transout.classList.remove('transout');
+    if (window.innerWidth < 428) {
+        window.location.href = "add_task.html";
+    } else {
+        const transout = document.getElementById('transition');
+        transout.classList.remove('transout');
 
-    const div = document.getElementById('animationDiv');
-    div.classList.remove('hidden');
+        const div = document.getElementById('animationDiv');
+        div.classList.remove('hidden');
 
-    const transitionDiv = document.getElementById('transition');
-    transitionDiv.classList.add('addTaskMenu');
-
+        const transitionDiv = document.getElementById('transition');
+        transitionDiv.classList.add('addTaskMenu');
+    }
 }
 
 function addDnonToAddTaks() {
@@ -128,8 +146,5 @@ function addDnonToAddTaks() {
         const div = document.getElementById('animationDiv');
         div.classList.add('hidden');
     }, 400);
-
-
-
 }
 

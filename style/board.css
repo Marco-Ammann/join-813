@@ -362,13 +362,13 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1.25rem;
-  }
+}
 
-  .assignDropdown-popup:hover {
+.assignDropdown-popup:hover {
     border-color: var(--border-hover);
-  }
+}
 
-  .categoryDropdown-popup {
+.categoryDropdown-popup {
     width: 27.6rem;
     padding: 1rem;
     box-sizing: border-box;
@@ -381,11 +381,12 @@ body {
     z-index: 999;
     overflow-y: auto;
 }
-  .categoryDropdown-popup:hover {
-    border-color: var(--border-hover);
-  }
 
-  .footer-container {
+.categoryDropdown-popup:hover {
+    border-color: var(--border-hover);
+}
+
+.footer-container {
     width: 80%;
     max-width: 63rem;
     display: flex;
@@ -393,13 +394,64 @@ body {
     align-items: center;
 }
 
-  .subTasks {
+.subTasks {
     height: 8rem;
     width: 100%;
     overflow: auto;
 }
 
+.MobileBoardHeader {
+    display: none;
+}
 
 @media (max-width: 428px) {
-    
+    .content {
+        padding: 0 1rem 0 1rem !important;
+    }
+
+    .MobileBoardHeader {
+        display: block;
+    }
+
+    .boardHeaderControll {
+        margin-bottom: 1.3rem;
+    }
+
+    .boardHeader {
+        display: none;
+    }
+
+    .MobileBoardHeaderControll {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.250rem;
+    }
+
+    .toDoList {
+        flex-direction: column;
+    }
+
+    .listContainer {
+        height: auto !important;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .noTaskFound {
+        text-align: center;
+        width: 24.5rem;
+        height: 3rem;
+    }
+
+    .toDoListCategories {
+        display: flex;
+        width: auto !important;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boardHeaderControll{
+        width: auto;
+    }
 }
