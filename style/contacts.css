@@ -191,7 +191,7 @@ button,
     min-width: 7.5rem;
     min-height: 7.5rem;
     font-size: 2.9375rem;
-    border-width: 0.3rem;
+    border-width: 3px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
@@ -520,7 +520,9 @@ button,
     animation: slideInOutMessage 2.5s ease-in;
 }
 
-.add-new-mobile {
+.add-new-mobile,
+.mobile-vector,
+.mobile-arrow {
     display: none;
 }
 
@@ -591,15 +593,16 @@ button,
 @media (max-width: 428px) {
 
     .add-new,
-    .main,
     .content::-webkit-scrollbar,
-    .contact-list-padding {
+    .contact-list-padding,
+    .title img:not(.mobile-vector, .mobile-arrow),
+    .info-buttons {
         display: none;
     }
 
     .contact-list::-webkit-scrollbar-track {
         margin-top: unset;
-        margin-bottom: unset;   
+        margin-bottom: unset;
     }
 
     /* TODO: Custom Scrollbar? */
@@ -639,6 +642,68 @@ button,
     .add-new-mobile img {
         width: 2rem;
         height: 2rem;
+    }
+
+    .main {
+        padding: 3rem 1rem;
+        gap: 3rem;
+    }
+
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .title h1 {
+        font-size: 2.9375rem;
+    }
+
+    .mobile-vector {
+        display: unset;
+        width: 5.625rem;
+        margin-top: 0.5rem;
+    }
+
+    .title img {
+        height: unset;
+    }
+
+    .title span {
+        font-size: 1.25rem;
+    }
+
+    .mobile-arrow {
+        display: unset;
+        width: 2.30631rem;
+        height: 2.30631rem;
+    }
+
+    .contacts-title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .icon-big {
+        min-width: 5rem;
+        min-height: 5rem;
+        font-size: 1.6875rem;
+    }
+
+    .info-title {
+        gap: 1.25rem;
+    }
+
+    .info-name h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+    }
+
+    .info h6 {
+        height: unset;
     }
 }
 

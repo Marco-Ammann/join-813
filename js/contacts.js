@@ -3,6 +3,7 @@
  */
 function initContacts() {
     renderContactList();
+
 }
 
 
@@ -90,19 +91,32 @@ function openContact(i) {
     let contactsInfo = document.getElementById('contactsInfo');
     renderContactList();
     contactsInfo.innerHTML = '';
-    
+
 
     let contact = contacts[i];
     let contactElement = document.getElementById(`contact${i}`);
     contactElement.classList.add('contact-selected');
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
-    contactsInfo.style = 'animation: slideInInfo 100ms ease-in-out;';
-    setTimeout(function () {
-        contactsInfo.style = '';
-    }, 100);
+
+    if (window.matchMedia("(max-width: 428px)").matches) {
+        openContactMobile(i);
+    } else {
+        contactsInfo.style = 'animation: slideInInfo 100ms ease-in-out;';
+        setTimeout(function () {
+            contactsInfo.style = '';
+        }, 100);
+    }
 }
 
+
+function openContactMobile(i) {
+    document.getElementById('contact-list-container').classList.add('d-none');
+}
+
+function closeContactMobile() {
+    document.getElementById('contact-list-container').classList.remove('d-none');
+}
 
 /**
  * Closes the pop up and cleans the input fields
@@ -200,10 +214,10 @@ function playMessageAni() {
     let message = document.getElementById('message');
     message.classList.remove('d-none');
     message.classList.add('message-animation'); // start animation
-    setTimeout(function () { 
+    setTimeout(function () {
         message.classList.remove('message-animation'); // reset animation
         message.classList.add('d-none');
-     }, 2500);
+    }, 2500);
 }
 
 

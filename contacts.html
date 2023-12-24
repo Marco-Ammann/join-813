@@ -32,7 +32,7 @@
 
     <!-- Content -->
     <div id="content" class="content d-flex">
-        <div>
+        <div id="contact-list-container">
             <div class="add-new">
                 <div onclick="openAddNewContact()" class="add-new-button">
                     <span>Add new contact</span>
@@ -46,11 +46,15 @@
 
             </div>
         </div>
-        <div class="main">
+        <div id="main" class="main">
             <section class="title">
-                <h1>Contacts</h1>
+                <div class="contacts-title">
+                    <h1>Contacts</h1>
+                    <img onclick="closeContactMobile()" class="mobile-arrow" src="./assets/img/Desktop/general_elements/arrow_left/default.svg" alt="Go Back">
+                </div>
                 <img src="./assets/img/Desktop/general_elements/bar/vector_blue.svg">
                 <span>Better with a team</span>
+                <img class="mobile-vector" src="./assets/img/Mobile/contacts_mobile/Vector 5.svg">
             </section>
             <section class="info" id="contactsInfo">
 
