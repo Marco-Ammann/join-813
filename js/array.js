@@ -22,7 +22,7 @@ let tasks = [
         "dueDate": "25-04-2023",
         "priority": "medium",
         "category": "Personal",
-        "subtasks": "SubtaskA",
+        "subtasks": ["SubtaskA"],
         "subtasksDone": "0",
         "state": "InProgress"
     },

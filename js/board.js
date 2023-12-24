@@ -3,7 +3,6 @@ let currentDragedElement;
 function loadBoard() {
     console.log(tasks);
     sortTaks()
-    addProgressBar()
 }
 
 
@@ -43,22 +42,20 @@ function render(taskStatus, i) {
         </div>
 `;
     checkAndAddTasks(tasks);
+    addProgressBar(i)
 }
 
-function addProgressBar() {
-    tasks.forEach(task => {
-        // Überprüfen, ob der Task mehr als eine Subtask hat
-        if (Array.isArray(task.subtasks) && task.subtasks.length > 1) {
-            let subtaksLenght = 100 / task.subtasks.length;
-            content = document.getElementById(`progressbar${task['id']}`);
-            content.innerHTML =/*html*/`
-        
-                <progress max="100" value="0"></progress>
-                <span>0/${task.subtasks.length} Subtaks</span>
-                `
-        }
-    });
+function addProgressBar(i) {
+    let taks = tasks[i]['subtasks'].length;
+    console.log(taks);
+    if (taks > 1) {
 
+        content = document.getElementById(`progressbar${i}`);
+        content.innerHTML =/*html*/`
+                <progress max="100" value="0"></progress>
+                <span>0/${tasks[i]['subtasks'].length} Subtaks</span>
+                `
+    };
 }
 
 function startDraggin(id) {
