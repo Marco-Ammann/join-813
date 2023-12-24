@@ -35,6 +35,11 @@
 
 <body onload="init(), loadBoard()">
 
+    <div onclick="closeCard()" id="openCardContainer" class="openCardContainer hidden">
+        <div id="openCard" class="openCard"></div>
+    </div>
+
+
     <div class="mainAddTaksContainer hidden" id="animationDiv">
         <div id="transition" class="transout">
             <div class="add-tasks-popup">
@@ -236,7 +241,6 @@
 
     <!-- Content -->
     <div class="content">
-
         <div class="MobileBoardHeader">
             <div class="MobileBoardHeaderControll">
                 <h2>Board</h2>

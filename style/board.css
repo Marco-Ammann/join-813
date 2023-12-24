@@ -280,7 +280,7 @@ body {
 
 
 .hidden {
-    z-index: -10;
+    z-index: -10 !important;
 }
 
 .mainAddTaksContainer {
@@ -289,6 +289,8 @@ body {
     width: 100vw !important;
     height: 100vh !important;
     overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 12;
 }
 
 .add-tasks-popup {
@@ -301,18 +303,27 @@ body {
     padding: 0 0 0 0 !important;
     padding: 4rem !important;
     border-radius: 50px !important;
-    box-shadow: 0px 0px 100vw 0px rgba(0, 0, 0, 1);
     gap: 0rem !important;
     justify-content: space-between;
 }
 
-.addTaskMenu {
+.tansin {
     z-index: 10;
     position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: right;
     transform: translateX(-50%) translateY(-50%);
+    transition: transform 0.7s ease-in-out;
+}
+
+.tansinCard {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: right;
+    transform: translateX(-50%) translateY(0);
     transition: transform 0.7s ease-in-out;
 }
 
@@ -404,6 +415,23 @@ body {
     display: none;
 }
 
+.openCardContainer {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 12;
+}
+
+.openCard {
+    padding: 3rem 2.5rem;
+    flex-direction: column;
+    margin: 0 !important;
+}
+
 @media (max-width: 428px) {
     .content {
         padding: 0 1rem 0 1rem !important;
@@ -451,7 +479,7 @@ body {
         align-items: center;
     }
 
-    .boardHeaderControll{
+    .boardHeaderControll {
         width: auto;
     }
 }
