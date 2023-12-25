@@ -20,7 +20,6 @@
 .privacy-policy img {
     width: 2rem;
     height: 2rem;
-    transition: 80ms ease-out;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -28,6 +27,7 @@
 .privacy-policy img:hover {
     transform: scale(1.25);
     background-color: #EEE;
+    transition: 80ms ease-out;
 }
 
 .privacy-policy h1 {

@@ -311,13 +311,17 @@ function openContactMenu(i) {
             <span name="Delete">Delete</span>
         </div>
     </div>`
+    contactMenu.firstElementChild.style = 'animation: slideInContactMenu 300ms ease-out';
 }
 
 
 function closeContactMenu() {
     let contactMenu = document.getElementById('contact-menu');
-    contactMenu.classList.add('d-none');
-    contactMenu.innerHTML = '';
+    contactMenu.firstElementChild.style = 'animation: slideOutContactMenu 300ms ease-out'
+    setTimeout(function() {
+        contactMenu.classList.add('d-none');
+        contactMenu.innerHTML = '';
+    }, 300)
 }
 
 

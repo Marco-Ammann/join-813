@@ -537,12 +537,27 @@ button,
     bottom: 5rem;
 }
 
+.contact-menu div:hover {
+    color: #29ABE2;
+    background-color: #EEE;
+    font-weight: 700;
+}
+
+.contact-menu div:first-child:hover img  {
+    content: url('../assets/img/Desktop/contacts/edit_blue.svg');
+}
+
+.contact-menu div:last-child:hover img {
+    content: url('../assets/img/Desktop/contacts/delete_blue.svg');
+}
+
 .contact-menu div {
     display: flex;
     width: 5rem;
     padding: 0.5rem;
     align-items: center;
     gap: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .contact-menu div img {
@@ -680,6 +695,26 @@ button,
     }
 }
 
+@keyframes slideInContactMenu {
+    from {
+        transform: translateX(7.75rem);
+    }
+
+    to {
+        transform: 0;
+    }
+}
+
+@keyframes slideOutContactMenu {
+    from {
+        transform: 0;
+    }
+
+    to {
+        transform: translateX(7.75rem);
+    }
+}
+
 /* Media Queries */
 
 @media (max-width: 428px) {
@@ -706,8 +741,6 @@ button,
     #contact-menu {
         display: unset;
     }
-
-    /* TODO: Add Animation from side */
 
     .border {
         width: 100%;
@@ -739,6 +772,11 @@ button,
         border-radius: 50%;
         background-color: #2A3647;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .add-new-mobile:hover, #contact-menu-button:hover {
+        background-color: #29ABE2;
+        transition: 100ms ease-in;
     }
 
     .add-new-mobile img {
@@ -780,6 +818,13 @@ button,
         display: unset;
         width: 2.30631rem;
         height: 2.30631rem;
+        border-radius: 50%;
+    }
+
+    .mobile-arrow:hover {
+        transform: scale(1.25);
+        background-color: #EEE;
+        transition: 80ms ease-out;
     }
 
     .contacts-title {
@@ -835,6 +880,11 @@ button,
         width: 1.5rem;
         height: 1.5rem;
         padding: 0.25rem;
+        border-radius: 50%;
+    }
+
+    .mobile-x:hover {
+        background: #29ABE2;
     }
 
     .popup-title h1 {
@@ -875,5 +925,3 @@ button,
     }
 
 }
-
-/* TODO: Add Mobile Design last elements */
