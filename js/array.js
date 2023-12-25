@@ -4,13 +4,13 @@
 let tasks = [
     {
         "id": 0,
-        "taskTitle": "Erster Task",
-        "description": "Beschreibung des ersten Tasks",
+        "taskTitle": "Kochwelt Page & Recipe Recommender",
+        "description": "Build start page with recipe recommendation.",
         "assignedTo": ["1", "3", "5"],
         "dueDate": "15-01-2025",
         "priority": "low",
         "category": "Work",
-        "subtasks": ["Subtask1", "Subtask2", "Subtask3"],
+        "subtasks": ["Implement Recipe Recommendation", "Start Page Layout"],
         "subtasksDone": "2",
         "state": "ToDo"
     },
