@@ -52,6 +52,7 @@ function openAddNewContact() {
     popUp.style = 'animation: blendIn 300ms ease-out;'
     if ((window.matchMedia("(max-width: 428px)").matches)) {
         popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
+        document.getElementById('popup-buttons').firstElementChild.classList.add('d-none');
     } else {
         popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
     }
@@ -85,6 +86,7 @@ function openEditContact(i) {
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
     if ((window.matchMedia("(max-width: 428px)").matches)) {
+        document.getElementById('popup-buttons').firstElementChild.classList.remove('d-none')
         popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
     } else {
         popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
@@ -125,14 +127,16 @@ function openAddNewContactMobile() {
 
 
 function openContactMobile(i) {
-    document.getElementById('contact-list-container').classList.add('d-none');
     document.getElementById('contact-menu-button').classList.remove('d-none');
+    document.getElementById('contact-list-container').classList.add('d-none');
+    
 }
 
 
 function closeContactMobile() {
-    document.getElementById('contact-list-container').classList.remove('d-none');
     document.getElementById('contact-menu-button').classList.add('d-none');
+    document.getElementById('contact-list-container').classList.remove('d-none');
+    
 }
 
 /**
@@ -173,6 +177,10 @@ function deleteContact(i) {
 
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
+
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        document.getElementById('contact-list-container').classList.remove('d-none');
+    }
 
     closePopUp(true);
 }

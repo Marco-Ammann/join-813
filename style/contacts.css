@@ -516,6 +516,7 @@ button,
 }
 
 #contact-menu {
+    display: none;
     inset: 0;
     height: 100vh;
     overflow: hidden;
@@ -689,8 +690,9 @@ button,
     .title img:not(.mobile-vector, .mobile-arrow),
     .info-buttons,
     .popup-logo,
-    .x-button,
-    .popup-buttons button:first-child {
+    .x-button
+    /* .popup-buttons button:first-child */
+     {
         display: none;
     }
 
@@ -700,6 +702,10 @@ button,
     }
 
     /* TODO: Custom Scrollbar? */
+
+    #contact-menu {
+        display: unset;
+    }
 
     .border {
         width: 100%;
@@ -861,7 +867,7 @@ button,
         margin-top: 1.0625rem;
     }
 
-    .popup-buttons button:last-child {
+    .popup-buttons button {
         height: 3.1875rem;
         padding: 1.125rem 0.625rem;
     }
