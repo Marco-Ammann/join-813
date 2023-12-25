@@ -187,6 +187,7 @@ function stopPropagation(event) {
 async function logOut() {
     currentUser = "";
     console.log(currentUser);
+    sessionStorage.removeItem("greetingAniPlayed");
     await setItem("currentUser", JSON.stringify(currentUser));
     localStorage.removeItem("joinInputs");
 }

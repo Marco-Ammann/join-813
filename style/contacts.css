@@ -707,6 +707,8 @@ button,
         display: unset;
     }
 
+    /* TODO: Add Animation from side */
+
     .border {
         width: 100%;
     }
@@ -872,7 +874,6 @@ button,
         padding: 1.125rem 0.625rem;
     }
 
-    /* TODO: Add Mobile Add Contact Open Animation from bottom */
 }
 
 /* TODO: Add Mobile Design last elements */

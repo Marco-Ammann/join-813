@@ -2,8 +2,13 @@
  * Initializes the summary.html
  */
 function initSummary() {
+    if (window.matchMedia("(max-width: 428px)").matches) {
+        playGreetingAni();
+    }
     renderSummaryBoard();
     renderSummaryGreeting();
+
+
 }
 
 
@@ -59,6 +64,24 @@ async function loadUserGreeting(greet) {
         console.error("Loading error:", e);
     }
 }
+
+
+function playGreetingAni() {
+    let animationPlayed = sessionStorage.getItem("greetingAniPlayed");
+    let greeting = document.getElementById('greeting').parentNode;
+    if (!animationPlayed) {
+        greeting.classList.remove('d-none')
+        greeting.style = 'animation: blendOutGreeting 400ms ease-in 1200ms;';
+        setTimeout(function () {
+            greeting.classList.add('d-none');
+            greeting.style = '';
+        }, 1600);
+        sessionStorage.setItem("greetingAniPlayed", "true");
+    } else {
+        greeting.classList.add('d-none');
+    }
+}
+// TODO: Greeting to late. Laoding screen?
 
 
 /**
