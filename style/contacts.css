@@ -508,12 +508,45 @@ button,
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
     transform: translateY(calc(100vh - 40.53rem - 8px));
     z-index: 4;
-    /* transform: translateX(calc(100vw - calc(47.25rem + 16px))); */
 }
 
 .message span {
     font-size: 1.25rem;
     color: #FFF;
+}
+
+#contact-menu {
+    inset: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    background-color: transparent;
+}
+
+.contact-menu {
+    position: absolute;
+    display: inline-flex;
+    padding: 0.625rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.25rem 1.25rem 0rem 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    right: 0.5rem;
+    bottom: 5rem;
+}
+
+.contact-menu div {
+    display: flex;
+    width: 5rem;
+    padding: 0.5rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-menu div img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .message-animation {

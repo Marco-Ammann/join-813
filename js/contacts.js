@@ -126,11 +126,13 @@ function openAddNewContactMobile() {
 
 function openContactMobile(i) {
     document.getElementById('contact-list-container').classList.add('d-none');
+    document.getElementById('contact-menu-button').classList.remove('d-none');
 }
 
 
 function closeContactMobile() {
     document.getElementById('contact-list-container').classList.remove('d-none');
+    document.getElementById('contact-menu-button').classList.add('d-none');
 }
 
 /**
@@ -287,6 +289,30 @@ function doNotClose(event) {
 }
 
 
+function openContactMenu(i) {
+    let contactMenu = document.getElementById('contact-menu');
+    contactMenu.classList.remove('d-none')
+    contactMenu.innerHTML = /* html */ `
+        <div class="contact-menu" onclick="doNotClose(event)">
+        <div onclick="openEditContact(${i})">
+            <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
+            <span name="Edit">Edit</span>
+        </div>
+        <div onclick="deleteContact(${i})">
+            <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
+            <span name="Delete">Delete</span>
+        </div>
+    </div>`
+}
+
+
+function closeContactMenu() {
+    let contactMenu = document.getElementById('contact-menu');
+    contactMenu.classList.add('d-none');
+    contactMenu.innerHTML = '';
+}
+
+
 /**
  * Return the requested HTML Code for the contact list
  * @param {number} num 
@@ -355,6 +381,12 @@ function returnContactInfoHTML(color, initials, name, email, phone, i) {
             <h4>Phone</h4>
             <span>${phone}</span>
         </div>
+    </div>
+    <div onclick="openContactMenu(${i})" id="contact-menu-button" class="add-new-mobile">
+        <img src="./assets/img/Mobile/contacts_mobile/more_vert.svg">
+    </div>
+    <div id="contact-menu" class="d-none" onclick="closeContactMenu()"> 
+
     </div>`;
 }
 
