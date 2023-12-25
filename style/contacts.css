@@ -498,6 +498,7 @@ button,
 
 .message {
     display: flex;
+    position: absolute;
     width: 20.375rem;
     height: 4.625rem;
     justify-content: center;
@@ -505,7 +506,9 @@ button,
     border-radius: 1.25rem;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-    transform: translateX(calc(100vw - calc(47.25rem + 16px)));
+    transform: translateY(calc(100vh - 40.53rem - 8px));
+    z-index: 4;
+    /* transform: translateX(calc(100vw - calc(47.25rem + 16px))); */
 }
 
 .message span {
@@ -515,6 +518,10 @@ button,
 
 .message-animation {
     animation: slideInOutMessage 2.5s ease-in;
+}
+
+.message-animation-mobile {
+    animation: slideInOutMessageMobile 2.5s ease-in;
 }
 
 .add-new-mobile,
@@ -566,9 +573,32 @@ button,
     }
 }
 
+@keyframes slideInOutMessageMobile {
+
+    0%,
+    100% {
+        transform: translateY(calc(100vh - 40.53rem - 8px));
+    }
+
+    10%,
+    90% {
+        transform: translateX(0);
+    }
+}
+
 @keyframes slideInPopUp {
     from {
         transform: translateX(calc(75.75rem + calc(calc(100vw - 75.75rem) / 2)));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInPopUpMobile {
+    from {
+        transform: translateY(calc(47.5rem + calc(calc(100vh - 47.5rem) / 2)));
     }
 
     to {
@@ -583,6 +613,16 @@ button,
 
     to {
         transform: translateX(calc(75.75rem + calc(calc(100vw - 75.75rem) / 2)));
+    }
+}
+
+@keyframes slideOutPopUpMobile {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateY(calc(47.5rem + calc(calc(100vh - 47.5rem) / 2)));
     }
 }
 

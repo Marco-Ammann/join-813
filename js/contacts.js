@@ -50,7 +50,11 @@ function openAddNewContact() {
     popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
-    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
+    } else {
+        popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    }
 }
 
 
@@ -80,8 +84,11 @@ function openEditContact(i) {
     document.getElementById('popUpPhone').value = contact['phone'];
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
-    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
-
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
+    } else {
+        popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    }
 }
 
 
@@ -134,7 +141,12 @@ function closePopUp(submitted) {
 
     if (!submitted) {
         popUp.style = 'animation: blendOut 300ms ease-out;'
-        popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
+        if ((window.matchMedia("(max-width: 428px)").matches)) {
+            popUp.firstElementChild.style = 'animation: slideOutPopUpMobile 300ms ease-out;';
+        } else {
+            popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
+        }
+        
         setTimeout(function () {
             popUp.classList.add('d-none');
             document.getElementById('popUpName').value = '';
@@ -222,11 +234,19 @@ function addNewContact() {
 function playMessageAni() {
     let message = document.getElementById('message');
     message.classList.remove('d-none');
-    message.classList.add('message-animation'); // start animation
-    setTimeout(function () {
-        message.classList.remove('message-animation'); // reset animation
-        message.classList.add('d-none');
-    }, 2500);
+    if (window.matchMedia("(max-width: 428px)").matches) {
+        message.classList.add('message-animation-mobile'); // start animation
+        setTimeout(function () {
+            message.classList.remove('message-animation-mobile'); // reset animation
+            message.classList.add('d-none');
+        }, 2500);
+    } else {
+        message.classList.add('message-animation'); // start animation
+        setTimeout(function () {
+            message.classList.remove('message-animation'); // reset animation
+            message.classList.add('d-none');
+        }, 2500);
+    }
 }
 
 
