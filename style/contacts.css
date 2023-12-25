@@ -306,6 +306,7 @@ button,
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: all 3000ms ease-out;
 }
 
 .popup {
@@ -315,10 +316,6 @@ button,
     background: #FFF;
     display: flex;
     animation: slideInPopUp 300ms ease-out;
-}
-
-.popup[closing] {
-    animation: slideOutPopUp 300ms ease-out;
 }
 
 .popup-title {
@@ -536,6 +533,26 @@ button,
 
 /* Animations */
 
+@keyframes blendIn {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes blendOut {
+    from {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
 @keyframes slideInOutMessage {
 
     0%,
@@ -730,11 +747,12 @@ button,
 
     .mobile-x {
         display: block;
-        position: absolute;
-        right: calc( 1rem + calc(calc(100vw - 24.75rem) / 2));
-        top: calc( 1.5rem + calc(calc(100vh - 47.5rem) / 2));
-        width: 2rem;
-        height: 2rem;
+        position: relative;
+        bottom: 6.25rem;
+        left: 20.255rem;
+        margin-bottom: -2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         padding: 0.25rem;
     }
 
@@ -776,7 +794,6 @@ button,
     }
 
     /* TODO: Add Mobile Add Contact Open Animation from bottom */
-    /* TODO: Animation X-Button Position Bug */
 }
 
 /* TODO: Add Mobile Design last elements */

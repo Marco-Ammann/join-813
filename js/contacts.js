@@ -49,6 +49,7 @@ function openAddNewContact() {
     popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
     popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
     popUp.classList.remove('d-none');
+    popUp.style = 'animation: blendIn 300ms ease-out;'
     popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
 }
 
@@ -78,6 +79,7 @@ function openEditContact(i) {
     document.getElementById('popUpEmail').value = contact['email'];
     document.getElementById('popUpPhone').value = contact['phone'];
     popUp.classList.remove('d-none');
+    popUp.style = 'animation: blendIn 300ms ease-out;'
     popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
 
 }
@@ -110,8 +112,8 @@ function openContact(i) {
 }
 
 
-function openAddNewContactMobile () {
-    
+function openAddNewContactMobile() {
+
 }
 
 
@@ -131,6 +133,7 @@ function closePopUp(submitted) {
     let popUp = document.getElementById('popUp');
 
     if (!submitted) {
+        popUp.style = 'animation: blendOut 300ms ease-out;'
         popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
         setTimeout(function () {
             popUp.classList.add('d-none');
@@ -232,8 +235,8 @@ function playMessageAni() {
  * @returns - random HEX color code
  */
 function randomColor() {
-    let colors = ['#FF6358', '#FBA24F', '#FFD246', '#78D237', '#28B4C8', '#2D73F5', '#1B4887', '#AA46BE', '#F978AA', '#D33D50'];
-    let num = Math.floor(Math.random() * 10);
+    let colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
+    let num = Math.floor(Math.random() * 15);
     return colors[num];
 }
 
