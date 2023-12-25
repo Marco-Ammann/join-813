@@ -18,7 +18,7 @@ function getValues() {
     "priority": getPriority(),
     "category": getCategory(),
     "subtasks": getSubtask(),
-    "subtasksDone": "0",
+    "subtasksDone": [],
     "state": "ToDo",
   };
 }
