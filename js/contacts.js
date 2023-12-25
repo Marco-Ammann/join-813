@@ -95,13 +95,13 @@ function openContact(i) {
 
     let contact = contacts[i];
     let contactElement = document.getElementById(`contact${i}`);
-    contactElement.classList.add('contact-selected');
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
 
     if (window.matchMedia("(max-width: 428px)").matches) {
         openContactMobile(i);
     } else {
+        contactElement.classList.add('contact-selected');
         contactsInfo.style = 'animation: slideInInfo 100ms ease-in-out;';
         setTimeout(function () {
             contactsInfo.style = '';
@@ -110,9 +110,15 @@ function openContact(i) {
 }
 
 
+function openAddNewContactMobile () {
+    
+}
+
+
 function openContactMobile(i) {
     document.getElementById('contact-list-container').classList.add('d-none');
 }
+
 
 function closeContactMobile() {
     document.getElementById('contact-list-container').classList.remove('d-none');

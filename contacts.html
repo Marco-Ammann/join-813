@@ -39,7 +39,7 @@
                     <img src="./assets/img/Desktop/contacts/person_add.svg">
                 </div>
             </div>
-            <div class="add-new-mobile">
+            <div onclick="openAddNewContact()" class="add-new-mobile">
                 <img src="./assets/img/Desktop/contacts/person_add.svg">
             </div>
             <div id="contactList" class="contact-list">
@@ -68,6 +68,7 @@
         <div id="popUp" onclick="closePopUp()" class="popup-bg d-none">
             <div class="popup" onclick="doNotClose(event)">
                 <div class="popup-title">
+                    <img class="mobile-x" onclick="closePopUp()" src="./assets/img/Mobile/contacts_mobile/close.svg" alt="Close">
                     <div class="p-relative">
                         <img class="popup-logo" src="./assets/img/Desktop/general_elements/join_light.svg" alt="Logo">
                     </div>

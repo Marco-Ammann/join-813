@@ -347,7 +347,7 @@ button,
     margin-bottom: 1rem;
 }
 
-.popup-title img:not(.popup-logo) {
+.popup-title img:not(.popup-logo, .mobile-x) {
     width: 5.625rem;
 }
 
@@ -386,7 +386,7 @@ button,
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border: 0.3rem solid #FFF;
+    border: 3px solid #FFF;
     color: #FFF;
     font-size: 2.9375rem;
     width: 7.5rem;
@@ -522,7 +522,8 @@ button,
 
 .add-new-mobile,
 .mobile-vector,
-.mobile-arrow {
+.mobile-arrow,
+.mobile-x {
     display: none;
 }
 
@@ -596,7 +597,10 @@ button,
     .content::-webkit-scrollbar,
     .contact-list-padding,
     .title img:not(.mobile-vector, .mobile-arrow),
-    .info-buttons {
+    .info-buttons,
+    .popup-logo,
+    .x-button,
+    .popup-buttons button:first-child {
         display: none;
     }
 
@@ -705,6 +709,74 @@ button,
     .info h6 {
         height: unset;
     }
+
+    .popup {
+        flex-direction: column;
+        width: 24.75rem;
+        height: 47.5rem;
+        border-radius: 1.875rem;
+    }
+
+    .popup-section {
+        flex-direction: column;
+        margin-top: calc(-3.75rem - 3px);
+    }
+
+    .popup-title {
+        height: 13.75rem;
+        padding: 4.125rem 1.5rem;
+        border-radius: 1.875rem 1.875rem 0 0;
+    }
+
+    .mobile-x {
+        display: block;
+        position: absolute;
+        right: calc( 1rem + calc(calc(100vw - 24.75rem) / 2));
+        top: calc( 1.5rem + calc(calc(100vh - 47.5rem) / 2));
+        width: 2rem;
+        height: 2rem;
+        padding: 0.25rem;
+    }
+
+    .popup-title h1 {
+        font-size: 2.9375rem;
+    }
+
+    .popup-title span {
+        font-size: 1.25rem;
+    }
+
+    .popup-fields {
+        gap: 0;
+        padding: 0 1rem;
+    }
+
+    .popup-profile {
+        margin-bottom: 2rem;
+    }
+
+    .popup-input {
+        gap: 0.9375rem;
+        width: 100%;
+    }
+
+    .popup-input input {
+        width: unset;
+        height: 0.9375rem;
+    }
+
+    .popup-buttons {
+        justify-content: center;
+        margin-top: 1.0625rem;
+    }
+
+    .popup-buttons button:last-child {
+        height: 3.1875rem;
+        padding: 1.125rem 0.625rem;
+    }
+
+    /* TODO: Add Mobile Add Contact Open Animation from bottom */
+    /* TODO: Animation X-Button Position Bug */
 }
 
-/* TODO: Add Mobile Design */
+/* TODO: Add Mobile Design last elements */
