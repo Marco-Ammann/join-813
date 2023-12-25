@@ -11,7 +11,7 @@ let tasks = [
         "priority": "low",
         "category": "Work",
         "subtasks": ["Implement Recipe Recommendation", "Start Page Layout"],
-        "subtasksDone": "2",
+        "subtasksDone": 0,
         "state": "ToDo"
     },
     {
@@ -23,7 +23,7 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA"],
-        "subtasksDone": "0",
+        "subtasksDone": 0,
         "state": "InProgress"
     },
     {
@@ -35,7 +35,7 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
-        "subtasksDone": "0",
+        "subtasksDone": 0,
         "state": "InProgress"
     },
     {
@@ -47,7 +47,7 @@ let tasks = [
         "priority": "high",
         "category": "Work",
         "subtasks": ["Subtask1", "Subtask2", "Subtask3"],
-        "subtasksDone": "0",
+        "subtasksDone": 0,
         "state": "AwaitFeedback"
     },
     {
@@ -59,7 +59,7 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
-        "subtasksDone": "1",
+        "subtasksDone": 1,
         "state": "Done"
     },
     {
@@ -71,7 +71,7 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
-        "subtasksDone": "0",
+        "subtasksDone": 0,
         "state": "InProgress"
     }
 ];

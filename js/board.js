@@ -155,6 +155,16 @@ function subtaskComplete(i, x) {
     `
 }
 
+function subtaskComplete(i, x) {
+    let content = document.getElementById(`subtask${i}`);
+    content.innerHTML = /*html*/`
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                </svg>
+                ${tasks[x]['subtasks'][i]}
+    `
+}
+
 function closeCard() {
 
     const transout = document.getElementById('openCard');
