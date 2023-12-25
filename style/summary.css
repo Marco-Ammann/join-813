@@ -201,7 +201,6 @@
 
 @media (max-width: 428px) {
 
-    .summary-greeting,
     .summary-title img:not(.mobile-vector) {
         display: none;
     }
@@ -314,24 +313,27 @@
         font-size: 0.875rem;
     }
 
-    .greeting-mobile {
+    .summary-greeting {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         position: fixed;
-        background: #F6F7F8;
-        inset: calc(5rem + 4px) 0 5rem 0;
+        top: calc(5rem + 4px);
+        bottom: 5rem;
+        left: 0;
+        right: 0;
         text-align: center;
+        background-color: #F6F7F8;
         animation: blendOutGreeting 400ms ease-in 1200ms;
     }
 
-    .greeting-mobile h2 {
-        color: #2A3647;
+    .summary-greeting h2 {
         font-size: 2.25rem;
         font-weight: 400;
     }
 
-    .greeting-mobile h1 {
+    .summary-greeting h1 {
         color: #29ABE2;
         font-size: 2.9375rem;
     }

@@ -4,6 +4,8 @@
 function initSummary() {
     if (window.matchMedia("(max-width: 428px)").matches) {
         playGreetingAni();
+    } else {
+        greeting.parentNode.classList.remove('d-none');
     }
     renderSummaryBoard();
     renderSummaryGreeting();
@@ -31,6 +33,7 @@ function renderSummaryBoard() {
  */
 function renderSummaryGreeting() {
     let greet = document.getElementById('greeting');
+    
     let time = new Date();
     time = time.getHours();
 
@@ -71,10 +74,8 @@ function playGreetingAni() {
     let greeting = document.getElementById('greeting').parentNode;
     if (!animationPlayed) {
         greeting.classList.remove('d-none')
-        greeting.style = 'animation: blendOutGreeting 400ms ease-in 1200ms;';
         setTimeout(function () {
             greeting.classList.add('d-none');
-            greeting.style = '';
         }, 1600);
         sessionStorage.setItem("greetingAniPlayed", "true");
     } else {
