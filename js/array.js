@@ -4,14 +4,19 @@
 let tasks = [
     {
         "id": 0,
-        "taskTitle": "Erster Task",
-        "description": "Beschreibung des ersten Tasks",
+        "taskTitle": "Kochwelt Page & Recipe Recommender",
+        "description": "Build start page with recipe recommendation.",
         "assignedTo": ["1", "3", "5"],
         "dueDate": "15-01-2025",
         "priority": "low",
         "category": "Work",
+<<<<<<< HEAD
         "subtasks": ["Subtask1", "Subtask2", "Subtask3"],
         "subtasksDone": ["Subtask4", "Subtask5"],
+=======
+        "subtasks": ["Implement Recipe Recommendation", "Start Page Layout"],
+        "subtasksDone": 0,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "ToDo"
     },
     {
@@ -23,7 +28,11 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA"],
+<<<<<<< HEAD
         "subtasksDone": [],
+=======
+        "subtasksDone": 0,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "InProgress"
     },
     {
@@ -35,7 +44,11 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
+<<<<<<< HEAD
         "subtasksDone": [],
+=======
+        "subtasksDone": 0,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "InProgress"
     },
     {
@@ -47,7 +60,11 @@ let tasks = [
         "priority": "high",
         "category": "Work",
         "subtasks": ["Subtask1", "Subtask2", "Subtask3"],
+<<<<<<< HEAD
         "subtasksDone": [],
+=======
+        "subtasksDone": 0,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "AwaitFeedback"
     },
     {
@@ -59,7 +76,11 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
+<<<<<<< HEAD
         "subtasksDone": ["SubtaskC"],
+=======
+        "subtasksDone": 1,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "Done"
     },
     {
@@ -71,7 +92,11 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA", "SubtaskB"],
+<<<<<<< HEAD
         "subtasksDone": [],
+=======
+        "subtasksDone": 0,
+>>>>>>> 6a63105955e23bc2c026cbfe0325db76692e9bd1
         "state": "InProgress"
     }
 ];

@@ -2,6 +2,10 @@ body {
     max-height: 100vh;
 }
 
+.hoverPointer :hover{
+    cursor: pointer;
+}
+
 .content {
     padding: 4rem 4rem 0 4rem !important;
     max-height: calc(100vh - 6rem - 4rem);
@@ -321,9 +325,9 @@ body {
     z-index: 10;
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 80%;
     transform-origin: right;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-130%) translateY(0%);
     transition: transform 0.7s ease-in-out;
 }
 
@@ -334,6 +338,16 @@ body {
     left: 50%;
     transform-origin: right;
     transform: translateX(150%) translateY(-50%);
+    transition: transform 0.7s ease-in-out;
+}
+
+.tansoutCard {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 80%;
+    transform-origin: right;
+    transform: translateX(-130%) translateY(0%);
     transition: transform 0.7s ease-in-out;
 }
 
@@ -373,6 +387,10 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1.25rem;
+}
+
+.task-forms {
+    margin-top: 0 !important;
 }
 
 .assignDropdown-popup:hover {
@@ -424,12 +442,46 @@ body {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 12;
+    overflow-y: hidden;
 }
 
 .openCard {
-    padding: 3rem 2.5rem;
+    width: 32.8125rem;
     flex-direction: column;
     margin: 0 !important;
+    z-index: 15 !important;
+    padding: 3rem 2.5rem;
+    overflow-y: hidden;
+}
+
+.openCard h3 {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.openCard h4 {
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.openCardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#openCardIcon {
+    display: flex;
+    flex-direction: column;
+}
+
+.openCardIcon {
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+    gap: 2rem;
 }
 
 @media (max-width: 428px) {

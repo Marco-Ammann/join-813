@@ -50,7 +50,12 @@ function openAddNewContact() {
     popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
-    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
+        document.getElementById('popup-buttons').firstElementChild.classList.add('d-none');
+    } else {
+        popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    }
 }
 
 
@@ -80,8 +85,12 @@ function openEditContact(i) {
     document.getElementById('popUpPhone').value = contact['phone'];
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
-    popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
-
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        document.getElementById('popup-buttons').firstElementChild.classList.remove('d-none')
+        popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
+    } else {
+        popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
+    }
 }
 
 
@@ -118,12 +127,16 @@ function openAddNewContactMobile() {
 
 
 function openContactMobile(i) {
+    document.getElementById('contact-menu-button').classList.remove('d-none');
     document.getElementById('contact-list-container').classList.add('d-none');
+    
 }
 
 
 function closeContactMobile() {
+    document.getElementById('contact-menu-button').classList.add('d-none');
     document.getElementById('contact-list-container').classList.remove('d-none');
+    
 }
 
 /**
@@ -134,7 +147,12 @@ function closePopUp(submitted) {
 
     if (!submitted) {
         popUp.style = 'animation: blendOut 300ms ease-out;'
-        popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
+        if ((window.matchMedia("(max-width: 428px)").matches)) {
+            popUp.firstElementChild.style = 'animation: slideOutPopUpMobile 300ms ease-out;';
+        } else {
+            popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
+        }
+        
         setTimeout(function () {
             popUp.classList.add('d-none');
             document.getElementById('popUpName').value = '';
@@ -159,6 +177,10 @@ function deleteContact(i) {
 
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
+
+    if ((window.matchMedia("(max-width: 428px)").matches)) {
+        document.getElementById('contact-list-container').classList.remove('d-none');
+    }
 
     closePopUp(true);
 }
@@ -222,11 +244,19 @@ function addNewContact() {
 function playMessageAni() {
     let message = document.getElementById('message');
     message.classList.remove('d-none');
-    message.classList.add('message-animation'); // start animation
-    setTimeout(function () {
-        message.classList.remove('message-animation'); // reset animation
-        message.classList.add('d-none');
-    }, 2500);
+    if (window.matchMedia("(max-width: 428px)").matches) {
+        message.classList.add('message-animation-mobile'); // start animation
+        setTimeout(function () {
+            message.classList.remove('message-animation-mobile'); // reset animation
+            message.classList.add('d-none');
+        }, 2500);
+    } else {
+        message.classList.add('message-animation'); // start animation
+        setTimeout(function () {
+            message.classList.remove('message-animation'); // reset animation
+            message.classList.add('d-none');
+        }, 2500);
+    }
 }
 
 
@@ -264,6 +294,30 @@ function getInitials(name) {
  */
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+
+function openContactMenu(i) {
+    let contactMenu = document.getElementById('contact-menu');
+    contactMenu.classList.remove('d-none')
+    contactMenu.innerHTML = /* html */ `
+        <div class="contact-menu" onclick="doNotClose(event)">
+        <div onclick="openEditContact(${i})">
+            <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
+            <span name="Edit">Edit</span>
+        </div>
+        <div onclick="deleteContact(${i})">
+            <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
+            <span name="Delete">Delete</span>
+        </div>
+    </div>`
+}
+
+
+function closeContactMenu() {
+    let contactMenu = document.getElementById('contact-menu');
+    contactMenu.classList.add('d-none');
+    contactMenu.innerHTML = '';
 }
 
 
@@ -335,6 +389,12 @@ function returnContactInfoHTML(color, initials, name, email, phone, i) {
             <h4>Phone</h4>
             <span>${phone}</span>
         </div>
+    </div>
+    <div onclick="openContactMenu(${i})" id="contact-menu-button" class="add-new-mobile">
+        <img src="./assets/img/Mobile/contacts_mobile/more_vert.svg">
+    </div>
+    <div id="contact-menu" class="d-none" onclick="closeContactMenu()"> 
+
     </div>`;
 }
 
