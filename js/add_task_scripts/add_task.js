@@ -30,8 +30,8 @@ function validateAndCreateTask() {
 
   if (isValid) {
     createTask();
-    animateTaskAdded();     
-    setTimeout(function() {
+    animateTaskAdded();
+    setTimeout(function () {
       window.location.href = 'board.html';
     }, 1500);
   }
@@ -53,7 +53,7 @@ function validateAndCreateTaskPopup() {
 
   if (isValid) {
     createTask();
-    setTimeout(function() {
+    setTimeout(function () {
       addDnonToAddTaks();
     }, 500);
   }
@@ -67,7 +67,7 @@ function validateAndCreateTaskPopup() {
  */
 function validateDueDate() {
   const dueDateInput = document.getElementById("due-date-input");
-  const datePattern = /^\d{2}\/\d{2}\/\d{4}$/; 
+  const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
   if (!datePattern.test(dueDateInput.value)) {
     alert("Ungültiges Datumsformat. Bitte verwenden Sie das Format dd/mm/yyyy.");
     dueDateInput.value = "";

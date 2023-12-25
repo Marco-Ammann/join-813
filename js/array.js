@@ -1,6 +1,4 @@
 
-// nicht verändern bitte :)
-
 let tasks = [
     {
         "id": 0,
