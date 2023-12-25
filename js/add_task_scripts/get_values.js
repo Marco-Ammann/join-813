@@ -10,15 +10,16 @@ let clickedPriority = "medium";
  */
 function getValues() {
   return {
-    id: createTaskId(),
-    taskTitle: getTaskTitle(),
-    description: getTaskDescription(),
-    assignedTo: getAssignedContacts(),
-    dueDate: getDueDate(),
-    priority: getPriority(),
-    category: getCategory(),
-    subtasks: getSubtask(),
-    state: "ToDo",
+    "id": createTaskId(),
+    "taskTitle": getTaskTitle(),
+    "description": getTaskDescription(),
+    "assignedTo": getAssignedContacts(),
+    "dueDate": getDueDate(),
+    "priority": getPriority(),
+    "category": getCategory(),
+    "subtasks": getSubtask(),
+    "subtasksDone": "0",
+    "state": "ToDo",
   };
 }
 
@@ -36,7 +37,6 @@ function createTaskId() {
       maxId = tasks[i].id;
     }
   }
-
   let newID = maxId + 1;
   return newID;
 }
