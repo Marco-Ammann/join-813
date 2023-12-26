@@ -302,78 +302,6 @@ a {
 
 /* Media Queries */
 
-@media (min-width: 2541px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2541px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2410px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2279px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2192px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2105px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 2018px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 1931px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 1844px) {
-    :root {
-        font-size: 20px
-    }
-}
-
-@media (max-width: 1757px) {
-    :root {
-        font-size: 19px
-    }
-}
-
-@media (max-width: 1670px) {
-    :root {
-        font-size: 18px
-    }
-}
-
-@media (max-width: 1583px) {
-    :root {
-        font-size: 17px
-    }
-}
-
 @media (max-width: 1496px) {
     :root {
         font-size: 16px
@@ -404,69 +332,21 @@ a {
     }
 }
 
-@media (max-width: 1059px) {
+@media (max-width: 1061px) {
+    :root {
+        font-size: 11.5px
+    }
+}
+
+@media (max-width: 1017px) {
     :root {
         font-size: 11px
     }
 }
 
-/* @media (max-width: 1372px) {
+@media (max-width: 1000px) {
     :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-/* @media (max-width: 1372px) {
-    :root {
-        font-size: 15px
-    }
-} */
-
-@media (max-width: 428px) {
-    :root {
-        font-size: 16px
+        font-size: 26px
     }
 
     .content {
@@ -561,5 +441,61 @@ a {
     .drop-down-menu {
         right: 0.5rem;
         top: calc(5rem + 4px);
+    }
+
+    /* TODO: Mobile Drop Down Animation */
+}
+
+@media (max-width: 850px) {
+    :root {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 750px) {
+    :root {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 705px) {
+    :root {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 665px) {
+    :root {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 630px) {
+    :root {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 590px) {
+    :root {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 550px) {
+    :root {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 510px) {
+    :root {
+        font-size: 16px;
     }
 }

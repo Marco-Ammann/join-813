@@ -312,7 +312,7 @@ function sortAndFilterCards() {
 }
 
 function openAddTaskMenu() {
-    if (window.innerWidth < 428) {
+    if (window.innerWidth < 1000) {
         window.location.href = "add_task.html";
     } else {
         const transout = document.getElementById('transition');

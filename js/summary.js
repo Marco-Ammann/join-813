@@ -2,7 +2,7 @@
  * Initializes the summary.html
  */
 function initSummary() {
-    if (window.matchMedia("(max-width: 428px)").matches) {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
         playGreetingAni();
     } else {
         greeting.parentNode.classList.remove('d-none');

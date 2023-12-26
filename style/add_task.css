@@ -646,13 +646,7 @@ mediaquerrys
 ###################################################*/
 
 
-
-@media (max-width: 428px) {}
-
-
-
-
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
 
   .content {
     padding: 4rem 3rem 0 3rem!important;

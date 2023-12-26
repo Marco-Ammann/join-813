@@ -199,7 +199,11 @@
 
 /* Media Queries */
 
-@media (max-width: 428px) {
+@media (max-width: 1000px) {
+
+    .summary-main {
+        justify-content: center;
+    }
 
     .summary-title img:not(.mobile-vector) {
         display: none;

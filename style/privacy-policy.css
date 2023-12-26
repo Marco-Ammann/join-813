@@ -51,7 +51,7 @@ ul {
 
 /* Media Queries */
 
-@media (max-width: 428px) {
+@media (max-width: 1000px) {
     .content {
         margin-top: 4.9385rem !important;
         min-height: calc(100vh - 15.9385rem) !important;

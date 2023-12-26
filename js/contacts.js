@@ -76,7 +76,7 @@ function openPopUpAni(variant) {
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
 
-    if ((window.matchMedia("(max-width: 428px)").matches)) {
+    if ((window.matchMedia("(max-width: 1000px)").matches)) {
         if (variant == 'add-new') {
             document.getElementById('popup-buttons').firstElementChild.classList.add('d-none');
         } else if (variant == 'edit') {
@@ -153,7 +153,7 @@ function openContact(i) {
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     contactsInfo.innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
 
-    if (window.matchMedia("(max-width: 428px)").matches) {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
         openContactMobile();
     } else {
         contactElement.classList.add('contact-selected');
@@ -193,7 +193,7 @@ function closePopUp(submitted) {
     if (!submitted) {
         popUp.style = 'animation: blendOut 300ms ease-out;'
 
-        if ((window.matchMedia("(max-width: 428px)").matches)) {
+        if ((window.matchMedia("(max-width: 1000px)").matches)) {
             popUp.firstElementChild.style = 'animation: slideOutPopUpMobile 300ms ease-out;';
         } else {
             popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
@@ -220,7 +220,7 @@ function deleteContact(i) {
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
 
-    if ((window.matchMedia("(max-width: 428px)").matches)) {
+    if ((window.matchMedia("(max-width: 1000px)").matches)) {
         document.getElementById('contact-list-container').classList.remove('d-none');
     }
 
@@ -288,7 +288,7 @@ function playMessageAni() {
 
     message.classList.remove('d-none');
 
-    if (window.matchMedia("(max-width: 428px)").matches) {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
         message.classList.add('message-animation-mobile'); // start animation
         setTimeout(function () {
             message.classList.remove('message-animation-mobile'); // reset animation
