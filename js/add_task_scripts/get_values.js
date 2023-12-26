@@ -6,39 +6,44 @@ let clickedPriority = "medium";
  * This includes generating a unique task ID, fetching task title, description, assigned contacts,
  * due date, priority, category, subtasks, and setting the initial task state to "ToDo".
  * 
- * @returns {Object} An object containing all the task information.
+ * @async
+ * @function getValues
+ * @returns {Promise<Object>} An object containing all the task information.
  */
-function getValues() {
+async function getValues() {
+  let taskId = await createTaskId();
   return {
-    "id": createTaskId(),
-    "taskTitle": getTaskTitle(),
-    "description": getTaskDescription(),
-    "assignedTo": getAssignedContacts(),
-    "dueDate": getDueDate(),
-    "priority": getPriority(),
-    "category": getCategory(),
-    "subtasks": getSubtask(),
-    "subtasksDone": [],
-    "state": "ToDo",
+      "id": taskId,
+      "taskTitle": getTaskTitle(),
+      "description": getTaskDescription(),
+      "assignedTo": getAssignedContacts(),
+      "dueDate": getDueDate(),
+      "priority": getPriority(),
+      "category": getCategory(),
+      "subtasks": getSubtask(),
+      "subtasksDone": [],
+      "state": "ToDo",
   };
 }
 
 
 /**
- * Generates a unique task ID by iterating through the existing tasks array.
- * Finds the maximum task ID currently in use and increments it by one to ensure uniqueness.
+ * Generates a unique task ID by iterating through the tasks array retrieved from the backend.
+ * Finds the highest existing task ID and increments it by one to ensure the new ID is unique.
  * 
- * @returns {number} A unique task ID, greater than any existing task ID.
+ * @async
+ * @function createTaskId
+ * @returns {Promise<number>} A unique task ID, greater than any existing task ID.
  */
-function createTaskId() {
+async function createTaskId() {
   let maxId = -1;
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].id > maxId) {
-      maxId = tasks[i].id;
-    }
+  let currentTasks = await getTasksArray();
+  for (let i = 0; i < currentTasks.length; i++) {
+      if (currentTasks[i].id > maxId) {
+          maxId = currentTasks[i].id;
+      }
   }
-  let newID = maxId + 1;
-  return newID;
+  return maxId + 1;
 }
 
 

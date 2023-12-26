@@ -17,6 +17,40 @@ function loadAddTaskPage() {
 
 
 /**
+ * Clears all tasks in the backend by setting the 'tasks' storage item to an empty array.
+ * 
+ * @async
+ * @function clearAllTasksInBackend
+ * @throws {Error} Throws an error if there is an issue while clearing the tasks.
+ */
+async function clearAllTasksInBackend() {
+  try {
+      await setItem('tasks', []);
+      console.log('All tasks have been successfully cleared.');
+  } catch (error) {
+      console.error('Error while clearing tasks: ', error);
+  }
+}
+
+
+/**
+ * Logs the current tasks from the backend to the console.
+ * 
+ * @async
+ * @function logCurrentTasks
+ * @throws {Error} Throws an error if there is an issue while loading the tasks.
+ */
+async function logCurrentTasks() {
+  try {
+      const currentTasks = await getTasksArray();
+      console.log('Current tasks:', currentTasks);
+  } catch (error) {
+      console.error('Error while loading tasks: ', error);
+  }
+}
+
+
+/**
  * Validates form fields and creates a task if all validations pass. 
  * It then triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
@@ -44,7 +78,7 @@ function validateAndCreateTask() {
  * It then triggers an animation to indicate that the task has been added
  * and closes the Popup after a short delay.
  */
-function validateAndCreateTaskPopup() {
+async function validateAndCreateTaskPopup() {
   var isValid = true;
   isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
   isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
@@ -52,7 +86,7 @@ function validateAndCreateTaskPopup() {
   isValid = validateDropdown("add-category-input", "requiredTextCategory") && isValid;
 
   if (isValid) {
-    createTask();
+    await createTask();
     setTimeout(function () {
       addDnonToAddTaks();
     }, 500);

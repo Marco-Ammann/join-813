@@ -1,3 +1,4 @@
+
 /**
  * Initializes the clicked state for a contact at a specific index.
  * 
@@ -227,11 +228,24 @@ function validateDropdown(inputId, warningId) {
 
 
 /**
- * Creates a new task with gathered values and clears the form upon completion.
+ * Creates and stores a new task based on user inputs.
+ * This function retrieves current tasks, adds a new task to the array, 
+ * and updates the backend storage. It also clears the input form upon completion.
+ * 
+ * @async
+ * @function createTask
  */
-function createTask() {
-  let newTask = getValues();
-  tasks.push(newTask);
+async function createTask() {
+  let currentTasks = await getTasksArray();
+  let newTask = await getValues();
+
+  try {
+    currentTasks.push(newTask);
+    await setItem('tasks', currentTasks);
+  } catch (error) {
+    console.error('Fehler beim Erstellen der Aufgabe: ', error);
+  }
+
   clearForm();
 }
 

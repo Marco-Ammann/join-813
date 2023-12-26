@@ -25,3 +25,34 @@ async function getItem(key) {
 // async function deleteItem(key){
 //     await setItem("key", []);
 // }
+
+
+
+
+
+
+
+/**
+ * Retrieves the tasks array from the backend storage and parses it.
+ * If the tasks data is not found or is in an invalid format, it returns an empty array.
+ * 
+ * @async
+ * @function getTasksArray
+ * @returns {Promise<Array>} An array containing the tasks data.
+ * @throws {Error} Throws an error if there is an issue while loading the tasks.
+ */
+async function getTasksArray() {
+    try {
+        const tasksData = await getItem('tasks');
+        if (Array.isArray(tasksData)) {
+            return tasksData;
+        } else if (typeof tasksData === 'string') {
+            return JSON.parse(tasksData);
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error('Error while loading tasks: ', error);
+        return [];
+    }
+}
