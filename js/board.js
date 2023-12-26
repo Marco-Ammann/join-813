@@ -137,11 +137,19 @@ function addopenCardSubtasks(x) {
     for (let y = 0; y < tasks[x]["subtasksDone"].length; y++) {
         content.innerHTML += generateSubtaskDoneHTML(tasks[x]["subtasksDone"][y]);
     }
-}
+}   
 
 function subtaskComplete(i, x) {
     let content = document.getElementById(`subtask${i}`);
-    content.innerHTML = generateCompletedSubtaskHTML(tasks[x]["subtasks"][i]);
+    content.innerHTML = /*html*/ `
+    <div class="openCardSubtasks">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                ${tasks[x]["subtasks"][i]}
+    </div>
+    `;
     moveSubtaskToDone(i, x);
 }
 

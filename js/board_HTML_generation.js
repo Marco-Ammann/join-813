@@ -267,7 +267,6 @@ function generateSubtaskDoneHTML(subtaskDone) {
 
 
 
-
 function generateCompletedSubtaskHTML(subtask) {
     return /*html*/ `
         <div class="openCardSubtasks">
