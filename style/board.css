@@ -271,7 +271,8 @@ body {
 .listContainer {
     display: flex;
     flex-direction: column;
-    overflow-x: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: calc(100vh - 20.332390rem);
     gap: 1rem;
 }
@@ -507,7 +508,7 @@ body {
     align-items: center;
 }
 
-.openCardSubtasks{
+.openCardSubtasks {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -520,12 +521,45 @@ body {
         padding: 0 1rem 0 1rem !important;
     }
 
+    .MobileBoardHeaderControll h2 {
+        font-size: 2.9375rem;
+    }
+
+    .addTaskButton {
+        width: 2.125rem;
+        height: 2.125rem;
+        padding: 0.1875rem;
+    }
+
+    .sortTasks {
+        width: 100%;
+    }
+
     .MobileBoardHeader {
         display: block;
     }
 
     .boardHeaderControll {
-        margin-bottom: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .toDoList p:not(.noTaskFound p, .toDoCard p) {
+        font-size: 1.6875rem;
+        font-weight: 700;
+        color: #2A3647;
+    }
+
+    .toDoListCategories {
+        margin-bottom: 1rem;
+    }
+
+    .toDoListCategories img {
+        width: 1.875rem;
+        height: 1.875rem;
+    }
+
+    .toDoListCategories a {
+        height: 1.875rem;
     }
 
     .boardHeader {
@@ -535,7 +569,8 @@ body {
     .MobileBoardHeaderControll {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 1.250rem;
+        align-items: center;
+        margin-bottom: 2.5rem;
     }
 
     .toDoList {
@@ -546,7 +581,12 @@ body {
         height: auto !important;
         display: flex;
         flex-direction: row;
-        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .listContainer::-webkit-scrollbar {
+        height: 8px;
     }
 
     .noTaskFound {
