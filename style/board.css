@@ -488,6 +488,33 @@ body {
     gap: 2rem;
 }
 
+.openCardHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.openCardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.openCardFooter a {
+    display: flex;
+    align-items: center;
+}
+
+.openCardSubtasks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
 @media (max-width: 428px) {
     .content {
         padding: 0 1rem 0 1rem !important;
