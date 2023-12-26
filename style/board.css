@@ -166,6 +166,34 @@ body {
     width: 13.75rem;
 }
 
+.progressbar {
+    display: flex;
+    padding: 0rem 0.5rem 0.125rem 0rem;
+    align-items: center;
+    gap: 0.6875rem;
+}
+
+.progressbar progress {
+    display: flex;
+    width: 8rem;
+    gap: 0.625rem;
+    border-radius: 0.5rem;
+    background: #F4F4F4;
+    height: 0.5rem;
+}
+
+.progressbar progress::-webkit-progress-bar {
+    border-radius: 0.5rem;
+    background: #F4F4F4;
+}
+
+.progressbar progress::-webkit-progress-value {
+    border-radius: 1rem;
+    background: #4589FF;
+}
+
+
+
 .noTaskFound {
     display: flex;
     height: 3rem;
@@ -192,18 +220,17 @@ body {
 
 .headerUserStory {
     display: flex;
-    width: 7.0625rem;
     padding: 0.25rem 1rem;
     align-items: flex-start;
     gap: 0.625rem;
     border-radius: 0.5rem;
     background: #0038FF;
     color: #FFF;
-    font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.2rem;
+    width: fit-content;
+}
+
+.headerUserStoryPopUp {
+    padding: 0.25rem 1.5rem;
 }
 
 .headerTechnicalTask {
@@ -234,14 +261,10 @@ body {
     color: #FFF;
     text-align: center;
     font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 0.9rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2.8125rem;
-    gap: 0.625rem;
-    margin-right: -0.5rem;
-    border: 1px solid white;
+    width: calc(2.625rem - 2px);
+    height: calc(2.625rem - 2px);
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
 .icon:nth-child(1) {
@@ -318,21 +341,21 @@ body {
 
 .tansin {
     z-index: 10;
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: right;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%); */
     transition: transform 0.7s ease-in-out;
 }
 
 .tansinCard {
     z-index: 10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    /* position: absolute;
+    top: 0;
+    left: 80%;
     transform-origin: right;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-130%) translateY(0%); */
     transition: transform 0.7s ease-in-out;
 }
 
@@ -443,16 +466,14 @@ body {
     position: absolute;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 12;
     overflow-y: hidden;
 }
 
 .openCard {
-    width: 32.8125rem;
+    width: 27.8125rem;
     flex-direction: column;
     margin: 0 !important;
     z-index: 15 !important;
@@ -461,15 +482,32 @@ body {
 }
 
 .openCard h3 {
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 700;
+    font-size: 3.8125rem;
 }
 
 .openCard h4 {
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
+}
+
+.openCardTable {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    gap: 1.5625rem;
+}
+
+.openCardTable p {
+    color: #2A3647;
+}
+
+.openCardPriority {
+    display: flex;
+    padding: 0.25rem 1.125rem;
+
+    align-items: center;
+    gap: 0.625rem;
 }
 
 .openCardContent {
@@ -485,9 +523,16 @@ body {
 
 .openCardIcon {
     display: flex;
+    padding: 0.4375rem 1rem;
+    gap: 1rem;
     align-items: center;
-    flex-direction: row !important;
-    gap: 2rem;
+    font-size: 1.1875rem;
+}
+
+.openCardAssigned p:not(.openCardIcon p) {
+    font-size: 1.25rem;
+    color: #2A3647;
+    margin-bottom: 0.5rem;
 }
 
 .openCardHeader {
@@ -496,17 +541,27 @@ body {
     justify-content: space-between;
 }
 
+.openCardHeader a {
+    height: 2rem;
+}
+
+.openCardHeader svg {
+    padding: 0.25rem;
+}
+
 .openCardFooter {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
     gap: 0.5rem;
+    color: #2A3647;
 }
 
 .openCardFooter a {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .openCardSubtasks {
@@ -514,7 +569,35 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.5rem;
+    gap: 1rem;
+    height: 1.25rem;
+    padding: 0.375rem 1rem;
+}
+
+#openCardSubtasks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.hoverPointer svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.125rem;
+}
+
+.openCardSubtasks svg:not(.hoverPointer svg) {
+    width: 1rem;
+    height: 1rem;
+    padding: 0.25rem;
+}
+
+.openCardSubtasks-container p:not(.openCardSubtasks p) {
+    font-size: 1.25rem;
+    color: #2A3647;
+    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 1000px) {

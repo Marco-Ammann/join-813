@@ -140,6 +140,46 @@ body {
     }
 }
 
+@keyframes moveLogoMobil {
+    0% {
+        top: calc(50% + 7.62288rem/2);
+        left: calc(50% + 6.25213rem/2);
+        transform: translate(-50%, -50%);
+        width: 6.25213rem;
+        height: 7.62288rem;
+    }
+
+    50% {
+        top: calc(50% + 7.62288rem/2);
+        left: calc(50% + 6.25213rem/2);
+        transform: translate(-50%, -50%);
+        width: 6.25213rem;
+        height: 7.62288rem;
+    }
+
+    100% {
+        top: 2.31rem;
+        left: 2.38rem;
+        transform: translate(0, 0);
+        width: 4rem;
+        height: 4.87694rem;
+    }
+}
+
+@keyframes fadeOutBackgroundMobil {
+    0% {
+        background-color: #2A3647;
+    }
+
+    50% {
+        background-color: #2A3647;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
 .login-content-border {
     display: inline-flex;
     padding: 3rem 7.1875rem;
@@ -409,7 +449,7 @@ body {
 .modal-content {
     position: absolute;
     bottom: 0px;
-    left:calc(50% - 19.5rem/2);
+    left: calc(50% - 19.5rem/2);
     height: 4.625rem;
     color: white;
     text-align: center;
@@ -429,7 +469,18 @@ body {
     from {
         transform: translate(calc(50% - 19.5rem/2), -50%);
     }
+
     to {
         transform: translate(calc(50% - 19.5rem/2), -47vh);
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .join-logo-static {
+        width: 4rem;
+        height: 4.87694rem;
+        position: absolute;
+        top: 2.31rem;
+        left: 2.38rem;
     }
 }
