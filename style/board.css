@@ -2,8 +2,12 @@ body {
     max-height: 100vh;
 }
 
-.hoverPointer :hover{
+.hoverPointer :hover {
     cursor: pointer;
+}
+
+.textCross {
+    text-decoration: Line-through;
 }
 
 .content {

@@ -1,4 +1,6 @@
 
+// nicht verändern bitte :)
+
 let tasks = [
     {
         "id": 0,
@@ -21,7 +23,7 @@ let tasks = [
         "priority": "medium",
         "category": "Personal",
         "subtasks": ["SubtaskA"],
-        "subtasksDone": [],
+        "subtasksDone": "",
         "state": "InProgress"
     },
     {

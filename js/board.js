@@ -44,19 +44,20 @@ function render(taskStatus, i) {
 }
 
 function addProgressBar(i) {
-    let taks = tasks[i]['subtasks'].length;
+    let taks = tasks[i]['subtasks'].length + tasks[i]['subtasksDone'].length;
     if (taks > 1) {
         let calculatetSubtaks = 100 / taks;
-        calculatetSubtaks = calculatetSubtaks * tasks[i]['subtasksDone'];
+        calculatetSubtaks = calculatetSubtaks * tasks[i]['subtasksDone'].length;
         content = document.getElementById(`progressbar${i}`);
         content.innerHTML =/*html*/`
                 <progress max="100" value="${calculatetSubtaks}"></progress>
-                <span>${tasks[i]['subtasksDone'].length}/${tasks[i]['subtasks'].length} Subtaks</span>
+                <span>${tasks[i]['subtasksDone'].length}/${taks} Subtaks</span>
                 `
     };
 }
 function openCard(i) {
     const content = document.getElementById(`openCard`);
+    content.innerHTML = '';
     const openCardContainer = document.getElementById('openCardContainer');
     openCardContainer.classList.remove('hidden');
 
@@ -132,6 +133,9 @@ function addTaskIcon(id, x) {
 
 function addopenCardSubtasks(x) {
     let content = document.getElementById('openCardSubtasks');
+    content.innerHTML = '';
+    console.log(x);
+
     for (let i = 0; i < tasks[x]['subtasks'].length; i++) {
         content.innerHTML += /*html*/`
             <div class="hoverPointer" id="subtask${i}" onclick="subtaskComplete(${i}, ${x})">
@@ -139,6 +143,21 @@ function addopenCardSubtasks(x) {
                 <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                 </svg>
                 ${tasks[x]['subtasks'][i]}
+            </div>
+        `;
+    }
+
+    for (let y = 0; y < tasks[x]['subtasksDone'].length; y++) {
+        content.innerHTML += /*html*/`
+        <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </div>
+                <p class="textCross">
+                ${tasks[x]['subtasksDone'][y]}
+                </p>
             </div>
         `;
     }
@@ -153,6 +172,22 @@ function subtaskComplete(i, x) {
                 </svg>
                 ${tasks[x]['subtasks'][i]}
     `
+    moveSubtaskToDone(i, x);
+}
+
+
+function moveSubtaskToDone(i, x) {
+    // Zugriff auf das zu entfernende Subtask-Element
+    let removedSubtask = tasks[x]['subtasks'][i];
+
+    // Entfernen des Elements aus tasks[x]['subtasks']
+    tasks[x]['subtasks'].splice(i, 1);
+
+    // Hinzufügen des entfernten Elements zu tasks[x]['subtasksDone']
+    tasks[x]['subtasksDone'].push(removedSubtask);
+
+    // Annahme: addopenCardSubtasks ist eine Funktion, die definiert ist und korrekt funktioniert
+    addopenCardSubtasks(x);
 }
 
 function subtaskUnComplete(i, x) {
@@ -161,7 +196,7 @@ function subtaskUnComplete(i, x) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                 </svg>
-                ${tasks[x]['subtasks'][i]}
+                ${tasks[x]['subtasks']}
     `
 }
 
@@ -181,7 +216,7 @@ function closeCard() {
 function addTransition() {
     const div = document.getElementById('openCardContainer');
     div.classList.remove('hidden');
-    
+
     const transitionDiv = document.getElementById('openCard');
     transitionDiv.classList.add('tansinCard');
 
