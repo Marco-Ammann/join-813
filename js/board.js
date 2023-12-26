@@ -129,45 +129,19 @@ function addTaskIcon(id, x) {
 function addopenCardSubtasks(x) {
     let content = document.getElementById("openCardSubtasks");
     content.innerHTML = "";
-    console.log(x);
 
     for (let i = 0; i < tasks[x]["subtasks"].length; i++) {
-        content.innerHTML += /*html*/ `
-            <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${x})">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-            </svg>
-                ${tasks[x]["subtasks"][i]}
-            </div>
-        `;
+        content.innerHTML += generateSubtaskHTML(tasks[x]["subtasks"][i], i, x);
     }
 
     for (let y = 0; y < tasks[x]["subtasksDone"].length; y++) {
-        content.innerHTML += /*html*/ `
-        <div class="openCardSubtasks">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <p class="textCross">
-                ${tasks[x]["subtasksDone"][y]}
-                </p>
-            </div>
-        `;
+        content.innerHTML += generateSubtaskDoneHTML(tasks[x]["subtasksDone"][y]);
     }
 }
 
 function subtaskComplete(i, x) {
     let content = document.getElementById(`subtask${i}`);
-    content.innerHTML = /*html*/ `
-    <div class="openCardSubtasks">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ${tasks[x]["subtasks"][i]}
-    </div>
-    `;
+    content.innerHTML = generateCompletedSubtaskHTML(tasks[x]["subtasks"][i]);
     moveSubtaskToDone(i, x);
 }
 
