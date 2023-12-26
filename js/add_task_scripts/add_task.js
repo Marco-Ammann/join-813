@@ -65,9 +65,9 @@ function validateAndCreateTask() {
   if (isValid) {
     createTask();
     animateTaskAdded();
-    setTimeout(function () {
-      window.location.href = 'board.html';
-    }, 1500);
+    // setTimeout(function () {
+    //   window.location.href = 'board.html';
+    // }, 1500);
   }
 }
 

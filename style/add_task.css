@@ -652,6 +652,10 @@ mediaquerrys
     padding: 4rem 3rem 0 3rem!important;
   }
 
+  .content-title {
+    font-size: 3.5rem;
+  }
+
   .add-tasks {
     gap: 3rem;
   }
@@ -745,6 +749,10 @@ mediaquerrys
 
   .content {
     padding: 3rem 2rem 1rem 2rem!important;
+  }
+
+  .content-title {
+    font-size: 3rem;
   }
 
   .footer-container {
