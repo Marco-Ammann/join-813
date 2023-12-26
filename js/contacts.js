@@ -3,12 +3,11 @@
  */
 function initContacts() {
     renderContactList();
-
 }
 
 
 /**
- * Renders the contact list sorted by their names
+ * Renders the contact list and the first letter to sort
  */
 function renderContactList() {
     let contactList = document.getElementById('contactList');
@@ -33,29 +32,18 @@ function renderContactList() {
  * Renders pop up and changes html and styles to add new contact design
  */
 function openAddNewContact() {
-    const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
-    const popUp = document.getElementById('popUp');
 
-    document.getElementById('popUpTitle').innerHTML = 'Add contact'
+    renderPopUp('add-new');
+
     document.getElementById('popUpVector').classList.remove('vector-margin');
-    popUpProfile.style.backgroundColor = '#D1D1D1';
-    popUpProfile.innerHTML = /* html */ `<img src="./assets/img/Desktop/contacts/person.svg"
-    alt="Profile-Image"></div>`;
+    document.getElementById('popUpProfile').style.backgroundColor = '#D1D1D1';
     document.getElementById('popUpSubtitle').classList.remove('d-none');
-    popUpSubmit.innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
-    alt="Create Contact">`
+
     popUpSubmit.parentNode.parentNode.onsubmit = function () { return addNewContact() };
-    popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
     popUpSubmit.previousElementSibling.onclick = function () { closePopUp() };
-    popUp.classList.remove('d-none');
-    popUp.style = 'animation: blendIn 300ms ease-out;'
-    if ((window.matchMedia("(max-width: 428px)").matches)) {
-        popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
-        document.getElementById('popup-buttons').firstElementChild.classList.add('d-none');
-    } else {
-        popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
-    }
+
+    openPopUpAni('add-new');
 }
 
 
@@ -64,29 +52,36 @@ function openAddNewContact() {
  * @param {number} i 
  */
 function openEditContact(i) {
-    const contact = contacts[i];
-    const popUpProfile = document.getElementById('popUpProfile');
     const popUpSubmit = document.getElementById('popUpSubmit');
-    const popUp = document.getElementById('popUp');
 
-    document.getElementById('popUp')
-    document.getElementById('popUpTitle').innerHTML = 'Edit contact';
+    renderPopUp('edit', i);
+
     document.getElementById('popUpVector').classList.add('vector-margin');
-    popUpProfile.style.backgroundColor = contact['color'];
-    popUpProfile.innerHTML = getInitials(contact['name']);
+    document.getElementById('popUpProfile').style.backgroundColor = contacts[i]['color'];
     document.getElementById('popUpSubtitle').classList.add('d-none');
-    popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
-    alt="Create Contact">`;
+
     popUpSubmit.parentNode.parentNode.onsubmit = function () { return editContact(i) };
-    popUpSubmit.previousElementSibling.innerHTML = 'Delete'
     popUpSubmit.previousElementSibling.onclick = function () { deleteContact(i) };
-    document.getElementById('popUpName').value = contact['name'];
-    document.getElementById('popUpEmail').value = contact['email'];
-    document.getElementById('popUpPhone').value = contact['phone'];
+
+    setInput(i);
+    openPopUpAni('edit');
+}
+
+
+/**
+ * Plays the opening animation of the popup (both variants) for desktop & mobile
+ * @param {string} variant 
+ */
+function openPopUpAni(variant) {
     popUp.classList.remove('d-none');
     popUp.style = 'animation: blendIn 300ms ease-out;'
+
     if ((window.matchMedia("(max-width: 428px)").matches)) {
-        document.getElementById('popup-buttons').firstElementChild.classList.remove('d-none')
+        if (variant == 'add-new') {
+            document.getElementById('popup-buttons').firstElementChild.classList.add('d-none');
+        } else if (variant == 'edit') {
+            document.getElementById('popup-buttons').firstElementChild.classList.remove('d-none')
+        }
         popUp.firstElementChild.style = 'animation: slideInPopUpMobile 300ms ease-out;';
     } else {
         popUp.firstElementChild.style = 'animation: slideInPopUp 300ms ease-out;';
@@ -95,25 +90,75 @@ function openEditContact(i) {
 
 
 /**
+ * Changes the popup elements to match the given variant
+ * @param {string} variant 
+ * @param {number} i 
+ */
+function renderPopUp(variant, i) {
+    const popUpTitle = document.getElementById('popUpTitle')
+    const popUpProfile = document.getElementById('popUpProfile');
+    const popUpSubmit = document.getElementById('popUpSubmit');
+
+    if (variant == 'add-new') {
+        popUpTitle.innerHTML = 'Add contact';
+        popUpProfile.innerHTML = /* html */ `<img src="./assets/img/Desktop/contacts/person.svg"
+        alt="Profile-Image"></div>`;
+        popUpSubmit.innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
+        alt="Create Contact">`
+            popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
+    } else if (variant == 'edit') {
+        popUpTitle.innerHTML = 'Edit contact';
+        popUpProfile.innerHTML = getInitials(contacts[i]['name']);
+        popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
+        alt="Create Contact">`;
+            popUpSubmit.previousElementSibling.innerHTML = 'Delete';
+    }
+}
+
+
+/**
+ * Sets the editing contact information in the input fields
+ * @param {number} i 
+ */
+function setInput(i) {
+    const contact = contacts[i];
+
+    document.getElementById('popUpName').value = contact['name'];
+    document.getElementById('popUpEmail').value = contact['email'];
+    document.getElementById('popUpPhone').value = contact['phone'];
+}
+
+
+/**
+ * Resets all input fields
+ */
+function resetInput() {
+    document.getElementById('popUpName').value = '';
+    document.getElementById('popUpEmail').value = '';
+    document.getElementById('popUpPhone').value = '';
+}
+
+
+/**
  * Opens the clicked contact and deselects previous one if it exists
  * @param {number} i 
  */
 function openContact(i) {
+    let contact = contacts[i];
     let contactsInfo = document.getElementById('contactsInfo');
+    let contactElement = document.getElementById(`contact${i}`);
+
     renderContactList();
     contactsInfo.innerHTML = '';
-
-
-    let contact = contacts[i];
-    let contactElement = document.getElementById(`contact${i}`);
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    document.getElementById('contactsInfo').innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
+    contactsInfo.innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
 
     if (window.matchMedia("(max-width: 428px)").matches) {
-        openContactMobile(i);
+        openContactMobile();
     } else {
         contactElement.classList.add('contact-selected');
         contactsInfo.style = 'animation: slideInInfo 100ms ease-in-out;';
+
         setTimeout(function () {
             contactsInfo.style = '';
         }, 100);
@@ -121,49 +166,46 @@ function openContact(i) {
 }
 
 
-function openAddNewContactMobile() {
-
-}
-
-
-function openContactMobile(i) {
+/**
+ * Opens contact info on mobile
+ */
+function openContactMobile() {
     document.getElementById('contact-menu-button').classList.remove('d-none');
     document.getElementById('contact-list-container').classList.add('d-none');
-    
 }
 
 
+/**
+ * Closes contact info on mobile
+ */
 function closeContactMobile() {
     document.getElementById('contact-menu-button').classList.add('d-none');
     document.getElementById('contact-list-container').classList.remove('d-none');
-    
 }
 
+
 /**
- * Closes the pop up and cleans the input fields
+ * Closes the pop up + animation
  */
 function closePopUp(submitted) {
     let popUp = document.getElementById('popUp');
 
     if (!submitted) {
         popUp.style = 'animation: blendOut 300ms ease-out;'
+
         if ((window.matchMedia("(max-width: 428px)").matches)) {
             popUp.firstElementChild.style = 'animation: slideOutPopUpMobile 300ms ease-out;';
         } else {
             popUp.firstElementChild.style = 'animation: slideOutPopUp 300ms ease-out;';
         }
-        
+
         setTimeout(function () {
             popUp.classList.add('d-none');
-            document.getElementById('popUpName').value = '';
-            document.getElementById('popUpEmail').value = '';
-            document.getElementById('popUpPhone').value = '';
+            resetInput();
         }, 300);
     } else {
         popUp.classList.add('d-none');
-        document.getElementById('popUpName').value = '';
-        document.getElementById('popUpEmail').value = '';
-        document.getElementById('popUpPhone').value = '';
+        resetInput();
     }
 }
 
@@ -208,7 +250,7 @@ function editContact(i) {
 
 
 /**
- * Adds the new contact sorted by the name
+ * Adds the new contact to the array sorted by the name
  */
 function addNewContact() {
     event.preventDefault();
@@ -239,11 +281,13 @@ function addNewContact() {
 
 
 /**
- * Displays the "Contact succesfully created" message for 2.5s
+ * Displays the "Contact succesfully created" message for 2.5s for desktop & mobile
  */
 function playMessageAni() {
     let message = document.getElementById('message');
+
     message.classList.remove('d-none');
+
     if (window.matchMedia("(max-width: 428px)").matches) {
         message.classList.add('message-animation-mobile'); // start animation
         setTimeout(function () {
@@ -296,10 +340,15 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
-
+/**
+ * Opens the contact menu with the edit and delete options + animation
+ * @param {number} i 
+ */
 function openContactMenu(i) {
     let contactMenu = document.getElementById('contact-menu');
+
     contactMenu.classList.remove('d-none')
+
     contactMenu.innerHTML = /* html */ `
         <div class="contact-menu" onclick="doNotClose(event)">
         <div onclick="openEditContact(${i})">
@@ -310,15 +359,19 @@ function openContactMenu(i) {
             <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
             <span name="Delete">Delete</span>
         </div>
-    </div>`
+    </div>`;
+
     contactMenu.firstElementChild.style = 'animation: slideInContactMenu 300ms ease-out';
 }
 
 
+/**
+ * Closes the contact menu + animation
+ */
 function closeContactMenu() {
     let contactMenu = document.getElementById('contact-menu');
     contactMenu.firstElementChild.style = 'animation: slideOutContactMenu 300ms ease-out'
-    setTimeout(function() {
+    setTimeout(function () {
         contactMenu.classList.add('d-none');
         contactMenu.innerHTML = '';
     }, 300)
@@ -401,5 +454,3 @@ function returnContactInfoHTML(color, initials, name, email, phone, i) {
 
     </div>`;
 }
-
-// TODO: Clean coding (JSDoc + Funtion Length / Script Length)
