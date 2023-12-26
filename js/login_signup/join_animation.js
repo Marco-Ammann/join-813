@@ -4,18 +4,19 @@ function loginInit() {
 
 /**
  * Join Animation
- * 
+ *
  */
 function checkAndPlayAnimation() {
     let animationPlayed = sessionStorage.getItem("animationPlayed");
     let animationContainer = document.getElementById("animationContainer");
-    if (!animationPlayed) {
+    if (animationPlayed) {
         sessionStorage.setItem("animationPlayed", "true");
         generateAnimationContainer(animationContainer);
 
         let logoContainer = document.getElementById("logoContainer");
         let joinLogo = document.getElementById("joinLogo");
-        styleAnimation(animationContainer, logoContainer, joinLogo);
+        let joinLogoMobil = document.getElementById('joinLogoMobil');
+        styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMobil);
     } else {
         animationContainer.classList.add("d-none");
         document.getElementById("join-logo-static").style.display = "block";
@@ -24,30 +25,50 @@ function checkAndPlayAnimation() {
 
 /**
  * Animation - Container
- * 
+ *
  * @param {ID} animationContainer - create Container for/with JoinLogo
  */
 function generateAnimationContainer(animationContainer) {
     animationContainer.innerHTML = "";
-    animationContainer.innerHTML = `
-        <div class="logo-container" id="logoContainer">
-            <img class="join-logo" id="joinLogo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
-        </div>`;
+
+    if (window.innerWidth <= 1000) {
+        animationContainer.innerHTML = `
+            <div class="logo-container" id="logoContainer">
+                <img class="join-logo-mobil" id="joinLogoMobil" src="./assets/img/Mobile/login_signup_mobile/Capa_2_mobile.svg" alt="Join Logo">
+                <img class="join-logo-mobil" id="joinLogo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
+            </div>`;
+    } else {
+        animationContainer.innerHTML = `
+            <div class="logo-container" id="logoContainer">
+                <img class="join-logo" id="joinLogo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
+            </div>`;
+    }
 }
 
 /**
  * Style Animation
- * 
+ *
  * @param {ID} animationContainer - Dialogfenster
  * @param {ID} logoContainer - Container for JoinLogo
  * @param {ID} joinLogo - JoinLogo
  */
-function styleAnimation(animationContainer, logoContainer, joinLogo) {
-    animationContainer.style.animation = "fadeOutBackground 1s forwards";
-    logoContainer.style.animation = "moveLogo 1s forwards";
-    joinLogo.style.animation = "moveLogo 1s forwards";
-    setTimeout(function() {
-        animationContainer.classList.add("d-none");
-        document.getElementById("join-logo-static").style.display = "block";
-    }, 1000);
+function styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMobil) {
+    if (window.innerWidth <= 1000) {
+        animationContainer.style.animation = "fadeOutBackgroundMobil 100s forwards";
+        logoContainer.style.animation = "moveLogoMobil 100s forwards";
+        joinLogoMobil.style.animation = "moveLogoMobil 100s forwards";
+        joinLogo.style.animation = "moveLogoMobil 100s forwards";
+        setTimeout(function () {
+            animationContainer.classList.add("d-none");
+            document.getElementById("join-logo-static").style.display = "block";
+        }, 100000);
+    } else {
+        animationContainer.style.animation = "fadeOutBackground 1s forwards";
+        logoContainer.style.animation = "moveLogo 1s forwards";
+        joinLogo.style.animation = "moveLogo 1s forwards";
+        setTimeout(function () {
+            animationContainer.classList.add("d-none");
+            document.getElementById("join-logo-static").style.display = "block";
+        }, 1000);
+    }
 }
