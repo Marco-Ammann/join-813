@@ -8,8 +8,6 @@
 8
 9
 0
-'
-'
 56
 ReportingObserverrgbf
 gbfgb
@@ -26,5 +24,5 @@ blurfgbfg
 blurfgbbg
 bdsfjljk8454
 454524
-512df
+512
 sdfd
