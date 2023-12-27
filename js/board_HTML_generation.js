@@ -170,15 +170,15 @@ function generateOpenCardHTML(i) {
             </a>
         </div>
         <div class="openCardContent">
-            <h3>${tasks[i][`taskTitle`]}</h3>
-            <h4>${tasks[i][`description`]}</h4>
+            <h3 id="openCardTitle${i}">${tasks[i][`taskTitle`]}</h3>
+            <h4 id="openCardDescription${i}">${tasks[i][`description`]}</h4>
             <div class="openCardTable">
-            <p>Due date:</p><span>${tasks[i][`dueDate`]}<span>
+            <p>Due date:</p><span id="openCardDate${i}">${tasks[i][`dueDate`]}<span>
             </div>
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span>${tasks[i][`priority`]}</span>
+                <span id="openCardPriority${i}">${tasks[i][`priority`]}</span>
                 <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]
         }.svg">
                 </div>

@@ -44,7 +44,7 @@ let tasks = [
         "description": "Beschreibung des Dritten Tasks",
         "assignedTo": ["7", "2", "4"],
         "dueDate": "15-01-2025",
-        "priority": "high",
+        "priority": "urgent",
         "category": "Work",
         "subtasks": ["Subtask1", "Subtask2", "Subtask3"],
         "subtasksDone": [],
