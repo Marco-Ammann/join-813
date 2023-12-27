@@ -1,16 +1,27 @@
 /**
  * Initializes the summary.html
  */
-function initSummary() {
+async function initSummary() {
     if (window.matchMedia("(max-width: 1000px)").matches) {
         playGreetingAni();
     } else {
         greeting.parentNode.classList.remove('d-none');
     }
+    await setTasks();
     renderSummaryBoard();
     renderSummaryGreeting();
 
 
+}
+
+async function setTasks(){
+    let tasksToSet = await getTasksArray();
+    if (Array.isArray(tasksToSet)) {
+        tasks = tasksToSet;
+    } else {
+        tasks = [];
+    }
+    console.log(tasks);
 }
 
 
@@ -20,7 +31,7 @@ function initSummary() {
 function renderSummaryBoard() {
     document.getElementById('toDoNum').innerHTML = findTaskQuantitys('state', 'ToDo');
     document.getElementById('doneNum').innerHTML = findTaskQuantitys('state', 'Done');
-    document.getElementById('urgentNum').innerHTML = findTaskQuantitys('priority', 'high');
+    document.getElementById('urgentNum').innerHTML = findTaskQuantitys('priority', 'urgent');
     renderDeadlineBox();
     document.getElementById('tasksNum').innerHTML = tasks.length;
     document.getElementById('inProgressNum').innerHTML = findTaskQuantitys('state', 'InProgress');

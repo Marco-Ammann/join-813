@@ -1,5 +1,5 @@
 let currentDragedElement;
-
+const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
 async function loadBoard() {
     await setTasks();
     sortTaks();
@@ -23,7 +23,7 @@ function sortTaks() {
     document.getElementById("AwaitFeedbackContainer").innerHTML = "";
     document.getElementById("DoneContainer").innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
-        const taskStatus = tasks[i][`state`];
+        const taskStatus = tasks[i]['state'];
         render(taskStatus, i);
     }
 }
@@ -250,7 +250,7 @@ function removeHighlight(id) {
 }
 
 function checkAndAddTasks(tasks) {
-    const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
+
 
     states.forEach((state) => {
         const filteredTasks = tasks.filter((task) => task.state === state);
@@ -289,7 +289,8 @@ function sortAndFilterCards() {
     });
 }
 
-function openAddTaskMenu() {
+function openAddTaskMenu(state) {
+    currentTaskState = state;
     if (window.innerWidth < 1000) {
         window.location.href = "add_task.html";
     } else {

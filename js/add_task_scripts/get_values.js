@@ -1,6 +1,6 @@
 let assignedContacts = [];
 let clickedPriority = "medium";
-
+let currentTaskState = "ToDo";
 /**
  * Gathers all task-related information from the user input fields and creates a task object.
  * This includes generating a unique task ID, fetching task title, description, assigned contacts,
@@ -22,7 +22,7 @@ async function getValues() {
       "category": getCategory(),
       "subtasks": getSubtask(),
       "subtasksDone": [],
-      "state": "ToDo",
+      "state": currentTaskState,
   };
 }
 

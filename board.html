@@ -258,7 +258,7 @@
         <div class="MobileBoardHeader">
             <div class="MobileBoardHeaderControll">
                 <h2>Board</h2>
-                <button class="addTaskButton" onclick="openAddTaskMenu()">
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                             width="32" height="32">
@@ -300,7 +300,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu(), loadAddTaskPage()">
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()">
                     <p>Add taks</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -321,7 +321,7 @@
             <div>
                 <div class="toDoListCategories">
                     <p>To do</p>
-                    <a onclick="openAddTaskMenu()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
+                    <a onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="ToDoContainer" ondrop="moveTo('ToDo')"
                     ondragleave="removeHighlight('open')" ondragover="allowDrop(event)">
@@ -331,7 +331,7 @@
 
                 <div class="toDoListCategories">
                     <p>In progress</p>
-                    <a onclick="openAddTaskMenu()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
+                    <a onclick="openAddTaskMenu('InProgress'), loadAddTaskPage()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="InProgressContainer" ondrop="moveTo('InProgress')"
                     ondragleave="removeHighlight('open')" ondragover="allowDrop(event)"></div>
@@ -340,7 +340,7 @@
             <div>
                 <div class="toDoListCategories">
                     <p>Await feedback</p>
-                    <a onclick="openAddTaskMenu()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
+                    <a onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage()"><img src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="AwaitFeedbackContainer" ondrop="moveTo('AwaitFeedback')"
                     ondragleave="removeHighlight('open')" ondragover="allowDrop(event)"></div>
