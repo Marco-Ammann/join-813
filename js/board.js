@@ -104,17 +104,16 @@ function editCard() {
 function addOpemTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        const element = tasks[x]["assignedTo"][i];
-        let color = contacts[element]["color"];
+        let color = contacts[i]["color"];
 
-        const nameParts = contacts[element]["name"].split(" ");
+        const nameParts = contacts[i]["name"].split(" ");
         const firstNameInitial = nameParts[0].charAt(0);
         const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
 
         content.innerHTML += /*html*/ `
         <div class="openCardIcon">
           <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-          <p>${contacts[element]["name"]}</p>
+          <p>${contacts[i]["name"]}</p>
         </div>
         `;
     }
