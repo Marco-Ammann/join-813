@@ -197,12 +197,12 @@ function subtaskUnComplete(i, x) {
 
 function closeCard() {
     const transout = document.getElementById("openCard");
-    transout.classList.add("tansoutCard");
-    transout.classList.remove("tansinCard");
+    transout.style = 'animation: slideOutCard 100ms ease-out;';
     setTimeout(() => {
         const div = document.getElementById("openCardContainer");
+        transout.style = '';
         div.classList.add("hidden");
-    }, 400);
+    }, 100);
 }
 
 function addTransition() {
@@ -210,8 +210,7 @@ function addTransition() {
     div.classList.remove("hidden");
 
     const transitionDiv = document.getElementById("openCard");
-    transitionDiv.classList.add("tansinCard");
-    transitionDiv.classList.remove("tansoutCard");
+    transitionDiv.style = 'animation: slideInCard 100ms ease-out;';
 
 }
 
@@ -281,21 +280,21 @@ function openAddTaskMenu() {
         window.location.href = "add_task.html";
     } else {
         const transout = document.getElementById("transition");
-        transout.classList.remove("transout");
 
         const div = document.getElementById("animationDiv");
         div.classList.remove("hidden");
 
         const transitionDiv = document.getElementById("transition");
-        transitionDiv.classList.add("tansin");
+        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out;'
     }
 }
 
 function addDnonToAddTaks() {
     const transout = document.getElementById("transition");
-    transout.classList.add("transout");
+    transout.style = 'animation: slideOutAddNew 100ms ease-in-out;'
     setTimeout(() => {
         const div = document.getElementById("animationDiv");
+        transout.style = '';
         div.classList.add("hidden");
-    }, 400);
+    }, 100);
 }
