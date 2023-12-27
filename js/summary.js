@@ -31,7 +31,7 @@ async function setTasks(){
 function renderSummaryBoard() {
     document.getElementById('toDoNum').innerHTML = findTaskQuantitys('state', 'ToDo');
     document.getElementById('doneNum').innerHTML = findTaskQuantitys('state', 'Done');
-    document.getElementById('urgentNum').innerHTML = findTaskQuantitys('priority', 'high');
+    document.getElementById('urgentNum').innerHTML = findTaskQuantitys('priority', 'urgent');
     renderDeadlineBox();
     document.getElementById('tasksNum').innerHTML = tasks.length;
     document.getElementById('inProgressNum').innerHTML = findTaskQuantitys('state', 'InProgress');
