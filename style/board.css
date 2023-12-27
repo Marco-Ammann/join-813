@@ -689,4 +689,41 @@ body {
     .boardHeaderControll {
         width: auto;
     }
+
+    .headerUserStoryPopUp {
+        padding: 0.25rem 1rem;
+    }
+
+    .openCard {
+        width: 21.75rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .openCard h3 {
+        font-size: 2.25rem;
+    }
+
+    .openCard h4,
+    .openCardTable,
+    .openCardAssigned p:not(.openCardIcon p),
+    .openCardIcon,
+    .openCardSubtasks-container p:not(.openCardSubtasks p) {
+        font-size: 1rem;
+    }
+
+    .openCardAssigned p:not(.openCardIcon p) {
+        margin-bottom: 0.25rem;
+    }
+
+    .openCardContent {
+        gap: 1rem;
+    }
+
+    .toDoCard {
+        gap: 1rem;
+    }
+
+    .openCardAssigned {
+        gap: 0.25rem;
+    }
 }
