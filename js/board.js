@@ -20,8 +20,7 @@ function render(taskStatus, i) {
     taskStatus = taskStatus + "Container";
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML += /*html*/ `    
-        <div onclick="openCard(${i})" id="card${i}" draggable="true" ondragstart="startDraggin(${tasks[i][`id`]
-        })">
+        <div onclick="openCard(${i})" id="card${i}" draggable="true" ondragstart="startDraggin(${tasks[i][`id`]})">
             <div class="toDoCard">
                 <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
