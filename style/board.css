@@ -316,7 +316,7 @@ body {
 
 
 .hidden {
-    z-index: -10 !important;
+    display: none !important;
 }
 
 .mainAddTaksContainer {
@@ -351,7 +351,7 @@ body {
     inset: 0;
 }
 
-    /* .tansinCard {
+/* .tansinCard {
     animation: slideInCard 0.7s ease-in-out;
 } */
 
@@ -596,7 +596,7 @@ body {
     from {
         transform: translateX(calc(calc(calc(100vw - 69.75rem) / 2) + 69.75rem));
     }
-    
+
     to {
         transform: translateX(0);
     }
@@ -606,7 +606,7 @@ body {
     from {
         transform: translateX(0);
     }
-    
+
     to {
         transform: translateX(calc(calc(calc(100vw - 69.75rem) / 2) + 69.75rem));
     }
@@ -614,7 +614,7 @@ body {
 
 @keyframes slideInCard {
     from {
-        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) +  24.75rem));
+        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) + 24.75rem));
     }
 
     to {
@@ -628,7 +628,7 @@ body {
     }
 
     to {
-        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) +  24.75rem));
+        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) + 24.75rem));
     }
 }
 

@@ -57,7 +57,7 @@ function render(taskStatus, i) {
 
 function addProgressBar(i) {
     let taks = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
-    if (taks > 1) {
+    if (taks > 0) {
         let calculatetSubtaks = 100 / taks;
         calculatetSubtaks = calculatetSubtaks * tasks[i]["subtasksDone"].length;
         content = document.getElementById(`progressbar${i}`);
