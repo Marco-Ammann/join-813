@@ -329,37 +329,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(77.5vw - 8rem);
-    height: calc(84.9609375vh - 8rem);
+    width: 61.75rem;
+    height: 46.375rem;
     background-color: white;
-    padding: 0 0 0 0 !important;
     padding: 4rem !important;
     border-radius: 50px !important;
     gap: 0rem !important;
     justify-content: space-between;
 }
 
-.tansin {
+.add-tasks-popup-container {
     z-index: 10;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: right;
-    transform: translateX(-50%) translateY(-50%); */
-    transition: transform 0.7s ease-in-out;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
 }
 
-.tansinCard {
-    z-index: 10;
-    /* position: absolute;
-    top: 0;
-    left: 80%;
-    transform-origin: right;
-    transform: translateX(-130%) translateY(0%); */
-    transition: transform 0.7s ease-in-out;
-}
+    /* .tansinCard {
+    animation: slideInCard 0.7s ease-in-out;
+} */
 
-.transout {
+/* .transout {
     z-index: 10;
     position: absolute;
     top: 50%;
@@ -367,17 +359,11 @@ body {
     transform-origin: right;
     transform: translateX(150%) translateY(-50%);
     transition: transform 0.7s ease-in-out;
-}
+} */
 
-.tansoutCard {
-    z-index: 10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: right;
-    transform: translateX(150%) translateY(-50%);
-    transition: transform 0.7s ease-in-out;
-}
+/* .tansoutCard {
+    animation: slideInCard 0.7s ease-in-out;
+} */
 
 .addTaskHeader {
     display: flex;
@@ -469,7 +455,7 @@ body {
     inset: 0;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 12;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .openCard {
@@ -599,6 +585,50 @@ body {
     color: #2A3647;
     margin-bottom: 0.5rem;
 }
+
+/* Animations */
+
+@keyframes slideInAddNew {
+    from {
+        transform: translateX(calc(calc(calc(100vw - 69.75rem) / 2) + 69.75rem));
+    }
+    
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutAddNew {
+    from {
+        transform: translateX(0);
+    }
+    
+    to {
+        transform: translateX(calc(calc(calc(100vw - 69.75rem) / 2) + 69.75rem));
+    }
+}
+
+@keyframes slideInCard {
+    from {
+        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) +  24.75rem));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutCard {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(calc(calc(100vw - 24.75rem) / 2) +  24.75rem));
+    }
+}
+
+/* Media Queries */
 
 @media (max-width: 1000px) {
     .content {
