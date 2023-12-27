@@ -708,7 +708,7 @@ body {
     }
 
     .listContainer::-webkit-scrollbar {
-        height: 4px;
+        height: 0;
     }
 
     .noTaskFound {

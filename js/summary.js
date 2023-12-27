@@ -14,6 +14,10 @@ async function initSummary() {
 
 }
 
+
+/**
+ * Loads the tasks-array from Back End
+ */
 async function setTasks(){
     let tasksToSet = await getTasksArray();
     if (Array.isArray(tasksToSet)) {
@@ -21,7 +25,6 @@ async function setTasks(){
     } else {
         tasks = [];
     }
-    console.log(tasks);
 }
 
 
@@ -123,7 +126,7 @@ function renderDeadlineBox() {
     let today = new Date();
 
     for (let i = 0; i < tasks.length; i++) {
-        let dateParts = tasks[i]['dueDate'].split('-');
+        let dateParts = tasks[i]['dueDate'].split('/');
         let taskDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 
         if (taskDate > today) {
@@ -153,6 +156,6 @@ function sortDates(dates) {
  * @returns formatted date
  */
 function convertToDate(dateString) {
-    let [day, month, year] = dateString.split('-');
+    let [day, month, year] = dateString.split('/');
     return new Date(`${year}-${month}-${day}`);
 }
