@@ -80,6 +80,22 @@ body {
     /* animation: moveLogo 0.7s forwards; */
 }
 
+.logo-container-mobil {
+    position: absolute;
+    top: calc(50% + 7.62288rem/2);
+    left: calc(50% + 6.25213rem/2);
+    display: contents;
+    transform: translate(-50%, -50%);
+}
+
+.join-logo-mobil-capa2 {
+    position: absolute;
+}
+
+.join-logo-mobil-capa1 {
+    position: absolute;
+}
+
 .join-logo-static {
     display: none;
     position: absolute;
@@ -142,16 +158,16 @@ body {
 
 @keyframes moveLogoMobil {
     0% {
-        top: calc(50% + 7.62288rem/2);
-        left: calc(50% + 6.25213rem/2);
+        top: calc(50%);
+        left: calc(50%);
         transform: translate(-50%, -50%);
         width: 6.25213rem;
         height: 7.62288rem;
     }
 
-    50% {
-        top: calc(50% + 7.62288rem/2);
-        left: calc(50% + 6.25213rem/2);
+    35% {
+        top: calc(50%);
+        left: calc(50%);
         transform: translate(-50%, -50%);
         width: 6.25213rem;
         height: 7.62288rem;
@@ -163,6 +179,34 @@ body {
         transform: translate(0, 0);
         width: 4rem;
         height: 4.87694rem;
+    }
+}
+
+@keyframes opacityLogoMobilCapa2 {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes opacityLogoMobilCapa1 {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 

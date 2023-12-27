@@ -33,9 +33,9 @@ function generateAnimationContainer(animationContainer) {
 
     if (window.innerWidth <= 1000) {
         animationContainer.innerHTML = `
-            <div class="logo-container" id="logoContainer">
-                <img class="join-logo-mobil" id="joinLogoMobil" src="./assets/img/Mobile/login_signup_mobile/Capa_2_mobile.svg" alt="Join Logo">
-                <img class="join-logo-mobil" id="joinLogo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
+            <div class="logo-container-mobil" id="logoContainer">
+                <img class="join-logo-mobil-capa2" id="joinLogoMobil" src="./assets/img/Mobile/login_signup_mobile/Capa_2_mobile.svg" alt="Join Logo">
+                <img class="join-logo-mobil-capa1" id="joinLogo" src="./assets/img/Desktop/login_signup/Capa_1.svg" alt="Join Logo">
             </div>`;
     } else {
         animationContainer.innerHTML = `
@@ -54,14 +54,14 @@ function generateAnimationContainer(animationContainer) {
  */
 function styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMobil) {
     if (window.innerWidth <= 1000) {
-        animationContainer.style.animation = "fadeOutBackgroundMobil 100s forwards";
-        logoContainer.style.animation = "moveLogoMobil 100s forwards";
-        joinLogoMobil.style.animation = "moveLogoMobil 100s forwards";
-        joinLogo.style.animation = "moveLogoMobil 100s forwards";
+        animationContainer.style.animation = "fadeOutBackgroundMobil 1s forwards";
+        logoContainer.style.animation = "moveLogoMobil 1s forwards";
+        joinLogoMobil.style.animation = "moveLogoMobil 1s forwards, opacityLogoMobilCapa2 1s forwards";
+        joinLogo.style.animation = "moveLogoMobil 1s forwards, opacityLogoMobilCapa1 1s forwards";
         setTimeout(function () {
             animationContainer.classList.add("d-none");
             document.getElementById("join-logo-static").style.display = "block";
-        }, 100000);
+        }, 1000);
     } else {
         animationContainer.style.animation = "fadeOutBackground 1s forwards";
         logoContainer.style.animation = "moveLogo 1s forwards";
