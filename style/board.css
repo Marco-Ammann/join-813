@@ -304,6 +304,10 @@ body {
     gap: 1rem;
 }
 
+.listContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
 .dNone {
     display: none;
 }
@@ -704,7 +708,7 @@ body {
     }
 
     .listContainer::-webkit-scrollbar {
-        height: 8px;
+        height: 4px;
     }
 
     .noTaskFound {

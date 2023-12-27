@@ -49,7 +49,7 @@ function openAddNewContact() {
 
 /**
  * Renders pop up and changes html and styles to edit contact design with the given contact
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function openEditContact(i) {
     const popUpSubmit = document.getElementById('popUpSubmit');
@@ -70,7 +70,7 @@ function openEditContact(i) {
 
 /**
  * Plays the opening animation of the popup (both variants) for desktop & mobile
- * @param {string} variant 
+ * @param {string} variant - 'add-new' for the Add-New-Contact popUp or 'edit' for the Edit-Contact popUp
  */
 function openPopUpAni(variant) {
     popUp.classList.remove('d-none');
@@ -91,8 +91,8 @@ function openPopUpAni(variant) {
 
 /**
  * Changes the popup elements to match the given variant
- * @param {string} variant 
- * @param {number} i 
+ * @param {string} variant - 'add-new' for the Add-New-Contact popUp or 'edit' for the Edit-Contact popUp
+ * @param {number} i - Index of the choosen contact (optional)
  */
 function renderPopUp(variant, i) {
     const popUpTitle = document.getElementById('popUpTitle')
@@ -118,7 +118,7 @@ function renderPopUp(variant, i) {
 
 /**
  * Sets the editing contact information in the input fields
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function setInput(i) {
     const contact = contacts[i];
@@ -141,7 +141,7 @@ function resetInput() {
 
 /**
  * Opens the clicked contact and deselects previous one if it exists
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function openContact(i) {
     let contact = contacts[i];
@@ -185,7 +185,8 @@ function closeContactMobile() {
 
 
 /**
- * Closes the pop up + animation
+ * Closes the popUp + animation
+ * @param {boolean} submitted - true if form was submitted / false if form was cancelled
  */
 function closePopUp(submitted) {
     let popUp = document.getElementById('popUp');
@@ -212,7 +213,7 @@ function closePopUp(submitted) {
 
 /**
  * Deletes the clicked contact and removes open contact info
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function deleteContact(i) {
     contacts.splice(i, 1);
@@ -230,7 +231,7 @@ function deleteContact(i) {
 
 /**
  * Changes the edited contact information like entered and sorts the contacts by their names
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function editContact(i) {
     event.preventDefault();
@@ -317,7 +318,7 @@ function randomColor() {
 
 /**
  * Returns the first letter of the first and last name in upper case
- * @param {string} name 
+ * @param {string} name - first & last name
  * @returns - name initials
  */
 function getInitials(name) {
@@ -334,7 +335,7 @@ function getInitials(name) {
 
 /**
  * Stops the clicked element from starting onclick function of the parent div
- * @param {event} event 
+ * @param {event} event
  */
 function doNotClose(event) {
     event.stopPropagation();
@@ -342,7 +343,7 @@ function doNotClose(event) {
 
 /**
  * Opens the contact menu with the edit and delete options + animation
- * @param {number} i 
+ * @param {number} i - Index of the choosen contact
  */
 function openContactMenu(i) {
     let contactMenu = document.getElementById('contact-menu');
@@ -380,13 +381,13 @@ function closeContactMenu() {
 
 /**
  * Return the requested HTML Code for the contact list
- * @param {number} num 
- * @param {string} letter 
- * @param {number} i 
- * @param {string} color 
- * @param {string} initials 
- * @param {string} name 
- * @param {string} email 
+ * @param {number} num - 0 for First-Letter HTML Code / 1 for Contact-User HTML Code
+ * @param {string} letter - First letter of the name
+ * @param {number} i - Index of the choosen contact
+ * @param {string} color - Color of the contact icon
+ * @param {string} initials - Initials for the first / first & last name
+ * @param {string} name - First / First & last name
+ * @param {string} email - Email adress
  * @returns - HTML Code as string
  */
 function returnContactListHTML(num, letter, i, color, initials, name, email) {
@@ -411,12 +412,12 @@ function returnContactListHTML(num, letter, i, color, initials, name, email) {
 
 /**
  * Return HTML Code for the opened contact info
- * @param {string} color 
- * @param {string} initials 
- * @param {string} name 
- * @param {string} email 
- * @param {string} phone
- * @param {number} i 
+ * @param {string} color - Color of the contact icon
+ * @param {string} initials - Initials for the first / first & last name
+ * @param {string} name - First / First & last name
+ * @param {string} email - Email adress
+ * @param {string} phone - Phone number
+ * @param {number} i - Index of the choosen contact
  * @returns - HTML Code as string
  */
 function returnContactInfoHTML(color, initials, name, email, phone, i) {
