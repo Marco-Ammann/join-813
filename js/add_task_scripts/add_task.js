@@ -56,11 +56,14 @@ async function logCurrentTasks() {
  * and redirects to the board page after a short delay.
  */
 function validateAndCreateTask() {
-  var isValid = true;
-  isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
-  isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
-  isValid = validateField("due-date-input", "requiredTextDueDate") && isValid;
-  isValid = validateDropdown("add-category-input", "requiredTextCategory") && isValid;
+  if (!currentTaskState) {
+    currentTaskState = "ToDo";
+  }
+
+  let isValid = validateField("task-title-input", "requiredTextTitle") &&
+                validateField("task-description-textarea", "requiredTextDescription") &&
+                validateField("due-date-input", "requiredTextDueDate") &&
+                validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
     createTask();
@@ -68,6 +71,7 @@ function validateAndCreateTask() {
     setTimeout(function () {
       window.location.href = 'board.html';
     }, 1500);
+    currentTaskState = 'ToDo';
   }
 }
 
@@ -79,17 +83,18 @@ function validateAndCreateTask() {
  * and closes the Popup after a short delay.
  */
 async function validateAndCreateTaskPopup() {
-  var isValid = true;
-  isValid = validateField("task-title-input", "requiredTextTitle") && isValid;
-  isValid = validateField("task-description-textarea", "requiredTextDescription") && isValid;
-  isValid = validateField("due-date-input", "requiredTextDueDate") && isValid;
-  isValid = validateDropdown("add-category-input", "requiredTextCategory") && isValid;
+  let isValid = validateField("task-title-input", "requiredTextTitle") &&
+                validateField("task-description-textarea", "requiredTextDescription") &&
+                validateField("due-date-input", "requiredTextDueDate") &&
+                validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
     await createTask();
     setTimeout(function () {
       addDnonToAddTaks();
     }, 500);
+    currentTaskState = 'ToDo'; 
+    loadBoard();
   }
 }
 
