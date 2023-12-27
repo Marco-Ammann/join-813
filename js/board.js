@@ -1,9 +1,21 @@
 let currentDragedElement;
 
-function loadBoard() {
-    console.log(tasks);
+async function loadBoard() {
+    await setTasks();
     sortTaks();
 }
+
+
+async function setTasks(){
+    let tasksToSet = await getTasksArray();
+    if (Array.isArray(tasksToSet)) {
+        tasks = tasksToSet;
+    } else {
+        tasks = [];
+    }
+    console.log(tasks);
+}
+
 
 function sortTaks() {
     document.getElementById("ToDoContainer").innerHTML = "";
@@ -111,10 +123,9 @@ function addOpemTaskIcon(id, x) {
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        const element = tasks[x]["assignedTo"][i];
-        let color = contacts[element]["color"];
+        let color = contacts[i]["color"];
 
-        const nameParts = contacts[element]["name"].split(" ");
+        const nameParts = contacts[x]["name"].split(" ");
         const firstNameInitial = nameParts[0].charAt(0);
         const lastNameInitial =
             nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
