@@ -58,17 +58,23 @@ function styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMob
         logoContainer.style.animation = "moveLogoMobil 1s forwards";
         joinLogoMobil.style.animation = "moveLogoMobil 1s forwards, opacityLogoMobilCapa2 1s forwards";
         joinLogo.style.animation = "moveLogoMobil 1s forwards, opacityLogoMobilCapa1 1s forwards";
-        setTimeout(function () {
-            animationContainer.classList.add("d-none");
-            document.getElementById("join-logo-static").style.display = "block";
-        }, 1000);
+        addEffectSetTimeout(animationContainer)
     } else {
         animationContainer.style.animation = "fadeOutBackground 1s forwards";
         logoContainer.style.animation = "moveLogo 1s forwards";
         joinLogo.style.animation = "moveLogo 1s forwards";
-        setTimeout(function () {
-            animationContainer.classList.add("d-none");
-            document.getElementById("join-logo-static").style.display = "block";
-        }, 1000);
+        addEffectSetTimeout(animationContainer)
     }
+}
+
+/**
+ * Switch from animation Join Logo to static
+ * 
+ * @param {string} animationContainer - is a string (ID)
+ */
+function addEffectSetTimeout(animationContainer){
+    setTimeout(function () {
+        animationContainer.classList.add("d-none");
+        document.getElementById("join-logo-static").style.display = "block";
+    }, 1000);
 }
