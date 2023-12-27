@@ -104,34 +104,39 @@ function editCard() {
 function addOpemTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let color = contacts[i]["color"];
+        const contactName = tasks[x]["assignedTo"][i];
+        const contact = contacts.find(c => c.name === contactName);
+        if (contact) {
+            let color = contact["color"];
+            const nameParts = contact["name"].split(" ");
+            const firstNameInitial = nameParts[0].charAt(0);
+            const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
 
-        const nameParts = contacts[i]["name"].split(" ");
-        const firstNameInitial = nameParts[0].charAt(0);
-        const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
-
-        content.innerHTML += /*html*/ `
-        <div class="openCardIcon">
-          <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-          <p>${contacts[i]["name"]}</p>
-        </div>
-        `;
+            content.innerHTML += /*html*/ `
+            <div class="openCardIcon">
+              <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+              <p>${contact["name"]}</p>
+            </div>
+            `;
+        }
     }
 }
 
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let color = contacts[i]["color"];
+        const contactName = tasks[x]["assignedTo"][i];
+        const contact = contacts.find(c => c.name === contactName);
+        if (contact) {
+            let color = contact["color"];
+            const nameParts = contact["name"].split(" ");
+            const firstNameInitial = nameParts[0].charAt(0);
+            const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
 
-        const nameParts = contacts[x]["name"].split(" ");
-        const firstNameInitial = nameParts[0].charAt(0);
-        const lastNameInitial =
-            nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
-
-        content.innerHTML += /*html*/ `
-          <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-        `;
+            content.innerHTML += /*html*/ `
+              <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+            `;
+        }
     }
 }
 
