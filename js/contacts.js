@@ -9,7 +9,8 @@ function initContacts() {
 /**
  * Renders the contact list and the first letter to sort
  */
-function renderContactList() {
+async function renderContactList() {
+    await loadContacts()
     let contactList = document.getElementById('contactList');
     contactList.innerHTML = /* html */ `<div class="contact-list-padding"></div>`;
 
@@ -215,8 +216,9 @@ function closePopUp(submitted) {
  * Deletes the clicked contact and removes open contact info
  * @param {number} i - Index of the choosen contact
  */
-function deleteContact(i) {
+async function deleteContact(i) {
     contacts.splice(i, 1);
+    await saveContacts();
 
     renderContactList();
     document.getElementById('contactsInfo').innerHTML = '';
@@ -233,7 +235,7 @@ function deleteContact(i) {
  * Changes the edited contact information like entered and sorts the contacts by their names
  * @param {number} i - Index of the choosen contact
  */
-function editContact(i) {
+async function editContact(i) {
     event.preventDefault();
 
     let lastId = contacts[i]['id'];
@@ -244,6 +246,7 @@ function editContact(i) {
 
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     let index = contacts.findIndex(c => c.id == lastId);
+    await saveContacts()
 
     closePopUp(true);
     openContact(index);
@@ -253,7 +256,7 @@ function editContact(i) {
 /**
  * Adds the new contact to the array sorted by the name
  */
-function addNewContact() {
+async function addNewContact() {
     event.preventDefault();
     let id = contacts.length;
     let color = randomColor();
@@ -273,6 +276,7 @@ function addNewContact() {
     contacts.push(newContact);
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     let index = contacts.findIndex(c => c.id == lastId);
+    await saveContacts();
 
     closePopUp(true);
     renderContactList();
@@ -339,6 +343,21 @@ function getInitials(name) {
  */
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+
+async function saveContacts() {
+    await setItem('contacts', contacts);
+}
+
+
+async function loadContacts() {
+    let contactsArray = await getContactsArray()
+    if (Array.isArray(contactsArray)) {
+        contacts = contactsArray;
+    } else {
+        console.error('Loading error');
+    }
 }
 
 /**

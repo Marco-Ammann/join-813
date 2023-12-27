@@ -27,11 +27,6 @@ async function getItem(key) {
 // }
 
 
-
-
-
-
-
 /**
  * Retrieves the tasks array from the backend storage and parses it.
  * If the tasks data is not found or is in an invalid format, it returns an empty array.
@@ -54,5 +49,31 @@ async function getTasksArray() {
     } catch (error) {
         console.error('Error while loading tasks: ', error);
         return [];
+    }
+}
+
+
+/**
+ * Retrieves the contacts array from the backend storage and parses it.
+ * If the contacts data is not found or is in an invalid format, it returns an empty array.
+ * 
+ * @async
+ * @function getContactsArray
+ * @returns {Promise<Array>} An array containing the contacts data.
+ * @throws {Error} Throws an error if there is an issue while loading the tasks.
+ */
+async function getContactsArray() {
+    try {
+        const contactsData = await getItem('contacts');
+        if (Array.isArray(contactsData)) {
+            return contactsData;
+        } else if (typeof contactsData === 'string') {
+            return JSON.parse(contactsData);
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error('Error while loading tasks: ', error);
+        return;
     }
 }

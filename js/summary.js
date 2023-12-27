@@ -159,3 +159,5 @@ function convertToDate(dateString) {
     let [day, month, year] = dateString.split('/');
     return new Date(`${year}-${month}-${day}`);
 }
+
+//TODO: Not working Dates < 3
