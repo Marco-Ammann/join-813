@@ -23,12 +23,12 @@ function render(taskStatus, i) {
         <div onclick="openCard(${i})" id="card${i}" draggable="true" ondragstart="startDraggin(${tasks[i][`id`]
         })">
             <div class="toDoCard">
-                <div class="headerUserStory">User Story</div>
+                <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
                     <h3>${tasks[i][`taskTitle`]}</h3>
                     <p>${tasks[i][`description`]}</p>
                 </div>
-                <div id="progressbar${i}">
+                <div id="progressbar${i}" class="progressbar">
                 </div>
                 <div class="toDoCardFooter">
                     <div id="cardIcon${i}" class="userIcon">

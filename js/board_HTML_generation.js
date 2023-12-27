@@ -157,7 +157,7 @@ function generateOpenCardHTML(i) {
     return /*html*/ `        
     <div class="toDoCard openCard">
         <div class="openCardHeader">
-        <div class="headerUserStory">User Story</div>
+        <div class="headerUserStory headerUserStoryPopUp">User Story</div>
             <a onclick="closeCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <mask id="mask0_117782_4211" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -172,16 +172,22 @@ function generateOpenCardHTML(i) {
         <div class="openCardContent">
             <h3>${tasks[i][`taskTitle`]}</h3>
             <h4>${tasks[i][`description`]}</h4>
-            <p>Due date ${tasks[i][`dueDate`]}</p>
-            <p>Priority:${tasks[i][`priority`]}
+            <div class="openCardTable">
+            <p>Due date:</p><span>${tasks[i][`dueDate`]}<span>
+            </div>
+            <div class="openCardTable">
+            <p>Priority:</p>
+                <div class="openCardPriority">
+                <span>${tasks[i][`priority`]}</span>
                 <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]
         }.svg">
-            </p>
+                </div>
+            </div>
         </div>
-        <div id="openCardIcon">
+        <div id="openCardIcon" class="openCardAssigned">
             <p>Assigned To:</p>
         </div>
-        <div>
+        <div class="openCardSubtasks-container">
             <p>Subtaks</p>
             <div id="openCardSubtasks"></div>
         </div>
