@@ -70,9 +70,10 @@ function getTaskDescription() {
 
 
 /**
- * Retrieves the names of the contacts assigned to the task.
+ * Retrieves the IDs and names of contacts assigned to a task.
+ * Returns an array of objects, each object containing the ID and name of an assigned contact.
  * 
- * @returns {Array} An array of names of the assigned contacts.
+ * @returns {Array<Object>} An array of objects, each with the structure { id: number, name: string }.
  */
 function getAssignedContacts() {
   let assignedContactDetails = [];
