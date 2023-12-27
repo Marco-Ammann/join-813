@@ -75,11 +75,12 @@ function getTaskDescription() {
  * @returns {Array} An array of names of the assigned contacts.
  */
 function getAssignedContacts() {
-  const contactNames = [];
-  for (const contact of assignedContacts) {
-    contactNames.push(contact.name);
+  let assignedContactDetails = [];
+  for (let i = 0; i < assignedContacts.length; i++) {
+    let contact = assignedContacts[i];
+    assignedContactDetails.push({ id: contact.id, name: contact.name });
   }
-  return contactNames;
+  return assignedContactDetails;
 }
 
 

@@ -104,8 +104,8 @@ function editCard() {
 function addOpemTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        const contactName = tasks[x]["assignedTo"][i];
-        const contact = contacts.find(c => c.name === contactName);
+        let assignedContactId = tasks[x]["assignedTo"][i].id;
+        let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
             const nameParts = contact["name"].split(" ");
@@ -125,8 +125,8 @@ function addOpemTaskIcon(id, x) {
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        const contactName = tasks[x]["assignedTo"][i];
-        const contact = contacts.find(c => c.name === contactName);
+      let assignedContactId = tasks[x]["assignedTo"][i].id;
+      let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
             const nameParts = contact["name"].split(" ");

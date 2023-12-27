@@ -61,5 +61,12 @@ let contacts = [
         "name": "Tatjana Wolf",
         "email": "wolf@gmail.com",
         "phone": "+49 1111 111 11 1"
+    },
+    {
+        "id": 8,
+        "color": "#0038FF",
+        "name": "Tatjana Wolf",
+        "email": "wolf@hotmail.com",
+        "phone": "+49 1221 111 11 1"
     }
 ];
