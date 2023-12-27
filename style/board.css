@@ -254,6 +254,10 @@ body {
     flex-direction: row;
 }
 
+.userIcon div {
+    margin-right: -0.5rem;
+}
+
 .icon {
     display: flex;
     justify-content: center;
