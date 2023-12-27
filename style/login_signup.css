@@ -2,7 +2,10 @@ html {
     font-size: 16px;
 }
 
-body, h1, h2, h3 {
+body,
+h1,
+h2,
+h3 {
     margin: 0;
 }
 
@@ -30,7 +33,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 2.19rem;
+    gap: 2.1875rem;
 }
 
 .login-header span {
@@ -276,7 +279,10 @@ body {
     margin-bottom: 2rem;
 }
 
-.input-password, .input-email, .input-name, .input-password-confirm {
+.input-password,
+.input-email,
+.input-name,
+.input-password-confirm {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -346,7 +352,8 @@ body {
     border: unset;
 }
 
-.btn-login:hover:enabled, .login-header button:hover {
+.btn-login:hover:enabled,
+.login-header button:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
@@ -509,6 +516,8 @@ body {
     animation: slideIn 300ms ease-out forwards;
 }
 
+/* Animations */
+
 @keyframes slideIn {
     from {
         transform: translate(calc(50% - 19.5rem/2), -50%);
@@ -519,12 +528,82 @@ body {
     }
 }
 
-@media screen and (max-width: 950px) {
+/* Media Queries */
+
+@media (max-width: 1000px) {
+    .login-header {
+        top: unset;
+        bottom: 6.19rem;
+        right: 4.12rem;
+    }
+
+    .login-header button {
+        width: 6.5rem;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
     .join-logo-static {
         width: 4rem;
         height: 4.87694rem;
-        position: absolute;
         top: 2.31rem;
         left: 2.38rem;
+    }
+
+    .login-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-content-border {
+        width: 24.75rem;
+        padding: 2rem 0rem;
+    }
+
+    .login-content-header h1 {
+        font-size: 2.9375rem;
+    }
+
+    .login-content-header img {
+        width: 5.5rem;
+    }
+
+    .login-content-form {
+        width: 22.75rem;
+    }
+
+    .input-password,
+    .input-email,
+    .input-name,
+    .input-password-confirm {
+        width: calc(100% - 2.625rem);
+    }
+
+    .fail-login {
+        width: 100%;
+    }
+
+    .login-content-checkbox {
+        align-self: flex-start;
+        padding-top: 1rem;
+        padding-left: 1rem;
+    }
+
+    .login-content-btn {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 1.3125rem;
+    }
+
+    .btn-login, .btn-guest {
+        width: 11.25rem;
+        height: 3.1875rem;
+        padding: 0.25rem 0rem;
+        font-size: 1rem;
+    }
+
+    .login-footer {
+        bottom: 1.38rem;
     }
 }
