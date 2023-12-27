@@ -13,6 +13,7 @@
     <script src="./js/array.js"></script>
     <script src="./js/board_HTML_generation.js"></script>
     <script src="./js/edit_task.js"></script>
+<<<<<<< HEAD
     <script src="js/add_task_scripts/help_functions.js"></script>
     <script src="js/add_task_scripts/add_task_templates.js"></script>
     <script src="js/add_task_scripts/priorities.js"></script>
@@ -22,9 +23,21 @@
     <script src="./js/add_task_scripts/clear_values.js"></script>
     <script src="js/add_task_scripts/add_task.js"></script>
     <script src="./js/board.js"></script>
+=======
+    <script src="./js/board.js"></script>
+    <script src="./js/add_task_scripts/help_functions.js"></script>
+    <script src="./js/add_task_scripts/add_task_templates.js"></script>
+    <script src="./js/add_task_scripts/priorities.js"></script>
+    <script src="./js/add_task_scripts/get_values.js"></script>
+    <script src="./js/add_task_scripts/subtask_handling.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/add_task_scripts/clear_values.js"></script>
+    <script src="./js/add_task_scripts/add_task.js"></script>
+    <script src="./js/array.js"></script>
+>>>>>>> f8db9de3b4884ac14428c52d6411104761e507e6
 
     <link rel="stylesheet" href="./assets/templates/templates.css">
-    <script src="js/login_signup/storage.js"></script>
+    <script src="./js/login_signup/storage.js"></script>
     <script src="./assets/templates/template.js"></script>
 
     <!-- Favicon -->
@@ -106,7 +119,7 @@
                                                 value="Select contacts to assign" required
                                                 onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                             <img class="arrow-symbol input-symbol" id="arrowAssign"
-                                                src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter"
                                                 onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                         </div>
@@ -168,7 +181,7 @@
 
                                             <img onclick="switchVisibility('categoryDropdown')"
                                                 class="arrow-symbol input-symbol" id="arrowCategory"
-                                                src="assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter" />
                                         </div>
 
@@ -189,19 +202,19 @@
                                             <div class="plus-symbol-div" id="plus-symbol-div">
                                                 <img class="plus-symbol input-symbol" id="plus-symbol-subtask>"
                                                     onclick="addFocusClass()"
-                                                    src="assets/img/Desktop/add_task/subtasks_icons/add.svg"
+                                                    src="./assets/img/Desktop/add_task/subtasks_icons/add.svg"
                                                     alt="plus" />
                                             </div>
 
                                             <div class="create-task-div d-none" id="create-task-div">
                                                 <img class="plus-symbol input-symbol" id="close-symbol-subtask"
                                                     onclick="clearSubtaskInput()"
-                                                    src="assets/img/Desktop/add_task/subtasks_icons/close.svg"
+                                                    src="./assets/img/Desktop/add_task/subtasks_icons/close.svg"
                                                     alt="cancel-symbol" />
 
                                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
                                                     onclick="setSubtask()"
-                                                    src="assets/img/Desktop/add_task/subtasks_icons/check.svg"
+                                                    src="./assets/img/Desktop/add_task/subtasks_icons/check.svg"
                                                     alt="check-symbol" />
                                             </div>
 
@@ -233,7 +246,7 @@
                         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
                             onclick="validateAndCreateTaskPopup()">
                             Create Task
-                            <img src="assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+                            <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
                         </button>
                         <div id="okBtnDiv"></div>
                     </div>

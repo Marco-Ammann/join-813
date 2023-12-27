@@ -51,7 +51,7 @@ function generateEditCardHTML() {
                                 value="Select contacts to assign" required
                                 onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                             <img class="arrow-symbol input-symbol" id="arrowAssign"
-                                src="assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
+                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
                                 onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                         </div>
                         <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
@@ -110,18 +110,18 @@ function generateEditCardHTML() {
                             <div class="plus-symbol-div" id="plus-symbol-div">
                                 <img class="plus-symbol input-symbol" id="plus-symbol-subtask>"
                                     onclick="addFocusClass()"
-                                    src="assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
+                                    src="./assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
                             </div>
 
                             <div class="create-task-div d-none" id="create-task-div">
                                 <img class="plus-symbol input-symbol" id="close-symbol-subtask"
                                     onclick="clearSubtaskInput()"
-                                    src="assets/img/Desktop/add_task/subtasks_icons/close.svg"
+                                    src="./assets/img/Desktop/add_task/subtasks_icons/close.svg"
                                     alt="cancel-symbol" />
 
                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
                                     onclick="setSubtask()"
-                                    src="assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
+                                    src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ function generateEditCardHTML() {
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
             onclick="validateAndCreateTaskPopup()">
             OK
-            <img src="assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+            <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>
         <div id="okBtnDiv"></div>
     </div>

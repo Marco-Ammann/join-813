@@ -61,6 +61,10 @@ body {
     display: none;
 }
 
+.log-sign-title img {
+    display: none;
+}
+
 .margin-top {
     margin-top: 1.5rem;
 }
@@ -263,9 +267,11 @@ body {
 
 .login-content-form input {
     width: inherit;
+    height: 100%;
 }
 
-.login-content-form input::placeholder {
+.login-content-form input::placeholder,
+.signUp-content-form input::placeholder {
     color: #D1D1D1;
 }
 
@@ -543,7 +549,8 @@ body {
         font-size: 1rem;
     }
 
-    .join-logo-static {
+    .join-logo-static,
+    .join-logo-static-signup {
         width: 4rem;
         height: 4.87694rem;
         top: 2.31rem;
@@ -556,7 +563,8 @@ body {
         align-items: center;
     }
 
-    .login-content-border {
+    .login-content-border,
+    .signUp-content-border {
         width: 24.75rem;
         padding: 2rem 0rem;
     }
@@ -569,8 +577,15 @@ body {
         width: 5.5rem;
     }
 
-    .login-content-form {
+    .login-content-form,
+    .signUp-content-form {
         width: 22.75rem;
+    }
+
+    .login-content-form input::placeholder,
+    .signUp-content-form input {
+        font-size: 1.25rem;
+        ;
     }
 
     .input-password,
@@ -596,7 +611,8 @@ body {
         gap: 1.3125rem;
     }
 
-    .btn-login, .btn-guest {
+    .btn-login,
+    .btn-guest {
         width: 11.25rem;
         height: 3.1875rem;
         padding: 0.25rem 0rem;
@@ -605,5 +621,36 @@ body {
 
     .login-footer {
         bottom: 1.38rem;
+    }
+
+    .input-name {
+        margin-top: 1.5rem;
+    }
+
+    .privacy-policy-content-checkbox {
+        margin-top: 2rem;
+    }
+
+    .signup-content-btn {
+        width: 100%;
+    }
+
+    .log-sign-title {
+        display: flex;
+    }
+
+    .log-sign-title img {
+        display: unset;
+        position: relative;
+        width: 2rem;
+        height: 2rem;
+        margin: -1rem;
+        right: 3.47rem;
+        top: 0.5rem;
+        border-radius: 50%;
+    }
+
+    .arrow-left-default {
+        display: none;
     }
 }

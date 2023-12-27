@@ -8,8 +8,8 @@
 
     <script src="./js/login_signup/join_animation.js"></script>
 
-    <link rel="stylesheet" href="style/login_signup.css">
-    <link rel="stylesheet" href="style/fonts.css">
+    <link rel="stylesheet" href="./style/login_signup.css">
+    <link rel="stylesheet" href="./style/fonts.css">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
@@ -30,7 +30,7 @@
 
         <header class="login-header">
             <span>Not a Join user?</span>
-            <a href="sign_in.html"><button>Sign up</button></a>
+            <a href="./sign_in.html"><button>Sign up</button></a>
         </header>
 
         <!-- Logo Dialog und Animation -->
@@ -42,26 +42,26 @@
             <div class="login-content">
                 <div class="login-content-header">
                     <h1>Log in</h1>
-                    <img src="assets/img/Desktop/login_signup/Vector 5.svg" alt="">
+                    <img src="./assets/img/Desktop/login_signup/Vector 5.svg" alt="">
                 </div>
 
                 <form onsubmit="loginUser(); return false;" class="login-content-form">
                     <div class="input-email">
                         <input type="text" placeholder="Email" id="loginEmail" required
                             onkeyup="changeShowTextFailLogin()" class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
+                        <img src="./assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
                     <div class="input-password">
                         <input type="password" placeholder="Password" id="loginPassword" required
                             onkeyup="changeShowTextFailLogin()" class="input-remove-border">
-                        <img src="assets/img/Desktop/login_signup/lock.svg" id="passwordImage"
+                        <img src="./assets/img/Desktop/login_signup/lock.svg" id="passwordImage"
                             onclick="visibilityOnOffImage()" alt="Schloss Icon">
                     </div>
                     <span id="fail-login" class="fail-login">Wrong password Ups! Try again.</span>
                 </form>
 
                 <div class="login-content-checkbox">
-                    <img src="assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox"
+                    <img src="./assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox"
                         onclick="addRememberMe()" alt="empty checkbox">
                     <span>Remember me</span>
                 </div>
@@ -76,13 +76,13 @@
         </div>
 
         <div class="login-footer">
-            <a href="privacy-policy.html" target="_blank" onclick="withoutSidebarLinks()">Privacy Policy</a>
-            <a href="legal_notice.html" target="_blank" onclick="withoutSidebarLinks()">Legal notice</a>
+            <a href="./privacy-policy.html" target="_blank" onclick="withoutSidebarLinks()">Privacy Policy</a>
+            <a href="./legal_notice.html" target="_blank" onclick="withoutSidebarLinks()">Legal notice</a>
         </div>
 
     </div>
 
-    <script src="js/login_signup/storage.js"></script>
+    <script src="./js/login_signup/storage.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
