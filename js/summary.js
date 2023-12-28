@@ -88,7 +88,7 @@ async function playGreetingAni() {
     let animationPlayed = await localStorage.getItem("greetingAniPlayed");
     let greeting = document.getElementById('greeting').parentNode;
     if (!animationPlayed) {
-        greeting.firstElementChild.firstElementChild.innerHTML = '<h2>Good day</h2>';
+        greeting.firstElementChild.firstElementChild.innerHTML = 'Good day';
         greeting.classList.remove('d-none');
         setTimeout(function () {
             greeting.classList.add('d-none');
