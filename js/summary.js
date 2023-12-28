@@ -18,7 +18,7 @@ async function initSummary() {
 /**
  * Loads the tasks-array from Back End
  */
-async function setTasks(){
+async function setTasks() {
     let tasksToSet = await getTasksArray();
     if (Array.isArray(tasksToSet)) {
         tasks = tasksToSet;
@@ -47,7 +47,7 @@ function renderSummaryBoard() {
  */
 function renderSummaryGreeting() {
     let greet = document.getElementById('greeting');
-    
+
     let time = new Date();
     time = time.getHours();
 
@@ -124,6 +124,7 @@ function findTaskQuantitys(subcategory, match) {
 function renderDeadlineBox() {
     let dates = [];
     let today = new Date();
+    let deadlineDate = document.getElementById('deadlineDate');
 
     for (let i = 0; i < tasks.length; i++) {
         let dateParts = tasks[i]['dueDate'].split('/');
@@ -133,7 +134,13 @@ function renderDeadlineBox() {
             dates.push(tasks[i]['dueDate']);
         }
     }
-    document.getElementById('deadlineDate').innerHTML = sortDates(dates);
+
+    if (dates.length >= 1) {
+        deadlineDate.innerHTML = sortDates(dates);
+    } else {
+        deadlineDate.innerHTML = 'No upcoming deadlines';
+    }
+
 }
 
 
@@ -159,5 +166,3 @@ function convertToDate(dateString) {
     let [day, month, year] = dateString.split('/');
     return new Date(`${year}-${month}-${day}`);
 }
-
-//TODO: Not working Dates < 3
