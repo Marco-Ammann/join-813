@@ -39,7 +39,8 @@ function createSubtaskList(i) {
   
     for (let j = 0; j < tasks[i].subtasks.length; j++) {
       const subtask = tasks[i].subtasks[i];
-      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j);
+      subtasks.push(subtask);
+      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j, 'subTasks-popup');
     }
   }
 

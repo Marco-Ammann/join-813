@@ -115,7 +115,7 @@ function generateEditCardHTML(i) {
 
                             <div class="create-task-div d-none" id="create-task-div">
                                 <img class="plus-symbol input-symbol" id="close-symbol-subtask"
-                                    onclick="clearSubtaskInput()"
+                                    onclick="clearSubtaskInput('subtask-input-popup')"
                                     src="./assets/img/Desktop/add_task/subtasks_icons/close.svg"
                                     alt="cancel-symbol" />
 

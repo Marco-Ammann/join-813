@@ -96,15 +96,10 @@ function editCard(i) {
     generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
     setupFilterListener();
-  
     toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-  
-    // Warte 0.1 Sekunden, bevor setClickedContacts aufgerufen wird
     setTimeout(() => {
       setClickedContacts(i, 'assigned-contacts-popup');
-  
-      // Führe das zweite ToggleDropdown nach einer weiteren Verzögerung aus
-      setTimeout(() => {
+        setTimeout(() => {
         toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
       }, 100);
     }, 100);
