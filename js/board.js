@@ -8,7 +8,7 @@ async function loadBoard() {
 }
 
 
-async function setTasks(){
+async function setTasks() {
     let tasksToSet = await getTasksArray();
     if (Array.isArray(tasksToSet)) {
         tasks = tasksToSet;
@@ -96,14 +96,20 @@ function editCard(i) {
     generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
     setupFilterListener();
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
     setTimeout(() => {
-      setClickedContacts(i, 'assigned-contacts-popup');
-        setTimeout(() => {
         toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-      }, 100);
-    }, 100);
-  }
+        console.log('opening dropdown');
+    }, 0);
+    setTimeout(() => {
+        setClickedContacts(i, 'assigned-contacts-popup');
+        console.log('selectclickedContacts');
+
+        setTimeout(() => {
+            toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+            console.log('closing dropdown');
+        }, 0);
+    }, 0);
+}
 
 
 
@@ -135,8 +141,8 @@ function addOpemTaskIcon(id, x) {
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-      let assignedContactId = tasks[x]["assignedTo"][i].id;
-      let contact = contacts.find(c => c.id === assignedContactId);
+        let assignedContactId = tasks[x]["assignedTo"][i].id;
+        let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
             const nameParts = contact["name"].split(" ");
