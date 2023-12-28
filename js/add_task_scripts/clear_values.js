@@ -3,13 +3,13 @@
  * description, due date, priority selection, assigned contacts, subtasks, and the 
  * task category to their default states.
  */
-function clearForm() {
-  clearTaskTitle();
-  clearTaskDescription();
-  clearTaskDueDate();
+function clearForm(titleInput, descriptionArea, dueDateInput, avatarContainer, subTaskInput) {
+  clearTaskTitle(titleInput);
+  clearTaskDescription(descriptionArea);
+  clearTaskDueDate(dueDateInput);
   clearPriority();
-  clearAssignedContact();
-  clearSubtask();
+  clearAssignedContact(avatarContainer);
+  clearSubtask(subTaskInput);
   clearCategory();
 }
 
@@ -17,8 +17,8 @@ function clearForm() {
 /**
  * Clears the content of the task title input field.
  */
-function clearTaskTitle() {
-  let tasktitle = document.getElementById("task-title-input");
+function clearTaskTitle(titleInput) {
+  let tasktitle = document.getElementById(titleInput);
   tasktitle.value = "";
 }
 
@@ -26,8 +26,8 @@ function clearTaskTitle() {
 /**
  * Clears the content of the task description textarea.
  */
-function clearTaskDescription() {
-  let taskDescription = document.getElementById("task-description-textarea");
+function clearTaskDescription(descriptionArea) {
+  let taskDescription = document.getElementById(descriptionArea);
   taskDescription.value = "";
 }
 
@@ -35,8 +35,8 @@ function clearTaskDescription() {
 /**
  * Resets the due date input field to empty.
  */
-function clearTaskDueDate() {
-  let taskDueDate = document.getElementById("due-date-input");
+function clearTaskDueDate(dueDateInput) {
+  let taskDueDate = document.getElementById(dueDateInput);
   taskDueDate.value = "";
 }
 
@@ -44,8 +44,8 @@ function clearTaskDueDate() {
 /**
  * Clears the subtask input field and removes all existing subtasks from the list.
  */
-function clearSubtask() {
-  let subTaskInput = document.getElementById("subtask-input");
+function clearSubtask(subTaskInputs) {
+  let subTaskInput = document.getElementById(subTaskInputs);
   subTaskInput.value = "";
   subtasks = [];
   updateSubtaskList();
@@ -57,14 +57,14 @@ function clearSubtask() {
  * It iterates through the clicked states array, 
  * resets each selected contact, and updates the avatar display accordingly.
  */
-function clearAssignedContact() {
+function clearAssignedContact(avatarContainer) {
   assignedContacts = [];
   for (let i = 0; i < clickedStates.length; i++) {
     if (clickedStates[i]) {
       toggleContact(i);
     }
   }
-  updateAvatars();
+  updateAvatars(avatarContainer);
 }
 
 

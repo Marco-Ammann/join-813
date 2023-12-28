@@ -100,6 +100,7 @@ function editCard(i) {
         toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
         console.log('opening dropdown');
     }, 0);
+
     setTimeout(() => {
         setClickedContacts(i, 'assigned-contacts-popup');
         console.log('selectclickedContacts');
@@ -328,5 +329,5 @@ function addDnonToAddTaks() {
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
-    clearForm();
+
 }

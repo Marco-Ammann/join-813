@@ -5,7 +5,7 @@ function generateEditCardHTML(i) {
 <div>
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm()"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks()"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -54,7 +54,7 @@ function generateEditCardHTML(i) {
                                 src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
                                 onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
                         </div>
-                        <div class="assignDropdown d-none" id="assignDropdown-popup"></div>
+                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
                     </div>
                     <div class="assigned-contacts" id="assigned-contacts-popup"></div>
 
@@ -138,7 +138,7 @@ function generateEditCardHTML(i) {
 
 
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-            onclick="validateAndCreateTaskPopup(), clearForm()">
+            onclick="validateAndCreateTaskPopup()">
             OK
             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>

@@ -36,7 +36,7 @@
 
 </head>
 
-<body onload="init(), loadBoard()">
+<body onload="init(), loadBoard(), loadAddTaskPage()">
 
 
 
@@ -60,7 +60,7 @@
 
                     <div class="addTaskHeader">
                         <h1 class="content-title">Add Task</h1>
-                        <button id="closeAddTaksButton" onclick="addDnonToAddTaks()"><svg
+                        <button id="closeAddTaksButton" onclick="addDnonToAddTaks(), clearForm('task-title-input', 'task-description-textarea', 'due-date-input', 'assigned-contacts-popup', 'subtask-input')"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
                                     </div>
-                                    <div class="assigned-contacts" id="assigned-contacts"></div>
+                                    <div class="assigned-contacts" id="assigned-contacts-popup"></div>
 
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                                     alt="cancel-symbol" />
 
                                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
-                                                    onclick="setSubtask()"
+                                                    onclick="setSubtask('subtask-input', 'subTasks')"
                                                     src="./assets/img/Desktop/add_task/subtasks_icons/check.svg"
                                                     alt="check-symbol" />
                                             </div>
