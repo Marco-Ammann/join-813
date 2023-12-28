@@ -329,7 +329,7 @@
         right: 0;
         text-align: center;
         background-color: #F6F7F8;
-        animation: blendOutGreeting 400ms ease-in 1200ms;
+        animation: blendOutGreeting 400ms ease-in 1200ms forwards;
     }
 
     .summary-greeting h2 {

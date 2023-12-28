@@ -3,9 +3,7 @@
  */
 async function initSummary() {
     if (window.matchMedia("(max-width: 1000px)").matches) {
-        playGreetingAni();
-    } else {
-        greeting.parentNode.classList.remove('d-none');
+        await playGreetingAni();
     }
     await setTasks();
     renderSummaryBoard();
@@ -83,20 +81,23 @@ async function loadUserGreeting(greet) {
 }
 
 
-function playGreetingAni() {
-    let animationPlayed = sessionStorage.getItem("greetingAniPlayed");
+/**
+ * Plays the greeting animations and then disappears
+ */
+async function playGreetingAni() {
+    let animationPlayed = await localStorage.getItem("greetingAniPlayed");
     let greeting = document.getElementById('greeting').parentNode;
     if (!animationPlayed) {
-        greeting.classList.remove('d-none')
+        greeting.firstElementChild.firstElementChild.innerHTML = '<h2>Good day</h2>';
+        greeting.classList.remove('d-none');
         setTimeout(function () {
             greeting.classList.add('d-none');
         }, 1600);
-        sessionStorage.setItem("greetingAniPlayed", "true");
+        localStorage.setItem("greetingAniPlayed", "true");
     } else {
         greeting.classList.add('d-none');
     }
 }
-// TODO: Greeting to late. Laoding screen?
 
 
 /**
