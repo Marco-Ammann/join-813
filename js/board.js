@@ -8,7 +8,7 @@ async function loadBoard() {
 }
 
 
-async function setTasks(){
+async function setTasks() {
     let tasksToSet = await getTasksArray();
     if (Array.isArray(tasksToSet)) {
         tasks = tasksToSet;
@@ -96,19 +96,19 @@ function editCard(i) {
     generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
     setupFilterListener();
-  
+
     toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-  
+
     // Warte 0.1 Sekunden, bevor setClickedContacts aufgerufen wird
     setTimeout(() => {
-      setClickedContacts(i, 'assigned-contacts-popup');
-  
-      // Führe das zweite ToggleDropdown nach einer weiteren Verzögerung aus
-      setTimeout(() => {
-        toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-      }, 100);
+        setClickedContacts(i, 'assigned-contacts-popup');
+
+        // Führe das zweite ToggleDropdown nach einer weiteren Verzögerung aus
+        setTimeout(() => {
+            toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+        }, 100);
     }, 100);
-  }
+}
 
 
 
@@ -140,8 +140,8 @@ function addOpemTaskIcon(id, x) {
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-      let assignedContactId = tasks[x]["assignedTo"][i].id;
-      let contact = contacts.find(c => c.id === assignedContactId);
+        let assignedContactId = tasks[x]["assignedTo"][i].id;
+        let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
             const nameParts = contact["name"].split(" ");
@@ -245,28 +245,24 @@ function addTransition() {
 
 function startDraggin(id) {
     currentDraggedElement = id;
+    addRotation(id);
 }
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
+function moveTo(category, id) {
     tasks[currentDraggedElement]["state"] = category;
     sortTaks();
 }
 
-function highlight(id) {
-    // document.getElementById(id).classList.add('drag-area-highlight');
-}
-
-function removeHighlight(id) {
-    // document.getElementById(id).classList.remove('drag-area-highlight');
+function addRotation(id) {
+    let card = document.getElementById('card' + `${id}`);
+    card.classList.add('rotateCard')
 }
 
 function checkAndAddTasks(tasks) {
-
-
     states.forEach((state) => {
         const filteredTasks = tasks.filter((task) => task.state === state);
 

@@ -594,6 +594,11 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.rotateCard {
+    transform: rotateY(0deg) rotate(5deg);
+    transition: transform 0.5s;
+}
+
 /* Animations */
 
 @keyframes slideInAddNew {
