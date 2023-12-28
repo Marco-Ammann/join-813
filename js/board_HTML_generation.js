@@ -1,11 +1,11 @@
-function generateEditCardHTML() {
+function generateEditCardHTML(i) {
     return /*HTML*/`
 <div class="add-tasks-popup">
 
 <div>
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks()"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm()"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -26,7 +26,7 @@ function generateEditCardHTML() {
                 <div class="form-div">
                     <span class="form-span required-asteriks">Title</span>
                     <div class="form-subcontainer">
-                        <input id="task-title-input" maxlength="48" class="task-title-input" type="text"
+                        <input id="task-title-input-popup" maxlength="48" class="task-title-input" type="text"
                             placeholder="Enter a title" required />
                         <p class="input-required-warning invisible" id="requiredTextTitle">This field is
                             required</p>
@@ -36,7 +36,7 @@ function generateEditCardHTML() {
                 <div class="form-div">
                     <span class="form-span">Description</span>
                     <div class="form-subcontainer">
-                        <textarea id="task-description-textarea" class="task-description-textarea"
+                        <textarea id="task-description-textarea-popup" class="task-description-textarea"
                             name="inputDescription" placeholder="Enter a Description" required></textarea>
                         <p class="input-required-warning invisible" id="requiredTextDescription">This
                             field is required</p>
@@ -47,16 +47,16 @@ function generateEditCardHTML() {
                     <span class="form-span">Assigned to</span>
                     <div class="input-div-wrapper">
                         <div class="input-div">
-                            <input id="add-contact-input" class="add-contact-input" type="text"
+                            <input id="add-contact-input-popup" class="add-contact-input" type="text"
                                 value="Select contacts to assign" required
-                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
-                            <img class="arrow-symbol input-symbol" id="arrowAssign"
+                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');" />
+                            <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
                                 src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
                         </div>
-                        <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
+                        <div class="assignDropdown d-none" id="assignDropdown-popup"></div>
                     </div>
-                    <div class="assigned-contacts" id="assigned-contacts"></div>
+                    <div class="assigned-contacts" id="assigned-contacts-popup"></div>
 
                 </div>
             </div>
@@ -70,7 +70,7 @@ function generateEditCardHTML() {
                     <div class="form-subcontainer">
 
                         <div class="input-div">
-                            <input id="due-date-input" maxlength="48" class="due-date-input" type="date"
+                            <input id="due-date-input-popup" maxlength="48" class="due-date-input" type="date"
                                 placeholder="dd/mm/yyyy" required />
                         </div>
 
@@ -104,7 +104,7 @@ function generateEditCardHTML() {
                     <div class="form-subcontainer">
 
                         <div class="input-div" id="subtask-input-div">
-                            <input id="subtask-input" maxlength="48" class="subtask-input" type="text"
+                            <input id="subtask-input-popup" maxlength="48" class="subtask-input" type="text"
                                 placeholder="Add new subtask" onfocus="addFocusClass()" />
 
                             <div class="plus-symbol-div" id="plus-symbol-div">
@@ -120,12 +120,12 @@ function generateEditCardHTML() {
                                     alt="cancel-symbol" />
 
                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
-                                    onclick="setSubtask()"
+                                    onclick="setSubtask('subtask-input-popup', 'subTasks-popup')"
                                     src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
                             </div>
                         </div>
                     </div>
-                    <div id="subTasks" class="subTasks"></div>
+                    <div id="subTasks-popup" class="subTasks"></div>
                 </div>
         </section>
     </div>
@@ -138,7 +138,7 @@ function generateEditCardHTML() {
 
 
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-            onclick="validateAndCreateTaskPopup()">
+            onclick="validateAndCreateTaskPopup(), clearForm()">
             OK
             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>
@@ -184,12 +184,12 @@ function generateOpenCardHTML(i) {
                 </div>
             </div>
         </div>
-        <div id="openCardIcon" class="openCardAssigned">
+        <div id="openCardIcon${i}" class="openCardAssigned">
             <p>Assigned To:</p>
         </div>
         <div class="openCardSubtasks-container">
             <p>Subtaks</p>
-            <div id="openCardSubtasks"></div>
+            <div id="openCardSubtasks${i}"></div>
         </div>
         <div class="openCardFooter">
             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -206,7 +206,7 @@ function generateOpenCardHTML(i) {
                 <path d="M1 0V24" stroke="#D1D1D1"/>
                 </svg>
                 </div>
-            <a href="#" onclick="editCard()">
+            <a href="#" onclick="editCard(${i}), loadAddTaskPage()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_4276" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>

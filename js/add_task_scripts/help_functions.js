@@ -92,9 +92,23 @@ function setPriority(priority) {
  * 
  * @param {Object} contact - The contact object to add.
  */
-function addAvatar(contact) {
+function addAvatar(contact, container) {
   assignedContacts.push(contact);
-  updateAvatars();
+  updateAvatars(container);
+}
+
+
+/**
+ * Updates the display of assigned contact avatars.
+ */
+function updateAvatars(container) {
+  let avatarContainer = document.getElementById(container);
+  avatarContainer.innerHTML = ""; 
+
+  for (let i = 0; i < assignedContacts.length; i++) {
+    let avatarHTML = generateAvatar(assignedContacts[i]);
+    avatarContainer.innerHTML += avatarHTML;
+  }
 }
 
 
@@ -103,11 +117,11 @@ function addAvatar(contact) {
  * 
  * @param {Object} contact - The contact object to remove.
  */
-function removeAvatar(contact) {
+function removeAvatar(contact, container) {
   const index = assignedContacts.indexOf(contact);
   if (index !== -1) {
     assignedContacts.splice(index, 1);
-    updateAvatars();
+    updateAvatars(container);
   }
 }
 
@@ -272,9 +286,9 @@ function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
  * 
  * @param {number} index - The index of the contact in the contacts array.
  */
-function handleClickOnAssignedContact(index) {
-  toggleContact(index);
-  updateAvatars(index);
+function handleClickOnAssignedContact(index, container) {
+  toggleContact(index, container);
+  updateAvatars(container);
 }
 
 

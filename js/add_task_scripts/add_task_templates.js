@@ -6,10 +6,10 @@
  * @param {number} index - The index of the contact in the contacts array.
  * @returns {string} - The HTML string for the contact div element.
  */
-function generateAssignContactsHTML(contact, index) {
+function generateAssignContactsHTML(contact, index, container) {
   const name = contact.name;
   return `
-    <div class="contactDiv" id="contact${index}" onclick="handleClickOnAssignedContact(${index})">
+    <div class="contactDiv" id="contact${index}" onclick="handleClickOnAssignedContact(${index}, '${container}')">
         <div class="contactDiv-sub">
             <div class="contact-avatar" style="background-color: ${
               contact.color

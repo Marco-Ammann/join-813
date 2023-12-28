@@ -9,9 +9,9 @@ let clickedStates = [];
  * for handling dropdown interactions and filtering contacts.
  */
 function loadAddTaskPage() {
-  generateAssignContacts();
+  generateAssignContacts('assignDropdown', 'assigned-contacts-popup');
   generateCategoryOptions();
-  setupDropdownCloseListener();
+  setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
   setupFilterListener();
 }
 
@@ -159,32 +159,24 @@ function updateCategoryInput(selectedCategory) {
  *
  * @param {number} index - The index of the contact in the contacts array.
  */
-function toggleContact(index) {
+function toggleContact(index, container) {
   initializeClickedState(index);
   const contactDiv = document.getElementById(`contact${index}`);
   const checkboxImg = document.getElementById(`checkbox${index}`);
   const isClicked = getClickedState(index);
   const contact = contacts[index];
   if (isClicked) {
-    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
-    removeAvatar(contact);
+      handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
+      removeAvatar(contact, container);
   } else {
-    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
-    addAvatar(contact);
+      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check_button_checked_white.svg");
+      addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);
 }
 
 
-/**
- * Updates the display of assigned contact avatars.
- */
-function updateAvatars() {
-  let avatarContainer = document.getElementById("assigned-contacts");
-  avatarContainer.innerHTML = assignedContacts
-    .map((contact) => generateAvatar(contact))
-    .join("");
-}
+
 
 
 /**
@@ -224,16 +216,13 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
  * Generates and populates the 'assign to' dropdown menu with contact options.
  * Each contact is added to the dropdown, and the clickedStates array is initialized with false for each contact.
  */
-function generateAssignContacts() {
-  let dropdowncontainer = document.getElementById("assignDropdown");
+function generateAssignContacts(dropdownId, container) {
+  let dropdowncontainer = document.getElementById(`${dropdownId}`);
   dropdowncontainer.innerHTML = "";
 
   for (let i = 0; i < contacts.length; i++) {
     const selectableContact = contacts[i];
-    dropdowncontainer.innerHTML += generateAssignContactsHTML(
-      selectableContact,
-      i
-    );
+    dropdowncontainer.innerHTML += generateAssignContactsHTML(selectableContact, i, container);
   }
 
   clickedStates = Array(contacts.length).fill(false);
@@ -275,11 +264,11 @@ function filterContacts() {
  * Sets up a global click listener to close the dropdown menu when the user clicks outside of it.
  * The dropdown closes if the clicked element is neither the dropdown itself, the input field, nor the dropdown arrow.
  */
-function setupDropdownCloseListener() {
+function setupDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
   document.addEventListener("click", function (event) {
-    const dropdown = document.getElementById("assignDropdown");
-    const inputField = document.getElementById("add-contact-input");
-    const arrowImage = document.getElementById("arrowAssign");
+    const dropdown = document.getElementById(`${dropdownId}`);
+    const inputField = document.getElementById(`${inputfieldId}`);
+    const arrowImage = document.getElementById(`${arrowId}`);
 
     if (!dropdown.contains(event.target) && event.target !== inputField && event.target !== arrowImage) {
       closeDropdown(dropdown, inputField, arrowImage, "Select contacts to assign");
