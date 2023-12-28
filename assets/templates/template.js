@@ -124,7 +124,13 @@ function currentLinkUsed(x) {
  * @param {string} x the string are the names of ID´s from the parts
  */
 function partDisplayNone(x) {
-    document.getElementById(x).style = "display: none";
+    let xElement = document.getElementById(x);
+    let dNone = 'display: none;';
+    xElement.style = dNone;
+    if ((window.matchMedia("(max-width: 1000px)").matches)) {
+        xElement.parentNode.style = dNone;
+        document.getElementById('content').style.margin = '4.9385rem 0 0 0';
+    }
 }
 
 
