@@ -39,8 +39,7 @@ function createSubtaskList(i) {
   
     for (let j = 0; j < tasks[i].subtasks.length; j++) {
       const subtask = tasks[i].subtasks[i];
-      subtasks.push(subtask);
-      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j, 'subTasks-popup');
+      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j);
     }
   }
 
@@ -48,7 +47,7 @@ function createSubtaskList(i) {
 
 
 
-function setClickedContacts(i, container) {
+  function setClickedContacts(i, container) {
     let assignedContacts = tasks[i].assignedTo;
     console.log('Zugewiesene Kontakte im Task:', assignedContacts);
   
@@ -59,7 +58,7 @@ function setClickedContacts(i, container) {
       let contactIndex = contacts.findIndex(contact => contact.id === assignedContact.id);
       if (contactIndex !== -1) {
         // Setze den Click-Status des zugewiesenen Kontakts auf 'true'
-       handleClickOnAssignedContact(contactIndex, container);
+        handleClickOnAssignedContact(contactIndex, container);
       }
     });
   }

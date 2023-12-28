@@ -8,7 +8,7 @@ async function loadBoard() {
 }
 
 
-async function setTasks() {
+async function setTasks(){
     let tasksToSet = await getTasksArray();
     if (Array.isArray(tasksToSet)) {
         tasks = tasksToSet;
@@ -96,21 +96,19 @@ function editCard(i) {
     generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
     setupFilterListener();
+  
+    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+  
+    // Warte 0.1 Sekunden, bevor setClickedContacts aufgerufen wird
     setTimeout(() => {
+      setClickedContacts(i, 'assigned-contacts-popup');
+  
+      // Führe das zweite ToggleDropdown nach einer weiteren Verzögerung aus
+      setTimeout(() => {
         toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-        console.log('opening dropdown');
-    }, 0);
-
-    setTimeout(() => {
-        setClickedContacts(i, 'assigned-contacts-popup');
-        console.log('selectclickedContacts');
-
-        setTimeout(() => {
-            toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-            console.log('closing dropdown');
-        }, 0);
-    }, 0);
-}
+      }, 100);
+    }, 100);
+  }
 
 
 
@@ -142,8 +140,8 @@ function addOpemTaskIcon(id, x) {
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let assignedContactId = tasks[x]["assignedTo"][i].id;
-        let contact = contacts.find(c => c.id === assignedContactId);
+      let assignedContactId = tasks[x]["assignedTo"][i].id;
+      let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
             const nameParts = contact["name"].split(" ");
@@ -329,5 +327,5 @@ function addDnonToAddTaks() {
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
-
+    clearForm();
 }

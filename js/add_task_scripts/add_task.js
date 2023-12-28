@@ -169,7 +169,7 @@ function toggleContact(index, container) {
       handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
       removeAvatar(contact, container);
   } else {
-      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
+      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check_button_checked_white.svg");
       addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);

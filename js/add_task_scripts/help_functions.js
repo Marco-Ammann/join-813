@@ -259,6 +259,8 @@ async function createTask() {
   } catch (error) {
     console.error('Fehler beim Erstellen der Aufgabe: ', error);
   }
+
+  clearForm();
 }
 
 

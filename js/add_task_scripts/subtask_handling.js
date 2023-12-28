@@ -5,13 +5,13 @@ let subtasks = [];
  * Adds a subtask to the list of subtasks and updates the UI.
  * The subtask text is trimmed and added only if it's not empty.
  */
-function setSubtask(inputField, subtaskContainer) {
-  const subtaskInput = document.getElementById(`${inputField}`);
+function setSubtask() {
+  const subtaskInput = document.getElementById("subtask-input");
   const subtaskText = subtaskInput.value.trim();
 
   if (subtaskText) {
     subtasks.push(subtaskText);
-    updateSubtaskList(subtaskContainer);
+    updateSubtaskList();
     subtaskInput.value = "";
   }
 }
@@ -21,13 +21,13 @@ function setSubtask(inputField, subtaskContainer) {
  * Updates the UI with the current list of subtasks.
  * Iterates over the subtasks array and appends each subtask to the subtask container.
  */
-function updateSubtaskList(subtaskDiv) {
-  const subtaskContainer = document.getElementById(`${subtaskDiv}`);
+function updateSubtaskList() {
+  const subtaskContainer = document.getElementById("subTasks");
   subtaskContainer.innerHTML = "";
 
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
-    subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i, subtaskDiv);
+    subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i);
   }
 }
 
@@ -35,8 +35,8 @@ function updateSubtaskList(subtaskDiv) {
 /**
  * Clears the subtask input field.
  */
-function clearSubtaskInput(inputToClear) {
-  const subtaskInput = document.getElementById(inputToClear);
+function clearSubtaskInput() {
+  const subtaskInput = document.getElementById("subtask-input");
   subtaskInput.value = "";
 }
 
@@ -47,10 +47,12 @@ function clearSubtaskInput(inputToClear) {
  *
  * @param {number} index - Index of the subtask being edited.
  */
-function editSubtask(index, divToEdit) {
+function editSubtask(index) {
   const editSubtaskDiv = document.getElementById(`subTaskDiv${index}`);
   const editSubtaskInput = document.getElementById(`editInput${index}`);
-  const editSubtaskDivEdit = document.getElementById(`${divToEdit}`);
+  const editSubtaskDivEdit = document.getElementById(
+    `edit-subtask-div${index}`
+  );
   const taskText = document.getElementById(`task${index}`);
 
   editSubtaskDiv.classList.add("d-none");
@@ -98,11 +100,11 @@ function cancelEditSubtask(index) {
  *
  * @param {number} index - Index of the subtask being deleted.
  */
-function deleteSubtask(index, subtaskDiv) {
+function deleteSubtask(index) {
   const subTaskDiv = document.getElementById(`subTaskDiv${index}`);
   subTaskDiv.remove();
   subtasks.splice(index, 1);
-  updateSubtaskList(subtaskDiv);
+  updateSubtaskList();
 }
 
 
@@ -160,10 +162,10 @@ function handleMouseDown(event) {
  *
  * @param {number} index - Index of the subtask being saved.
  */
-function handleCheckClick(index, subtaskDiv) {
+function handleCheckClick(index) {
   const editSubtaskInput = document.getElementById(`editInput${index}`);
   subtasks[index] = editSubtaskInput.value;
-  updateSubtaskList(subtaskDiv);
+  updateSubtaskList();
 }
 
 
