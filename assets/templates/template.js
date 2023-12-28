@@ -8,9 +8,9 @@ let nameOfPage = [
     "legal_notice",
 ];
 let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
-
 let currentUser = [];
 let dropDownIsOpen = false;
+
 
 /**
  * automatic onload in HTML-Code
@@ -23,6 +23,7 @@ async function init() {
     await whichPageIsCurrent();
 }
 
+
 /**
  * load Template Header and Sidebar in some pages
  *
@@ -32,10 +33,11 @@ async function includeHTML() {
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         file = element.getAttribute("w3-include-html"); // "includes/desktop_template.html"
-        
+
         await loadTemplateAndExecuteFunctions(file, element);
     }
 }
+
 
 async function loadTemplateAndExecuteFunctions(file, element) {
     let resp = await fetch(file);
@@ -64,6 +66,7 @@ async function loadCurrentUser() {
     }
 }
 
+
 /**
  * Find the currentpage with Url and Names of Content
  *
@@ -79,13 +82,14 @@ async function whichPageIsCurrent() {
     }
 }
 
+
 /**
  * requiroments from the name of pages
  * 
  * @param {string} smalLetter - the name from the page
  * @param {string} element - a Page from the Array nameOfPage
  */
-function nameOfPages(smalLetter, element){
+function nameOfPages(smalLetter, element) {
     if (smalLetter === "help") {
         partDisplayNone("helpImageDefault");
     }
@@ -96,6 +100,7 @@ function nameOfPages(smalLetter, element){
         currentLinkUsed(element);
     }
 }
+
 
 /**
  * Add and Remove Attributes (Hovereffects) and parts hide
@@ -112,6 +117,7 @@ function currentLinkUsed(x) {
     image.src = `./assets/img/Desktop/general_elements/menu_symbols/${y}_light.svg`;
 }
 
+
 /**
  * This function hide same parts of the header and sidebar
  *
@@ -120,6 +126,7 @@ function currentLinkUsed(x) {
 function partDisplayNone(x) {
     document.getElementById(x).style = "display: none";
 }
+
 
 /**
  * This function designed same parts of the header and sidebar
@@ -130,6 +137,7 @@ function markEffects(x) {
     document.getElementById(`${x}`).classList.remove(`${x}-link`);
     document.getElementById(`${x}`).classList.add("current-color-hover");
 }
+
 
 /**
  * get the first letter of the names from Users
@@ -150,6 +158,7 @@ async function getInitialsCurrentUser() {
     }
 }
 
+
 /**
  * open and close the dropdownmenu
  *
@@ -162,7 +171,40 @@ function moveDropDownMenu() {
         dropDownMenu.style.display = "block";
         headerIcon.style.background = "#0C2E621F";
         container.style.display = "block";
+        openDropDownAni();
         dropDownIsOpen = true;
+    } else {
+        closeDropDownAni();
+    }
+}
+
+
+/**
+ * Starts open animation of the drop down menu IF its on mobile version
+ */
+function openDropDownAni() {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+        document.getElementById("dropDownMenu").style.animation = 'slideInDropdown 100ms ease-out';
+    }
+}
+
+
+/**
+ * Starts close animation of the drop down menu IF its on mobile version ELSE it just closes the menu
+ */
+function closeDropDownAni() {
+    let dropDownMenu = document.getElementById("dropDownMenu");
+    let headerIcon = document.getElementById("headerIcon");
+    let container = document.getElementById("containerDropDown");
+
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+        dropDownMenu.style.animation = 'slideOutDropdown 100ms ease-out';
+        setTimeout(function () {
+            dropDownMenu.style.display = "none";
+            headerIcon.style.background = "#FFF";
+            container.style.display = "none";
+            dropDownIsOpen = false;
+        }, 100);
     } else {
         dropDownMenu.style.display = "none";
         headerIcon.style.background = "#FFF";
@@ -170,6 +212,7 @@ function moveDropDownMenu() {
         dropDownIsOpen = false;
     }
 }
+
 
 /**
  * add clickfunction about all the page
@@ -179,6 +222,7 @@ function moveDropDownMenu() {
 function stopPropagation(event) {
     event.stopPropagation();
 }
+
 
 /**
  * User logout and earse datas

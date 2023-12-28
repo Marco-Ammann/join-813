@@ -300,6 +300,28 @@ a {
     display: none;
 }
 
+/* Animations */
+
+@keyframes slideInDropdown {
+    from {
+        transform: translateX(10.375rem);
+    }
+
+    to {
+        transform: 0;
+    }
+}
+
+@keyframes slideOutDropdown {
+    from {
+        transform: 0;
+    }
+
+    to {
+        transform: translateX(10.375rem);
+    }
+}
+
 /* Media Queries */
 
 @media (max-width: 1496px) {
@@ -442,8 +464,6 @@ a {
         right: 0.5rem;
         top: calc(5rem + 4px);
     }
-
-    /* TODO: Mobile Drop Down Animation */
 }
 
 @media (max-width: 850px) {
