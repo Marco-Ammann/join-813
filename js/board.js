@@ -136,24 +136,24 @@ function openCard(i) {
 
 function editCard(i) {
     const card = document.getElementById(`openCard`);
-    card.innerHTML = "";
     card.innerHTML = generateEditCardHTML(i);
     setValuesInEditCard(i);
     generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
     setupFilterListener();
 
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+    setTimeout(() => {
+        toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+        console.log('dropdown wurde geöffnet');
 
-    // Warte 0.1 Sekunden, bevor setClickedContacts aufgerufen wird
+    }, 1);
+
     setTimeout(() => {
         setClickedContacts(i, 'assigned-contacts-popup');
-
-        // Führe das zweite ToggleDropdown nach einer weiteren Verzögerung aus
-        setTimeout(() => {
-            toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-        }, 100);
-    }, 100);
+        console.log('kontakte wurden ausgewählt');
+        console.log('dropdown wurde geschlossen');
+        toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+    }, 1);
 }
 
 
@@ -320,15 +320,6 @@ function checkAndAddTasks(tasks) {
 }
 
 
-function createNoTaskHTML(message) {
-    return /*html*/ `
-        <div class="noTaskFound">
-            <p>${message}</p>
-        </div>
-    `;
-}
-
-
 function addNoTaskHTML(containerId) {
     const messages = {
         'ToDoContainer': "No task To do",
@@ -336,9 +327,17 @@ function addNoTaskHTML(containerId) {
         'AwaitFeedbackContainer': "No task awaiting feedback",
         'DoneContainer': "No completed tasks"
     };
-
+    
     const message = messages[containerId];
     document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
+}
+
+function createNoTaskHTML(message) {
+    return /*html*/ `
+        <div class="noTaskFound">
+            <p>${message}</p>
+        </div>
+    `;
 }
 
 
