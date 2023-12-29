@@ -595,8 +595,10 @@ body {
 }
 
 .rotateCard {
-    transform: rotateY(0deg) rotate(5deg);
+    transform-origin: left bottom;
+    transform: rotate(5deg); 
     transition: transform 0.5s;
+    position: absolute;
 }
 
 /* Animations */
