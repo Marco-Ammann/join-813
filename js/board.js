@@ -62,9 +62,18 @@ function sortTaks() {
     document.getElementById("InProgressContainer").innerHTML = "";
     document.getElementById("AwaitFeedbackContainer").innerHTML = "";
     document.getElementById("DoneContainer").innerHTML = "";
-    for (let i = 0; i < tasks.length; i++) {
-        const taskStatus = tasks[i]['state'];
-        render(taskStatus, i);
+
+    if (tasks.length > 0) {
+        for (let i = 0; i < tasks.length; i++) {
+            const taskStatus = tasks[i]['state'];
+            render(taskStatus, i);
+        }
+    } else {
+        console.log("Keine Aufgaben vorhanden");
+        addNoTaskHTML('ToDoContainer');
+        addNoTaskHTML('InProgressContainer');
+        addNoTaskHTML('AwaitFeedbackContainer');
+        addNoTaskHTML('DoneContainer');
     }
 }
 
@@ -310,14 +319,28 @@ function checkAndAddTasks(tasks) {
     });
 }
 
-function addNoTaskHTML(containerId) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = /*html*/ `
-     <div id="ToDoContainerfillter" class="noTaskFound">
-        <p> No task To do</p>
-    </div >
+
+function createNoTaskHTML(message) {
+    return /*html*/ `
+        <div class="noTaskFound">
+            <p>${message}</p>
+        </div>
     `;
 }
+
+
+function addNoTaskHTML(containerId) {
+    const messages = {
+        'ToDoContainer': "No task To do",
+        'InProgressContainer': "No task in progress",
+        'AwaitFeedbackContainer': "No task awaiting feedback",
+        'DoneContainer': "No completed tasks"
+    };
+
+    const message = messages[containerId];
+    document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
+}
+
 
 function sortAndFilterCards() {
     const searchTerm = document
