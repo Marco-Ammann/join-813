@@ -78,7 +78,7 @@ function generateSubtaskHTML(subtask, index) {
   <div class="edit-subtask-div d-none" id="edit-subtask-div${index}">
     <input type="text" class="editInput" id="editInput${index}">
     <div class="edit-subTask-subDiv" id="edit-subTask-subDiv${index}">
-      <img class="subTask-icons" id="deleteEditSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="edit" onclick="cancelEditSubtask(${index})">
+      <img class="subTask-icons" id="deleteEditSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="edit" onclick="deleteSubtask(${index})">
       <div class="subtasks-Seperator">|</div>
       <img class="subTask-icons" id="saveSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="delete" onclick="handleCheckClick(${index})">
     </div>

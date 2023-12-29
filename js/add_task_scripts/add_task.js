@@ -9,7 +9,7 @@ let clickedStates = [];
  * for handling dropdown interactions and filtering contacts.
  */
 function loadAddTaskPage() {
-  generateAssignContacts('assignDropdown', 'assigned-contacts-popup');
+  generateAssignContacts('assignDropdown', 'assigned-contacts');
   generateCategoryOptions();
   setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
   setupFilterListener();
@@ -55,7 +55,7 @@ async function logCurrentTasks() {
  * It then triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
  */
-function validateAndCreateTask() {
+function validateAndCreateTask(assignedContactsAvatarDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }
@@ -67,6 +67,7 @@ function validateAndCreateTask() {
 
   if (isValid) {
     createTask();
+    clearForm(assignedContactsAvatarDiv);
     animateTaskAdded();
     setTimeout(function () {
       window.location.href = 'board.html';
@@ -169,7 +170,7 @@ function toggleContact(index, container) {
       handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
       removeAvatar(contact, container);
   } else {
-      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check_button_checked_white.svg");
+      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
       addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);

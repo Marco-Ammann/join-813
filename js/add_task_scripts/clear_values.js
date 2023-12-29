@@ -3,12 +3,12 @@
  * description, due date, priority selection, assigned contacts, subtasks, and the 
  * task category to their default states.
  */
-function clearForm() {
+function clearForm(assignedContactsAvatarDiv) {
   clearTaskTitle();
   clearTaskDescription();
   clearTaskDueDate();
   clearPriority();
-  clearAssignedContact();
+  clearAssignedContact(assignedContactsAvatarDiv);
   clearSubtask();
   clearCategory();
 }
@@ -57,14 +57,14 @@ function clearSubtask() {
  * It iterates through the clicked states array, 
  * resets each selected contact, and updates the avatar display accordingly.
  */
-function clearAssignedContact() {
+function clearAssignedContact(assignedContactsAvatarDiv) {
   assignedContacts = [];
   for (let i = 0; i < clickedStates.length; i++) {
     if (clickedStates[i]) {
-      toggleContact(i);
+      toggleContact(i, assignedContactsAvatarDiv);
     }
   }
-  updateAvatars();
+  updateAvatars(assignedContactsAvatarDiv);
 }
 
 
