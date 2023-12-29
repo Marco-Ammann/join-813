@@ -9,43 +9,6 @@ async function loadBoard() {
     removeListeners('add-contact-input-popup');
 }
 
-/**
- * Clears all tasks in the backend by setting the 'tasks' storage item to an empty array.
- * 
- * @async
- * @function clearAllTasksInBackend
- * @throws {Error} Throws an error if there is an issue while clearing the tasks.
- */
-async function clearAllTasksInBackendx() {
-    try {
-        await setItem('tasks', []);
-        console.log('All tasks have been successfully cleared.');
-    } catch (error) {
-        console.error('Error while clearing tasks: ', error);
-    }
-    await createTaskx();
-}
-
-/**
- * Creates and stores a new task based on user inputs.
- * This function retrieves current tasks, adds a new task to the array, 
- * and updates the backend storage. It also clears the input form upon completion.
- * 
- * @async
- * @function createTask
- */
-async function createTaskx() {
-    console.log('tasks pushed');
-    let currentTasks = await getTasksArray();
-    let newTask = await getValues();
-
-    try {
-        currentTasks.push(newTask);
-        await setItem('tasks', currentTasks);
-    } catch (error) {
-        console.error('Fehler beim Erstellen der Aufgabe: ', error);
-    }
-}
 
 
 async function setTasks() {
@@ -380,10 +343,10 @@ function addDnonToAddTaks(assignedContactsAvatarDiv) {
     clearForm(assignedContactsAvatarDiv);
 }
 
-function deleteOpenCard(i) {
+async function deleteOpenCard(i) {
     tasks.splice(i, 1);
     sortTaks();
-    closeCard();
-    clearAllTasksInBackendx();
+    closeCard(); 
+    await setItem('tasks', tasks);
 }
 
