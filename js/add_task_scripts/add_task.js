@@ -2,6 +2,8 @@ const categorys = ["Work", "Personal"];
 
 let dropdownState = "closed";
 let clickedStates = [];
+let dropdownCloseListener;
+let filterListener;
 
 /**
  * Initializes the Add Task page by loading necessary components. It generates the 
@@ -12,7 +14,7 @@ function loadAddTaskPage() {
   generateAssignContacts('assignDropdown', 'assigned-contacts');
   generateCategoryOptions();
   setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
-  setupFilterListener();
+  setupFilterListener('add-contact-input', 'assignDropdown');
 }
 
 
@@ -217,7 +219,7 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
  * Generates and populates the 'assign to' dropdown menu with contact options.
  * Each contact is added to the dropdown, and the clickedStates array is initialized with false for each contact.
  */
-function generateAssignContacts(dropdownId, container) {
+async function generateAssignContacts(dropdownId, container) {
   let dropdowncontainer = document.getElementById(`${dropdownId}`);
   dropdowncontainer.innerHTML = "";
 
@@ -234,7 +236,7 @@ function generateAssignContacts(dropdownId, container) {
  * Populates the 'category' dropdown menu with predefined category options.
  * It iterates through the 'categorys' array, adding each category to the dropdown menu.
  */
-function generateCategoryOptions() {
+async function generateCategoryOptions() {
   let dropdowncontainer = document.getElementById("categoryDropdown");
   dropdowncontainer.innerHTML = "";
   for (let i = 0; i < categorys.length; i++) {
@@ -248,10 +250,10 @@ function generateCategoryOptions() {
  * Filters the contacts in the dropdown menu based on user input.
  * It matches the input text with the contact names, displaying only those that include the typed value.
  */
-function filterContacts() {
-  const input = document.getElementById("add-contact-input");
+function filterContacts(inputfieldId, dropDownId) {
+  const input = document.getElementById(inputfieldId);
   const value = input.value.toLowerCase();
-  const dropdown = document.getElementById("assignDropdown");
+  const dropdown = document.getElementById(dropDownId);
   const contacts = dropdown.getElementsByClassName("contactDiv");
 
   for (const contact of contacts) {
@@ -261,30 +263,50 @@ function filterContacts() {
 }
 
 
-/**
- * Sets up a global click listener to close the dropdown menu when the user clicks outside of it.
- * The dropdown closes if the clicked element is neither the dropdown itself, the input field, nor the dropdown arrow.
- */
-function setupDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
-  document.addEventListener("click", function (event) {
-    const dropdown = document.getElementById(`${dropdownId}`);
-    const inputField = document.getElementById(`${inputfieldId}`);
-    const arrowImage = document.getElementById(`${arrowId}`);
+
+function createDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
+  return function(event) {
+    const dropdown = document.getElementById(dropdownId);
+    const inputField = document.getElementById(inputfieldId);
+    const arrowImage = document.getElementById(arrowId);
 
     if (!dropdown.contains(event.target) && event.target !== inputField && event.target !== arrowImage) {
       closeDropdown(dropdown, inputField, arrowImage, "Select contacts to assign");
     }
-  });
+  };
+}
+
+function createFilterListener(inputfieldId, dropDownId) {
+  return function() {
+    filterContacts(inputfieldId, dropDownId);
+  };
+}
+
+function setupDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
+  dropdownCloseListener = createDropdownCloseListener(dropdownId, inputfieldId, arrowId);
+  document.addEventListener("click", dropdownCloseListener, true);
+}
+
+function setupFilterListener(inputfieldId, dropDownId) {
+  filterListener = createFilterListener(inputfieldId, dropDownId);
+  const inputField = document.getElementById(inputfieldId);
+  inputField.addEventListener("input", filterListener, true);
+}
+
+function removeListeners(inputfieldId) {
+  if (dropdownCloseListener) {
+    document.removeEventListener("click", dropdownCloseListener, true);
+    dropdownCloseListener = null;
+  }
+
+  const inputField = document.getElementById(inputfieldId);
+  if (filterListener && inputField) {
+    inputField.removeEventListener("input", filterListener, true);
+    filterListener = null;
+  }
 }
 
 
-/**
- * Attaches an input event listener to the contact input field for live filtering of contact options in the dropdown menu.
- */
-function setupFilterListener() {
-  const inputField = document.getElementById("add-contact-input");
-  inputField.addEventListener("input", filterContacts);
-}
 
 
 /**
@@ -295,3 +317,4 @@ function animateTaskAdded() {
   const taskAddedContainer = document.querySelector('.task-added-container');
   taskAddedContainer.classList.add('task-added-animate');
 }
+

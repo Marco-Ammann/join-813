@@ -1,10 +1,12 @@
 let currentDragedElement;
-const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
 
+
+const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
 
 async function loadBoard() {
     await setTasks();
     sortTaks();
+    removeListeners('add-contact-input-popup');
 }
 
 /**
@@ -134,26 +136,20 @@ function openCard(i) {
 
 
 
-function editCard(i) {
+async function editCard(i) {
     const card = document.getElementById(`openCard`);
     card.innerHTML = generateEditCardHTML(i);
     setValuesInEditCard(i);
-    generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
+
+    // Assuming generateAssignContacts is an async function
+    await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
+
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
-    setupFilterListener();
+    setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
 
-    setTimeout(() => {
-        toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-        console.log('dropdown wurde geöffnet');
-
-    }, 1);
-
-    setTimeout(() => {
-        setClickedContacts(i, 'assigned-contacts-popup');
-        console.log('kontakte wurden ausgewählt');
-        console.log('dropdown wurde geschlossen');
-        toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-    }, 1);
+    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
+    setClickedContacts(i, 'assigned-contacts-popup');
+    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
 }
 
 
@@ -327,7 +323,7 @@ function addNoTaskHTML(containerId) {
         'AwaitFeedbackContainer': "No task awaiting feedback",
         'DoneContainer': "No completed tasks"
     };
-    
+
     const message = messages[containerId];
     document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
 }
@@ -392,3 +388,4 @@ function deleteOpenCard(i) {
     closeCard();
     clearAllTasksInBackendx();
 }
+
