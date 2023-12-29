@@ -41,30 +41,30 @@ function sortTaks() {
     }
 }
 
-function render(taskStatus, i) {
+function render(taskStatus, taskIndex) {
     taskStatus = taskStatus + "Container";
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML += /*html*/ `    
-        <div onclick="openCard(${i})" id="card${i}" draggable="true" ondragstart="startDraggin(${tasks[i][`id`]})">
+        <div onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${tasks[taskIndex][`id`]})">
             <div class="toDoCard">
                 <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
-                    <h3>${tasks[i][`taskTitle`]}</h3>
-                    <p>${tasks[i][`description`]}</p>
+                    <h3>${tasks[taskIndex][`taskTitle`]}</h3>
+                    <p>${tasks[taskIndex][`description`]}</p>
                 </div>
-                <div id="progressbar${i}" class="progressbar">
+                <div id="progressbar${taskIndex}" class="progressbar">
                 </div>
                 <div class="toDoCardFooter">
-                    <div id="cardIcon${i}" class="userIcon">
+                    <div id="cardIcon${taskIndex}" class="userIcon">
                     </div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]}.svg">
+                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]}.svg">
                 </div>
             </div>
         </div>
 `;
     checkAndAddTasks(tasks);
-    addTaskIcon(`cardIcon${i}`, i);
-    addProgressBar(i);
+    addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
+    addProgressBar(taskIndex);
 }
 
 function addProgressBar(i) {
@@ -81,16 +81,16 @@ function addProgressBar(i) {
 }
 
 
-function openCard(i) {
+function openCard(taskIndex) {
     const content = document.getElementById(`openCard`);
     content.innerHTML = "";
     const openCardContainer = document.getElementById("openCardContainer");
     openCardContainer.classList.remove("hidden");
 
-    content.innerHTML = generateOpenCardHTML(i);
-    addOpemTaskIcon(`openCardIcon${i}`, i);
+    content.innerHTML = generateOpenCardHTML(taskIndex);
+    addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
     addTransition();
-    addopenCardSubtasks(i);
+    addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -120,7 +120,7 @@ async function editCard(i) {
 
 
 
-function addOpemTaskIcon(id, x) {
+function addOpenTaskIcon(id, x) {
     let content = document.getElementById(id);
     for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
         let assignedContactId = tasks[x]["assignedTo"][i].id;
@@ -159,31 +159,31 @@ function addTaskIcon(id, x) {
     }
 }
 
-function addopenCardSubtasks(x) {
-    let content = document.getElementById(`openCardSubtasks${x}`);
+function addOpenCardSubtasks(taskIndex) {
+    let content = document.getElementById(`openCardSubtasks${taskIndex}`);
     content.innerHTML = "";
-    console.log(x);
+    console.log(taskIndex);
 
-    for (let i = 0; i < tasks[x]["subtasks"].length; i++) {
+    for (let i = 0; i < tasks[taskIndex]["subtasks"].length; i++) {
         content.innerHTML += /*html*/ `
-            <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${x})">
+            <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${taskIndex})">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
             </svg>
-                ${tasks[x]["subtasks"][i]}
+                ${tasks[taskIndex]["subtasks"][i]}
             </div>
         `;
     }
 
-    for (let y = 0; y < tasks[x]["subtasksDone"].length; y++) {
+    for (let y = 0; y < tasks[taskIndex]["subtasksDone"].length; y++) {
         content.innerHTML += /*html*/ `
-        <div class="openCardSubtasks">
+        <div class="openCardSubtasks" id="subtaskDone${y}" onclick="subtaskUnComplete(${y}, ${taskIndex})">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                 <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <p class="textCross">
-                ${tasks[x]["subtasksDone"][y]}
+                ${tasks[taskIndex]["subtasksDone"][y]}
                 </p>
             </div>
         `;
@@ -193,7 +193,7 @@ function addopenCardSubtasks(x) {
 async function subtaskComplete(i, x) {
     let content = document.getElementById(`subtask${i}`);
     content.innerHTML = /*html*/ `
-    <div class="openCardSubtasks">
+    <div class="openCardSubtasks" id="subtaskDone${i}" onclick="subtaskUnComplete(${i}, ${x})">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                 <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -203,7 +203,23 @@ async function subtaskComplete(i, x) {
     `;
     moveSubtaskToDone(i, x);
     await setItem('tasks', tasks);
+    addOpenCardSubtasks(x);
 }
+
+
+async function subtaskUnComplete(i, x) {
+    let content = document.getElementById(`subtaskDone${i}`);
+    content.innerHTML = /*html*/ `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                </svg>
+                ${tasks[x]["subtasks"]}
+    `;
+    moveSubtaskToNotDone(i, x);
+    await setItem('tasks', tasks);
+    addOpenCardSubtasks(x);
+}
+
 
 function moveSubtaskToDone(i, x) {
     // Zugriff auf das zu entfernende Subtask-Element
@@ -216,18 +232,28 @@ function moveSubtaskToDone(i, x) {
     tasks[x]["subtasksDone"].push(removedSubtask);
 
     // Annahme: addopenCardSubtasks ist eine Funktion, die definiert ist und korrekt funktioniert
-    addopenCardSubtasks(x);
+    addOpenCardSubtasks(x);
 }
 
-function subtaskUnComplete(i, x) {
-    let content = document.getElementById(`subtask${i}`);
-    content.innerHTML = /*html*/ `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                </svg>
-                ${tasks[x]["subtasks"]}
-    `;
+
+function moveSubtaskToNotDone(i, x) {
+    // Zugriff auf das zu entfernende Subtask-Element
+    let addedSubtask = tasks[x]["subtasks"][i];
+
+    // Entfernen des Elements aus tasks[x]['subtasks']
+    tasks[x]["subtasksDone"].splice(i, 1);
+
+    // Hinzufügen des entfernten Elements zu tasks[x]['subtasksDone']
+    tasks[x]["subtasks"].push(addedSubtask);
+
+    // Annahme: addopenCardSubtasks ist eine Funktion, die definiert ist und korrekt funktioniert
+    addOpenCardSubtasks(x);
 }
+
+
+
+
+
 
 function closeCard() {
     const transout = document.getElementById("openCard");
