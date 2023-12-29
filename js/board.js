@@ -190,7 +190,7 @@ function addopenCardSubtasks(x) {
     }
 }
 
-function subtaskComplete(i, x) {
+async function subtaskComplete(i, x) {
     let content = document.getElementById(`subtask${i}`);
     content.innerHTML = /*html*/ `
     <div class="openCardSubtasks">
@@ -202,6 +202,7 @@ function subtaskComplete(i, x) {
     </div>
     `;
     moveSubtaskToDone(i, x);
+    await setItem('tasks', tasks);
 }
 
 function moveSubtaskToDone(i, x) {
