@@ -249,9 +249,9 @@ function validateDropdown(inputId, warningId) {
  * @async
  * @function createTask
  */
-async function createTask() {
+async function createTask(context) {
   let currentTasks = await getTasksArray();
-  let newTask = await getValues();
+  let newTask = await getValues(context); // Kontext an getValues übergeben
 
   try {
     currentTasks.push(newTask);

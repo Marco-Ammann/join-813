@@ -1,5 +1,32 @@
+function acceptAndSetEditOfTask(taskId) {
+  // Ermitteln des zu aktualisierenden Tasks
+  let task = tasks.find(t => t.id === taskId);
+
+  if (task) {
+      // Holen der aktualisierten Werte aus den Eingabefeldern
+      task.taskTitle = document.getElementById('task-title-input-popup').value;
+      task.description = document.getElementById("task-description-textarea-popup").value;
+      task.dueDate = formatDateFromInput(document.getElementById("due-date-input-popup").value);
+      task.priority = clickedPriority; // Angenommen, diese Variable hält die aktuelle Priorität
+      task.assignedTo = getAssignedContactsFromEdit(); // Eine Funktion, die die ausgewählten Kontakte aus der Bearbeitungsansicht holt
+
+      // Hier können Sie weitere Felder aktualisieren, z.B. Subtasks
+
+      // Aktualisieren des tasks-Arrays im Speicher
+      saveTasks(); // Eine Funktion, die das aktualisierte tasks-Array speichert
+  }
+}
 
 
+function getAssignedContactsFromEdit() {
+  // Implementieren Sie die Logik, um die ausgewählten Kontakte aus der Bearbeitungsansicht zu holen
+  return []; // Beispiel-Rückgabewert
+}
+
+
+function saveTasks() {
+  // Implementieren Sie die Logik zum Speichern des aktualisierten tasks-Arrays
+}
 
 
 function setValuesInEditCard(i) {
@@ -19,14 +46,30 @@ function setValuesInEditCard(i) {
 
     createSubtaskList(i);
 
+    setTaskPriorityInEditWindow(i);
 
 }
 
+function formatDateFromInput(dateString) {
+  let parts = dateString.split('-');
+  return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : '';
+}
+
+
+/**
+ * Konvertiert ein Datum vom Format 'dd/mm/yyyy' in das Format 'yyyy-mm-dd'.
+ *
+ * @param {string} dateString - Das Datum im Format 'dd/mm/yyyy'.
+ * @returns {string} Das Datum im Format 'yyyy-mm-dd'.
+ */
 function formatDateToInput(dateString) {
-    let parts = dateString.split('/');
-    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  let parts = dateString.split('/');
+  if (parts.length === 3) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  } else {
+      return '';
+  }
 }
-
 
 
 /**
@@ -38,7 +81,7 @@ function createSubtaskList(i) {
     subtaskContainer.innerHTML = "";
   
     for (let j = 0; j < tasks[i].subtasks.length; j++) {
-      const subtask = tasks[i].subtasks[i];
+      const subtask = tasks[i].subtasks[j];
       subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j);
     }
   }
@@ -62,5 +105,14 @@ function createSubtaskList(i) {
       }
     });
   }
+
+  function setTaskPriorityInEditWindow(taskId) {
+    let task = tasks.find(t => t.id === taskId);
+
+    if (task) {
+        let priority = task.priority;
+        setPrio(priority);
+          }
+}
 
 

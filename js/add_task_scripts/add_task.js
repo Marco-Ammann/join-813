@@ -57,7 +57,7 @@ async function logCurrentTasks() {
  * It then triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
  */
-function validateAndCreateTask(assignedContactsAvatarDiv) {
+async function validateAndCreateTask(assignedContactsAvatarDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }
@@ -68,12 +68,11 @@ function validateAndCreateTask(assignedContactsAvatarDiv) {
                 validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
-    createTask();
+    await createTask("main");
     clearForm(assignedContactsAvatarDiv);
-    animateTaskAdded();
     setTimeout(function () {
       window.location.href = 'board.html';
-    }, 1500);
+    }, 150);
     currentTaskState = 'ToDo';
   }
 }
@@ -85,17 +84,18 @@ function validateAndCreateTask(assignedContactsAvatarDiv) {
  * It then triggers an animation to indicate that the task has been added
  * and closes the Popup after a short delay.
  */
-async function validateAndCreateTaskPopup() {
+async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
   let isValid = validateField("task-title-input", "requiredTextTitle") &&
                 validateField("task-description-textarea", "requiredTextDescription") &&
                 validateField("due-date-input", "requiredTextDueDate") &&
                 validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
-    await createTask();
+    await createTask(context);
+    clearForm(assignedContactsAvatarDiv)
     setTimeout(function () {
-      addDnonToAddTaks();
-    }, 500);
+      addDnonToAddTaks(assignedContactsAvatarDiv);
+    }, 150);
     currentTaskState = 'ToDo'; 
     loadBoard();
   }

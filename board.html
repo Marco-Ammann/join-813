@@ -59,7 +59,7 @@
 
                     <div class="addTaskHeader">
                         <h1 class="content-title">Add Task</h1>
-                        <button id="closeAddTaksButton" onclick="addDnonToAddTaks()"><svg
+                        <button id="closeAddTaksButton" onclick="addDnonToAddTaks('assigned-contacts')"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -225,13 +225,13 @@
                         field is required</span>
 
                     <div class="footer-btn-container">
-                        <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm()">
+                        <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm('assigned-contacts')">
                             Clear
                             <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
                         </button>
 
                         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-                            onclick="validateAndCreateTaskPopup()">
+                            onclick="validateAndCreateTaskPopup('assigned-contacts', 'main')">
                             Create Task
                             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
                         </button>

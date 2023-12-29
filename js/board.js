@@ -71,7 +71,6 @@ function sortTaks() {
             render(taskStatus, i);
         }
     } else {
-        console.log("Keine Aufgaben vorhanden");
         addNoTaskHTML('ToDoContainer');
         addNoTaskHTML('InProgressContainer');
         addNoTaskHTML('AwaitFeedbackContainer');
@@ -240,7 +239,6 @@ function subtaskComplete(i, x) {
     </div>
     `;
     moveSubtaskToDone(i, x);
-    clearAllTasksInBackendx();
 }
 
 function moveSubtaskToDone(i, x) {
@@ -371,7 +369,7 @@ function openAddTaskMenu(state) {
     }
 }
 
-function addDnonToAddTaks() {
+function addDnonToAddTaks(assignedContactsAvatarDiv) {
     const transout = document.getElementById("transition");
     transout.style = 'animation: slideOutAddNew 100ms ease-in-out;'
     setTimeout(() => {
@@ -379,7 +377,7 @@ function addDnonToAddTaks() {
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
-    clearForm();
+    clearForm(assignedContactsAvatarDiv);
 }
 
 function deleteOpenCard(i) {

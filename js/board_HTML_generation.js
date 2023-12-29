@@ -54,7 +54,7 @@ function generateEditCardHTML(i) {
                                 src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
                                 onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
                         </div>
-                        <div class="assignDropdown d-none" id="assignDropdown-popup"></div>
+                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
                     </div>
                     <div class="assigned-contacts" id="assigned-contacts-popup"></div>
 
@@ -138,7 +138,7 @@ function generateEditCardHTML(i) {
 
 
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-            onclick="validateAndCreateTaskPopup(), clearForm()">
+            onclick="acceptAndSetEditOfTask(${i})">
             OK
             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>
