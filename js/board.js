@@ -84,8 +84,7 @@ function render(taskStatus, i) {
                 <div class="toDoCardFooter">
                     <div id="cardIcon${i}" class="userIcon">
                     </div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]
-        }.svg">
+                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]}.svg">
                 </div>
             </div>
         </div>
