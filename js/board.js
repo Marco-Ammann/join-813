@@ -521,7 +521,7 @@ function addDnonToAddTaks(assignedContactsAvatarDiv) {
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
-    clearForm(assignedContactsAvatarDiv, 'subTasks-popup');
+    clearForm(assignedContactsAvatarDiv, 'subTasks');
 }
 
 

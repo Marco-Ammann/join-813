@@ -200,7 +200,7 @@
                                                     alt="cancel-symbol" />
 
                                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
-                                                    onclick="setSubtask()"
+                                                    onclick="setSubtask('subtask-input', 'subTasks')"
                                                     src="./assets/img/Desktop/add_task/subtasks_icons/check.svg"
                                                     alt="check-symbol" />
                                             </div>
@@ -231,7 +231,7 @@
                         </button>
 
                         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-                            onclick="validateAndCreateTaskPopup('assigned-contacts', 'main')">
+                            onclick="validateAndCreateTaskPopup('assigned-contacts', 'subTasks', 'main')">
                             Create Task
                             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
                         </button>

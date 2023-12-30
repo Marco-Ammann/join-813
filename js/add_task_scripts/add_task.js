@@ -68,7 +68,7 @@ async function validateAndCreateTask(assignedContactsAvatarDiv) {
 
   if (isValid) {
     await createTask("main");
-    clearForm(assignedContactsAvatarDiv);
+    clearForm(assignedContactsAvatarDiv, subTaskDiv);
     setTimeout(function () {
       window.location.href = 'board.html';
     }, 150);
@@ -86,7 +86,7 @@ async function validateAndCreateTask(assignedContactsAvatarDiv) {
  * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
  * @param {string} context - The context in which the function is called.
  */
-async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
+async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv, context) {
   let isValid = validateField("task-title-input", "requiredTextTitle") &&
     validateField("task-description-textarea", "requiredTextDescription") &&
     validateField("due-date-input", "requiredTextDueDate") &&
@@ -94,7 +94,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
 
   if (isValid) {
     await createTask(context);
-    clearForm(assignedContactsAvatarDiv)
+    clearForm(assignedContactsAvatarDiv, subTaskDiv)
     setTimeout(function () {
       addDnonToAddTaks(assignedContactsAvatarDiv);
     }, 150);
