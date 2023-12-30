@@ -22,15 +22,13 @@ function loadAddTaskPage() {
  * Clears all tasks in the backend by setting the 'tasks' storage item to an empty array.
  * 
  * @async
- * @function clearAllTasksInBackend
- * @throws {Error} Throws an error if there is an issue while clearing the tasks.
  */
 async function clearAllTasksInBackend() {
   try {
-      await setItem('tasks', []);
-      console.log('All tasks have been successfully cleared.');
+    await setItem('tasks', []);
+    console.log('All tasks have been successfully cleared.');
   } catch (error) {
-      console.error('Error while clearing tasks: ', error);
+    console.error('Error while clearing tasks: ', error);
   }
 }
 
@@ -39,23 +37,24 @@ async function clearAllTasksInBackend() {
  * Logs the current tasks from the backend to the console.
  * 
  * @async
- * @function logCurrentTasks
- * @throws {Error} Throws an error if there is an issue while loading the tasks.
  */
 async function logCurrentTasks() {
   try {
-      const currentTasks = await getTasksArray();
-      console.log('Current tasks:', currentTasks);
+    const currentTasks = await getTasksArray();
+    console.log('Current tasks:', currentTasks);
   } catch (error) {
-      console.error('Error while loading tasks: ', error);
+    console.error('Error while loading tasks: ', error);
   }
 }
 
 
 /**
  * Validates form fields and creates a task if all validations pass. 
- * It then triggers an animation to indicate that the task has been added
+ * Triggers an animation to indicate that the task has been added
  * and redirects to the board page after a short delay.
+ * 
+ * @async
+ * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
  */
 async function validateAndCreateTask(assignedContactsAvatarDiv) {
   if (!currentTaskState) {
@@ -63,9 +62,9 @@ async function validateAndCreateTask(assignedContactsAvatarDiv) {
   }
 
   let isValid = validateField("task-title-input", "requiredTextTitle") &&
-                validateField("task-description-textarea", "requiredTextDescription") &&
-                validateField("due-date-input", "requiredTextDueDate") &&
-                validateDropdown("add-category-input", "requiredTextCategory");
+    validateField("task-description-textarea", "requiredTextDescription") &&
+    validateField("due-date-input", "requiredTextDueDate") &&
+    validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
     await createTask("main");
@@ -79,16 +78,19 @@ async function validateAndCreateTask(assignedContactsAvatarDiv) {
 
 
 /**
- * Exclusively for add-Task popup window
- * Validates form fields and creates a task if all validations pass. 
- * It then triggers an animation to indicate that the task has been added
+ * Validates form fields for the add-Task popup window and creates a task if all validations pass.
+ * Triggers an animation to indicate that the task has been added
  * and closes the Popup after a short delay.
+ * 
+ * @async
+ * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
+ * @param {string} context - The context in which the function is called.
  */
 async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
   let isValid = validateField("task-title-input", "requiredTextTitle") &&
-                validateField("task-description-textarea", "requiredTextDescription") &&
-                validateField("due-date-input", "requiredTextDueDate") &&
-                validateDropdown("add-category-input", "requiredTextCategory");
+    validateField("task-description-textarea", "requiredTextDescription") &&
+    validateField("due-date-input", "requiredTextDueDate") &&
+    validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValid) {
     await createTask(context);
@@ -96,7 +98,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
     setTimeout(function () {
       addDnonToAddTaks(assignedContactsAvatarDiv);
     }, 150);
-    currentTaskState = 'ToDo'; 
+    currentTaskState = 'ToDo';
     loadBoard();
   }
 }
@@ -104,8 +106,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, context) {
 
 /**
  * Validates the format of the due date entered in the input field.
- * If the format does not match the expected pattern (dd/mm/yyyy), 
- * it alerts the user and clears the input field. 
+ * Alerts the user and clears the input field if the format is not dd/mm/yyyy.
  */
 function validateDueDate() {
   const dueDateInput = document.getElementById("due-date-input");
@@ -119,8 +120,8 @@ function validateDueDate() {
 
 /**
  * Handles the selection state for task category options.
- * It ensures that only the clicked category option has the 'contactDivClicked' class for styling,
- * while others don't. It also updates the category input with the selected category's text.
+ * Only the clicked category option has the 'contactDivClicked' class for styling.
+ * Updates the category input with the selected category's text.
  * 
  * @param {number} index - The index of the category option that was clicked.
  */
@@ -140,9 +141,7 @@ function switchTaskCategoryClickedState(index) {
 
 /**
  * Updates the category input field with the selected category and hides the category dropdown.
- * It sets the value of the category input to the selected category and adds the 'd-none' class
- * to the category dropdown to hide it from view.
- *
+ * 
  * @param {string} selectedCategory - The category selected by the user.
  */
 function updateCategoryInput(selectedCategory) {
@@ -155,12 +154,11 @@ function updateCategoryInput(selectedCategory) {
 
 
 /**
- * Toggles the selection state of a contact. It initializes the clicked state for the contact,
- * updates the appearance of the contact div and the checkbox image based on whether the contact
- * is selected or not, and adds or removes the contact's avatar from the assigned contacts.
- * It also updates the clicked state array to reflect the new state of the contact.
- *
+ * Toggles the selection state of a contact in the 'assign to' dropdown.
+ * Updates the appearance based on selection and updates the clicked state array.
+ * 
  * @param {number} index - The index of the contact in the contacts array.
+ * @param {string} container - The ID of the container where assigned contacts are displayed.
  */
 function toggleContact(index, container) {
   initializeClickedState(index);
@@ -169,22 +167,19 @@ function toggleContact(index, container) {
   const isClicked = getClickedState(index);
   const contact = contacts[index];
   if (isClicked) {
-      handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
-      removeAvatar(contact, container);
+    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
+    removeAvatar(contact, container);
   } else {
-      handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
-      addAvatar(contact, container);
+    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
+    addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);
 }
 
 
-
-
-
 /**
- * Opens a dropdown menu by removing its 'd-none' class, clears the selected element's value,
- * sets the dropdown state to 'open', and changes the arrow image to indicate the dropdown is open.
+ * Opens a dropdown menu, clears the selected element's value, sets the dropdown state to 'open',
+ * and changes the arrow image to indicate the dropdown is open.
  * 
  * @param {HTMLElement} dropdown - The dropdown element to be opened.
  * @param {HTMLElement} selectedElement - The element whose value is to be cleared.
@@ -199,8 +194,8 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
 
 
 /**
- * Closes a dropdown menu by adding the 'd-none' class, sets the value of the input field,
- * changes the dropdown state to 'closed', and updates the arrow image to indicate the dropdown is closed.
+ * Closes a dropdown menu, sets the input field value, changes the dropdown state to 'closed',
+ * and updates the arrow image to indicate the dropdown is closed.
  * 
  * @param {HTMLElement} dropdown - The dropdown element to be closed.
  * @param {HTMLElement} inputfield - The input field whose value is to be set.
@@ -217,7 +212,10 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
 
 /**
  * Generates and populates the 'assign to' dropdown menu with contact options.
- * Each contact is added to the dropdown, and the clickedStates array is initialized with false for each contact.
+ * Initializes the clickedStates array with false for each contact.
+ * 
+ * @param {string} dropdownId - The ID of the dropdown element.
+ * @param {string} container - The ID of the container where assigned contacts are displayed.
  */
 async function generateAssignContacts(dropdownId, container) {
   let dropdowncontainer = document.getElementById(`${dropdownId}`);
@@ -234,7 +232,6 @@ async function generateAssignContacts(dropdownId, container) {
 
 /**
  * Populates the 'category' dropdown menu with predefined category options.
- * It iterates through the 'categorys' array, adding each category to the dropdown menu.
  */
 async function generateCategoryOptions() {
   let dropdowncontainer = document.getElementById("categoryDropdown");
@@ -248,7 +245,10 @@ async function generateCategoryOptions() {
 
 /**
  * Filters the contacts in the dropdown menu based on user input.
- * It matches the input text with the contact names, displaying only those that include the typed value.
+ * Displays only contacts matching the typed value.
+ * 
+ * @param {string} inputfieldId - The ID of the input field used for filtering.
+ * @param {string} dropDownId - The ID of the dropdown that displays filtered results.
  */
 function filterContacts(inputfieldId, dropDownId) {
   const input = document.getElementById(inputfieldId);
@@ -263,9 +263,18 @@ function filterContacts(inputfieldId, dropDownId) {
 }
 
 
-
+/**
+ * Creates a closure function to handle the closing of a dropdown menu.
+ * This function checks if the click event occurred outside the dropdown, input field, or arrow image.
+ * If the click is outside these elements, it closes the dropdown menu.
+ *
+ * @param {string} dropdownId - The ID of the dropdown element.
+ * @param {string} inputfieldId - The ID of the input field associated with the dropdown.
+ * @param {string} arrowId - The ID of the arrow image used to toggle the dropdown.
+ * @returns {Function} A function that takes an event and closes the dropdown if the event target is outside the dropdown elements.
+ */
 function createDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
-  return function(event) {
+  return function (event) {
     const dropdown = document.getElementById(dropdownId);
     const inputField = document.getElementById(inputfieldId);
     const arrowImage = document.getElementById(arrowId);
@@ -276,23 +285,56 @@ function createDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
   };
 }
 
+
+/**
+ * Creates a closure function for filtering contacts based on the input field's value.
+ * This function is triggered on 'input' event and calls `filterContacts` with specified IDs.
+ *
+ * @param {string} inputfieldId - The ID of the input field used for filtering.
+ * @param {string} dropDownId - The ID of the dropdown that displays filtered results.
+ * @returns {Function} A function that triggers the filtering of contacts.
+ */
 function createFilterListener(inputfieldId, dropDownId) {
-  return function() {
+  return function () {
     filterContacts(inputfieldId, dropDownId);
   };
 }
 
+
+/**
+ * Sets up a global listener for closing a dropdown menu.
+ * This listener is added to the document and triggers the closing of the dropdown when a click occurs outside its elements.
+ *
+ * @param {string} dropdownId - The ID of the dropdown element.
+ * @param {string} inputfieldId - The ID of the input field associated with the dropdown.
+ * @param {string} arrowId - The ID of the arrow image used to toggle the dropdown.
+ */
 function setupDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
   dropdownCloseListener = createDropdownCloseListener(dropdownId, inputfieldId, arrowId);
   document.addEventListener("click", dropdownCloseListener, true);
 }
 
+
+/**
+ * Sets up a listener for the input event on a specified input field.
+ * This listener is used for filtering contacts based on the input value.
+ *
+ * @param {string} inputfieldId - The ID of the input field used for filtering.
+ * @param {string} dropDownId - The ID of the dropdown that displays filtered results.
+ */
 function setupFilterListener(inputfieldId, dropDownId) {
   filterListener = createFilterListener(inputfieldId, dropDownId);
   const inputField = document.getElementById(inputfieldId);
   inputField.addEventListener("input", filterListener, true);
 }
 
+
+/**
+ * Removes event listeners from the specified input field and the document.
+ * Designed to remove the global `dropdownCloseListener` and `filterListener`.
+ * 
+ * @param {string} inputfieldId - The ID of the input field from which the filter listener should be removed.
+ */
 function removeListeners(inputfieldId) {
   if (dropdownCloseListener) {
     document.removeEventListener("click", dropdownCloseListener, true);
@@ -307,14 +349,11 @@ function removeListeners(inputfieldId) {
 }
 
 
-
-
 /**
- * Triggers the animation for the task-added notification.
- * It adds a CSS class to the task-added-container which controls the animation.
+ * Initiates an animation to indicate that a task has been successfully added.
+ * It targets the task-added-container element and adds a CSS class to control the animation.
  */
 function animateTaskAdded() {
   const taskAddedContainer = document.querySelector('.task-added-container');
   taskAddedContainer.classList.add('task-added-animate');
 }
-
