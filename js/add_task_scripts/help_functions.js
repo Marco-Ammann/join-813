@@ -1,8 +1,7 @@
-
 /**
- * Initializes the clicked state for a contact at a specific index.
- * 
- * @param {number} index - The index of the contact in the clickedStates array.
+ * Initializes the selection state of a contact in the clickedStates array.
+ *
+ * @param {number} index - Index of the contact.
  */
 function initializeClickedState(index) {
   if (clickedStates[index] === undefined) {
@@ -12,10 +11,10 @@ function initializeClickedState(index) {
 
 
 /**
- * Retrieves the clicked state of a contact at a given index.
- * 
- * @param {number} index - The index of the contact in the clickedStates array.
- * @returns {boolean} The clicked state of the contact.
+ * Gets the selection state of a contact from the clickedStates array.
+ *
+ * @param {number} index - Index of the contact.
+ * @returns {boolean} True if selected, false otherwise.
  */
 function getClickedState(index) {
   return clickedStates[index];
@@ -23,10 +22,10 @@ function getClickedState(index) {
 
 
 /**
- * Updates the clicked state of a contact at a specific index.
- * 
- * @param {number} index - The index of the contact.
- * @param {boolean} value - The new clicked state to be set.
+ * Sets the selection state of a contact in the clickedStates array.
+ *
+ * @param {number} index - Index of the contact.
+ * @param {boolean} value - Selection state to set (true for selected, false for not selected).
  */
 function updateClickedState(index, value) {
   clickedStates[index] = value;
@@ -34,9 +33,9 @@ function updateClickedState(index, value) {
 
 
 /**
- * Adds a CSS class to an element.
- * 
- * @param {Element} element - The DOM element to which the class will be added.
+ * Adds a CSS class to a DOM element.
+ *
+ * @param {Element} element - The element to which the class will be added.
  * @param {string} className - The class name to add.
  */
 function assignClass(element, className) {
@@ -45,9 +44,9 @@ function assignClass(element, className) {
 
 
 /**
- * Removes a CSS class from an element.
- * 
- * @param {Element} element - The DOM element from which the class will be removed.
+ * Removes a specified CSS class from a DOM element.
+ *
+ * @param {Element} element - The element from which the class will be removed.
  * @param {string} className - The class name to remove.
  */
 function removeClass(element, className) {
@@ -56,10 +55,10 @@ function removeClass(element, className) {
 
 
 /**
- * Changes the 'src' attribute of an image element.
- * 
- * @param {Element} element - The image element to modify.
- * @param {string} src - The new source path for the image.
+ * Sets the 'src' attribute of an image element.
+ *
+ * @param {Element} element - The image element.
+ * @param {string} src - The source URL.
  */
 function changeSrc(element, src) {
   element.src = src;
@@ -67,9 +66,9 @@ function changeSrc(element, src) {
 
 
 /**
- * Toggles the visibility of an element by adding or removing the 'd-none' class.
- * 
- * @param {string} elementId - The ID of the element to toggle.
+ * Toggles the visibility of an element using the 'd-none' CSS class.
+ *
+ * @param {string} elementId - ID of the DOM element to be toggled.
  */
 function switchVisibility(elementId) {
   const element = document.getElementById(elementId);
@@ -79,7 +78,7 @@ function switchVisibility(elementId) {
 
 /**
  * Sets the priority level for a task.
- * 
+ *
  * @param {string} priority - The priority level to be set.
  */
 function setPriority(priority) {
@@ -89,8 +88,9 @@ function setPriority(priority) {
 
 /**
  * Adds a contact to the list of assigned contacts and updates the avatars display.
- * 
+ *
  * @param {Object} contact - The contact object to add.
+ * @param {string} container - The ID of the container for avatars display.
  */
 function addAvatar(contact, container) {
   assignedContacts.push(contact);
@@ -100,6 +100,8 @@ function addAvatar(contact, container) {
 
 /**
  * Updates the display of assigned contact avatars.
+ *
+ * @param {string} container - The ID of the container for avatars display.
  */
 function updateAvatars(container) {
   let avatarContainer = document.getElementById(container);
@@ -116,6 +118,7 @@ function updateAvatars(container) {
  * Removes a contact from the list of assigned contacts and updates the avatars display.
  * 
  * @param {Object} contact - The contact object to remove.
+ * @param {string} container - The ID of the container for avatars display.
  */
 function removeAvatar(contact, container) {
   const index = assignedContacts.indexOf(contact);
@@ -248,6 +251,7 @@ function validateDropdown(inputId, warningId) {
  * 
  * @async
  * @function createTask
+ * @param {Object} context - The context object containing user inputs.
  */
 async function createTask(context) {
   let currentTasks = await getTasksArray();
@@ -283,6 +287,7 @@ function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
  * Handles the click event on an assigned contact.
  * 
  * @param {number} index - The index of the contact in the contacts array.
+ * @param {string} container - The ID of the container element to update.
  */
 function handleClickOnAssignedContact(index, container) {
   toggleContact(index, container);
@@ -299,6 +304,7 @@ function handleClickOnAssignedContact(index, container) {
  * @param {string} src - The source path for the image.
  */
 function handleClickedState(div, img, clicked, src) {
+  // Toggles the contact's visual representation and updates the image source
   div.classList.toggle("contactDivClicked", clicked);
   img.src = src;
 }
