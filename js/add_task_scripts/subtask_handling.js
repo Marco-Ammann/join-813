@@ -4,6 +4,9 @@ let subtasks = [];
 /**
  * Adds a subtask to the list of subtasks and updates the UI.
  * The subtask text is trimmed and added only if it's not empty.
+ * 
+ * @param {string} subtaskInputField - The ID of the subtask input field.
+ * @param {string} SubTasksDiv - The ID of the div element to display subtasks.
  */
 function setSubtask(subtaskInputField, SubTasksDiv) {
   const subtaskInput = document.getElementById(subtaskInputField);
@@ -20,6 +23,8 @@ function setSubtask(subtaskInputField, SubTasksDiv) {
 /**
  * Updates the UI with the current list of subtasks.
  * Iterates over the subtasks array and appends each subtask to the subtask container.
+ * 
+ * @param {string} SubTasksDiv - The ID of the div element to display subtasks.
  */
 function updateSubtaskList(SubTasksDiv) {
   const subtaskContainer = document.getElementById(SubTasksDiv);
@@ -33,7 +38,7 @@ function updateSubtaskList(SubTasksDiv) {
 
 
 /**
- * Clears the subtask input field.
+ * Clears the subtask input field by setting its value to an empty string.
  */
 function clearSubtaskInput() {
   const subtaskInput = document.getElementById("subtask-input");
@@ -43,7 +48,7 @@ function clearSubtaskInput() {
 
 /**
  * Initiates the editing of a subtask.
- * Hides the subtask display element and shows the subtask input field with the current subtask value.
+ * Hides the subtask display element, displays the subtask input field with the current subtask value, and sets focus to the input field.
  *
  * @param {number} index - Index of the subtask being edited.
  */
@@ -57,9 +62,7 @@ function editSubtask(index) {
 
   editSubtaskDiv.classList.add("d-none");
   editSubtaskDivEdit.classList.remove("d-none");
-
   editSubtaskInput.value = taskText.textContent;
-
   editSubtaskInput.focus();
 }
 
@@ -160,12 +163,14 @@ function handleMouseDown(event) {
 /**
  * Saves the currently edited subtask when the check icon is clicked.
  *
- * @param {number} index - Index of the subtask being saved.
+ * @param {number} subtaskIndex - Index of the subtask being saved.
+ * @param {string} SubTasksDiv - ID of the subtasks container.
  */
 function handleCheckClick(subtaskIndex, SubTasksDiv) {
   const editSubtaskInput = document.getElementById(`editInput${subtaskIndex}`);
-  
+
   subtasks[subtaskIndex] = editSubtaskInput.value;
+
   updateSubtaskList(SubTasksDiv);
 }
 
