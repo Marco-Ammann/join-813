@@ -58,7 +58,8 @@ function generateAvatar(contact) {
  * the subtask, along with icons for saving or canceling the edit.
  * 
  * @param {string} subtask - The text of the subtask.
- * @param {number} index - The index of the subtask, used for assigning unique IDs.
+ * @param {number} subtaskIndex - The index of the subtask, used for assigning unique IDs.
+ * @param {string} SubTasksDiv - The ID of the container for subtasks.
  * @returns {string} - The HTML string for the subtask element, including editing controls.
  */
 function generateSubtaskHTML(subtask, subtaskIndex, SubTasksDiv) {
