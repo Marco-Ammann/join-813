@@ -1,6 +1,7 @@
 let assignedContacts = [];
 let clickedPriority = "medium";
 let currentTaskState = "ToDo";
+
 /**
  * Gathers task-related information from user input fields based on the specified context.
  * 
