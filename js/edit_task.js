@@ -1,36 +1,55 @@
-function acceptAndSetEditOfTask(taskId) {
-  // Ermitteln des zu aktualisierenden Tasks
-  let task = tasks.find(t => t.id === taskId);
+function acceptAndSetEditOfTask(taskIndex, context) {
+  // Aktualisieren der Task-Eigenschaften
+  let updatedTask = getValuesAfterEdit(taskIndex, context);
+  tasks[taskIndex] = updatedTask;
 
-  if (task) {
-      // Holen der aktualisierten Werte aus den Eingabefeldern
-      task.taskTitle = document.getElementById('task-title-input-popup').value;
-      task.description = document.getElementById("task-description-textarea-popup").value;
-      task.dueDate = formatDateFromInput(document.getElementById("due-date-input-popup").value);
-      task.priority = clickedPriority; // Angenommen, diese Variable hält die aktuelle Priorität
-      task.assignedTo = getAssignedContactsFromEdit(); // Eine Funktion, die die ausgewählten Kontakte aus der Bearbeitungsansicht holt
-
-      // Hier können Sie weitere Felder aktualisieren, z.B. Subtasks
-
-      // Aktualisieren des tasks-Arrays im Speicher
-      saveTasks(); // Eine Funktion, die das aktualisierte tasks-Array speichert
-  }
+  // Aktualisieren des Tasks im Backend
+  setItem('tasks', tasks).then(() => {
+    closeWindowAfterSavingEdit()
+    loadBoard(); // Refreshing the board after updating
+  });
 }
 
 
-function getAssignedContactsFromEdit() {
-  // Implementieren Sie die Logik, um die ausgewählten Kontakte aus der Bearbeitungsansicht zu holen
-  return []; // Beispiel-Rückgabewert
+function getValuesAfterEdit(taskId, context = "main") {
+  return {
+    "id": taskId,
+    "taskTitle": getTaskTitle(context),
+    "description": getTaskDescription(context),
+    "assignedTo": getAssignedContacts(),
+    "dueDate": getDueDate(context),
+    "priority": getPriority(),
+    "category": getCategoryOfTask(taskId),
+    "subtasks": getSubtask(),
+    "subtasksDone": getSubtasksDone(taskId),
+    "state": getTaskState(taskId),
+  };
+}
+
+function closeWindowAfterSavingEdit(){
+  closeCard();
+  sortTaks();
+  clearForm('assigned-contacts-popup', 'subTasks-popup');
+  removeListeners('add-contact-input-popup');
+}
+
+   
+
+
+function getTaskState(taskIndex) {
+  let stateOfTask = tasks[taskIndex].state;
+  return stateOfTask;
+}
+
+function getSubtasksDone(taskIndex) {
+  let subtasksDoneOfTask = tasks[taskIndex].subtasksDone;
+  return subtasksDoneOfTask;
 }
 
 
-function saveTasks() {
-  // Implementieren Sie die Logik zum Speichern des aktualisierten tasks-Arrays
-}
 
-
-function setValuesInEditCard(i) {
-    let openTask = tasks[i];
+function setValuesInEditCard(taskIndex, SubTasksDiv) {
+    let openTask = tasks[taskIndex];
 
     let openTaskTitle = document.getElementById('task-title-input-popup');
     openTaskTitle.value = openTask.taskTitle;
@@ -44,11 +63,27 @@ function setValuesInEditCard(i) {
         openTaskDate.value = formattedDate;
     }
 
-    createSubtaskList(i);
-
-    setTaskPriorityInEditWindow(i);
+    createSubtaskList(taskIndex, SubTasksDiv);
+    setSubtasksOfTask(taskIndex);
+    setTaskPriorityInEditWindow(taskIndex);
 
 }
+
+
+function setSubtasksOfTask(taskIndex) {
+  subtasks = [];
+  let subTasksOfTask = tasks[taskIndex].subtasks;
+  subtasks = subTasksOfTask;
+}
+
+
+
+function getCategoryOfTask(taskIndex) {
+  let categoryOfTaskToEdit = tasks[taskIndex].category;
+    return categoryOfTaskToEdit;
+}
+
+
 
 function formatDateFromInput(dateString) {
   let parts = dateString.split('-');
@@ -72,17 +107,16 @@ function formatDateToInput(dateString) {
 }
 
 
-/**
- * Updates the UI with the current list of subtasks.
- * Iterates over the subtasks array and appends each subtask to the subtask container.
- */
-function createSubtaskList(i) {
-    const subtaskContainer = document.getElementById("subTasks-popup");
+
+
+  function createSubtaskList(taskIndex, SubTasksDiv) {
+    const subtaskContainer = document.getElementById(SubTasksDiv);
     subtaskContainer.innerHTML = "";
-  
-    for (let j = 0; j < tasks[i].subtasks.length; j++) {
-      const subtask = tasks[i].subtasks[j];
-      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j);
+    
+    for (let j = 0; j < tasks[taskIndex].subtasks.length; j++) {
+      subtasks.push(tasks[taskIndex].subtasks[j]);
+      const subtask = subtasks[j];
+      subtaskContainer.innerHTML += generateSubtaskHTML(subtask, j, SubTasksDiv);
     }
   }
 

@@ -5,13 +5,13 @@ let subtasks = [];
  * Adds a subtask to the list of subtasks and updates the UI.
  * The subtask text is trimmed and added only if it's not empty.
  */
-function setSubtask() {
-  const subtaskInput = document.getElementById("subtask-input");
+function setSubtask(subtaskInputField, SubTasksDiv) {
+  const subtaskInput = document.getElementById(subtaskInputField);
   const subtaskText = subtaskInput.value.trim();
 
   if (subtaskText) {
     subtasks.push(subtaskText);
-    updateSubtaskList();
+    updateSubtaskList(SubTasksDiv);
     subtaskInput.value = "";
   }
 }
@@ -21,13 +21,13 @@ function setSubtask() {
  * Updates the UI with the current list of subtasks.
  * Iterates over the subtasks array and appends each subtask to the subtask container.
  */
-function updateSubtaskList() {
-  const subtaskContainer = document.getElementById("subTasks");
+function updateSubtaskList(SubTasksDiv) {
+  const subtaskContainer = document.getElementById(SubTasksDiv);
   subtaskContainer.innerHTML = "";
 
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
-    subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i);
+    subtaskContainer.innerHTML += generateSubtaskHTML(subtask, i, SubTasksDiv);
   }
 }
 
@@ -100,11 +100,11 @@ function cancelEditSubtask(index) {
  *
  * @param {number} index - Index of the subtask being deleted.
  */
-function deleteSubtask(index) {
+function deleteSubtask(index, SubTasksDiv) {
   const subTaskDiv = document.getElementById(`subTaskDiv${index}`);
   subTaskDiv.remove();
   subtasks.splice(index, 1);
-  updateSubtaskList();
+  updateSubtaskList(SubTasksDiv);
 }
 
 
@@ -162,10 +162,11 @@ function handleMouseDown(event) {
  *
  * @param {number} index - Index of the subtask being saved.
  */
-function handleCheckClick(index) {
-  const editSubtaskInput = document.getElementById(`editInput${index}`);
-  subtasks[index] = editSubtaskInput.value;
-  updateSubtaskList();
+function handleCheckClick(subtaskIndex, SubTasksDiv) {
+  const editSubtaskInput = document.getElementById(`editInput${subtaskIndex}`);
+  
+  subtasks[subtaskIndex] = editSubtaskInput.value;
+  updateSubtaskList(SubTasksDiv);
 }
 
 

@@ -3,13 +3,13 @@
  * description, due date, priority selection, assigned contacts, subtasks, and the 
  * task category to their default states.
  */
-function clearForm(assignedContactsAvatarDiv) {
+function clearForm(assignedContactsAvatarDiv, SubTasksDiv) {
   clearTaskTitle();
   clearTaskDescription();
   clearTaskDueDate();
   clearPriority();
   clearAssignedContact(assignedContactsAvatarDiv);
-  clearSubtask();
+  clearSubtask(SubTasksDiv);
   clearCategory();
 }
 
@@ -44,11 +44,11 @@ function clearTaskDueDate() {
 /**
  * Clears the subtask input field and removes all existing subtasks from the list.
  */
-function clearSubtask() {
+function clearSubtask(SubTasksDiv) {
   let subTaskInput = document.getElementById("subtask-input");
   subTaskInput.value = "";
   subtasks = [];
-  updateSubtaskList();
+  updateSubtaskList(SubTasksDiv);
 }
 
 

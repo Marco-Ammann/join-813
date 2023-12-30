@@ -61,26 +61,26 @@ function generateAvatar(contact) {
  * @param {number} index - The index of the subtask, used for assigning unique IDs.
  * @returns {string} - The HTML string for the subtask element, including editing controls.
  */
-function generateSubtaskHTML(subtask, index) {
+function generateSubtaskHTML(subtask, subtaskIndex, SubTasksDiv) {
   return /*HTML*/ `
 
 <div class="subTask-Wrapper">
 
-  <div class="subTaskDiv" id="subTaskDiv${index}">
-    <li id="task${index}" onclick="editSubtask(${index})">${subtask}</li>
-    <div class="subTask-subDiv" id="subTask-subDiv${index}">
-    <img class="subTask-icons" id="editSubtaskSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${index})">
+  <div class="subTaskDiv" id="subTaskDiv${subtaskIndex}">
+    <li id="task${subtaskIndex}" onclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">${subtask}</li>
+    <div class="subTask-subDiv" id="subTask-subDiv${subtaskIndex}">
+    <img class="subTask-icons" id="editSubtaskSVG${subtaskIndex}" src="./assets/img/Desktop/add_task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">
       <div class="subtasks-Seperator">|</div>
-      <img class="subTask-icons" id="deleteSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${index})">
+      <img class="subTask-icons" id="deleteSVG${subtaskIndex}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="delete" onclick="deleteSubtask(${subtaskIndex}, '${SubTasksDiv}')">
     </div>
   </div>
 
-  <div class="edit-subtask-div d-none" id="edit-subtask-div${index}">
-    <input type="text" class="editInput" id="editInput${index}">
-    <div class="edit-subTask-subDiv" id="edit-subTask-subDiv${index}">
-      <img class="subTask-icons" id="deleteEditSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="edit" onclick="deleteSubtask(${index})">
+  <div class="edit-subtask-div d-none" id="edit-subtask-div${subtaskIndex}">
+    <input type="text" class="editInput" id="editInput${subtaskIndex}">
+    <div class="edit-subTask-subDiv" id="edit-subTask-subDiv${subtaskIndex}">
+      <img class="subTask-icons" id="deleteEditSVG${subtaskIndex}" src="./assets/img/Desktop/add_task/subtasks_icons/delete.svg" alt="edit" onclick="deleteSubtask(${subtaskIndex}, '${SubTasksDiv}')">
       <div class="subtasks-Seperator">|</div>
-      <img class="subTask-icons" id="saveSVG${index}" src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="delete" onclick="handleCheckClick(${index})">
+      <img class="subTask-icons" id="saveSVG${subtaskIndex}" src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="delete" onclick="handleCheckClick(${subtaskIndex}, '${SubTasksDiv}')">
     </div>
   </div>
 </div>

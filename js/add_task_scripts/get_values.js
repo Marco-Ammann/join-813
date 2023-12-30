@@ -16,8 +16,8 @@ async function getValues(context = "main") {
     "description": getTaskDescription(context),
     "assignedTo": getAssignedContacts(),
     "dueDate": getDueDate(context),
-    "priority": getPriority(context),
-    "category": getCategory(context),
+    "priority": getPriority(),
+    "category": getCategory(),
     "subtasks": getSubtask(),
     "subtasksDone": [],
     "state": currentTaskState,
@@ -78,16 +78,15 @@ function getTaskDescription(context) {
 
 
 /**
- * Retrieves the IDs and names of contacts assigned to a task, depending on the context.
+ * Retrieves the IDs and names of contacts assigned to a task.
+ * Returns an array of objects, each object containing the ID and name of an assigned contact.
  * 
- * @param {string} context - The context of task creation ('main' or 'popup').
  * @returns {Array<Object>} An array of objects, each with the structure { id: number, name: string }.
  */
-function getAssignedContacts(context) {
-  let assignedContactsArray = context === 'popup' ? assignedContactsPopup : assignedContacts;
+function getAssignedContacts() {
   let assignedContactDetails = [];
-  for (let i = 0; i < assignedContactsArray.length; i++) {
-    let contact = assignedContactsArray[i];
+  for (let i = 0; i < assignedContacts.length; i++) {
+    let contact = assignedContacts[i];
     assignedContactDetails.push({ id: contact.id, name: contact.name });
   }
   return assignedContactDetails;
@@ -112,20 +111,12 @@ function getDueDate(context) {
 
 
 /**
- * Retrieves the priority level of the task, depending on the context.
+ * Retrieves the priority level of the task.
  * 
- * @param {string} context - The context of task creation ('main' or 'popup').
  * @returns {string} The priority level of the task.
  */
-function getPriority(context) {
-  if (context === 'popup') {
-    // Hier können Sie Logik hinzufügen, um die Priorität aus dem Popup-Fenster abzurufen.
-    // Zum Beispiel könnte es so aussehen:
-    return document.querySelector('.priority-popup-selected').getAttribute('data-priority');
-  } else {
-    // Für den Hauptkontext verwenden Sie die vorhandene Variable.
-    return clickedPriority;
-  }
+function getPriority() {
+  return clickedPriority;
 }
 
 

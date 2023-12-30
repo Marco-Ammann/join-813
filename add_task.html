@@ -148,7 +148,7 @@
                     <img class="plus-symbol input-symbol" id="close-symbol-subtask" onclick="clearSubtaskInput()"
                       src="./assets/img/Desktop/add_task/subtasks_icons/close.svg" alt="cancel-symbol" />
 
-                    <img class="check-symbol input-symbol" id="check-symbol-subtask" onclick="setSubtask('subtask-input')"
+                    <img class="check-symbol input-symbol" id="check-symbol-subtask" onclick="setSubtask('subtask-input', 'subTasks')"
                       src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
                   </div>
                 </div>
@@ -163,7 +163,7 @@
           field is required</span>
 
         <div class="footer-btn-container">
-          <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm('assigned-contacts')">
+          <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm('assigned-contacts', 'subTasks')">
             <span>Clear</span>
             <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
           </button>

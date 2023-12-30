@@ -5,7 +5,7 @@ function generateEditCardHTML(i) {
 <div>
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup'), removeListeners('add-contact-input-popup');"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input-popup');"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -138,7 +138,7 @@ function generateEditCardHTML(i) {
 
 
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
-            onclick="acceptAndSetEditOfTask(${i})">
+            onclick="acceptAndSetEditOfTask(${i}, 'popup')">
             OK
             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>
@@ -153,7 +153,7 @@ function generateEditCardHTML(i) {
 
 
 
-function generateOpenCardHTML(i) {
+function generateOpenCardHTML(taskIndex) {
     return /*html*/ `        
     <div class="toDoCard openCard">
         <div class="openCardHeader">
@@ -170,29 +170,29 @@ function generateOpenCardHTML(i) {
             </a>
         </div>
         <div class="openCardContent">
-            <h3 id="openCardTitle${i}">${tasks[i][`taskTitle`]}</h3>
-            <h4 id="openCardDescription${i}">${tasks[i][`description`]}</h4>
+            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
+            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
             <div class="openCardTable">
-            <p>Due date:</p><span id="openCardDate${i}">${tasks[i][`dueDate`]}<span>
+            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
             </div>
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span id="openCardPriority${i}">${tasks[i][`priority`]}</span>
-                <img src="./assets/img/Desktop/board/priority_symbols/${tasks[i][`priority`]
+                <span id="openCardPriority${taskIndex}">${tasks[taskIndex][`priority`]}</span>
+                <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]
         }.svg">
                 </div>
             </div>
         </div>
-        <div id="openCardIcon${i}" class="openCardAssigned">
+        <div id="openCardIcon${taskIndex}" class="openCardAssigned">
             <p>Assigned To:</p>
         </div>
         <div class="openCardSubtasks-container">
             <p>Subtaks</p>
-            <div id="openCardSubtasks${i}"></div>
+            <div id="openCardSubtasks${taskIndex}"></div>
         </div>
         <div class="openCardFooter">
-            <a href="#" onclick="deleteOpenCard(${i})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <a href="#" onclick="deleteOpenCard(${taskIndex})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_2295" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
                 </mask>
@@ -206,7 +206,7 @@ function generateOpenCardHTML(i) {
                 <path d="M1 0V24" stroke="#D1D1D1"/>
                 </svg>
                 </div>
-            <a href="#" onclick="editCard(${i}), loadAddTaskPage()">
+            <a href="#" onclick="editCard(${taskIndex}), loadAddTaskPage()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_4276" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
