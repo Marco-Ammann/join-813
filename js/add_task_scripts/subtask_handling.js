@@ -168,9 +168,11 @@ function handleMouseDown(event) {
  */
 function handleCheckClick(subtaskIndex, SubTasksDiv) {
   const editSubtaskInput = document.getElementById(`editInput${subtaskIndex}`);
-
+  
+  // Save the edited subtask text to the subtasks array
   subtasks[subtaskIndex] = editSubtaskInput.value;
-
+  
+  // Update the UI to reflect the changes
   updateSubtaskList(SubTasksDiv);
 }
 
