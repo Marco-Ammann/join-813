@@ -2,6 +2,9 @@
  * Clears all inputs and selections in the task creation form. It resets the title,
  * description, due date, priority selection, assigned contacts, subtasks, and the 
  * task category to their default states.
+ *
+ * @param {string} assignedContactsAvatarDiv - The ID of the assigned contacts avatar container.
+ * @param {string} SubTasksDiv - The ID of the subtasks container.
  */
 function clearForm(assignedContactsAvatarDiv, SubTasksDiv) {
   clearTaskTitle();
