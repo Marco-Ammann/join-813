@@ -3,12 +3,26 @@ const STORAGE_TOKEN = 'XED82JI0UQVPAW7GK0HYNZEI6ORUXO9SL3KVY824';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 
+/**
+ * Set Datas in the backend
+ * 
+ * @param {string} key - the key is the name to save the payload in the backend
+ * @param {Array, Object, string} value - the value is the payload
+ * @returns - return executes the request and processes the response from the backend
+ */
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
         .then(res => res.json());
 }
 
+
+/**
+ * get the Datas from the backend
+ * 
+ * @param {string} key - key under which the payload is stored
+ * @returns - return executes the request and processes the response from the backend
+ */
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json()).then(res => {

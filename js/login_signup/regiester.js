@@ -12,6 +12,7 @@ async function registerInit() {
     loadUsers();
 }
 
+
 /**
  * Control the register and load User
  *
@@ -27,6 +28,7 @@ async function loadUsers(ok) {
         console.error("Loading error:", e);
     }
 }
+
 
 /**
  * Registration
@@ -52,6 +54,11 @@ async function register() {
     }
 }
 
+/**
+ * Make an Array with name, email and password
+ * 
+ * @returns - return an Array with register Datas
+ */
 function generateArrayUsers() {
     return users.push({
         name: userName.value,
@@ -59,6 +66,7 @@ function generateArrayUsers() {
         password: password.value,
     });
 }
+
 
 /**
  * Deletet the value of the inputfields
@@ -72,6 +80,7 @@ function resetForm() {
     registerBtn.disabled = false;
     policyImage.src = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 }
+
 
 /**
  * HandleImageFocus of the two Inputfields
@@ -97,6 +106,7 @@ function handleImageFocus(passwordField, imageId) {
 handleImageFocus(password, "imagePassword");
 handleImageFocus(confirmPassword, "imageConfirmPassword");
 
+
 /**
  * Images of visibility - transfer with onclick
  *
@@ -116,6 +126,7 @@ function visibilityOnOffImage(Which, which) {
     }
 }
 
+
 /**
  * Checked the Passwords
  *
@@ -131,6 +142,7 @@ function checkConfirmPassword() {
         failConfirmPassword.style.color = "transparent";
     }
 }
+
 
 /**
  * Checked confirm Privacy Policy and enabled Button
@@ -148,6 +160,7 @@ function confirmPrivacyPolicy() {
     }
 }
 
+
 /**
  * Successfully Registration
  *
@@ -160,6 +173,7 @@ function openRegistrationModal() {
         window.location.href = "index.html";
     }, 2000);
 }
+
 
 /**
  * legal_notice and privacy policy for everyone (without Login)

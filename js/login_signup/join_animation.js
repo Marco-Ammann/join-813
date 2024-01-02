@@ -2,6 +2,7 @@ function loginInit() {
     checkAndPlayAnimation();
 }
 
+
 /**
  * Join Animation
  *
@@ -22,6 +23,7 @@ function checkAndPlayAnimation() {
         // document.getElementById("join-logo-static").style.display = "block";
     // }
 }
+
 
 /**
  * Animation - Container
@@ -45,6 +47,7 @@ function generateAnimationContainer(animationContainer) {
     }
 }
 
+
 /**
  * Style Animation
  *
@@ -66,6 +69,7 @@ function styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMob
         addEffectSetTimeout(animationContainer)
     }
 }
+
 
 /**
  * Switch from animation Join Logo to static

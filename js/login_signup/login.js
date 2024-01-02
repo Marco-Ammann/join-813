@@ -13,6 +13,7 @@ let guestBtn = document.getElementById("btn-guest");
 let loginEmail = document.getElementById("loginEmail");
 let passwordLogin = document.getElementById("loginPassword");
 
+
 /**
  * add Fokus/ blur Fokus - Passwordfield change Image
  *
@@ -35,6 +36,7 @@ function handleImageFocus() {
 }
 handleImageFocus();
 
+
 /**
  * Images of visibility and password as text
  *
@@ -52,6 +54,7 @@ function visibilityOnOffImage() {
     }
 }
 
+
 /**
  * Load Users from Backend
  *
@@ -64,6 +67,7 @@ async function loadUsers() {
         console.error("Loading error:", e);
     }
 }
+
 
 /**
  * Checked Password and Useremail
@@ -84,6 +88,7 @@ function loginCheckEmailAndPassword() {
     }
 }
 
+
 /**
  * Button Login und Guestlogin abled/ disabled
  *
@@ -94,6 +99,7 @@ function abledDisabledBtn(boolean) {
     guestBtn.disabled = boolean;
 }
 abledDisabledBtn(false);
+
 
 /**
  * is the User in the Array of RegisterUser; save currentUser in Backend
@@ -117,6 +123,7 @@ async function isUserOfRegisertUser(email, password) {
     }
 }
 
+
 /**
  * Forward to the next Page, if the email and password are valid
  *
@@ -130,13 +137,16 @@ function emailAndPasswordIsValid() {
     window.location.href = "summary.html";
 }
 
+
 function showTextFailLogin() {
     document.getElementById("fail-login").style.color = "#FF8190";
 }
 
+
 function changeShowTextFailLogin() {
     document.getElementById("fail-login").style.color = "transparent";
 }
+
 
 /**
  * Imagebox Remember me
@@ -154,6 +164,7 @@ function addRememberMe() {
         deleteJoinInputs();
     }
 }
+
 
 /**
  * Remember me - save in LocalStorage for the next Login
@@ -173,6 +184,7 @@ function RememberMeSaveToLocalStorage() {
     localStorage.setItem("joinInputs", ArrayAsText);
 }
 
+
 /**
  * Load from LocalStorage
  *
@@ -188,6 +200,7 @@ function loadStorage() {
     }
 }
 
+
 /**
  * Delete from LocalStorage
  *
@@ -195,6 +208,7 @@ function loadStorage() {
 function deleteJoinInputs() {
     localStorage.removeItem("joinInputs");
 }
+
 
 /**
  * Automaic fillout from LocalStorage
@@ -206,6 +220,7 @@ function loadFillInput() {
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
 }
+
 
 /**
  * Login Guest
@@ -223,6 +238,7 @@ async function guestAccount() {
         window.location.href = "summary.html";
     }, 300);
 }
+
 
 /**
  * legal_notice and privacy policy for everyone (without Login)
