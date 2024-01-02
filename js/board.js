@@ -397,6 +397,7 @@ function allowDrop(ev) {
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
     sortTaks();
+    
 }
 
 
