@@ -78,7 +78,7 @@ function render(taskStatus, taskIndex) {
     taskStatus = taskStatus + "Container";
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML += /*html*/ `    
-        <div onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${tasks[taskIndex][`id`]})">
+        <div onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex})">
             <div class="toDoCard">
                 <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
@@ -373,6 +373,7 @@ function addTransition() {
  */
 function startDraggin(id) {
     currentDraggedElement = id;
+    console.log(id);
     addRotation(id);
 }
 
@@ -393,8 +394,8 @@ function allowDrop(ev) {
  * @param {string} category - The category to which the task should be moved.
  * @param {number} id - The ID of the task to be moved.
  */
-function moveTo(category, id) {
-    tasks[currentDraggedElement]["state"] = category;
+function moveTo(category) {
+    tasks[currentDraggedElement][`state`] = category;
     sortTaks();
 }
 
