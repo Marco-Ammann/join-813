@@ -46,10 +46,19 @@ async function loadTemplateAndExecuteFunctions(file, element) {
         element.innerHTML = templateHTML;
         if (currentUser == "#everyone") {
             partDisplayNone("sidebarMainButtons");
+            backButtonClose();
         }
     } else {
         element.innerHTML = "Page not found";
     }
+}
+
+
+/**
+ * Sets the back button to close the window
+ */
+function backButtonClose() {
+    document.getElementById('back-button').href = 'javascript:window.close()';
 }
 
 
