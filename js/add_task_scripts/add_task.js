@@ -18,6 +18,18 @@ async function loadAddTaskPage() {
   setupFilterListener('add-contact-input', 'assignDropdown');
 }
 
+/**
+ * Initializes the Add Task page by loading necessary components. It generates the 
+ * list of assignable contacts, the category options for tasks, and sets up listeners 
+ * for handling dropdown interactions and filtering contacts.
+ */
+async function loadFromAddTaskPage() {
+  await loadContacts();
+  generateAssignContacts('assignDropdown-popup', 'assigned-contacts');
+  generateCategoryOptions();
+  setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign', true);
+}
+
 
 /**
  * Clears all tasks in the backend by setting the 'tasks' storage item to an empty array.

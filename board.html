@@ -43,23 +43,15 @@
         <div id="openCard"></div>
     </div>
 
-
-
-
-
-
     <div class="mainAddTasksContainer hidden" id="animationDiv">
         <div id="transition" class="add-tasks-popup-container">
             <div class="add-tasks-popup">
 
-
-
                 <div class="popup-wrapper">
-
 
                     <div class="addTaskHeader">
                         <h1 class="content-title">Add Task</h1>
-                        <button id="closeAddTaskButton" onclick="addDnonToAddTask('assigned-contacts')"><svg
+                        <button id="closeAddTaskButton" onclick="removeListeners('add-contact-input', true), addDnonToAddTask('assigned-contacts')"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -104,13 +96,13 @@
                                         <div class="input-div">
                                             <input id="add-contact-input" class="add-contact-input" type="text"
                                                 value="Select contacts to assign" required
-                                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                             <img class="arrow-symbol input-symbol" id="arrowAssign"
                                                 src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter"
-                                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                         </div>
-                                        <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
+                                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
                                     </div>
                                     <div class="assigned-contacts" id="assigned-contacts"></div>
 
@@ -299,7 +291,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()">
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadFromAddTaskPage()">
                     <p>Add taks</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"

@@ -521,7 +521,6 @@ function openAddTaskMenu(state) {
 
         const transitionDiv = document.getElementById("transition");
         transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
-
     // }
 }
 

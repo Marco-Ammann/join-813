@@ -111,6 +111,34 @@ body {
     cursor: pointer;
 }
 
+.addTaskBtnOk {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 0.625rem;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+    color: white;
+}
+
+.addTaskBtnOk p {
+    font-size: 1.3125rem;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0;
+}
+
+.addTaskBtnOk svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.addTaskBtnOk:hover {
+    cursor: pointer;
+}
+
 .toDoList {
     display: flex;
     justify-content: center;
