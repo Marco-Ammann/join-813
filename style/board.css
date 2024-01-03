@@ -344,7 +344,7 @@ body {
 .listContainer {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   height: calc(100vh - 20.33239rem);
   gap: 1rem;
@@ -880,7 +880,7 @@ div[id^="openCardSubtasks"] {
   .toDoCard {
     gap: 1rem;
     max-height: 90vh;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .toDoCard::-webkit-scrollbar{
