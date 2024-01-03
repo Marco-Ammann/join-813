@@ -50,3 +50,12 @@ function resetPriorityClasses() {
     changeSrc(imgElement, imagePath);
   }
 }
+
+
+function addstandardPrioMedium () {
+  let standardBtn = document.getElementById('mediumBtn');
+  standardBtn.classList.add('medium');
+
+  let mediumSymbol = document.getElementById('mediumSymbol');
+  mediumSymbol.src = `./assets/img/Desktop/add_task/priority_icons/medium_white.svg`;
+}

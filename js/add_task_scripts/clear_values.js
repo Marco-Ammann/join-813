@@ -14,6 +14,7 @@ function clearForm(assignedContactsAvatarDiv, SubTasksDiv) {
   clearAssignedContact(assignedContactsAvatarDiv);
   clearSubtask(SubTasksDiv);
   clearCategory();
+  addstandardPrioMedium();
 }
 
 
