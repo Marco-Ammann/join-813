@@ -96,7 +96,7 @@
                                         <div class="input-div">
                                             <input id="add-contact-input" class="add-contact-input" type="text"
                                                 value="Select contacts to assign" required
-                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign'), loadFromAddTaskPage()" />
                                             <img class="arrow-symbol input-symbol" id="arrowAssign"
                                                 src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter"
@@ -291,7 +291,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadFromAddTaskPage()">
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo')">
                     <p>Add taks</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
