@@ -258,20 +258,15 @@ async function editContact(i) {
  */
 async function addNewContact() {
     event.preventDefault();
-    let id = contacts.length;
-    let color = randomColor();
-    let name = document.getElementById('popUpName').value;
-    let email = document.getElementById('popUpEmail').value;
-    let phone = document.getElementById('popUpPhone').value;
     let newContact = {
-        "id": id,
-        "color": color,
-        "name": name,
-        "email": email,
-        "phone": phone
-    }
+        "id": contacts.length,
+        "color": randomColor(),
+        "name": document.getElementById('popUpName').value,
+        "email": document.getElementById('popUpEmail').value,
+        "phone": document.getElementById('popUpPhone').value
+    };
 
-    let lastId = id;
+    let lastId = contacts.length;
 
     contacts.push(newContact);
     contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -282,6 +277,24 @@ async function addNewContact() {
     renderContactList();
     openContact(index);
     playMessageAni();
+}
+
+
+/**
+ * Adds new registered user to the contact list
+ */
+async function addUserToContacts() {
+    let newContact = {
+        "id": contacts.length,
+        "color": randomColor(),
+        "name": userName.value,
+        "email": email.value,
+        "phone": ''
+    };
+
+    contacts.push(newContact);
+    contacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
+    await saveContacts();
 }
 
 
