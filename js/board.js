@@ -19,6 +19,7 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
  */
 async function loadBoard() {
     await setTasks();
+    await loadContacts();
     sortTaks();
     removeListeners('add-contact-input-popup');
 }
