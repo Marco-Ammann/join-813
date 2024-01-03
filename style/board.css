@@ -791,6 +791,20 @@ body {
         justify-content: space-between;
         overflow-y: auto;
     }
+
+    .footer-btn-container {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        justify-content: space-between!important;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+    }
+
+    .forms-sides {
+        margin-bottom: 1.5rem!important;
+    }
+
 }
 
 
