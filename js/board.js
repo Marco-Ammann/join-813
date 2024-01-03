@@ -20,7 +20,7 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
 async function loadBoard() {
     await setTasks();
     await loadContacts();
-    sortTaks();
+    sortTask();
     removeListeners('add-contact-input-popup');
 }
 
@@ -46,7 +46,7 @@ async function setTasks() {
  * Sorts tasks and renders them in their respective containers based on their state.
  * If there are no tasks, displays a message indicating there are no tasks in each container.
  */
-function sortTaks() {
+function sortTask() {
     // Clear the task containers
     document.getElementById("ToDoContainer").innerHTML = "";
     document.getElementById("InProgressContainer").innerHTML = "";
@@ -107,14 +107,14 @@ function render(taskStatus, taskIndex) {
  * @param {number} i - The index of the task in the tasks array.
  */
 function addProgressBar(i) {
-    let taks = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
-    if (taks > 0) {
-        let calculatetSubtaks = 100 / taks;
-        calculatetSubtaks = calculatetSubtaks * tasks[i]["subtasksDone"].length;
+    let task = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
+    if (task > 0) {
+        let calculatetSubtask = 100 / task;
+        calculatetSubtask = calculatetSubtask * tasks[i]["subtasksDone"].length;
         content = document.getElementById(`progressbar${i}`);
         content.innerHTML = /*html*/ `
-                <progress max="100" value="${calculatetSubtaks}"></progress>
-                <span>${tasks[i]["subtasksDone"].length}/${taks} Subtaks</span>
+                <progress max="100" value="${calculatetSubtask}"></progress>
+                <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
                 `;
     }
 }
@@ -412,7 +412,7 @@ function removeHighlight(id) {
  */
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
-    sortTaks();
+    sortTask();
 
 }
 
@@ -554,7 +554,7 @@ function addDnonToAddTask(assignedContactsAvatarDiv) {
  */
 async function deleteOpenCard(i) {
     tasks.splice(i, 1);
-    sortTaks();
+    sortTask();
     closeCard(true);
     await setItem('tasks', tasks);
 }

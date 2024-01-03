@@ -50,7 +50,7 @@ function getValuesAfterEdit(taskId, context = "main") {
  */
 function closeWindowAfterSavingEdit() {
   closeCard();
-  sortTaks();
+  sortTask();
   clearForm('assigned-contacts-popup', 'subTasks-popup');
   removeListeners('add-contact-input');
 }

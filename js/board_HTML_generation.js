@@ -5,7 +5,7 @@ function generateEditCardHTML(i) {
 <div class="editor-wrapper">
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaskButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input', true);"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaskButton" onclick="closeCard(), sortTask(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input', true);"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -157,7 +157,7 @@ function generateOpenCardHTML(taskIndex) {
     <div class="toDoCard openCard">
         <div class="openCardHeader">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
-            <a onclick="closeCard(), sortTaks()">
+            <a onclick="closeCard(), sortTask()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <mask id="mask0_117782_4211" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                         <rect width="24" height="24" fill="#D9D9D9"/>
@@ -187,7 +187,7 @@ function generateOpenCardHTML(taskIndex) {
             <p>Assigned To:</p>
         </div>
         <div class="openCardSubtasks-container">
-            <p>Subtaks</p>
+            <p>Subtask</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
         <div class="openCardFooter">
