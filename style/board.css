@@ -512,12 +512,17 @@ body {
 
 .openCard {
   width: 27.8125rem;
+  max-height: 85vh;
   flex-direction: column;
   margin: 0 !important;
   z-index: 15 !important;
   padding: 3rem 2.5rem;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
+
+.openCard::-webkit-scrollbar {
+    display: none;
+  }
 
 .openCard h3 {
   font-size: 3.8125rem;
@@ -549,7 +554,7 @@ body {
 }
 
 div[id^="openCardSubtasks"] {
-    height: 10rem;
+    height: 8rem;
     overflow-y: auto;
 }
 
@@ -874,7 +879,7 @@ div[id^="openCardSubtasks"] {
 
   .toDoCard {
     gap: 1rem;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow-y: auto;
 }
 
