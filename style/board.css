@@ -323,7 +323,7 @@ body {
     display: none !important;
 }
 
-.mainAddTaksContainer {
+.mainAddTaskContainer {
     display: flex;
     position: absolute;
     overflow: hidden;
@@ -378,7 +378,7 @@ body {
     align-items: center;
 }
 
-#closeAddTaksButton {
+#closeAddTaskButton {
     width: 1.5rem;
     height: 1.5rem;
     background-color: white;
@@ -386,7 +386,7 @@ body {
     padding: 0px;
 }
 
-#closeAddTaksButton :hover {
+#closeAddTaskButton :hover {
     cursor: pointer;
 }
 

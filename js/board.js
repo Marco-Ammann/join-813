@@ -532,7 +532,7 @@ function openAddTaskMenu(state) {
  *
  * @param {string} assignedContactsAvatarDiv - The ID of the assigned contacts avatar div.
  */
-function addDnonToAddTaks(assignedContactsAvatarDiv) {
+function addDnonToAddTask(assignedContactsAvatarDiv) {
     const transout = document.getElementById("transition");
     const div = document.getElementById("animationDiv");
 

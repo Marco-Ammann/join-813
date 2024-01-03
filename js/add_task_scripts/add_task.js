@@ -97,7 +97,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv,
     await createTask(context);
     clearForm(assignedContactsAvatarDiv, subTaskDiv)
     setTimeout(function () {
-      addDnonToAddTaks(assignedContactsAvatarDiv);
+      addDnonToAddTask(assignedContactsAvatarDiv);
     }, 150);
     currentTaskState = 'ToDo';
     loadBoard();
