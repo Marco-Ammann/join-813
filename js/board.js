@@ -152,8 +152,8 @@ async function editCard(taskIndex) {
     await loadContacts();
     await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
 
-    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
-    setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
+    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign-popup');
+    setupFilterListener('add-contact-input', 'assignDropdown-popup');
 
     toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
     setClickedContacts(taskIndex, 'assigned-contacts-popup');

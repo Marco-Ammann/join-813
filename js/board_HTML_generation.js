@@ -5,7 +5,7 @@ function generateEditCardHTML(i) {
 <div class="editor-wrapper">
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaskButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input-popup', true);"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaskButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input', true);"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -205,7 +205,7 @@ function generateOpenCardHTML(taskIndex) {
                 <path d="M1 0V24" stroke="#D1D1D1"/>
                 </svg>
                 </div>
-            <a href="#" onclick="editCard(${taskIndex}), loadAddTaskPage()">
+            <a href="#" onclick="editCard(${taskIndex}), loadFromAddTaskPage()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_4276" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>

@@ -52,7 +52,7 @@ function closeWindowAfterSavingEdit() {
   closeCard();
   sortTaks();
   clearForm('assigned-contacts-popup', 'subTasks-popup');
-  removeListeners('add-contact-input-popup');
+  removeListeners('add-contact-input');
 }
 
 
