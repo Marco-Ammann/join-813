@@ -196,6 +196,25 @@ body {
     width: 13.75rem;
 }
 
+
+.toDoCard h3 {
+    color: #2A3647;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.toDoCard p {
+    color: #A8A8A8;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
 .progressbar {
     display: flex;
     padding: 0rem 0.5rem 0.125rem 0rem;
@@ -839,12 +858,12 @@ body {
 
     .add-tasks-popup::-webkit-scrollbar {
         display: none;
-      }
+    }
 
     .task-forms::-webkit-scrollbar {
-            display: none;
-          }
-    
+        display: none;
+    }
+
 
     .footer-btn-container {
         display: flex;
@@ -857,8 +876,8 @@ body {
     }
 
     .footer-container {
-        width: 100%!important;
-        margin-bottom: 0rem!important;
+        width: 100% !important;
+        margin-bottom: 0rem !important;
     }
 
     .forms-sides {
@@ -866,11 +885,11 @@ body {
     }
 
     .createBtn {
-        padding: 1rem 0.5rem!important;
+        padding: 1rem 0.5rem !important;
     }
 
     .input-div {
-        width: calc(100% - 2px)!important;
+        width: calc(100% - 2px) !important;
     }
 
     .editor-wrapper {
@@ -944,7 +963,7 @@ body {
     }
 
     .createBtn img, .clearBtn img {
-        display: block!important;
+        display: block !important;
     }
 
 }
