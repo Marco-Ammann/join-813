@@ -2,7 +2,7 @@ function generateEditCardHTML(i) {
     return /*HTML*/`
 <div class="add-tasks-popup">
 
-<div>
+<div class="editor-wrapper">
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
         <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input-popup', true);"><svg xmlns="http://www.w3.org/2000/svg"
@@ -84,15 +84,15 @@ function generateEditCardHTML(i) {
                     <span class="form-span">Prio</span>
                     <div class="prio-buttons">
                         <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
-                            Urgent
+                            <span>Urgent</span>
                             <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
                         </button>
                         <button type="button" class="prio-btn medium" id="mediumBtn" onclick="setPrio('medium')">
-                            Medium
+                            <span>Medium</span>
                             <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg" id="mediumSymbol" />
                         </button>
                         <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
-                            Low
+                            <span>Low</span>
                             <img src="./assets/img/Desktop/add_task/priority_icons/low.svg" id="lowSymbol" />
                         </button>
                     </div>
@@ -139,10 +139,9 @@ function generateEditCardHTML(i) {
 
         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
             onclick="acceptAndSetEditOfTask(${i}, 'popup')">
-            OK
+            <span>OK</span>
             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
         </button>
-        <div id="okBtnDiv"></div>
     </div>
 </div>
 

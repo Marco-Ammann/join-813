@@ -326,8 +326,6 @@ body {
 .mainAddTaksContainer {
     display: flex;
     position: absolute;
-    width: 100vw !important;
-    height: 100vh !important;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 12;
@@ -340,9 +338,9 @@ body {
     width: 61.75rem;
     height: 46.375rem;
     background-color: white;
-    padding: 4rem !important;
-    border-radius: 50px !important;
-    gap: 0rem !important;
+    padding: 4rem;
+    border-radius: 50px;
+    gap: 0rem;
     justify-content: space-between;
     overflow-y: auto;
 }
@@ -597,7 +595,7 @@ body {
 
 .rotateCard {
     transform-origin: left bottom;
-    transform: rotate(5deg); 
+    transform: rotate(5deg);
     transition: transform 0.5s;
 }
 
@@ -671,8 +669,8 @@ body {
     }
 
     .content-title {
-        font-size: 3rem!important;
-        margin: 1rem 0;
+        font-size: 3rem !important;
+        margin: 0rem 0 1rem 0;
     }
 
     .MobileBoardHeaderControll h2 {
@@ -799,81 +797,101 @@ body {
 
 
     .add-tasks-popup {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100vw!important;
-        height: 100vh!important;
-        background-color: white;
-        padding: 2rem !important;
-        border-radius: 0px !important;
-        gap: 0rem !important;
+        width: 80vw;
+        height: 85vh;
+        padding: 2rem;
+        gap: 0rem;
         justify-content: space-between;
         overflow-y: auto;
+        border-radius: 1.5rem;
     }
 
     .footer-btn-container {
         display: flex;
         width: 100%;
         gap: 1rem;
-        justify-content: space-between!important;
-        margin-bottom: 2rem;
-        margin-top: 1rem;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    .footer-container {
+        width: 100%!important;
+        margin-bottom: 0rem!important;
     }
 
     .forms-sides {
-        margin-bottom: 1.5rem!important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .createBtn {
+        margin-top: 1rem;
+        padding: 1rem 0.5rem!important;
+    }
+
+    .input-div {
+        width: calc(100% - 2px)!important;
+    }
+
+    .editor-wrapper {
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .editor-wrapper::-webkit-scrollbar {
+        display: none;
     }
 
 }
 
 
-@media (max-width: 590px){
+@media (max-width: 590px) {
     .add-tasks-popup {
-      gap: 0rem!important;
-    }
-  
-    .content {
-      padding: 3rem 2rem 1rem 2rem!important;
+        gap: 0rem !important;
+        width: 77vw;
     }
 
-    .popup-wrapper{
+    .content {
+        padding: 3rem 2rem 1rem 2rem !important;
+    }
+
+    .popup-wrapper {
         width: 100%;
     }
-  
+
     .content-title {
-      font-size: 3rem;
+        font-size: 3rem;
     }
-  
+
     .footer-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 0;
     }
-  
+
     .footer-btn-container {
-      display: flex;
-      width: 100%;
-      gap: 1rem;
-      justify-content: space-between!important;
-      margin-bottom: 2rem;
-      margin-top: 1rem;
-  }
-  
-  .footer-required-field {
-    display: none!important;
-  }
-  }
-  
-  @media (max-width: 490px) {
-    .prio-buttons span{
-      display: none;
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        margin-bottom: 0rem;
+        margin-top: 0rem;
     }
-  
-    .createBtn img, .clearBtn img{
-      display: none;
+
+    .footer-required-field {
+        display: none !important;
     }
-    
-  }
+}
+
+@media (max-width: 490px) {
+    .prio-buttons span {
+        display: none;
+    }
+
+    .createBtn img, .clearBtn img {
+        display: block!important;
+    }
+
+}
