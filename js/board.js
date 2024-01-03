@@ -39,7 +39,6 @@ async function setTasks() {
     } else {
         tasks = [];
     }
-    console.log(tasks);
 }
 
 
@@ -150,7 +149,7 @@ async function editCard(taskIndex) {
     card.innerHTML = generateEditCardHTML(taskIndex);
     setValuesInEditCard(taskIndex, 'subTasks-popup');
 
-    // Assuming generateAssignContacts is an async function
+    await loadContacts();
     await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
 
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
@@ -287,7 +286,6 @@ async function subtaskComplete(i, taskIndex) {
     moveSubtaskToDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
-    console.log(tasks[taskIndex].subtasks);
 }
 
 
@@ -308,8 +306,6 @@ async function subtaskUnComplete(i, taskIndex) {
     moveSubtaskToNotDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
-    console.log(tasks[taskIndex].subtasksDone);
-
 }
 
 

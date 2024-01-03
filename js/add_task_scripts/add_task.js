@@ -57,7 +57,7 @@ async function logCurrentTasks() {
  * @async
  * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
  */
-async function validateAndCreateTask(assignedContactsAvatarDiv) {
+async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }

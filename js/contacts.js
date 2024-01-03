@@ -368,7 +368,6 @@ async function loadContacts() {
     let contactsArray = await getContactsArray()
     if (Array.isArray(contactsArray)) {
         contacts = contactsArray;
-        console.log('contacts loaded from backend: ', contacts);
     } else {
         console.error('Loading error');
     }

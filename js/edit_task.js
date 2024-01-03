@@ -193,7 +193,6 @@ function createSubtaskList(taskIndex, SubTasksDiv) {
  */
 function setClickedContacts(i, container) {
   let assignedContacts = tasks[i].assignedTo;
-  console.log('Zugewiesene Kontakte im Task:', assignedContacts);
 
   clickedStates = Array(contacts.length).fill(false);
 
