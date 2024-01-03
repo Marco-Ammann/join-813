@@ -47,24 +47,24 @@ async function setTasks() {
  * If there are no tasks, displays a message indicating there are no tasks in each container.
  */
 function sortTaks() {
-  // Clear the task containers
-  document.getElementById("ToDoContainer").innerHTML = "";
-  document.getElementById("InProgressContainer").innerHTML = "";
-  document.getElementById("AwaitFeedbackContainer").innerHTML = "";
-  document.getElementById("DoneContainer").innerHTML = "";
+    // Clear the task containers
+    document.getElementById("ToDoContainer").innerHTML = "";
+    document.getElementById("InProgressContainer").innerHTML = "";
+    document.getElementById("AwaitFeedbackContainer").innerHTML = "";
+    document.getElementById("DoneContainer").innerHTML = "";
 
-  if (tasks.length > 0) {
-    for (let i = 0; i < tasks.length; i++) {
-      const taskStatus = tasks[i]['state'];
-      render(taskStatus, i);
+    if (tasks.length > 0) {
+        for (let i = 0; i < tasks.length; i++) {
+            const taskStatus = tasks[i]['state'];
+            render(taskStatus, i);
+        }
+    } else {
+        // If there are no tasks, add a message indicating there are no tasks in each container
+        addNoTaskHTML('ToDoContainer');
+        addNoTaskHTML('InProgressContainer');
+        addNoTaskHTML('AwaitFeedbackContainer');
+        addNoTaskHTML('DoneContainer');
     }
-  } else {
-    // If there are no tasks, add a message indicating there are no tasks in each container
-    addNoTaskHTML('ToDoContainer');
-    addNoTaskHTML('InProgressContainer');
-    addNoTaskHTML('AwaitFeedbackContainer');
-    addNoTaskHTML('DoneContainer');
-  }
 }
 
 
@@ -167,9 +167,9 @@ async function editCard(taskIndex) {
  *
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
-function clickPriority(taskIndex){
-let setPriority = tasks[taskIndex].priority;
-setPrio(setPriority);
+function clickPriority(taskIndex) {
+    let setPriority = tasks[taskIndex].priority;
+    setPrio(setPriority);
 }
 
 
@@ -236,10 +236,10 @@ function addOpenCardSubtasks(taskIndex) {
     // Get the HTML element where subtasks will be added
     let content = document.getElementById(`openCardSubtasks${taskIndex}`);
     content.innerHTML = "";
-  
+
     // Add incomplete subtasks
     for (let i = 0; i < tasks[taskIndex]["subtasks"].length; i++) {
-      content.innerHTML += /*html*/ `
+        content.innerHTML += /*html*/ `
         <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${taskIndex})">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
@@ -248,10 +248,10 @@ function addOpenCardSubtasks(taskIndex) {
         </div>
       `;
     }
-  
+
     // Add completed subtasks
     for (let y = 0; y < tasks[taskIndex]["subtasksDone"].length; y++) {
-      content.innerHTML += /*html*/ `
+        content.innerHTML += /*html*/ `
         <div class="openCardSubtasks" id="subtaskDone${y}" onclick="subtaskUnComplete(${y}, ${taskIndex})">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
             <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
@@ -263,7 +263,7 @@ function addOpenCardSubtasks(taskIndex) {
         </div>
       `;
     }
-  }
+}
 
 
 /**
@@ -373,7 +373,6 @@ function addTransition() {
  */
 function startDraggin(id) {
     currentDraggedElement = id;
-    console.log(id);
     addRotation(id);
 }
 
@@ -397,7 +396,7 @@ function allowDrop(ev) {
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
     sortTaks();
-    
+
 }
 
 
@@ -468,22 +467,21 @@ function createNoTaskHTML(message) {
  * and filters the cards with titles or descriptions that contain the search term.
  * Displays matching cards and hides non-matching cards.
  */
-function sortAndFilterCards() {
-    const searchTerm = document.getElementById("sortTasksInput").value.toLowerCase(); // Get the entered search term and convert it to lowercase
+function sortAndFilterCards(inputId) {
+    const searchTerm = document.getElementById(`${inputId}`).value.toLowerCase(); // Get the entered search term and convert it to lowercase
     const cards = document.querySelectorAll(".toDoCard"); // Get all cards with the class 'toDoCard'
-  
+
     cards.forEach((card) => {
-      const title = card.querySelector("h3").textContent.toLowerCase(); // Get the title of the card and convert it to lowercase
-      const description = card.querySelector("p").textContent.toLowerCase(); // Get the description of the card and convert it to lowercase
-  
-      // Check if the search term is found in the title or description of the card
-      if (title.includes(searchTerm) || description.includes(searchTerm)) {
-        card.parentNode.style.display = "block"; // Display the card if the search term is found
-      } else {
-        card.parentNode.style.display = "none"; // Hide the card if the search term is not found
-      }
+        const title = card.querySelector("h3").textContent.toLowerCase(); // Get the title of the card and convert it to lowercase
+
+        // Check if the search term is found in the title or description of the card
+        if (title.includes(searchTerm)) {
+            card.parentNode.style.display = "block"; // Display the card if the search term is found
+        } else {
+            card.parentNode.style.display = "none"; // Hide the card if the search term is not found
+        }
     });
-  }
+}
 
 
 /**
@@ -537,6 +535,6 @@ function addDnonToAddTaks(assignedContactsAvatarDiv) {
 async function deleteOpenCard(i) {
     tasks.splice(i, 1);
     sortTaks();
-    closeCard(); 
+    closeCard();
     await setItem('tasks', tasks);
 }
