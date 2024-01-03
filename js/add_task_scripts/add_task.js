@@ -1,4 +1,4 @@
-const categorys = ["Work", "Personal"];
+const categorys = ["Technical Task", "User Story"];
 
 let dropdownState = "closed";
 let clickedStates = [];
