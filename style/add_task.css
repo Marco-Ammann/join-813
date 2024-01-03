@@ -28,8 +28,9 @@ General CSS
 .add-tasks {
   display: flex;
   flex-direction: column;
-  gap: 8.62rem;
-  justify-content: space-between;
+  gap: 6rem;
+  justify-content: flex-start;
+  max-width: fit-content;
 }
 
 .content-title {
@@ -658,6 +659,7 @@ mediaquerrys
 
   .add-tasks {
     gap: 3rem;
+    max-width: none;
   }
 
 
