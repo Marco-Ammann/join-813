@@ -386,6 +386,17 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+function highlight(id) {
+    let content = document.getElementById(id);
+    content.innerHTML += /*html*/`
+        <div>Test</div>
+    `
+}
+
+function removeHighlight(id) {
+    console.log(id);
+}
+
 
 /**
  * Moves a task to a different category.
