@@ -233,28 +233,34 @@ function closeDropDownAni() {
     if (window.matchMedia("(max-width: 1000px)").matches) {
         dropDownMenu.style.animation = 'slideOutDropdown 100ms ease-out';
         setTimeout(function () {
-            setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen);
+            dropDownMenu.style.display = "none";
+            headerIcon.style.background = "#FFF";
+            container.style.display = "none";
+            dropDownIsOpen = false;
         }, 100);
     } else {
-        setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen);
+        dropDownMenu.style.display = "none";
+        headerIcon.style.background = "#FFF";
+        container.style.display = "none";
+        dropDownIsOpen = false;
     }
 }
 
 
-/**
- * Sets styles for elements to close a dropdown animation.
- * 
- * @param {HTMLElement} dropDownMenu - The dropdown menu element.
- * @param {HTMLElement} headerIcon - The header icon element.
- * @param {HTMLElement} container - The container element.
- * @param {boolean} dropDownIsOpen - A boolean indicating whether the dropdown is open.
- */
-function setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen){
-    dropDownMenu.style.display = "none";
-    headerIcon.style.background = "#FFF";
-    container.style.display = "none";
-    dropDownIsOpen = false;
-}
+// /**
+//  * Sets styles for elements to close a dropdown animation.
+//  * 
+//  * @param {HTMLElement} dropDownMenu - The dropdown menu element.
+//  * @param {HTMLElement} headerIcon - The header icon element.
+//  * @param {HTMLElement} container - The container element.
+//  * @param {boolean} dropDownIsOpen - A boolean indicating whether the dropdown is open.
+//  */
+// function setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen){
+//     dropDownMenu.style.display = "none";
+//     headerIcon.style.background = "#FFF";
+//     container.style.display = "none";
+//     dropDownIsOpen = false;
+// }
 
 
 /**
