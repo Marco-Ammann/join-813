@@ -55,6 +55,7 @@ async function register() {
 async function isUserEmailNotfound(users){
     if (userEmailNotfound == true) {
         generateArrayUsers();
+        await loadContacts();
         await addUserToContacts();
         console.log(users);
         await setItem("users", JSON.stringify(users));

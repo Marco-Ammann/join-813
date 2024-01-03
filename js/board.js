@@ -19,6 +19,7 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
  */
 async function loadBoard() {
     await setTasks();
+    await loadContacts();
     sortTaks();
     removeListeners('add-contact-input-popup');
 }
@@ -384,6 +385,17 @@ function startDraggin(id) {
  */
 function allowDrop(ev) {
     ev.preventDefault();
+}
+
+function highlight(id) {
+    let content = document.getElementById(id);
+    content.innerHTML += /*html*/`
+        <div>Test</div>
+    `
+}
+
+function removeHighlight(id) {
+    console.log(id);
 }
 
 

@@ -87,9 +87,9 @@ function generateEditCardHTML(i) {
                             Urgent
                             <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
                         </button>
-                        <button type="button" class="prio-btn" id="mediumBtn" onclick="setPrio('medium')">
+                        <button type="button" class="prio-btn medium" id="mediumBtn" onclick="setPrio('medium')">
                             Medium
-                            <img src="./assets/img/Desktop/add_task/priority_icons/medium.svg" id="mediumSymbol" />
+                            <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg" id="mediumSymbol" />
                         </button>
                         <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
                             Low
