@@ -4,24 +4,17 @@ function loginInit() {
 
 
 /**
- * Join Animation
+ * Join Animation while loading the page
  *
  */
 function checkAndPlayAnimation() {
-    let animationPlayed = sessionStorage.getItem("animationPlayed");
     let animationContainer = document.getElementById("animationContainer");
-    // if (!animationPlayed) {
-        // sessionStorage.setItem("animationPlayed", "true");
-        generateAnimationContainer(animationContainer);
+    generateAnimationContainer(animationContainer);
 
-        let logoContainer = document.getElementById("logoContainer");
-        let joinLogo = document.getElementById("joinLogo");
-        let joinLogoMobil = document.getElementById('joinLogoMobil');
-        styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMobil);
-    // } else {
-        // animationContainer.classList.add("d-none");
-        // document.getElementById("join-logo-static").style.display = "block";
-    // }
+    let logoContainer = document.getElementById("logoContainer");
+    let joinLogo = document.getElementById("joinLogo");
+    let joinLogoMobil = document.getElementById('joinLogoMobil');
+    styleAnimation(animationContainer, logoContainer, joinLogo, joinLogoMobil);
 }
 
 
@@ -32,7 +25,6 @@ function checkAndPlayAnimation() {
  */
 function generateAnimationContainer(animationContainer) {
     animationContainer.innerHTML = "";
-
     if (window.innerWidth <= 1000) {
         animationContainer.innerHTML = `
             <div class="logo-container-mobil" id="logoContainer">
