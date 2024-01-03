@@ -831,7 +831,7 @@ div[id^="openCardSubtasks"] {
     height: auto !important;
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
   }
 
