@@ -834,6 +834,10 @@ body {
         border-radius: 1.5rem;
     }
 
+    .add-tasks-popup::-webkit-scrollbar {
+        display: none;
+      }
+
     .footer-btn-container {
         display: flex;
         width: 100%;
@@ -870,6 +874,16 @@ body {
 
     .editor-wrapper::-webkit-scrollbar {
         display: none;
+    }
+
+    .categoryDropdown-popup {
+        position: relative;
+        top: -0.5rem;
+        width: 20.6rem;
+    }
+
+    .assignDropdown-popup {
+        max-height: 35vh;
     }
 
 }
