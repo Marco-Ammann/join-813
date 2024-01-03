@@ -54,7 +54,7 @@
 
 
 
-                <div>
+                <div class="popup-wrapper">
 
 
                     <div class="addTaskHeader">
@@ -74,7 +74,7 @@
                             </svg></button>
                     </div>
 
-                    <div>
+                    <div class="add-tasks-wrapper">
                         <section class="task-forms">
                             <div class="forms-sides">
                                 <div class="form-div">
@@ -140,18 +140,18 @@
                                     <div class="prio-buttons">
                                         <button type="button" class="prio-btn" id="urgentBtn"
                                             onclick="setPrio('urgent')">
-                                            Urgent
+                                            <span>Urgent</span>
                                             <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg"
                                                 id="urgentSymbol" />
                                         </button>
                                         <button type="button" class="prio-btn medium" id="mediumBtn"
                                             onclick="setPrio('medium')">
-                                            Medium
+                                            <span>Medium</span>
                                             <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg"
                                                 id="mediumSymbol" />
                                         </button>
                                         <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
-                                            Low
+                                            <span>Low</span>
                                             <img src="./assets/img/Desktop/add_task/priority_icons/low.svg"
                                                 id="lowSymbol" />
                                         </button>
@@ -236,7 +236,6 @@
                             Create Task
                             <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
                         </button>
-                        <div id="okBtnDiv"></div>
                     </div>
                 </div>
 

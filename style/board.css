@@ -328,7 +328,7 @@ body {
     position: absolute;
     width: 100vw !important;
     height: 100vh !important;
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 12;
 }
@@ -344,6 +344,7 @@ body {
     border-radius: 50px !important;
     gap: 0rem !important;
     justify-content: space-between;
+    overflow-y: auto;
 }
 
 .add-tasks-popup-container {
@@ -446,7 +447,7 @@ body {
 }
 
 .subTasks {
-    height: 8rem;
+    max-height: 8rem;
     width: 100%;
     overflow: auto;
 }
@@ -649,6 +650,11 @@ body {
         padding: 0 1rem 0 1rem !important;
     }
 
+    .content-title {
+        font-size: 3rem!important;
+        margin: 1rem 0;
+    }
+
     .MobileBoardHeaderControll h2 {
         font-size: 2.9375rem;
     }
@@ -770,4 +776,70 @@ body {
     .openCardAssigned {
         gap: 0.25rem;
     }
+
+
+    .add-tasks-popup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw!important;
+        height: 100vh!important;
+        background-color: white;
+        padding: 2rem !important;
+        border-radius: 0px !important;
+        gap: 0rem !important;
+        justify-content: space-between;
+        overflow-y: auto;
+    }
 }
+
+
+@media (max-width: 590px){
+    .add-tasks-popup {
+      gap: 0rem!important;
+    }
+  
+    .content {
+      padding: 3rem 2rem 1rem 2rem!important;
+    }
+
+    .popup-wrapper{
+        width: 100%;
+    }
+  
+    .content-title {
+      font-size: 3rem;
+    }
+  
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+  
+    .footer-btn-container {
+      display: flex;
+      width: 100%;
+      gap: 1rem;
+      justify-content: space-between!important;
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+  }
+  
+  .footer-required-field {
+    display: none!important;
+  }
+  }
+  
+  @media (max-width: 490px) {
+    .prio-buttons span{
+      display: none;
+    }
+  
+    .createBtn img, .clearBtn img{
+      display: none;
+    }
+    
+  }

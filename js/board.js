@@ -501,9 +501,9 @@ function sortAndFilterCards(inputId) {
  */
 function openAddTaskMenu(state) {
     currentTaskState = state;
-    if (window.innerWidth < 1000) {
-        window.location.href = "add_task.html";
-    } else {
+    // if (window.innerWidth < 1000) {
+    //     window.location.href = "add_task.html";
+    // } else {
         const transout = document.getElementById("transition");
 
         const div = document.getElementById("animationDiv");
@@ -511,7 +511,7 @@ function openAddTaskMenu(state) {
 
         const transitionDiv = document.getElementById("transition");
         transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out;'
-    }
+    // }
 }
 
 
