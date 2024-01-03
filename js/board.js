@@ -339,13 +339,21 @@ function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
 
 /**
  * Closes the open task card and hides it from the view.
+ * @param {boolean} deleted - 
  */
-function closeCard() {
-    const transout = document.getElementById("openCard");
-    transout.style = 'animation: slideOutCard 100ms ease-out;';
+function closeCard(deleted) {
+    const transitionDiv = document.getElementById("openCard");
+    const div = document.getElementById("openCardContainer");
+
+    if (deleted) {
+        div.classList.add("hidden");
+        return;
+    };
+    
+    div.style = 'animation: blendOut 100ms ease-out forwards'
+    transitionDiv.style = 'animation: slideOutCard 100ms ease-out forwards;';
     setTimeout(() => {
-        const div = document.getElementById("openCardContainer");
-        transout.style = '';
+        transitionDiv.style = '';
         div.classList.add("hidden");
     }, 100);
 }
@@ -357,9 +365,10 @@ function closeCard() {
 function addTransition() {
     const div = document.getElementById("openCardContainer");
     div.classList.remove("hidden");
+    div.style = 'animation: blendIn 100ms ease-out forwards'
 
     const transitionDiv = document.getElementById("openCard");
-    transitionDiv.style = 'animation: slideInCard 100ms ease-out;';
+    transitionDiv.style = 'animation: slideInCard 100ms ease-out forwards;';
 }
 
 
@@ -508,9 +517,11 @@ function openAddTaskMenu(state) {
 
         const div = document.getElementById("animationDiv");
         div.classList.remove("hidden");
+        div.style = 'animation: blendIn 100ms ease-in-out forwards';
 
         const transitionDiv = document.getElementById("transition");
-        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out;'
+        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
+
     // }
 }
 
@@ -523,9 +534,11 @@ function openAddTaskMenu(state) {
  */
 function addDnonToAddTaks(assignedContactsAvatarDiv) {
     const transout = document.getElementById("transition");
-    transout.style = 'animation: slideOutAddNew 100ms ease-in-out;'
+    const div = document.getElementById("animationDiv");
+
+    div.style = 'animation: blendOut 100ms ease-in-out forwards;'
+    transout.style = 'animation: slideOutAddNew 100ms ease-in-out forwards;'
     setTimeout(() => {
-        const div = document.getElementById("animationDiv");
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
@@ -543,6 +556,6 @@ function addDnonToAddTaks(assignedContactsAvatarDiv) {
 async function deleteOpenCard(i) {
     tasks.splice(i, 1);
     sortTaks();
-    closeCard();
+    closeCard(true);
     await setItem('tasks', tasks);
 }

@@ -643,6 +643,26 @@ body {
     }
 }
 
+@keyframes blendIn {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+@keyframes blendOut {
+    from {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
 /* Media Queries */
 
 @media (max-width: 1000px) {

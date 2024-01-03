@@ -306,7 +306,6 @@ button,
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: all 3000ms ease-out;
 }
 
 .popup {
