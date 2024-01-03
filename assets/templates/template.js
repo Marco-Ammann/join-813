@@ -9,6 +9,8 @@ let nameOfPage = [
 ];
 let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
 let currentUser = [];
+// let currentUser = ['#everyone'];
+// let currentUser = {name: "sebastian"};
 let dropDownIsOpen = false;
 
 
@@ -39,11 +41,21 @@ async function includeHTML() {
 }
 
 
+/**
+ * Asynchronously loads a template file and executes functions based on the fetched content.
+ * 
+ * @param {string} file - The URL of the template file.
+ * @param {HTMLElement} element - The HTML element where the template content will be inserted.
+ */
 async function loadTemplateAndExecuteFunctions(file, element) {
     let resp = await fetch(file);
     if (resp.ok) {
         let templateHTML = await resp.text();
         element.innerHTML = templateHTML;
+        if (currentUser.length === 0) {
+            element.style = 'display:none';
+            location.href = "index.html";
+        }
         if (currentUser == "#everyone") {
             partDisplayNone("sidebarMainButtons");
         }
@@ -59,7 +71,12 @@ async function loadTemplateAndExecuteFunctions(file, element) {
  */
 async function loadCurrentUser() {
     try {
-        currentUser = JSON.parse(await getItem("currentUser"));
+        let userData = await getItem("currentUser");
+        if (userData && userData.length > 0) {
+            currentUser = JSON.parse(userData);
+        } else {
+            console.log("CurrentUser is empty");
+        }
     } catch (e) {
         console.error("Loading error:", e);
         console.log("CurrentUserFail");
@@ -152,7 +169,7 @@ function markEffects(x) {
 async function getInitialsCurrentUser() {
     let textArea = document.getElementById("headerIconText");
     let userName = currentUser["name"];
-    if (!(currentUser == "#everyone")) {
+    if (!(currentUser == "#everyone") && !(currentUser.length === 0)) {
         let firstLastName = userName.split(" ");
         let firstLetter = firstLastName[0].charAt(0).toLocaleUpperCase();
         if (firstLastName[1]) {
@@ -187,6 +204,7 @@ function moveDropDownMenu() {
 
 /**
  * Starts open animation of the drop down menu IF its on mobile version
+ * 
  */
 function openDropDownAni() {
     if (window.matchMedia("(max-width: 1000px)").matches) {
@@ -197,26 +215,36 @@ function openDropDownAni() {
 
 /**
  * Starts close animation of the drop down menu IF its on mobile version ELSE it just closes the menu
+ * 
  */
 function closeDropDownAni() {
     let dropDownMenu = document.getElementById("dropDownMenu");
     let headerIcon = document.getElementById("headerIcon");
     let container = document.getElementById("containerDropDown");
-
     if (window.matchMedia("(max-width: 1000px)").matches) {
         dropDownMenu.style.animation = 'slideOutDropdown 100ms ease-out';
         setTimeout(function () {
-            dropDownMenu.style.display = "none";
-            headerIcon.style.background = "#FFF";
-            container.style.display = "none";
-            dropDownIsOpen = false;
+            setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen);
         }, 100);
     } else {
-        dropDownMenu.style.display = "none";
-        headerIcon.style.background = "#FFF";
-        container.style.display = "none";
-        dropDownIsOpen = false;
+        setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen);
     }
+}
+
+
+/**
+ * Sets styles for elements to close a dropdown animation.
+ * 
+ * @param {HTMLElement} dropDownMenu - The dropdown menu element.
+ * @param {HTMLElement} headerIcon - The header icon element.
+ * @param {HTMLElement} container - The container element.
+ * @param {boolean} dropDownIsOpen - A boolean indicating whether the dropdown is open.
+ */
+function setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen){
+    dropDownMenu.style.display = "none";
+    headerIcon.style.background = "#FFF";
+    container.style.display = "none";
+    dropDownIsOpen = false;
 }
 
 
@@ -235,7 +263,7 @@ function stopPropagation(event) {
  *
  */
 async function logOut() {
-    currentUser = "";
+    currentUser = [];
     console.log(currentUser);
     localStorage.removeItem("greetingAniPlayed");
     await setItem("currentUser", JSON.stringify(currentUser));
