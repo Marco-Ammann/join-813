@@ -84,7 +84,7 @@ async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
     setTimeout(function () {
       window.location.href = 'board.html';
-    }, 150);
+    }, 250);
     currentTaskState = 'ToDo';
   }
 }

@@ -387,7 +387,7 @@ body {
   border-radius: 50px;
   gap: 0rem;
   justify-content: space-between;
-  overflow-y: auto;
+  overflow-y: hidden;
   box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.2);
 }
 
@@ -897,7 +897,7 @@ div[id^="openCardSubtasks"] {
     padding: 2rem;
     gap: 0rem;
     justify-content: space-between;
-    overflow-y: auto;
+    overflow-y: hidden;
     border-radius: 1.5rem;
   }
 
