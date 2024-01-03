@@ -10,7 +10,8 @@ let filterListener;
  * list of assignable contacts, the category options for tasks, and sets up listeners 
  * for handling dropdown interactions and filtering contacts.
  */
-function loadAddTaskPage() {
+async function loadAddTaskPage() {
+  await loadContacts();
   generateAssignContacts('assignDropdown', 'assigned-contacts');
   generateCategoryOptions();
   setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
