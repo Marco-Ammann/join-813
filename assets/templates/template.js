@@ -1,13 +1,13 @@
 let nameOfPage = [
     "Summary",
-    "Add_task",
+    "Add-task",
     "Board",
     "Contacts",
     "help",
     "privacy-policy",
-    "legal_notice",
+    "legal-notice",
 ];
-let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
+let filterExcludePages = ["help", "privacy-policy", "legal-notice"];
 let currentUser = [];
 let dropDownIsOpen = false;
 
@@ -117,7 +117,7 @@ function nameOfPages(smalLetter, element) {
     if (smalLetter === "help") {
         partDisplayNone("helpImageDefault");
     }
-    if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
+    if (smalLetter === "privacy-policy" || smalLetter === "legal-notice") {
         markEffects(smalLetter);
     }
     if (!filterExcludePages.includes(smalLetter)) {

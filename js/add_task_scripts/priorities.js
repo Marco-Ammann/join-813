@@ -11,7 +11,7 @@ function setPrio(prio) {
   switchButtonColor(elementId, prio);
 
   let imgId = document.getElementById(`${prio}Symbol`);
-  const imagePath = `./assets/img/Desktop/add_task/priority_icons/${prio}_white.svg`;
+  const imagePath = `./assets/img/Desktop/add-task/priority_icons/${prio}_white.svg`;
   changeSrc(imgId, imagePath);
 }
 
@@ -46,7 +46,7 @@ function resetPriorityClasses() {
 
     removeClass(document.getElementById(elementId), prio);
     const imgElement = document.getElementById(imgId);
-    const imagePath = `./assets/img/Desktop/add_task/priority_icons/${prio}.svg`;
+    const imagePath = `./assets/img/Desktop/add-task/priority_icons/${prio}.svg`;
     changeSrc(imgElement, imagePath);
   }
 }
@@ -57,5 +57,5 @@ function addstandardPrioMedium () {
   standardBtn.classList.add('medium');
 
   let mediumSymbol = document.getElementById('mediumSymbol');
-  mediumSymbol.src = `./assets/img/Desktop/add_task/priority_icons/medium_white.svg`;
+  mediumSymbol.src = `./assets/img/Desktop/add-task/priority_icons/medium_white.svg`;
 }

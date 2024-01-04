@@ -187,7 +187,7 @@ function openRegistrationModal() {
 
 
 /**
- * legal_notice and privacy policy for everyone (without Login)
+ * legal-notice and privacy policy for everyone (without Login)
  * 
  */
 async function withoutSidebarLinks(){
