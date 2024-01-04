@@ -443,7 +443,7 @@
 .assignDropdown-popup {
   display: flex;
   box-sizing: border-box;
-  width: calc(100%);
+  width: 27.65rem;
   max-height: 16vh;
   border-radius: 0 0 0.625rem 0.625rem;
   background-color: rgba(255, 255, 255, 1);
@@ -453,7 +453,8 @@
   z-index: 999;
   top: -0.4rem;
   left: 0rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.25rem;
@@ -476,7 +477,7 @@
   border-radius: 0 0 0.625rem 0.625rem;
   border-top: none;
   position: absolute;
-  top: 49rem;
+  top: 40rem;
   z-index: 999;
   overflow-y: auto;
 }
