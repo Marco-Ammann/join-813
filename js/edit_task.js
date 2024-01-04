@@ -1,25 +1,21 @@
 /**
- * Updates the properties of a task based on the edited values and synchronizes the changes with the backend storage.
- * This function first retrieves the updated task details from 'getValuesAfterEdit', then replaces the existing task
- * in the 'tasks' array with the updated one. It then saves the updated tasks array to the backend. After the update,
- * it closes the edit window and refreshes the task board to reflect the changes.
- *
- * @param {number} taskIndex - The index of the task in the 'tasks' array that needs to be updated.
- * @param {string} context - The context in which the function is called, affecting how task values are retrieved.
+ * Updates and synchronizes a task's properties based on edited values. Retrieves updated details, 
+ * replaces the task in the 'tasks' array, saves to backend, and refreshes the task board.
+ * 
+ * @param {number} taskIndex - Index of the task in the 'tasks' array.
+ * @param {string} context - Context affecting task value retrieval.
  */
 function acceptAndSetEditOfTask(taskIndex, context) {
-  // Führe die Validierung für jedes Feld durch
   let isValidTitle = validateField("task-title-input-popup", "requiredTextTitle");
   let isValidDescription = validateField("task-description-textarea-popup", "requiredTextDescription");
   let isValidDueDate = validateField("due-date-input-popup", "requiredTextDueDate");
 
-  // Prüfe, ob alle Validierungen erfolgreich waren
   if (isValidTitle && isValidDescription && isValidDueDate) {
     let updatedTask = getValuesAfterEdit(taskIndex, context);
     tasks[taskIndex] = updatedTask;
 
     setItem('tasks', tasks).then(() => {
-      closeWindowAfterSavingEdit()
+      closeWindowAfterSavingEdit();
       loadBoard();
     });
   }

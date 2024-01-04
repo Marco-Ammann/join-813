@@ -204,6 +204,7 @@ function isDropdownUnselected(dropdown) {
 
 /**
  * Validates the content of a specified input field and displays a warning if it's empty.
+ * Adds a visual indication for invalid fields.
  * 
  * @param {string} inputId - The ID of the input field to validate.
  * @param {string} warningId - The ID of the warning element associated with the input field.
@@ -212,22 +213,22 @@ function isDropdownUnselected(dropdown) {
 function validateField(inputId, warningId) {
   var inputElement = document.getElementById(inputId);
   var warningElement = document.getElementById(warningId);
-  var inputDiv = inputElement.closest('.input-div'); // Das umgebende div-Element
+  var inputDiv = inputElement.closest('.input-div');
 
   if (isFieldEmpty(inputElement)) {
     showWarning(warningElement);
     if(inputDiv) {
-      inputDiv.classList.add("invalid-field"); // Füge die Klasse zum umgebenden div hinzu
+      inputDiv.classList.add("invalid-field");
     } else {
-      inputElement.classList.add("invalid-field"); // Alternativ zum Eingabefeld, falls kein umgebendes div vorhanden ist
+      inputElement.classList.add("invalid-field");
     }
     return false;
   } else {
     hideWarning(warningElement);
     if(inputDiv) {
-      inputDiv.classList.remove("invalid-field"); // Entferne die Klasse vom umgebenden div
+      inputDiv.classList.remove("invalid-field");
     } else {
-      inputElement.classList.remove("invalid-field"); // Alternativ vom Eingabefeld, falls kein umgebendes div vorhanden ist
+      inputElement.classList.remove("invalid-field");
     }
     return true;
   }
@@ -236,6 +237,7 @@ function validateField(inputId, warningId) {
 
 /**
  * Validates the selection of a dropdown menu and displays a warning if unselected.
+ * Adds a visual indication for unselected dropdowns.
  * 
  * @param {string} inputId - The ID of the dropdown menu to validate.
  * @param {string} warningId - The ID of the warning element associated with the dropdown.
