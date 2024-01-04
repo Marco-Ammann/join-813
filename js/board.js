@@ -513,8 +513,6 @@ function openAddTaskMenu(state) {
     // if (window.innerWidth < 1000) {
     //     window.location.href = "add_task.html";
     // } else {
-        const transout = document.getElementById("transition");
-
         const div = document.getElementById("animationDiv");
         div.classList.remove("hidden");
         div.style = 'animation: blendIn 100ms ease-in-out forwards';
