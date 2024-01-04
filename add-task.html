@@ -7,7 +7,7 @@
   <title>Join - Add Task</title>
 
   <link rel="stylesheet" href="./style/fonts.css" />
-  <link rel="stylesheet" href="./style/add_task.css" />
+  <link rel="stylesheet" href="./style/add-task.css" />
 
 
   <script src="./js/login_signup/storage.js"></script>
@@ -71,7 +71,7 @@
                     required
                     onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                   <img class="arrow-symbol input-symbol" id="arrowAssign"
-                    src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
+                    src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
                     onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                 </div>
                 <div class="assignDropdown d-none" id="assignDropdown"></div>
@@ -103,15 +103,15 @@
               <div class="prio-buttons">
                 <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                   <span>Urgent</span>
-                  <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
+                  <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg" id="urgentSymbol" />
                 </button>
                 <button type="button" class="prio-btn medium" id="mediumBtn" onclick="setPrio('medium')">
                   <span>Medium</span>
-                  <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg" id="mediumSymbol" />
+                  <img src="./assets/img/Desktop/add-task/priority_icons/medium_white.svg" id="mediumSymbol" />
                 </button>
                 <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
                   <span>Low</span>
-                  <img src="./assets/img/Desktop/add_task/priority_icons/low.svg" id="lowSymbol" />
+                  <img src="./assets/img/Desktop/add-task/priority_icons/low.svg" id="lowSymbol" />
                 </button>
               </div>
             </div>
@@ -124,7 +124,7 @@
                     class="add-category-input" type="text" value="Select task category" required />
 
                   <img onclick="switchVisibility('categoryDropdown')" class="arrow-symbol input-symbol"
-                    id="arrowCategory" src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter" />
+                    id="arrowCategory" src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter" />
                 </div>
 
                 <div class="categoryDropdown d-none" id="categoryDropdown"></div>
@@ -142,15 +142,15 @@
 
                   <div class="plus-symbol-div" id="plus-symbol-div">
                     <img class="plus-symbol input-symbol" id="plus-symbol-subtask>" onclick="addFocusClass()"
-                      src="./assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
+                      src="./assets/img/Desktop/add-task/subtasks_icons/add.svg" alt="plus" />
                   </div>
 
                   <div class="create-task-div d-none" id="create-task-div">
                     <img class="plus-symbol input-symbol" id="close-symbol-subtask" onclick="clearSubtaskInput()"
-                      src="./assets/img/Desktop/add_task/subtasks_icons/close.svg" alt="cancel-symbol" />
+                      src="./assets/img/Desktop/add-task/subtasks_icons/close.svg" alt="cancel-symbol" />
 
                     <img class="check-symbol input-symbol" id="check-symbol-subtask" onclick="setSubtask('subtask-input', 'subTasks')"
-                      src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
+                      src="./assets/img/Desktop/add-task/subtasks_icons/check.svg" alt="check-symbol" />
                   </div>
                 </div>
               </div>
@@ -166,12 +166,12 @@
         <div class="footer-btn-container">
           <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm('assigned-contacts', 'subTasks')">
             <span>Clear</span>
-            <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
+            <img src="./assets/img/Desktop/add-task/cancel.svg" alt="weißer Haken" />
           </button>
 
           <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn" onclick="validateAndCreateTask('assigned-contacts', 'subTasks'), animateTaskAdded();">
             <span>Create Task</span>
-            <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+            <img src="./assets/img/Desktop/add-task/check.svg" alt="weißer Haken" />
           </button>
         </div>
       </div>

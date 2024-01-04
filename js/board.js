@@ -503,7 +503,7 @@ function sortAndFilterCards(inputId) {
 
 /**
  * Opens the add task menu and sets the current task state based on the selected state.
- * If the window width is less than 1000 pixels, it redirects to the "add_task.html" page.
+ * If the window width is less than 1000 pixels, it redirects to the "add-task.html" page.
  * Otherwise, it displays the add task menu with a sliding animation.
  *
  * @param {string} state - The selected task state ("ToDo", "InProgress", "AwaitFeedback", "Done").
@@ -511,7 +511,7 @@ function sortAndFilterCards(inputId) {
 function openAddTaskMenu(state) {
     currentTaskState = state;
     // if (window.innerWidth < 1000) {
-    //     window.location.href = "add_task.html";
+    //     window.location.href = "add-task.html";
     // } else {
         const transout = document.getElementById("transition");
 

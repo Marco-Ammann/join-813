@@ -180,10 +180,10 @@ function toggleContact(index, container) {
   const isClicked = getClickedState(index);
   const contact = contacts[index];
   if (isClicked) {
-    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
+    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add-task/check_button.svg");
     removeAvatar(contact, container);
   } else {
-    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
+    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add-task/check button_checked_white.svg");
     addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);
@@ -202,7 +202,7 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
   dropdown.classList.remove("d-none");
   selectedElement.value = "";
   dropdownState = "open";
-  arrowImage.src = "assets/img/Desktop/add_task/arrow_dropdown_up.svg";
+  arrowImage.src = "assets/img/Desktop/add-task/arrow_dropdown_up.svg";
 }
 
 
@@ -219,7 +219,7 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
   dropdown.classList.add("d-none");
   inputfield.value = `${setValue}`;
   dropdownState = "closed";
-  arrowImage.src = "./assets/img/Desktop/add_task/arrow_dropdown_down.svg";
+  arrowImage.src = "./assets/img/Desktop/add-task/arrow_dropdown_down.svg";
 }
 
 
