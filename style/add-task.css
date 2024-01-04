@@ -230,7 +230,8 @@ leftside forms
   z-index: 999;
   top: 41rem;
   left: 20.5rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.25rem;
@@ -669,6 +670,10 @@ mediaquerrys
     max-height: 85vh;
     overflow-y: auto;
   }
+
+  .add-tasks-wrapper::-webkit-scrollbar {
+    display: none;
+}
   
   .task-forms {
     flex-direction: column;
@@ -705,7 +710,7 @@ mediaquerrys
 
 
   .input-div {
-    width: 100%;
+    width: calc(100% - 2px);
   }
 
   .input-div-wrapper{
@@ -732,10 +737,11 @@ mediaquerrys
     top: -0.35rem;
     left: 0rem;
     width: calc(100% + 0.1rem);
-  }
+    max-height: 30vh;
+}
 
   .categoryDropdown {
-    width: calc(100% + 0.1rem);
+    width: 100%;
     position: relative;
     top: -0.4rem;
     left: 0rem;
