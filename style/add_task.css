@@ -666,6 +666,8 @@ mediaquerrys
   .add-tasks-wrapper {
     display: flex;
     flex-direction: column;
+    max-height: 85vh;
+    overflow-y: auto;
   }
   
   .task-forms {
