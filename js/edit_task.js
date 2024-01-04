@@ -8,13 +8,21 @@
  * @param {string} context - The context in which the function is called, affecting how task values are retrieved.
  */
 function acceptAndSetEditOfTask(taskIndex, context) {
-  let updatedTask = getValuesAfterEdit(taskIndex, context);
-  tasks[taskIndex] = updatedTask;
+  // Führe die Validierung für jedes Feld durch
+  let isValidTitle = validateField("task-title-input-popup", "requiredTextTitle");
+  let isValidDescription = validateField("task-description-textarea-popup", "requiredTextDescription");
+  let isValidDueDate = validateField("due-date-input-popup", "requiredTextDueDate");
 
-  setItem('tasks', tasks).then(() => {
-    closeWindowAfterSavingEdit()
-    loadBoard();
-  });
+  // Prüfe, ob alle Validierungen erfolgreich waren
+  if (isValidTitle && isValidDescription && isValidDueDate) {
+    let updatedTask = getValuesAfterEdit(taskIndex, context);
+    tasks[taskIndex] = updatedTask;
+
+    setItem('tasks', tasks).then(() => {
+      closeWindowAfterSavingEdit()
+      loadBoard();
+    });
+  }
 }
 
 
