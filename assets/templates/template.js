@@ -284,8 +284,11 @@ async function logOut() {
  */
 document.addEventListener("DOMContentLoaded", function () {
     let joinLogo = null;
+    let joinLogoMobile = null;
+    const isMobile = window.innerWidth < 1000;
+    let logoId = isMobile ? "joinLogoMobile" : "joinLogo";
     let intervalId = setInterval(function () {
-        joinLogo = document.getElementById("joinLogo");
+        joinLogo = document.getElementById(logoId);
         if (joinLogo !== null) {
             clearInterval(intervalId);
             handleLogoState(joinLogo);
