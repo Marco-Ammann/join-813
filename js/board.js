@@ -398,13 +398,14 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function highlight(id) {
-    document.getElementById(id).classList.remove('d-none');
+function highlight(containerId) {
+    // document.getElementById(containerId).classList.remove('d-none');
 }
 
-function removeHighlight(id) {
-    document.getElementById(id).classList.add('d-none');
+function removeHighlight(containerId) {
+    // document.getElementById(containerId).classList.add('d-none');
 }
+
 
 
 /**
