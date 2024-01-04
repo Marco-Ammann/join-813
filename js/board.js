@@ -399,11 +399,11 @@ function allowDrop(ev) {
 }
 
 function highlight(id) {
-
+    document.getElementById(id).classList.remove('d-none');
 }
 
 function removeHighlight(id) {
-
+    document.getElementById(id).classList.add('d-none');
 }
 
 
@@ -416,7 +416,6 @@ function removeHighlight(id) {
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
     sortTask();
-
 }
 
 
