@@ -212,12 +212,23 @@ function isDropdownUnselected(dropdown) {
 function validateField(inputId, warningId) {
   var inputElement = document.getElementById(inputId);
   var warningElement = document.getElementById(warningId);
+  var inputDiv = inputElement.closest('.input-div'); // Das umgebende div-Element
 
   if (isFieldEmpty(inputElement)) {
     showWarning(warningElement);
+    if(inputDiv) {
+      inputDiv.classList.add("invalid-field"); // Füge die Klasse zum umgebenden div hinzu
+    } else {
+      inputElement.classList.add("invalid-field"); // Alternativ zum Eingabefeld, falls kein umgebendes div vorhanden ist
+    }
     return false;
   } else {
     hideWarning(warningElement);
+    if(inputDiv) {
+      inputDiv.classList.remove("invalid-field"); // Entferne die Klasse vom umgebenden div
+    } else {
+      inputElement.classList.remove("invalid-field"); // Alternativ vom Eingabefeld, falls kein umgebendes div vorhanden ist
+    }
     return true;
   }
 }
@@ -233,12 +244,15 @@ function validateField(inputId, warningId) {
 function validateDropdown(inputId, warningId) {
   var dropdownElement = document.getElementById(inputId);
   var warningElement = document.getElementById(warningId);
+  var inputDiv = dropdownElement.closest('.input-div');
 
   if (isDropdownUnselected(dropdownElement)) {
     showWarning(warningElement);
+    if (inputDiv) inputDiv.classList.add("invalid-field");
     return false;
   } else {
     hideWarning(warningElement);
+    if (inputDiv) inputDiv.classList.remove("invalid-field"); 
     return true;
   }
 }

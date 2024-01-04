@@ -68,18 +68,19 @@ async function logCurrentTasks() {
  * 
  * @async
  * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
+ * @param {string} subTaskDiv - The ID of the subTaskDiv.
  */
 async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }
 
-  let isValid = validateField("task-title-input", "requiredTextTitle") &&
-    validateField("task-description-textarea", "requiredTextDescription") &&
-    validateField("due-date-input", "requiredTextDueDate") &&
-    validateDropdown("add-category-input", "requiredTextCategory");
+  let isValidTitle = validateField("task-title-input", "requiredTextTitle");
+  let isValidDescription = validateField("task-description-textarea", "requiredTextDescription");
+  let isValidDueDate = validateField("due-date-input", "requiredTextDueDate");
+  let isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
 
-  if (isValid) {
+  if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask("main");
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
     animateTaskAdded();
@@ -102,12 +103,14 @@ async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
  * @param {string} context - The context in which the function is called.
  */
 async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv, context) {
-  let isValid = validateField("task-title-input", "requiredTextTitle") &&
-    validateField("task-description-textarea", "requiredTextDescription") &&
-    validateField("due-date-input", "requiredTextDueDate") &&
-    validateDropdown("add-category-input", "requiredTextCategory");
+  // Überprüfe jede Bedingung separat und speichere das Ergebnis
+  let isValidTitle = validateField("task-title-input", "requiredTextTitle");
+  let isValidDescription = validateField("task-description-textarea", "requiredTextDescription");
+  let isValidDueDate = validateField("due-date-input", "requiredTextDueDate");
+  let isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
 
-  if (isValid) {
+  // Überprüfe, ob alle Bedingungen erfüllt sind
+  if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask(context);
     clearForm(assignedContactsAvatarDiv, subTaskDiv)
     setTimeout(function () {
