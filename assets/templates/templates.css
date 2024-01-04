@@ -254,7 +254,7 @@ a {
     background-color: #F6F7F8;
     flex: 1;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 
