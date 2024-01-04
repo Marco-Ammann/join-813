@@ -82,9 +82,11 @@ async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
   if (isValid) {
     await createTask("main");
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
+    animateTaskAdded();
     setTimeout(function () {
       window.location.href = 'board.html';
     }, 250);
+    
     currentTaskState = 'ToDo';
   }
 }
