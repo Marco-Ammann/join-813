@@ -966,6 +966,11 @@ div[id^="openCardSubtasks"] {
     max-height: 61vh;
   }
 
+  .task-forms-editor {
+    overflow-y: auto;
+    max-height: 70vh!important;
+  }
+
   .popup-wrapper {
     width: 100%;
     display: flex;

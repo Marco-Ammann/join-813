@@ -21,7 +21,7 @@ function generateEditCardHTML(i) {
     </div>
 
     <div>
-        <section class="task-forms">
+        <section class="task-forms task-forms-editor">
             <div class="forms-sides">
                 <div class="form-div">
                     <span class="form-span required-asteriks">Title</span>
