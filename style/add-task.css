@@ -327,6 +327,7 @@ rightside forms
   font-size: 1.25rem;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 
@@ -549,6 +550,10 @@ footer of add task section
   color: var(--border-focus);
   border-color: var(--border-focus);
   transition: 200ms;
+}
+
+.clearBtn:hover img {
+  content: url("/assets/img/Desktop/add-task/cancel_blue.svg");
 }
 
 .createBtn {
