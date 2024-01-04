@@ -63,23 +63,23 @@ async function logCurrentTasks() {
 
 /**
  * Validates form fields and creates a task if all validations pass. 
- * Triggers an animation to indicate that the task has been added
- * and redirects to the board page after a short delay.
+ * Triggers an animation indicating task addition and redirects to the board page after a delay.
  * 
  * @async
- * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
+ * @param {string} assignedContactsAvatarDiv - ID of the div with avatars of assigned contacts.
+ * @param {string} subTaskDiv - ID of the subTaskDiv.
  */
 async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }
 
-  let isValid = validateField("task-title-input", "requiredTextTitle") &&
-    validateField("task-description-textarea", "requiredTextDescription") &&
-    validateField("due-date-input", "requiredTextDueDate") &&
-    validateDropdown("add-category-input", "requiredTextCategory");
+  let isValidTitle = validateField("task-title-input", "requiredTextTitle");
+  let isValidDescription = validateField("task-description-textarea", "requiredTextDescription");
+  let isValidDueDate = validateField("due-date-input", "requiredTextDueDate");
+  let isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
 
-  if (isValid) {
+  if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask("main");
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
     animateTaskAdded();
@@ -93,26 +93,24 @@ async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
 
 
 /**
- * Validates form fields for the add-Task popup window and creates a task if all validations pass.
- * Triggers an animation to indicate that the task has been added
- * and closes the Popup after a short delay.
+ * Validates form fields in the add-task popup window and creates a task if all validations pass.
+ * Triggers an animation indicating task addition and closes the popup after a short delay.
  * 
  * @async
- * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
- * @param {string} context - The context in which the function is called.
+ * @param {string} assignedContactsAvatarDiv - ID of the div with avatars of assigned contacts.
+ * @param {string} subTaskDiv - ID of the subTaskDiv.
+ * @param {string} context - Context in which the function is called.
  */
 async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv, context) {
-  let isValid = validateField("task-title-input", "requiredTextTitle") &&
-    validateField("task-description-textarea", "requiredTextDescription") &&
-    validateField("due-date-input", "requiredTextDueDate") &&
-    validateDropdown("add-category-input", "requiredTextCategory");
+  let isValidTitle = validateField("task-title-input", "requiredTextTitle"),
+      isValidDescription = validateField("task-description-textarea", "requiredTextDescription"),
+      isValidDueDate = validateField("due-date-input", "requiredTextDueDate"),
+      isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
 
-  if (isValid) {
+  if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask(context);
-    clearForm(assignedContactsAvatarDiv, subTaskDiv)
-    setTimeout(function () {
-      addDnonToAddTask(assignedContactsAvatarDiv);
-    }, 150);
+    clearForm(assignedContactsAvatarDiv, subTaskDiv);
+    setTimeout(() => addDnonToAddTask(assignedContactsAvatarDiv), 150);
     currentTaskState = 'ToDo';
     loadBoard();
   }

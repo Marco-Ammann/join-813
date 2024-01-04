@@ -132,6 +132,10 @@ General CSS
   max-height: 1rem;
 }
 
+.invalid-field {
+  border: 1px solid #FF8190;
+}
+
 
 /*###################################################
 image styles

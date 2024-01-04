@@ -88,7 +88,7 @@
                                 </div>
 
                                 <div class="form-div">
-                                    <span class="form-span">Description</span>
+                                    <span class="form-span required-asteriks">Description</span>
                                     <div class="form-subcontainer">
                                         <textarea id="task-description-textarea" class="task-description-textarea"
                                             name="inputDescription" placeholder="Enter a Description"
@@ -162,11 +162,11 @@
                                     <span class="form-span required-asteriks">Category</span>
                                     <div class="input-div-wrapper">
                                         <div class="input-div">
-                                            <input onclick="switchVisibility('categoryDropdown')"
+                                            <input onclick="switchVisibility('categoryDropdown'), generateCategoryOptions()"
                                                 id="add-category-input" class="add-category-input" type="text"
                                                 value="Select task category" required />
 
-                                            <img onclick="switchVisibility('categoryDropdown')"
+                                            <img onclick="switchVisibility('categoryDropdown'), generateCategoryOptions()"
                                                 class="arrow-symbol input-symbol" id="arrowCategory"
                                                 src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter" />

@@ -34,7 +34,7 @@ function generateEditCardHTML(i) {
                 </div>
 
                 <div class="form-div">
-                    <span class="form-span">Description</span>
+                    <span class="form-span required-asteriks">Description</span>
                     <div class="form-subcontainer">
                         <textarea id="task-description-textarea-popup" class="task-description-textarea"
                             name="inputDescription" placeholder="Enter a Description" required></textarea>

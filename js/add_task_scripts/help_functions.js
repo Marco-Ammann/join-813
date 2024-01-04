@@ -204,43 +204,41 @@ function isDropdownUnselected(dropdown) {
 
 /**
  * Validates the content of a specified input field and displays a warning if it's empty.
+ * Adds a visual indication for invalid fields.
  * 
  * @param {string} inputId - The ID of the input field to validate.
  * @param {string} warningId - The ID of the warning element associated with the input field.
  * @returns {boolean} True if the input field is valid, false otherwise.
  */
 function validateField(inputId, warningId) {
-  var inputElement = document.getElementById(inputId);
-  var warningElement = document.getElementById(warningId);
+  const inputElement = document.getElementById(inputId);
+  const isValid = !isFieldEmpty(inputElement);
 
-  if (isFieldEmpty(inputElement)) {
-    showWarning(warningElement);
-    return false;
-  } else {
-    hideWarning(warningElement);
-    return true;
-  }
+  document.getElementById(warningId).style.visibility = isValid ? 'hidden' : 'visible';
+  const elementToUpdate = inputElement.closest('.input-div') || inputElement;
+  elementToUpdate.classList.toggle("invalid-field", !isValid);
+
+  return isValid;
 }
 
 
 /**
  * Validates the selection of a dropdown menu and displays a warning if unselected.
+ * Adds a visual indication for unselected dropdowns.
  * 
  * @param {string} inputId - The ID of the dropdown menu to validate.
  * @param {string} warningId - The ID of the warning element associated with the dropdown.
  * @returns {boolean} True if the dropdown selection is valid, false otherwise.
  */
 function validateDropdown(inputId, warningId) {
-  var dropdownElement = document.getElementById(inputId);
-  var warningElement = document.getElementById(warningId);
+  const dropdownElement = document.getElementById(inputId);
+  const isValid = !isDropdownUnselected(dropdownElement);
 
-  if (isDropdownUnselected(dropdownElement)) {
-    showWarning(warningElement);
-    return false;
-  } else {
-    hideWarning(warningElement);
-    return true;
-  }
+  document.getElementById(warningId).style.visibility = isValid ? 'hidden' : 'visible';
+  const elementToUpdate = dropdownElement.closest('.input-div') || dropdownElement;
+  elementToUpdate.classList.toggle("invalid-field", !isValid);
+
+  return isValid;
 }
 
 
