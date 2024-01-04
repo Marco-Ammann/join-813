@@ -67,8 +67,8 @@ function generateSubtaskHTML(subtask, subtaskIndex, SubTasksDiv) {
 
 <div class="subTask-Wrapper">
 
-  <div class="subTaskDiv" id="subTaskDiv${subtaskIndex}">
-    <li id="task${subtaskIndex}" onclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">${subtask}</li>
+  <div class="subTaskDiv" id="subTaskDiv${subtaskIndex}" ondblclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">
+    <li id="task${subtaskIndex}" ondblclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">${subtask}</li>
     <div class="subTask-subDiv" id="subTask-subDiv${subtaskIndex}">
     <img class="subTask-icons" id="editSubtaskSVG${subtaskIndex}" src="./assets/img/Desktop/add-task/subtasks_icons/edit.svg" alt="edit" onclick="editSubtask(${subtaskIndex}, '${SubTasksDiv}')">
       <div class="subtasks-Seperator">|</div>
