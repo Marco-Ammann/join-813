@@ -211,27 +211,14 @@ function isDropdownUnselected(dropdown) {
  * @returns {boolean} True if the input field is valid, false otherwise.
  */
 function validateField(inputId, warningId) {
-  var inputElement = document.getElementById(inputId);
-  var warningElement = document.getElementById(warningId);
-  var inputDiv = inputElement.closest('.input-div');
+  const inputElement = document.getElementById(inputId);
+  const isValid = !isFieldEmpty(inputElement);
 
-  if (isFieldEmpty(inputElement)) {
-    showWarning(warningElement);
-    if(inputDiv) {
-      inputDiv.classList.add("invalid-field");
-    } else {
-      inputElement.classList.add("invalid-field");
-    }
-    return false;
-  } else {
-    hideWarning(warningElement);
-    if(inputDiv) {
-      inputDiv.classList.remove("invalid-field");
-    } else {
-      inputElement.classList.remove("invalid-field");
-    }
-    return true;
-  }
+  document.getElementById(warningId).style.visibility = isValid ? 'hidden' : 'visible';
+  const elementToUpdate = inputElement.closest('.input-div') || inputElement;
+  elementToUpdate.classList.toggle("invalid-field", !isValid);
+
+  return isValid;
 }
 
 
@@ -244,19 +231,14 @@ function validateField(inputId, warningId) {
  * @returns {boolean} True if the dropdown selection is valid, false otherwise.
  */
 function validateDropdown(inputId, warningId) {
-  var dropdownElement = document.getElementById(inputId);
-  var warningElement = document.getElementById(warningId);
-  var inputDiv = dropdownElement.closest('.input-div');
+  const dropdownElement = document.getElementById(inputId);
+  const isValid = !isDropdownUnselected(dropdownElement);
 
-  if (isDropdownUnselected(dropdownElement)) {
-    showWarning(warningElement);
-    if (inputDiv) inputDiv.classList.add("invalid-field");
-    return false;
-  } else {
-    hideWarning(warningElement);
-    if (inputDiv) inputDiv.classList.remove("invalid-field"); 
-    return true;
-  }
+  document.getElementById(warningId).style.visibility = isValid ? 'hidden' : 'visible';
+  const elementToUpdate = dropdownElement.closest('.input-div') || dropdownElement;
+  elementToUpdate.classList.toggle("invalid-field", !isValid);
+
+  return isValid;
 }
 
 

@@ -102,17 +102,15 @@ async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
  * @param {string} context - Context in which the function is called.
  */
 async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv, context) {
-  let isValidTitle = validateField("task-title-input", "requiredTextTitle");
-  let isValidDescription = validateField("task-description-textarea", "requiredTextDescription");
-  let isValidDueDate = validateField("due-date-input", "requiredTextDueDate");
-  let isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
+  let isValidTitle = validateField("task-title-input", "requiredTextTitle"),
+      isValidDescription = validateField("task-description-textarea", "requiredTextDescription"),
+      isValidDueDate = validateField("due-date-input", "requiredTextDueDate"),
+      isValidCategory = validateDropdown("add-category-input", "requiredTextCategory");
 
   if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask(context);
-    clearForm(assignedContactsAvatarDiv, subTaskDiv)
-    setTimeout(function () {
-      addDnonToAddTask(assignedContactsAvatarDiv);
-    }, 150);
+    clearForm(assignedContactsAvatarDiv, subTaskDiv);
+    setTimeout(() => addDnonToAddTask(assignedContactsAvatarDiv), 150);
     currentTaskState = 'ToDo';
     loadBoard();
   }
