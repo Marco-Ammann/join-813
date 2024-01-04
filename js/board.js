@@ -355,7 +355,7 @@ function closeCard(deleted) {
         div.classList.add("hidden");
         return;
     };
-    
+
     div.style = 'animation: blendOut 100ms ease-out forwards'
     transitionDiv.style = 'animation: slideOutCard 100ms ease-out forwards;';
     setTimeout(() => {
@@ -516,12 +516,12 @@ function openAddTaskMenu(state) {
     // if (window.innerWidth < 1000) {
     //     window.location.href = "add-task.html";
     // } else {
-        const div = document.getElementById("animationDiv");
-        div.classList.remove("hidden");
-        div.style = 'animation: blendIn 100ms ease-in-out forwards';
+    const div = document.getElementById("animationDiv");
+    div.classList.remove("hidden");
+    div.style = 'animation: blendIn 100ms ease-in-out forwards';
 
-        const transitionDiv = document.getElementById("transition");
-        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
+    const transitionDiv = document.getElementById("transition");
+    transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
     // }
 }
 
