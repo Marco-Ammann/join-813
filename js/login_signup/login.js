@@ -21,13 +21,11 @@ let passwordLogin = document.getElementById("loginPassword");
 function handleImageFocus() {
     let passwordImage = document.getElementById("passwordImage");
     let passwordField = passwordLogin;
-
     passwordField.addEventListener("click", function () {
         if (passwordField.value === "") {
             passwordImage.src = "./assets/img/Desktop/login_signup/visibility_off.svg";
         }
     });
-
     passwordField.addEventListener("blur", function () {
         if (passwordField.value === "") {
             passwordImage.src = "./assets/img/Desktop/login_signup/lock.svg";
@@ -114,7 +112,6 @@ async function isUserOfRegisertUser(email, password) {
             registerUser = true;
             currentUser = user;
             await setItem("currentUser", JSON.stringify(currentUser));
-
             if (saveRememberMe === "true") {
                 RememberMeSaveToLocalStorage();
             }
@@ -241,7 +238,7 @@ async function guestAccount() {
 
 
 /**
- * legal_notice and privacy policy for everyone (without Login)
+ * legal-notice and privacy policy for everyone (without Login)
  * 
  */
 async function withoutSidebarLinks(){

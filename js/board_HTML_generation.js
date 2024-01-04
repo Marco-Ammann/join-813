@@ -2,10 +2,10 @@ function generateEditCardHTML(i) {
     return /*HTML*/`
 <div class="add-tasks-popup">
 
-<div>
+<div class="editor-wrapper">
     <div class="addTaskHeader">
         <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaksButton" onclick="closeCard(), sortTaks(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input-popup');"><svg xmlns="http://www.w3.org/2000/svg"
+        <button id="closeAddTaskButton" onclick="closeCard(), sortTask(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input', true);"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -21,7 +21,7 @@ function generateEditCardHTML(i) {
     </div>
 
     <div>
-        <section class="task-forms">
+        <section class="task-forms task-forms-editor">
             <div class="forms-sides">
                 <div class="form-div">
                     <span class="form-span required-asteriks">Title</span>
@@ -51,7 +51,7 @@ function generateEditCardHTML(i) {
                                 value="Select contacts to assign" required
                                 onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');" />
                             <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
-                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg" alt="Pfeil runter"
+                                src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
                                 onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
                         </div>
                         <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
@@ -84,16 +84,16 @@ function generateEditCardHTML(i) {
                     <span class="form-span">Prio</span>
                     <div class="prio-buttons">
                         <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
-                            Urgent
-                            <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg" id="urgentSymbol" />
+                            <span>Urgent</span>
+                            <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg" id="urgentSymbol" />
                         </button>
                         <button type="button" class="prio-btn medium" id="mediumBtn" onclick="setPrio('medium')">
-                            Medium
-                            <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg" id="mediumSymbol" />
+                            <span>Medium</span>
+                            <img src="./assets/img/Desktop/add-task/priority_icons/medium_white.svg" id="mediumSymbol" />
                         </button>
                         <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
-                            Low
-                            <img src="./assets/img/Desktop/add_task/priority_icons/low.svg" id="lowSymbol" />
+                            <span>Low</span>
+                            <img src="./assets/img/Desktop/add-task/priority_icons/low.svg" id="lowSymbol" />
                         </button>
                     </div>
                 </div>
@@ -110,18 +110,18 @@ function generateEditCardHTML(i) {
                             <div class="plus-symbol-div" id="plus-symbol-div">
                                 <img class="plus-symbol input-symbol" id="plus-symbol-subtask>"
                                     onclick="addFocusClass()"
-                                    src="./assets/img/Desktop/add_task/subtasks_icons/add.svg" alt="plus" />
+                                    src="./assets/img/Desktop/add-task/subtasks_icons/add.svg" alt="plus" />
                             </div>
 
                             <div class="create-task-div d-none" id="create-task-div">
                                 <img class="plus-symbol input-symbol" id="close-symbol-subtask"
                                     onclick="clearSubtaskInput()"
-                                    src="./assets/img/Desktop/add_task/subtasks_icons/close.svg"
+                                    src="./assets/img/Desktop/add-task/subtasks_icons/close.svg"
                                     alt="cancel-symbol" />
 
                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
                                     onclick="setSubtask('subtask-input-popup', 'subTasks-popup')"
-                                    src="./assets/img/Desktop/add_task/subtasks_icons/check.svg" alt="check-symbol" />
+                                    src="./assets/img/Desktop/add-task/subtasks_icons/check.svg" alt="check-symbol" />
                             </div>
                         </div>
                     </div>
@@ -137,12 +137,11 @@ function generateEditCardHTML(i) {
     <div class="footer-btn-container">
 
 
-        <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
+        <button id="createTaskBtn" type="submit" class="addTaskBtnOk createBtn"
             onclick="acceptAndSetEditOfTask(${i}, 'popup')">
-            OK
-            <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+            <span>OK</span>
+            <img src="./assets/img/Desktop/add-task/check.svg" alt="weißer Haken" />
         </button>
-        <div id="okBtnDiv"></div>
     </div>
 </div>
 
@@ -158,7 +157,7 @@ function generateOpenCardHTML(taskIndex) {
     <div class="toDoCard openCard">
         <div class="openCardHeader">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
-            <a onclick="closeCard(), sortTaks()">
+            <a onclick="closeCard(), sortTask()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <mask id="mask0_117782_4211" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                         <rect width="24" height="24" fill="#D9D9D9"/>
@@ -188,7 +187,7 @@ function generateOpenCardHTML(taskIndex) {
             <p>Assigned To:</p>
         </div>
         <div class="openCardSubtasks-container">
-            <p>Subtaks</p>
+            <p>Subtask</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
         <div class="openCardFooter">
@@ -206,7 +205,7 @@ function generateOpenCardHTML(taskIndex) {
                 <path d="M1 0V24" stroke="#D1D1D1"/>
                 </svg>
                 </div>
-            <a href="#" onclick="editCard(${taskIndex}), loadAddTaskPage()">
+            <a href="#" onclick="editCard(${taskIndex}), loadFromAddTaskPage()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_4276" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>

@@ -1,16 +1,14 @@
 let nameOfPage = [
     "Summary",
-    "Add_task",
+    "Add-task",
     "Board",
     "Contacts",
     "help",
     "privacy-policy",
-    "legal_notice",
+    "legal-notice",
 ];
-let filterExcludePages = ["help", "privacy-policy", "legal_notice"];
+let filterExcludePages = ["help", "privacy-policy", "legal-notice"];
 let currentUser = [];
-// let currentUser = ['#everyone'];
-// let currentUser = {name: "sebastian"};
 let dropDownIsOpen = false;
 
 
@@ -119,7 +117,7 @@ function nameOfPages(smalLetter, element) {
     if (smalLetter === "help") {
         partDisplayNone("helpImageDefault");
     }
-    if (smalLetter === "privacy-policy" || smalLetter === "legal_notice") {
+    if (smalLetter === "privacy-policy" || smalLetter === "legal-notice") {
         markEffects(smalLetter);
     }
     if (!filterExcludePages.includes(smalLetter)) {
@@ -233,34 +231,28 @@ function closeDropDownAni() {
     if (window.matchMedia("(max-width: 1000px)").matches) {
         dropDownMenu.style.animation = 'slideOutDropdown 100ms ease-out';
         setTimeout(function () {
-            dropDownMenu.style.display = "none";
-            headerIcon.style.background = "#FFF";
-            container.style.display = "none";
-            dropDownIsOpen = false;
+            setStyles(dropDownMenu, headerIcon, container);
         }, 100);
     } else {
-        dropDownMenu.style.display = "none";
-        headerIcon.style.background = "#FFF";
-        container.style.display = "none";
-        dropDownIsOpen = false;
+        setStyles(dropDownMenu, headerIcon, container);
     }
 }
 
 
-// /**
-//  * Sets styles for elements to close a dropdown animation.
-//  * 
-//  * @param {HTMLElement} dropDownMenu - The dropdown menu element.
-//  * @param {HTMLElement} headerIcon - The header icon element.
-//  * @param {HTMLElement} container - The container element.
-//  * @param {boolean} dropDownIsOpen - A boolean indicating whether the dropdown is open.
-//  */
-// function setStyles(dropDownMenu, headerIcon, container, dropDownIsOpen){
-//     dropDownMenu.style.display = "none";
-//     headerIcon.style.background = "#FFF";
-//     container.style.display = "none";
-//     dropDownIsOpen = false;
-// }
+/**
+ * Sets styles for elements to close a dropdown animation.
+ * 
+ * @param {HTMLElement} dropDownMenu - The dropdown menu element.
+ * @param {HTMLElement} headerIcon - The header icon element.
+ * @param {HTMLElement} container - The container element.
+ * @param {boolean} dropDownIsOpen - A boolean indicating whether the dropdown is open.
+ */
+function setStyles(dropDownMenu, headerIcon, container){
+    dropDownMenu.style.display = "none";
+    headerIcon.style.background = "#FFF";
+    container.style.display = "none";
+    dropDownIsOpen = false;
+}
 
 
 /**
@@ -283,4 +275,51 @@ async function logOut() {
     localStorage.removeItem("greetingAniPlayed");
     await setItem("currentUser", JSON.stringify(currentUser));
     localStorage.removeItem("joinInputs");
+}
+
+
+/**
+ * Eventlistener for JoinLogo. Check whether the JoinLogo is loaded and give the mouseover function
+ * 
+ */
+document.addEventListener("DOMContentLoaded", function () {
+    let joinLogo = null;
+    let joinLogoMobile = null;
+    const isMobile = window.innerWidth < 1000;
+    let logoId = isMobile ? "joinLogoMobile" : "joinLogo";
+    let intervalId = setInterval(function () {
+        joinLogo = document.getElementById(logoId);
+        if (joinLogo !== null) {
+            clearInterval(intervalId);
+            handleLogoState(joinLogo);
+            joinLogo.addEventListener("mouseover", function () {
+                handleLogoState(joinLogo);
+            });
+        }
+    }, 400);
+});
+
+
+/**
+ * depending on the user, an onclick function is added or removed
+ * 
+ * @param {HTMLElement} logo 
+ */
+function handleLogoState(logo) {
+    if (!(currentUser == "#everyone")) {
+        logo.style.cursor = "pointer";
+        logo.addEventListener("click", handleLogoClick);
+    } else {
+        logo.style.cursor = "unset";
+        logo.removeEventListener("click", handleLogoClick);
+    }
+}
+
+
+/**
+ * forwarding to the page
+ * 
+ */
+function handleLogoClick() {
+    location.href = "summary.html";
 }

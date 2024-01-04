@@ -31,7 +31,7 @@ async function loadUsers(ok) {
 
 
 /**
- * Registration
+ * Registers the user, checking if the password matches the confirm password.
  *
  */
 async function register() {
@@ -42,19 +42,30 @@ async function register() {
                 userEmailNotfound = false;
             }
         }
-        if (userEmailNotfound == true) {
-            generateArrayUsers();
-            await loadContacts();
-            await addUserToContacts();
-            console.log(users);
-            await setItem("users", JSON.stringify(users));
-            await loadUsers("successfully");
-            resetForm();
-        } else {
-            document.getElementById("fail-confirm-password").style.color = "#FF8190";
-        }
+        isUserEmailNotfound(users);
     }
 }
+
+
+/**
+ *  Checks if the user's email is not found. If true, performs user registration steps; otherwise, sets the error message text color.
+ * 
+ * @param {Array} users - The Array of user data
+ */
+async function isUserEmailNotfound(users){
+    if (userEmailNotfound == true) {
+        generateArrayUsers();
+        await loadContacts();
+        await addUserToContacts();
+        console.log(users);
+        await setItem("users", JSON.stringify(users));
+        await loadUsers("successfully");
+        resetForm();
+    } else {
+        document.getElementById("fail-confirm-password").style.color = "#FF8190";
+    }
+}
+
 
 /**
  * Make an Array with name, email and password
@@ -92,13 +103,11 @@ function resetForm() {
  */
 function handleImageFocus(passwordField, imageId) {
     let passwordImage = document.getElementById(imageId);
-
     passwordField.addEventListener("click", function () {
         if (passwordField.value === "") {
             passwordImage.src = "./assets/img/Desktop/login_signup/visibility_off.svg";
         }
     });
-
     passwordField.addEventListener("blur", function () {
         if (passwordField.value === "") {
             passwordImage.src = "./assets/img/Desktop/login_signup/lock.svg";
@@ -178,7 +187,7 @@ function openRegistrationModal() {
 
 
 /**
- * legal_notice and privacy policy for everyone (without Login)
+ * legal-notice and privacy policy for everyone (without Login)
  * 
  */
 async function withoutSidebarLinks(){

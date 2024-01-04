@@ -1,7 +1,7 @@
 <div class="headerTemplate">
 
     <div class="sidebar">
-        <a href="summary.html"><div>
+        <a id="joinLogo"><div>
             <img class="sidebarImg" src="./assets/img/Desktop/general_elements/join_light.svg" />
         </div></a>
 
@@ -13,11 +13,11 @@
                 </div>
             </a>
 
-            <a href="./add_task.html" class="sidebarMainButton">
-                <div class="menuButtons hover-menu-btn" id="linkAdd_task">
-                    <img id="imageAdd_task"
-                        src="./assets\img\Desktop\general_elements\menu_symbols/add_task_gray.svg" />
-                    <span id="textAdd_task">Add Task</span>
+            <a href="./add-task.html" class="sidebarMainButton">
+                <div class="menuButtons hover-menu-btn" id="linkAdd-task">
+                    <img id="imageAdd-task"
+                        src="./assets\img\Desktop\general_elements\menu_symbols/add-task_gray.svg" />
+                    <span id="textAdd-task">Add Task</span>
                 </div>
             </a>
 
@@ -40,14 +40,16 @@
 
         <div class="sidebarFooterButtons">
             <a href="./privacy-policy.html" class="privacy-policy-link" id="privacy-policy">Privacy Policy</a>
-            <a href="./legal_notice.html" class="legal_notice-link" id="legal_notice">Legal notice</a>
+            <a href="./legal-notice.html" class="legal-notice-link" id="legal-notice">Legal notice</a>
         </div>
 
     </div>
 
 
+    <!-- Mobile Version -->
     <div class="header">
-        <img class="mobile-logo" src="./assets/img/Mobile/general_elements_mobile/logo_dark.svg" alt="Logo">
+        <img class="mobile-logo" id = "joinLogoMobile" 
+        src="./assets/img/Mobile/general_elements_mobile/logo_dark.svg" alt="Logo">
 
         <p>Kanban Project Managment Tool</p>
 
@@ -64,7 +66,7 @@
 
             <div class="container-drop-down" id="containerDropDown" onclick="moveDropDownMenu()">
                 <div class="drop-down-menu" id="dropDownMenu" onclick="stopPropagation(event)">
-                    <a href="./legal_notice.html">
+                    <a href="./legal-notice.html">
                         <div class="drop-down-link">Legal Notice</div>
                     </a>
                     <a href="./privacy-policy.html">

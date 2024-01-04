@@ -1,4 +1,4 @@
-const categorys = ["Work", "Personal"];
+const categorys = ["Technical Task", "User Story"];
 
 let dropdownState = "closed";
 let clickedStates = [];
@@ -10,11 +10,24 @@ let filterListener;
  * list of assignable contacts, the category options for tasks, and sets up listeners 
  * for handling dropdown interactions and filtering contacts.
  */
-function loadAddTaskPage() {
+async function loadAddTaskPage() {
+  await loadContacts();
   generateAssignContacts('assignDropdown', 'assigned-contacts');
   generateCategoryOptions();
   setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
   setupFilterListener('add-contact-input', 'assignDropdown');
+}
+
+/**
+ * Initializes the Add Task page by loading necessary components. It generates the 
+ * list of assignable contacts, the category options for tasks, and sets up listeners 
+ * for handling dropdown interactions and filtering contacts.
+ */
+async function loadFromAddTaskPage() {
+  await loadContacts();
+  generateAssignContacts('assignDropdown-popup', 'assigned-contacts');
+  generateCategoryOptions();
+  setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign', true);
 }
 
 
@@ -56,7 +69,7 @@ async function logCurrentTasks() {
  * @async
  * @param {string} assignedContactsAvatarDiv - The ID of the div containing the avatars of assigned contacts.
  */
-async function validateAndCreateTask(assignedContactsAvatarDiv) {
+async function validateAndCreateTask(assignedContactsAvatarDiv, subTaskDiv) {
   if (!currentTaskState) {
     currentTaskState = "ToDo";
   }
@@ -69,9 +82,11 @@ async function validateAndCreateTask(assignedContactsAvatarDiv) {
   if (isValid) {
     await createTask("main");
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
+    animateTaskAdded();
     setTimeout(function () {
       window.location.href = 'board.html';
-    }, 150);
+    }, 250);
+    
     currentTaskState = 'ToDo';
   }
 }
@@ -96,7 +111,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv,
     await createTask(context);
     clearForm(assignedContactsAvatarDiv, subTaskDiv)
     setTimeout(function () {
-      addDnonToAddTaks(assignedContactsAvatarDiv);
+      addDnonToAddTask(assignedContactsAvatarDiv);
     }, 150);
     currentTaskState = 'ToDo';
     loadBoard();
@@ -167,10 +182,10 @@ function toggleContact(index, container) {
   const isClicked = getClickedState(index);
   const contact = contacts[index];
   if (isClicked) {
-    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add_task/check_button.svg");
+    handleClickedState(contactDiv, checkboxImg, false, "./assets/img/Desktop/add-task/check_button.svg");
     removeAvatar(contact, container);
   } else {
-    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add_task/check button_checked_white.svg");
+    handleClickedState(contactDiv, checkboxImg, true, "./assets/img/Desktop/add-task/check button_checked_white.svg");
     addAvatar(contact, container);
   }
   updateClickedState(index, !isClicked);
@@ -189,7 +204,7 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
   dropdown.classList.remove("d-none");
   selectedElement.value = "";
   dropdownState = "open";
-  arrowImage.src = "assets/img/Desktop/add_task/arrow_dropdown_up.svg";
+  arrowImage.src = "assets/img/Desktop/add-task/arrow_dropdown_up.svg";
 }
 
 
@@ -206,7 +221,7 @@ function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
   dropdown.classList.add("d-none");
   inputfield.value = `${setValue}`;
   dropdownState = "closed";
-  arrowImage.src = "./assets/img/Desktop/add_task/arrow_dropdown_down.svg";
+  arrowImage.src = "./assets/img/Desktop/add-task/arrow_dropdown_down.svg";
 }
 
 

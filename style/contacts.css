@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .content {
     min-height: calc(100vh - 6rem);
 }
@@ -306,7 +310,6 @@ button,
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: all 3000ms ease-out;
 }
 
 .popup {

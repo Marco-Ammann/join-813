@@ -25,7 +25,8 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
  */
 async function loadBoard() {
     await setTasks();
-    sortTaks();
+    await loadContacts();
+    sortTask();
     removeListeners('add-contact-input-popup');
 }
 
@@ -44,7 +45,6 @@ async function setTasks() {
     } else {
         tasks = [];
     }
-    console.log(tasks);
 }
 
 
@@ -52,7 +52,7 @@ async function setTasks() {
  * Sorts tasks and renders them in their respective containers based on their state.
  * If there are no tasks, displays a message indicating there are no tasks in each container.
  */
-function sortTaks() {
+function sortTask() {
     // Clear the task containers
     document.getElementById("ToDoContainer").innerHTML = "";
     document.getElementById("InProgressContainer").innerHTML = "";
@@ -113,14 +113,14 @@ function render(taskStatus, taskIndex) {
  * @param {number} i - The index of the task in the tasks array.
  */
 function addProgressBar(i) {
-    let taks = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
-    if (taks > 0) {
-        let calculatetSubtaks = 100 / taks;
-        calculatetSubtaks = calculatetSubtaks * tasks[i]["subtasksDone"].length;
+    let task = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
+    if (task > 0) {
+        let calculatetSubtask = 100 / task;
+        calculatetSubtask = calculatetSubtask * tasks[i]["subtasksDone"].length;
         content = document.getElementById(`progressbar${i}`);
         content.innerHTML = /*html*/ `
-                <progress max="100" value="${calculatetSubtaks}"></progress>
-                <span>${tasks[i]["subtasksDone"].length}/${taks} Subtaks</span>
+                <progress max="100" value="${calculatetSubtask}"></progress>
+                <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
                 `;
     }
 }
@@ -155,10 +155,10 @@ async function editCard(taskIndex) {
     card.innerHTML = generateEditCardHTML(taskIndex);
     setValuesInEditCard(taskIndex, 'subTasks-popup');
 
-    // Assuming generateAssignContacts is an async function
+    await loadContacts();
     await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
 
-    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup');
+    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign');
     setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
 
     toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
@@ -292,7 +292,6 @@ async function subtaskComplete(i, taskIndex) {
     moveSubtaskToDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
-    console.log(tasks[taskIndex].subtasks);
 }
 
 
@@ -313,8 +312,6 @@ async function subtaskUnComplete(i, taskIndex) {
     moveSubtaskToNotDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
-    console.log(tasks[taskIndex].subtasksDone);
-
 }
 
 
@@ -348,13 +345,21 @@ function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
 
 /**
  * Closes the open task card and hides it from the view.
+ * @param {boolean} deleted - 
  */
-function closeCard() {
-    const transout = document.getElementById("openCard");
-    transout.style = 'animation: slideOutCard 100ms ease-out;';
+function closeCard(deleted) {
+    const transitionDiv = document.getElementById("openCard");
+    const div = document.getElementById("openCardContainer");
+
+    if (deleted) {
+        div.classList.add("hidden");
+        return;
+    };
+    
+    div.style = 'animation: blendOut 100ms ease-out forwards'
+    transitionDiv.style = 'animation: slideOutCard 100ms ease-out forwards;';
     setTimeout(() => {
-        const div = document.getElementById("openCardContainer");
-        transout.style = '';
+        transitionDiv.style = '';
         div.classList.add("hidden");
     }, 100);
 }
@@ -366,9 +371,10 @@ function closeCard() {
 function addTransition() {
     const div = document.getElementById("openCardContainer");
     div.classList.remove("hidden");
+    div.style = 'animation: blendIn 100ms ease-out forwards'
 
     const transitionDiv = document.getElementById("openCard");
-    transitionDiv.style = 'animation: slideInCard 100ms ease-out;';
+    transitionDiv.style = 'animation: slideInCard 100ms ease-out forwards;';
 }
 
 
@@ -409,7 +415,7 @@ function removeHighlight(id) {
  */
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
-    sortTaks();
+    sortTask();
 
 }
 
@@ -500,24 +506,23 @@ function sortAndFilterCards(inputId) {
 
 /**
  * Opens the add task menu and sets the current task state based on the selected state.
- * If the window width is less than 1000 pixels, it redirects to the "add_task.html" page.
+ * If the window width is less than 1000 pixels, it redirects to the "add-task.html" page.
  * Otherwise, it displays the add task menu with a sliding animation.
  *
  * @param {string} state - The selected task state ("ToDo", "InProgress", "AwaitFeedback", "Done").
  */
 function openAddTaskMenu(state) {
     currentTaskState = state;
-    if (window.innerWidth < 1000) {
-        window.location.href = "add_task.html";
-    } else {
-        const transout = document.getElementById("transition");
-
+    // if (window.innerWidth < 1000) {
+    //     window.location.href = "add-task.html";
+    // } else {
         const div = document.getElementById("animationDiv");
         div.classList.remove("hidden");
+        div.style = 'animation: blendIn 100ms ease-in-out forwards';
 
         const transitionDiv = document.getElementById("transition");
-        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out;'
-    }
+        transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
+    // }
 }
 
 
@@ -527,11 +532,13 @@ function openAddTaskMenu(state) {
  *
  * @param {string} assignedContactsAvatarDiv - The ID of the assigned contacts avatar div.
  */
-function addDnonToAddTaks(assignedContactsAvatarDiv) {
+function addDnonToAddTask(assignedContactsAvatarDiv) {
     const transout = document.getElementById("transition");
-    transout.style = 'animation: slideOutAddNew 100ms ease-in-out;'
+    const div = document.getElementById("animationDiv");
+
+    div.style = 'animation: blendOut 100ms ease-in-out forwards;'
+    transout.style = 'animation: slideOutAddNew 100ms ease-in-out forwards;'
     setTimeout(() => {
-        const div = document.getElementById("animationDiv");
         transout.style = '';
         div.classList.add("hidden");
     }, 100);
@@ -548,7 +555,7 @@ function addDnonToAddTaks(assignedContactsAvatarDiv) {
  */
 async function deleteOpenCard(i) {
     tasks.splice(i, 1);
-    sortTaks();
-    closeCard();
+    sortTask();
+    closeCard(true);
     await setItem('tasks', tasks);
 }

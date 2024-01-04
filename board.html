@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./style/fonts.css" />
     <link rel="stylesheet" href="./style/board.css" />
-    <link rel="stylesheet" href="./style/add_task.css" />
+    <link rel="stylesheet" href="./style/add-task.css" />
 
     <script src="./js/array.js"></script>
     <script src="./js/board_HTML_generation.js"></script>
@@ -43,23 +43,15 @@
         <div id="openCard"></div>
     </div>
 
-
-
-
-
-
-    <div class="mainAddTaksContainer hidden" id="animationDiv">
+    <div class="mainAddTaskContainer hidden" id="animationDiv">
         <div id="transition" class="add-tasks-popup-container">
             <div class="add-tasks-popup">
 
-
-
-                <div>
-
+                <div class="popup-wrapper">
 
                     <div class="addTaskHeader">
                         <h1 class="content-title">Add Task</h1>
-                        <button id="closeAddTaksButton" onclick="addDnonToAddTaks('assigned-contacts')"><svg
+                        <button id="closeAddTaskButton" onclick="removeListeners('add-contact-input', true), addDnonToAddTask('assigned-contacts')"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -74,7 +66,7 @@
                             </svg></button>
                     </div>
 
-                    <div>
+                    <div class="add-tasks-wrapper">
                         <section class="task-forms">
                             <div class="forms-sides">
                                 <div class="form-div">
@@ -104,13 +96,13 @@
                                         <div class="input-div">
                                             <input id="add-contact-input" class="add-contact-input" type="text"
                                                 value="Select contacts to assign" required
-                                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign'), loadFromAddTaskPage()" />
                                             <img class="arrow-symbol input-symbol" id="arrowAssign"
-                                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                                                src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter"
-                                                onclick="toggleDropdown('assignDropdown', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
+                                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input', 'arrowAssign', 'Select contacts to assign')" />
                                         </div>
-                                        <div class="assignDropdown-popup d-none" id="assignDropdown"></div>
+                                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
                                     </div>
                                     <div class="assigned-contacts" id="assigned-contacts"></div>
 
@@ -140,19 +132,19 @@
                                     <div class="prio-buttons">
                                         <button type="button" class="prio-btn" id="urgentBtn"
                                             onclick="setPrio('urgent')">
-                                            Urgent
-                                            <img src="./assets/img/Desktop/add_task/priority_icons/urgent.svg"
+                                            <span>Urgent</span>
+                                            <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg"
                                                 id="urgentSymbol" />
                                         </button>
                                         <button type="button" class="prio-btn medium" id="mediumBtn"
                                             onclick="setPrio('medium')">
-                                            Medium
-                                            <img src="./assets/img/Desktop/add_task/priority_icons/medium_white.svg"
+                                            <span>Medium</span>
+                                            <img src="./assets/img/Desktop/add-task/priority_icons/medium_white.svg"
                                                 id="mediumSymbol" />
                                         </button>
                                         <button type="button" class="prio-btn" id="lowBtn" onclick="setPrio('low')">
-                                            Low
-                                            <img src="./assets/img/Desktop/add_task/priority_icons/low.svg"
+                                            <span>Low</span>
+                                            <img src="./assets/img/Desktop/add-task/priority_icons/low.svg"
                                                 id="lowSymbol" />
                                         </button>
                                     </div>
@@ -164,11 +156,11 @@
                                         <div class="input-div">
                                             <input onclick="switchVisibility('categoryDropdown')"
                                                 id="add-category-input" class="add-category-input" type="text"
-                                                value="Select task category" required />
+                                                value="Select task category" required readonly/>
 
                                             <img onclick="switchVisibility('categoryDropdown')"
                                                 class="arrow-symbol input-symbol" id="arrowCategory"
-                                                src="./assets/img/Desktop/add_task/arrow_dropdown_down.svg"
+                                                src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg"
                                                 alt="Pfeil runter" />
                                         </div>
 
@@ -189,19 +181,19 @@
                                             <div class="plus-symbol-div" id="plus-symbol-div">
                                                 <img class="plus-symbol input-symbol" id="plus-symbol-subtask>"
                                                     onclick="addFocusClass()"
-                                                    src="./assets/img/Desktop/add_task/subtasks_icons/add.svg"
+                                                    src="./assets/img/Desktop/add-task/subtasks_icons/add.svg"
                                                     alt="plus" />
                                             </div>
 
                                             <div class="create-task-div d-none" id="create-task-div">
                                                 <img class="plus-symbol input-symbol" id="close-symbol-subtask"
                                                     onclick="clearSubtaskInput()"
-                                                    src="./assets/img/Desktop/add_task/subtasks_icons/close.svg"
+                                                    src="./assets/img/Desktop/add-task/subtasks_icons/close.svg"
                                                     alt="cancel-symbol" />
 
                                                 <img class="check-symbol input-symbol" id="check-symbol-subtask"
                                                     onclick="setSubtask('subtask-input', 'subTasks')"
-                                                    src="./assets/img/Desktop/add_task/subtasks_icons/check.svg"
+                                                    src="./assets/img/Desktop/add-task/subtasks_icons/check.svg"
                                                     alt="check-symbol" />
                                             </div>
 
@@ -228,15 +220,14 @@
                         <button id="clearBtn" type="button" class="addTaskBtn clearBtn"
                             onclick="clearForm('assigned-contacts', 'subTasks')">
                             Clear
-                            <img src="./assets/img/Desktop/add_task/cancel.svg" alt="weißer Haken" />
+                            <img src="./assets/img/Desktop/add-task/cancel.svg" alt="weißer Haken" />
                         </button>
 
                         <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn"
                             onclick="validateAndCreateTaskPopup('assigned-contacts', 'subTasks', 'main')">
                             Create Task
-                            <img src="./assets/img/Desktop/add_task/check.svg" alt="weißer Haken" />
+                            <img src="./assets/img/Desktop/add-task/check.svg" alt="weißer Haken" />
                         </button>
-                        <div id="okBtnDiv"></div>
                     </div>
                 </div>
 
@@ -300,8 +291,8 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()">
-                    <p>Add taks</p>
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo')">
+                    <p>Add task</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                             width="32" height="32">
@@ -321,7 +312,7 @@
             <div>
                 <div class="toDoListCategories">
                     <p>To do</p>
-                    <a onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()"><img
+                    <a onclick="openAddTaskMenu('ToDo')"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="ToDoContainer" ondrop="moveTo('ToDo')"
@@ -333,7 +324,7 @@
 
                 <div class="toDoListCategories">
                     <p>In progress</p>
-                    <a onclick="openAddTaskMenu('InProgress'), loadAddTaskPage()"><img
+                    <a onclick="openAddTaskMenu('InProgress')"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="InProgressContainer" ondrop="moveTo('InProgress')"
@@ -343,7 +334,7 @@
             <div>
                 <div class="toDoListCategories">
                     <p>Await feedback</p>
-                    <a onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage()"><img
+                    <a onclick="openAddTaskMenu('AwaitFeedback')"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="AwaitFeedbackContainer" ondrop="moveTo('AwaitFeedback')"
