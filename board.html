@@ -326,6 +326,7 @@
                 </div>
                 <div class="listContainer" id="ToDoContainer" ondrop="moveTo('ToDo')"
                     ondragleave="removeHighlight('ToDoContainer')" ondragover="allowDrop(event) ; highlight('ToDoContainer')">
+                    <div>d-none</div>
                 </div>
             </div>
             <div>
@@ -346,13 +347,13 @@
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
                 <div class="listContainer" id="AwaitFeedbackContainer" ondrop="moveTo('AwaitFeedback')"
-                    ondragleave="removeHighlight('AwaitFeedbackContainer')" ondragover="allowDrop(event); highlight('AwaitFeedbackContainer')"></div>
-            </div>
+                                            ondragleave="removeHighlight('AwaitFeedbackContainer')" ondragover="allowDrop(event); highlight('AwaitFeedbackContainer')"></div>
+                                    </div>
 
-            <div>
-                <div class="toDoListCategories">
-                    <p>Done</p>
-                </div>
+                                    <div>
+                                        <div class="toDoListCategories">
+                                            <p>Done</p>
+                                        </div>
                 <div class="listContainer" id="DoneContainer" ondrop="moveTo('Done')"
                     ondragleave="removeHighlight('DoneContainer')" ondragover="allowDrop(event); highlight('DoneContainer')">
                 </div>

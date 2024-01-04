@@ -1,3 +1,9 @@
+let ToDoContainer = 'false';
+let InProgressContainer = 'false';
+let AwaitFeedbackContainer = 'false';
+let DoneContainer = 'false';
+
+
 /**
  * Initializes a variable to track the currently dragged element.
  * @type {Element}
@@ -387,14 +393,11 @@ function allowDrop(ev) {
 }
 
 function highlight(id) {
-    let content = document.getElementById(id);
-    content.innerHTML += /*html*/`
-        <div>Test</div>
-    `
+
 }
 
 function removeHighlight(id) {
-    console.log(id);
+
 }
 
 
