@@ -220,8 +220,8 @@ leftside forms
 .assignDropdown {
   display: flex;
   box-sizing: border-box;
-  width: 27.6rem;
-  max-height: 21vh;
+  width: 27.69rem;
+  max-height: 23vh;
   border-radius: 0 0 0.625rem 0.625rem;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
@@ -398,7 +398,7 @@ rightside forms
 
 /*--------------------------"Category" Dropdown*/
 .categoryDropdown {
-  width: 27.6rem;
+  width: 27.69rem;
   padding: 1rem;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 1);
