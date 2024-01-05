@@ -89,7 +89,7 @@ function render(taskStatus, taskIndex) {
                 <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
                     <h3>${tasks[taskIndex][`taskTitle`]}</h3>
-                    <p>${tasks[taskIndex][`description`]}</p>
+                    <p>${addDesscription(tasks[taskIndex][`description`])}</p>
                 </div>
                 <div id="progressbar${taskIndex}" class="progressbar">
                 </div>
@@ -106,6 +106,20 @@ function render(taskStatus, taskIndex) {
     addProgressBar(taskIndex);
 }
 
+function addDesscription(text) {
+    if (text.length <= 40) {
+        return text;
+    } else {
+        let gekuerzterText = text.substring(0, 40); // Die ersten 50 Zeichen nehmen
+        let letztesLeerzeichenIndex = gekuerzterText.lastIndexOf(' ');
+
+        if (letztesLeerzeichenIndex !== -1) {
+            gekuerzterText = gekuerzterText.substring(0, letztesLeerzeichenIndex); // Kürzen bis zum letzten Leerzeichen
+        }
+
+        return gekuerzterText + '...';
+    }
+}
 
 /**
  * Adds a progress bar to a task card based on the completion of subtasks.
