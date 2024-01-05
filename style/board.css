@@ -849,12 +849,12 @@ div[id^="openCardSubtasks"] {
     height: auto !important;
     display: flex;
     flex-direction: row;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: hidden;
   }
 
   .listContainer::-webkit-scrollbar {
-    height: 0;
+    height: 0.25rem;
   }
 
   .noTaskFound {
