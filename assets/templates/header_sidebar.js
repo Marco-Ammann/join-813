@@ -32,7 +32,7 @@ async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]");
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // "includes/desktop_template.html"
+        file = element.getAttribute("w3-include-html"); // "includes/header_sidebar.html"
 
         await loadTemplateAndExecuteFunctions(file, element);
     }
@@ -154,7 +154,7 @@ function partDisplayNone(x) {
     if ((window.matchMedia("(max-width: 1000px)").matches)) {
         xElement.parentNode.style = dNone;
         document.getElementById('content').style.margin = '4.9385rem 0 0 0';
-    }
+    };
 }
 
 

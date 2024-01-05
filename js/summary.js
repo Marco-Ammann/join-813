@@ -8,8 +8,6 @@ async function initSummary() {
     await setTasks();
     renderSummaryBoard();
     renderSummaryGreeting();
-
-
 }
 
 
@@ -22,7 +20,7 @@ async function setTasks() {
         tasks = tasksToSet;
     } else {
         tasks = [];
-    }
+    };
 }
 
 
@@ -77,7 +75,7 @@ async function loadUserGreeting(greet) {
         };
     } catch (e) {
         console.error("Loading error:", e);
-    }
+    };
 }
 
 
@@ -96,7 +94,7 @@ async function playGreetingAni() {
         localStorage.setItem("greetingAniPlayed", "true");
     } else {
         greeting.classList.add('d-none');
-    }
+    };
 }
 
 
@@ -114,7 +112,7 @@ function findTaskQuantitys(subcategory, match) {
         if (element[subcategory] == match) {
             count++;
         }
-    }
+    };
     return count;
 }
 
@@ -134,14 +132,13 @@ function renderDeadlineBox() {
         if (taskDate > today) {
             dates.push(tasks[i]['dueDate']);
         }
-    }
+    };
 
     if (dates.length >= 1) {
         deadlineDate.innerHTML = sortDates(dates);
     } else {
         deadlineDate.innerHTML = 'No upcoming deadlines';
-    }
-
+    };
 }
 
 

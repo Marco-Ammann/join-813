@@ -106,13 +106,13 @@ function renderPopUp(variant, i) {
         alt="Profile-Image"></div>`;
         popUpSubmit.innerHTML = /* html */ `Create contact<img src="./assets/img/Desktop/contacts/check.svg"
         alt="Create Contact">`
-            popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
+        popUpSubmit.previousElementSibling.innerHTML = /* html */ `Cancel<img src="./assets/img/Desktop/contacts/iconoir_cancel.svg" alt="Cancel">`
     } else if (variant == 'edit') {
         popUpTitle.innerHTML = 'Edit contact';
         popUpProfile.innerHTML = getInitials(contacts[i]['name']);
         popUpSubmit.innerHTML = /* html */ `Save<img src="./assets/img/Desktop/contacts/check.svg"
         alt="Create Contact">`;
-            popUpSubmit.previousElementSibling.innerHTML = 'Delete';
+        popUpSubmit.previousElementSibling.innerHTML = 'Delete';
     }
 }
 
@@ -359,11 +359,17 @@ function doNotClose(event) {
 }
 
 
+/**
+ * Saves the contacts-array in the back end
+ */
 async function saveContacts() {
     await setItem('contacts', contacts);
 }
 
 
+/**
+ * Loads the contacts-array from the back end
+ */
 async function loadContacts() {
     let contactsArray = await getContactsArray()
     if (Array.isArray(contactsArray)) {
@@ -372,6 +378,7 @@ async function loadContacts() {
         console.error('Loading error');
     }
 }
+
 
 /**
  * Opens the contact menu with the edit and delete options + animation
@@ -382,17 +389,7 @@ function openContactMenu(i) {
 
     contactMenu.classList.remove('d-none')
 
-    contactMenu.innerHTML = /* html */ `
-        <div class="contact-menu" onclick="doNotClose(event)">
-        <div onclick="openEditContact(${i})">
-            <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
-            <span name="Edit">Edit</span>
-        </div>
-        <div onclick="deleteContact(${i})">
-            <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
-            <span name="Delete">Delete</span>
-        </div>
-    </div>`;
+    contactMenu.innerHTML = returnContactMenuHTML(i);
 
     contactMenu.firstElementChild.style = 'animation: slideInContactMenu 300ms ease-out';
 }
@@ -408,82 +405,4 @@ function closeContactMenu() {
         contactMenu.classList.add('d-none');
         contactMenu.innerHTML = '';
     }, 300)
-}
-
-
-/**
- * Return the requested HTML Code for the contact list
- * @param {number} num - 0 for First-Letter HTML Code / 1 for Contact-User HTML Code
- * @param {string} letter - First letter of the name
- * @param {number} i - Index of the choosen contact
- * @param {string} color - Color of the contact icon
- * @param {string} initials - Initials for the first / first & last name
- * @param {string} name - First / First & last name
- * @param {string} email - Email adress
- * @returns - HTML Code as string
- */
-function returnContactListHTML(num, letter, i, color, initials, name, email) {
-    if (num == 0) {
-        return /* html */ `
-            <div class="letter">
-                <span>${letter}</span>
-            </div>
-            <img class="border" src="./assets/img/Desktop/general_elements/bar/vector_gray_vertical.svg">`;
-    } else if (num == 1) {
-        return /* html */ `
-            <div id="contact${i}" class="user" onclick="openContact(${i})">
-                <div class="user-icon" style="background-color: ${color};">${initials}</div>
-                <div class="username">
-                    <span>${name}</span>
-                    <a>${email}</a>
-                </div>
-            </div>`;
-    }
-}
-
-
-/**
- * Return HTML Code for the opened contact info
- * @param {string} color - Color of the contact icon
- * @param {string} initials - Initials for the first / first & last name
- * @param {string} name - First / First & last name
- * @param {string} email - Email adress
- * @param {string} phone - Phone number
- * @param {number} i - Index of the choosen contact
- * @returns - HTML Code as string
- */
-function returnContactInfoHTML(color, initials, name, email, phone, i) {
-    return /* html */ `<div class="info-title">
-        <div class="user-icon icon-big" style="background-color: ${color};">${initials}</div>
-        <div class="info-name">
-            <h2>${name}</h2>
-            <div class="info-buttons">
-                <div onclick="openEditContact(${i})">
-                    <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
-                    <span name="Edit">Edit</span>
-                </div>
-                <div onclick="deleteContact(${i})">
-                    <img src="./assets/img/Desktop/contacts/delete.svg" alt="Delete">
-                    <span name="Delete">Delete</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h6>Contact Information</h6>
-    <div class="info-me">
-        <div>
-            <h4>Email</h4>
-            <a href="mailto:${email}">${email}</a>
-        </div>
-        <div>
-            <h4>Phone</h4>
-            <span>${phone}</span>
-        </div>
-    </div>
-    <div onclick="openContactMenu(${i})" id="contact-menu-button" class="add-new-mobile">
-        <img src="./assets/img/Mobile/contacts_mobile/more_vert.svg">
-    </div>
-    <div id="contact-menu" class="d-none" onclick="closeContactMenu()"> 
-
-    </div>`;
 }
