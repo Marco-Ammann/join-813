@@ -344,6 +344,7 @@
   overflow-x: hidden;
   height: calc(100vh - 20.33239rem);
   gap: 1rem;
+  width: 17rem;
 }
 
 .listContainer::-webkit-scrollbar {
@@ -701,6 +702,7 @@ div[id^="openCardSubtasks"] {
   transform-origin: left bottom;
   transform: rotate(5deg);
   transition: transform 0.5s;
+  width: 16.75rem;
 }
 
 .hoverCardContainer {
@@ -897,28 +899,34 @@ div[id^="openCardSubtasks"] {
 
   .openCardContent h3 {
     font-size: 2.25rem !important;
-}
+  }
 
-.openCardContent h4 {
-  font-size: 1rem !important;
-}
+  .openCardContent h4 {
+    font-size: 1rem !important;
+  }
 
-.openCardPriority span, .openCardTable p, .openCardTable span, .openCardIcon p, .openCardSubtasks, .openCardAssigned p, .openCardSubtasks-container p {
-  font-size: 1rem;
-}
+  .openCardPriority span,
+  .openCardTable p,
+  .openCardTable span,
+  .openCardIcon p,
+  .openCardSubtasks,
+  .openCardAssigned p,
+  .openCardSubtasks-container p {
+    font-size: 1rem;
+  }
 
-.openCardAssigned p:not(.openCardIcon p) {
-  font-size: 1rem;
-}
+  .openCardAssigned p:not(.openCardIcon p) {
+    font-size: 1rem;
+  }
 
-.openCardSubtasks-container p:not(.openCardSubtasks p) {
-  font-size: 1rem;
-}
+  .openCardSubtasks-container p:not(.openCardSubtasks p) {
+    font-size: 1rem;
+  }
 
-div[id^="openCardSubtasks"] {
-  height: 6rem;
-  overflow-y: auto;
-}
+  div[id^="openCardSubtasks"] {
+    height: 6rem;
+    overflow-y: auto;
+  }
 
   .toDoCard {
     gap: 1rem;
