@@ -654,3 +654,66 @@ body {
         display: none;
     }
 }
+
+
+@media (max-width: 600px) {
+    .login-header {
+        top: unset;
+        bottom: 4.5rem;
+        right: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .login-content-border, .signUp-content-border {
+        width: 90vw;
+        padding: 2rem 0rem;
+    }
+
+    .login-content {
+        width: 90%;
+    }
+
+    .login-content-form, .signUp-content-form {
+        width: 100%;
+    }
+
+    :root {
+        font-size: 16px;
+    }
+
+}
+
+
+@media (max-height: 800px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 680px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 550px) {
+    :root {
+        font-size: 10px;
+    }
+
+    .login-header {
+        top: unset;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .login-footer {
+        bottom: 0.2rem;
+    }
+
+    .login-content-form, .signUp-content-form {
+        width: 22.75rem;
+        margin-bottom: 1.5rem;
+    }
+}
