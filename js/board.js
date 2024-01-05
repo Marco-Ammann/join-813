@@ -220,12 +220,10 @@ function addTaskIcon(id, x) {
         let contact = contacts.find(c => c.id === assignedContactId);
         if (contact) {
             let color = contact["color"];
-            const nameParts = contact["name"].split(" ");
-            const firstNameInitial = nameParts[0].charAt(0);
-            const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
+            let names = getInitials(contact['name']);
 
             content.innerHTML += /*html*/ `
-              <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+              <div class="icon" style="background-color: ${color};">${names}</div>
             `;
         }
     }
