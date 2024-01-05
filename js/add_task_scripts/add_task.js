@@ -27,7 +27,6 @@ async function loadFromAddTaskPage() {
   await loadContacts();
   generateAssignContacts('assignDropdown-popup', 'assigned-contacts');
   generateCategoryOptions();
-  setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign', true);
 }
 
 
