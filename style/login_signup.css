@@ -684,6 +684,12 @@ body {
 
 }
 
+@media (max-width: 340px) {
+    .login-header {
+        gap: 1rem;
+    }
+}
+
 
 @media (max-height: 800px) {
     :root {
