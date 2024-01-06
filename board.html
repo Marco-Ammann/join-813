@@ -325,8 +325,7 @@
                     <a onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <div ondrop="moveTo('ToDo')" ondragleave="removeHighlight('ToDoHoverContainer')"
-                    ondragover="allowDrop(event) ; highlight('ToDoHoverContainer')">
+                <div ondrop="moveTo('ToDo')" ondragover="allowDrop(event)">
                     <div id="ToDoHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="ToDoContainer"></div>
                 </div>
@@ -338,9 +337,8 @@
                     <a onclick="openAddTaskMenu('InProgress'), loadAddTaskPage()"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <div ondrop="moveTo('InProgress')" ondragleave="removeHighlight('InProgressHoverContainer')"
-                    ondragover="allowDrop(event); highlight('InProgressHoverContainer')">
-                    <div id="InProgressHoverContainer" class="hoverCardContainer  d-none"></div>
+                <div ondrop="moveTo('InProgress')" ondragover="allowDrop(event)">
+                    <div id="InProgressHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="InProgressContainer"></div>
                 </div>
             </div>
@@ -351,8 +349,7 @@
                     <a onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage()"><img
                             src="./assets/img/Desktop/board/plus_button/default.svg"></a>
                 </div>
-                <div ondrop="moveTo('AwaitFeedback')" ondragleave="removeHighlight('AwaitFeedbackHoverContainer')"
-                    ondragover="allowDrop(event); highlight('AwaitFeedbackHoverContainer')">
+                <div ondrop="moveTo('AwaitFeedback')" ondragover="allowDrop(event)">
                     <div id="AwaitFeedbackHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="AwaitFeedbackContainer"></div>
                 </div>
@@ -362,8 +359,7 @@
                 <div class="toDoListCategories">
                     <p>Done</p>
                 </div>
-                <div ondrop="moveTo('Done')" ondragleave="removeHighlight('DoneHoverContainer')"
-                    ondragover="allowDrop(event); highlight('DoneHoverContainer')">
+                <div ondrop="moveTo('Done')" ondragover="allowDrop(event)">
                     <div id="DoneHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="DoneContainer"></div>
                 </div>

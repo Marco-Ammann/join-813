@@ -28,6 +28,7 @@ async function loadBoard() {
     await loadContacts();
     sortTask();
     removeListeners('add-contact-input-popup');
+    console.log(tasks);
 }
 
 
@@ -84,7 +85,7 @@ function render(taskStatus, taskIndex) {
     taskStatus = taskStatus + "Container";
     let sortetContainer = document.getElementById(taskStatus);
     sortetContainer.innerHTML += /*html*/ `    
-        <div onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex})">
+        <div onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${tasks[taskIndex][`state`]}')">
             <div class="toDoCard">
                 <div class="headerUserStory headerUserStoryPopUp">User Story</div>
                 <div>
@@ -411,14 +412,44 @@ function allowDrop(ev) {
 }
 
 function highlight(containerId) {
-    // document.getElementById(containerId).classList.remove('d-none');
+
+    if (containerId === 'ToDo') {
+        let content = document.getElementById('InProgressHoverContainer');
+        content.classList.remove('d-none');
+    }
+
+    if (containerId === 'InProgress') {
+        let content1 = document.getElementById('ToDoHoverContainer');
+        content1.classList.remove('d-none');
+        let content2 = document.getElementById('AwaitFeedbackHoverContainer');
+        content2.classList.remove('d-none');
+    }
+
+    if (containerId === 'AwaitFeedback') {
+        let content1 = document.getElementById('InProgressHoverContainer');
+        content1.classList.remove('d-none');
+        let content2 = document.getElementById('DoneHoverContainer');
+        content2.classList.remove('d-none');
+    }
+
+    if (containerId === 'Done') {
+        let content = document.getElementById('AwaitFeedbackHoverContainer');
+        content.classList.remove('d-none');
+    }
+
 }
 
-function removeHighlight(containerId) {
-    // document.getElementById(containerId).classList.add('d-none');
+function removeHighlight() {
+    let content1 = document.getElementById('ToDoHoverContainer');
+    content1.classList.add('d-none');
+    let content2 = document.getElementById('InProgressHoverContainer');
+    content2.classList.add('d-none');
+    let content3 = document.getElementById('DoneHoverContainer');
+    content3.classList.add('d-none');
+    let content4 = document.getElementById('AwaitFeedbackHoverContainer');
+    content4.classList.add('d-none');
+
 }
-
-
 
 /**
  * Moves a task to a different category.
@@ -429,6 +460,7 @@ function removeHighlight(containerId) {
 function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
     sortTask();
+    removeHighlight();
 }
 
 
