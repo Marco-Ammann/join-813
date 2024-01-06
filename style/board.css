@@ -812,6 +812,15 @@ div[id^="openCardSubtasks"] {
     margin-bottom: 1.5rem;
   }
 
+  .hoverPointer {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .toDoList {
+    gap: 0.625rem;
+  }
+
   .toDoList p:not(.noTaskFound p, .toDoCard p) {
     font-size: 1.6875rem;
     font-weight: 700;
@@ -819,7 +828,7 @@ div[id^="openCardSubtasks"] {
   }
 
   .toDoListCategories {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .toDoListCategories img {
@@ -853,6 +862,7 @@ div[id^="openCardSubtasks"] {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 0.875rem;
   }
 
   .listContainer::-webkit-scrollbar {
