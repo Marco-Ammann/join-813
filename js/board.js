@@ -1,9 +1,3 @@
-let ToDoContainer = 'false';
-let InProgressContainer = 'false';
-let AwaitFeedbackContainer = 'false';
-let DoneContainer = 'false';
-
-
 /**
  * Initializes a variable to track the currently dragged element.
  * @type {Element}
@@ -87,7 +81,7 @@ function render(taskStatus, taskIndex) {
     sortetContainer.innerHTML += /*html*/ `    
         <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${tasks[taskIndex][`state`]}')">
             <div class="toDoCard">
-                <div class="headerUserStory headerUserStoryPopUp">User Story</div>
+                <div class="${category(tasks[taskIndex][`category`])} headerUserStoryPopUp">${tasks[taskIndex][`category`]}</div>
                 <div>
                     <h3>${tasks[taskIndex][`taskTitle`]}</h3>
                     <p>${addDesscription(tasks[taskIndex][`description`])}</p>
@@ -107,6 +101,11 @@ function render(taskStatus, taskIndex) {
     addProgressBar(taskIndex);
 }
 
+function category(text) {
+    text = text.replace(/\s/g, '');
+    return "header" + text;
+    console.log(text);
+}
 function addDesscription(text) {
     if (text.length <= 40) {
         return text;
