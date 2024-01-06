@@ -7,8 +7,8 @@
 }
 
 .content {
-  padding: 4rem 4rem 0 4rem !important;
-  max-height: calc(100vh - 6rem - 4rem);
+  padding: 4rem !important;
+  max-height: calc(100vh - 6rem - 4rem - 4rem);
 }
 
 .boardHeader {
@@ -343,7 +343,6 @@
 .listContainer {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 20.33239rem);
   gap: 1rem;
   width: 15.75rem;
 }
@@ -695,7 +694,6 @@ div[id^="openCardSubtasks"] {
 }
 
 .rotateCard {
-  transform-origin: left bottom;
   transform: rotate(5deg);
   transition: transform 0.3s;
 }
@@ -815,6 +813,15 @@ div[id^="openCardSubtasks"] {
     margin-bottom: 1.5rem;
   }
 
+  .hoverPointer {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .toDoList {
+    gap: 0.625rem;
+  }
+
   .toDoList p:not(.noTaskFound p, .toDoCard p) {
     font-size: 1.6875rem;
     font-weight: 700;
@@ -822,7 +829,7 @@ div[id^="openCardSubtasks"] {
   }
 
   .toDoListCategories {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .toDoListCategories img {
@@ -856,6 +863,7 @@ div[id^="openCardSubtasks"] {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 0.875rem;
   }
 
   .listContainer::-webkit-scrollbar {
