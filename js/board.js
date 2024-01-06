@@ -236,6 +236,13 @@ function addTaskIcon(id, x) {
             let color = contact["color"];
             let names = getInitials(contact['name']);
 
+            if (i == 3) {
+                content.innerHTML += /*html*/ `
+                <div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>
+              `;
+              return;
+            }
+
             content.innerHTML += /*html*/ `
               <div class="icon" style="background-color: ${color};">${names}</div>
             `;
