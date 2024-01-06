@@ -329,7 +329,7 @@
                             <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                         </svg></a>
                 </div>
-                <div ondrop="moveTo('ToDo')" ondragover="allowDrop(event)">
+                <div class="dragContainer" ondrop="moveTo('ToDo')" ondragover="allowDrop(event)">
                     <div id="ToDoHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="ToDoContainer"></div>
                 </div>
@@ -344,9 +344,10 @@
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                             <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                             <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-                        </svg><a>
+                        </svg>
+                    </a>
                 </div>
-                <div ondrop="moveTo('InProgress')" ondragover="allowDrop(event)">
+                <div class="dragContainer" ondrop="moveTo('InProgress')" ondragover="allowDrop(event)">
                     <div id="InProgressHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="InProgressContainer"></div>
                 </div>
@@ -363,7 +364,7 @@
                         </svg>
                     </a>
                 </div>
-                <div ondrop="moveTo('AwaitFeedback')" ondragover="allowDrop(event)">
+                <div class="dragContainer" ondrop="moveTo('AwaitFeedback')" ondragover="allowDrop(event)">
                     <div id="AwaitFeedbackHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="AwaitFeedbackContainer"></div>
                 </div>
@@ -373,7 +374,7 @@
                 <div class="toDoListCategories">
                     <p>Done</p>
                 </div>
-                <div ondrop="moveTo('Done')" ondragover="allowDrop(event)">
+                <div class="dragContainer" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
                     <div id="DoneHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="DoneContainer"></div>
                 </div>

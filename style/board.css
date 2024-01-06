@@ -9,7 +9,6 @@
 .content {
   padding: 4rem 4rem 0 4rem !important;
   max-height: calc(100vh - 6rem - 4rem);
-  overflow: hidden !important;
 }
 
 .boardHeader {
@@ -136,7 +135,7 @@
 .toDoList {
   display: flex;
   justify-content: center;
-  gap: 1.625rem;
+  gap: 1.5rem;
 }
 
 .toDoList p {
@@ -186,6 +185,7 @@
   border-radius: 1.5rem;
   gap: 1.5rem;
   width: 13.75rem;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
 .toDoCard h3 {
@@ -195,6 +195,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+  word-break: break-word;
+  width: 100%;
 }
 
 .toDoCard p {
@@ -204,6 +206,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+  word-break: break-word;
+  width: 100%;
 }
 
 .progressbar {
@@ -290,6 +294,9 @@
 .userIcon {
   display: flex;
   flex-direction: row;
+  max-width: 10rem;
+  overflow: hidden;
+  padding-right: 0.5rem;
 }
 
 .userIcon div {
@@ -303,8 +310,8 @@
   color: #fff;
   text-align: center;
   font-size: 0.75rem;
-  width: calc(2.625rem - 2px);
-  height: calc(2.625rem - 2px);
+  min-width: calc(2.625rem - 2px);
+  min-height: calc(2.625rem - 2px);
   border-radius: 50%;
   border: 2px solid white;
 }
@@ -336,11 +343,9 @@
 .listContainer {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
   height: calc(100vh - 20.33239rem);
   gap: 1rem;
-  width: 17rem;
+  width: 15.75rem;
 }
 
 .listContainer::-webkit-scrollbar {
@@ -691,8 +696,7 @@ div[id^="openCardSubtasks"] {
 .rotateCard {
   transform-origin: left bottom;
   transform: rotate(5deg);
-  transition: transform 0.5s;
-  width: 16.75rem;
+  transition: transform 0.3s;
 }
 
 .hoverCardContainer {
