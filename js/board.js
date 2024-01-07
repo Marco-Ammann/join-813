@@ -393,6 +393,7 @@ function closeCard(deleted) {
         transitionDiv.style = '';
         div.classList.add("hidden");
     }, 100);
+    isEditFormOpened = cardIsOpened = false;
 }
 
 
