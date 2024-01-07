@@ -19,7 +19,7 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
 async function loadBoard() {
     await setTasks();
     await loadContacts();
-    sortTask();
+    renderTasks();
     console.log(tasks);
 
 }
@@ -54,26 +54,17 @@ async function setTasks() {
 
 /**
  * Sorts tasks and renders them in their respective containers based on their state.
- * If there are no tasks, displays a message indicating there are no tasks in each container.
+ * Displays a message indicating there are no tasks in each container if there are no tasks.
  */
-function sortTask() {
-    // Clear the task containers
-    document.getElementById("ToDoContainer").innerHTML = "";
-    document.getElementById("InProgressContainer").innerHTML = "";
-    document.getElementById("AwaitFeedbackContainer").innerHTML = "";
-    document.getElementById("DoneContainer").innerHTML = "";
+function renderTasks() {
+    const containerIds = ["ToDoContainer", "InProgressContainer", "AwaitFeedbackContainer", "DoneContainer"];
+
+    containerIds.forEach(id => document.getElementById(id).innerHTML = "");
 
     if (tasks.length > 0) {
-        for (let i = 0; i < tasks.length; i++) {
-            const taskStatus = tasks[i]['state'];
-            render(taskStatus, i);
-        }
+        tasks.forEach((task, i) => renderTaskCard(task.state, i));
     } else {
-        // If there are no tasks, add a message indicating there are no tasks in each container
-        addNoTaskHTML('ToDoContainer');
-        addNoTaskHTML('InProgressContainer');
-        addNoTaskHTML('AwaitFeedbackContainer');
-        addNoTaskHTML('DoneContainer');
+        containerIds.forEach(addNoTaskHTML);
     }
 }
 
@@ -84,52 +75,52 @@ function sortTask() {
  * @param {string} taskStatus - The status of the task (ToDo, InProgress, AwaitFeedback, Done).
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
-function render(taskStatus, taskIndex) {
-    taskStatus = taskStatus + "Container";
-    let sortetContainer = document.getElementById(taskStatus);
-    sortetContainer.innerHTML += /*html*/ `    
-        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${tasks[taskIndex][`state`]}')">
-            <div class="toDoCard">
-                <div class="${category(tasks[taskIndex][`category`])} headerUserStoryPopUp">${tasks[taskIndex][`category`]}</div>
-                <div>
-                    <h3>${tasks[taskIndex][`taskTitle`]}</h3>
-                    <p>${addDesscription(tasks[taskIndex][`description`])}</p>
-                </div>
-                <div id="progressbar${taskIndex}" class="progressbar">
-                </div>
-                <div class="toDoCardFooter">
-                    <div id="cardIcon${taskIndex}" class="userIcon">
-                    </div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]}.svg">
-                </div>
-            </div>
-        </div>
-`;
+function renderTaskCard(taskStatus, taskIndex) {
+    const containerId = `${taskStatus}Container`;
+    const container = document.getElementById(containerId);
+    const task = tasks[taskIndex];
+
+    container.innerHTML += generateTaskCardHTML(task, taskIndex);
+
     checkAndAddTasks(tasks);
     addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
     addProgressBar(taskIndex);
 }
 
 
+/**
+ * Formats a given text into a category class name by removing spaces.
+ *
+ * @param {string} text - The text to format.
+ * @returns {string} A formatted category class name.
+ */
 function category(text) {
-    text = text.replace(/\s/g, '');
-    return "header" + text;
-    console.log(text);
+    return "header" + text.replace(/\s/g, '');
 }
-function addDesscription(text) {
-    if (text.length <= 40) {
+
+
+/**
+ * Truncates the text to a specified length, ending at the last complete word within the limit.
+ *
+ * @param {string} text - The text to be truncated.
+ * @param {number} [maxLength=40] - Maximum length of the truncated text.
+ * @returns {string} Truncated text ending with an ellipsis if it exceeds the specified length.
+ */
+function addDescription(text, maxLength = 40) {
+    if (text.length <= maxLength) {
         return text;
-    } else {
-        let gekuerzterText = text.substring(0, 40); // Die ersten 50 Zeichen nehmen
-        let letztesLeerzeichenIndex = gekuerzterText.lastIndexOf(' ');
-
-        if (letztesLeerzeichenIndex !== -1) {
-            gekuerzterText = gekuerzterText.substring(0, letztesLeerzeichenIndex); // Kürzen bis zum letzten Leerzeichen
-        }
-
-        return gekuerzterText + '...';
     }
+
+    let truncatedText = text.substring(0, maxLength);
+    const lastSpaceIndex = truncatedText.lastIndexOf(' ');
+
+    if (lastSpaceIndex !== -1) {
+        truncatedText = truncatedText.substring(0, lastSpaceIndex);
+    }
+
+    return truncatedText + '...';
 }
+
 
 /**
  * Adds a progress bar to a task card based on the completion of subtasks.
@@ -214,23 +205,12 @@ function clickPriority(taskIndex) {
  */
 function addOpenTaskIcon(id, x) {
     let content = document.getElementById(id);
-    for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let assignedContactId = tasks[x]["assignedTo"][i].id;
-        let contact = contacts.find(c => c.id === assignedContactId);
+    tasks[x]["assignedTo"].forEach(assignedContact => {
+        let contact = contacts.find(c => c.id === assignedContact.id);
         if (contact) {
-            let color = contact["color"];
-            const nameParts = contact["name"].split(" ");
-            const firstNameInitial = nameParts[0].charAt(0);
-            const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
-
-            content.innerHTML += /*html*/ `
-            <div class="openCardIcon">
-              <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-              <p>${contact["name"]}</p>
-            </div>
-            `;
+            content.innerHTML += createContactIcon(contact);
         }
-    }
+    });
 }
 
 
@@ -242,27 +222,16 @@ function addOpenTaskIcon(id, x) {
  */
 function addTaskIcon(id, x) {
     let content = document.getElementById(id);
-    for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let assignedContactId = tasks[x]["assignedTo"][i].id;
-        let contact = contacts.find(c => c.id === assignedContactId);
+    const assignedContacts = tasks[x]["assignedTo"];
+    assignedContacts.forEach((assignedContact, index) => {
+        let contact = contacts.find(c => c.id === assignedContact.id);
         if (contact) {
-            let color = contact["color"];
-            let names = getInitials(contact['name']);
-
-            if (i == 3) {
-                content.innerHTML += /*html*/ `
-                <div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>
-              `;
-              return;
-            }
-
-            content.innerHTML += /*html*/ `
-              <div class="icon" style="background-color: ${color};">${names}</div>
-            `;
+            content.innerHTML += createContactIconHTML(contact, index);
         }
-    }
-}
 
+        if (index === 3) return;
+    });
+}
 
 
 /**
@@ -271,36 +240,16 @@ function addTaskIcon(id, x) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function addOpenCardSubtasks(taskIndex) {
-    // Get the HTML element where subtasks will be added
     let content = document.getElementById(`openCardSubtasks${taskIndex}`);
     content.innerHTML = "";
 
-    // Add incomplete subtasks
-    for (let i = 0; i < tasks[taskIndex]["subtasks"].length; i++) {
-        content.innerHTML += /*html*/ `
-        <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-          </svg>
-          ${tasks[taskIndex]["subtasks"][i]}
-        </div>
-      `;
-    }
+    tasks[taskIndex]["subtasks"].forEach((subtask, i) => {
+        content.innerHTML += createIncompleteSubtaskHTML(subtask, i, taskIndex);
+    });
 
-    // Add completed subtasks
-    for (let y = 0; y < tasks[taskIndex]["subtasksDone"].length; y++) {
-        content.innerHTML += /*html*/ `
-        <div class="openCardSubtasks" id="subtaskDone${y}" onclick="subtaskUnComplete(${y}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <p class="textCross">
-            ${tasks[taskIndex]["subtasksDone"][y]}
-          </p>
-        </div>
-      `;
-    }
+    tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
+        content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
+    });
 }
 
 
@@ -312,15 +261,9 @@ function addOpenCardSubtasks(taskIndex) {
  */
 async function subtaskComplete(i, taskIndex) {
     let content = document.getElementById(`subtask${i}`);
-    content.innerHTML = /*html*/ `
-    <div class="openCardSubtasks" id="subtaskDone${i}" onclick="subtaskUnComplete(${i}, ${taskIndex})">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ${tasks[taskIndex]["subtasks"][i]}
-    </div>
-    `;
+    const subtask = tasks[taskIndex]["subtasks"][i];
+    content.innerHTML = createCompleteSubtaskHTML(subtask, i, taskIndex);
+    
     moveSubtaskToDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
@@ -335,12 +278,9 @@ async function subtaskComplete(i, taskIndex) {
  */
 async function subtaskUnComplete(i, taskIndex) {
     let content = document.getElementById(`subtaskDone${i}`);
-    content.innerHTML = /*html*/ `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                </svg>
-                ${tasks[taskIndex]["subtasks"]}
-    `;
+    const subtask = tasks[taskIndex]["subtasksDone"][i];
+    content.innerHTML = createIncompleteSubtaskHTML(subtask, i, taskIndex);
+    
     moveSubtaskToNotDone(i, taskIndex);
     await setItem('tasks', tasks);
     addOpenCardSubtasks(taskIndex);
@@ -377,24 +317,25 @@ function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
 
 /**
  * Closes the open task card and hides it from the view.
- * @param {boolean} deleted - 
+ * 
+ * @param {boolean} deleted - Indicates whether the card was deleted or not.
  */
 function closeCard(deleted) {
     const transitionDiv = document.getElementById("openCard");
     const div = document.getElementById("openCardContainer");
+
     if (deleted) {
         div.classList.add("hidden");
-        return;
-    };
+    } else {
+        div.style.animation = 'blendOut 100ms ease-out forwards';
+        transitionDiv.style.animation = 'slideOutCard 100ms ease-out forwards';
+        setTimeout(() => {
+            div.classList.add("hidden");
+        }, 100);
+    }
 
-    div.style = 'animation: blendOut 100ms ease-out forwards'
-    transitionDiv.style = 'animation: slideOutCard 100ms ease-out forwards;';
-    setTimeout(() => {
-        transitionDiv.style = '';
-        div.classList.add("hidden");
-    }, 100);
     isEditFormOpened = cardIsOpened = false;
-    sortTask();
+    renderTasks();
 }
 
 
@@ -402,12 +343,12 @@ function closeCard(deleted) {
  * Adds a transition effect to show the open task card.
  */
 function addTransition() {
-    const div = document.getElementById("openCardContainer");
-    div.classList.remove("hidden");
-    div.style = 'animation: blendIn 100ms ease-out forwards'
+    const openCardContainer = document.getElementById("openCardContainer");
+    const openCard = document.getElementById("openCard");
 
-    const transitionDiv = document.getElementById("openCard");
-    transitionDiv.style = 'animation: slideInCard 100ms ease-out forwards;';
+    openCardContainer.classList.remove("hidden");
+    openCardContainer.style.animation = 'blendIn 100ms ease-out forwards';
+    openCard.style.animation = 'slideInCard 100ms ease-out forwards';
 }
 
 
@@ -431,45 +372,44 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+
+/**
+ * Highlights the appropriate hover containers based on the given container ID.
+ *
+ * @param {string} containerId - The ID of the container to highlight.
+ */
 function highlight(containerId) {
-
-    if (containerId === 'ToDo') {
-        let content = document.getElementById('InProgressHoverContainer');
-        content.classList.remove('d-none');
+    switch (containerId) {
+        case 'ToDo':
+            document.getElementById('InProgressHoverContainer').classList.remove('d-none');
+            break;
+        case 'InProgress':
+            document.getElementById('ToDoHoverContainer').classList.remove('d-none');
+            document.getElementById('AwaitFeedbackHoverContainer').classList.remove('d-none');
+            break;
+        case 'AwaitFeedback':
+            document.getElementById('InProgressHoverContainer').classList.remove('d-none');
+            document.getElementById('DoneHoverContainer').classList.remove('d-none');
+            break;
+        case 'Done':
+            document.getElementById('AwaitFeedbackHoverContainer').classList.remove('d-none');
+            break;
     }
-
-    if (containerId === 'InProgress') {
-        let content1 = document.getElementById('ToDoHoverContainer');
-        content1.classList.remove('d-none');
-        let content2 = document.getElementById('AwaitFeedbackHoverContainer');
-        content2.classList.remove('d-none');
-    }
-
-    if (containerId === 'AwaitFeedback') {
-        let content1 = document.getElementById('InProgressHoverContainer');
-        content1.classList.remove('d-none');
-        let content2 = document.getElementById('DoneHoverContainer');
-        content2.classList.remove('d-none');
-    }
-
-    if (containerId === 'Done') {
-        let content = document.getElementById('AwaitFeedbackHoverContainer');
-        content.classList.remove('d-none');
-    }
-
 }
 
+
+/**
+ * Removes the highlight from all hover containers.
+ */
 function removeHighlight() {
-    let content1 = document.getElementById('ToDoHoverContainer');
-    content1.classList.add('d-none');
-    let content2 = document.getElementById('InProgressHoverContainer');
-    content2.classList.add('d-none');
-    let content3 = document.getElementById('DoneHoverContainer');
-    content3.classList.add('d-none');
-    let content4 = document.getElementById('AwaitFeedbackHoverContainer');
-    content4.classList.add('d-none');
-
+    const containerIds = ['ToDoHoverContainer', 'InProgressHoverContainer', 'DoneHoverContainer', 'AwaitFeedbackHoverContainer'];
+    
+    containerIds.forEach(id => {
+        const content = document.getElementById(id);
+        content.classList.add('d-none');
+    });
 }
+
 
 /**
  * Moves a task to a different category.
@@ -480,7 +420,7 @@ function removeHighlight() {
 async function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
     await saveStateChangeAfterDroppingTask()
-    sortTask();
+    renderTasks();
     removeHighlight();
 }
 
@@ -554,26 +494,19 @@ function createNoTaskHTML(message) {
 }
 
 
-
 /**
- * Sorts and filters the cards based on a search term.
- * Retrieves the search term from the "sortTasksInput" input field, converts it to lowercase,
- * and filters the cards with titles or descriptions that contain the search term.
- * Displays matching cards and hides non-matching cards.
+ * Sorts and filters task cards based on a given search term. It searches within card titles and
+ * displays only those cards matching the search term, hiding all others.
+ *
+ * @param {string} inputId - The ID of the input element containing the search term.
  */
 function sortAndFilterCards(inputId) {
-    const searchTerm = document.getElementById(`${inputId}`).value.toLowerCase(); // Get the entered search term and convert it to lowercase
-    const cards = document.querySelectorAll(".toDoCard"); // Get all cards with the class 'toDoCard'
+    const searchTerm = document.getElementById(inputId).value.toLowerCase();
+    const cards = document.querySelectorAll(".toDoCard");
 
-    cards.forEach((card) => {
-        const title = card.querySelector("h3").textContent.toLowerCase(); // Get the title of the card and convert it to lowercase
-
-        // Check if the search term is found in the title or description of the card
-        if (title.includes(searchTerm)) {
-            card.parentNode.style.display = "block"; // Display the card if the search term is found
-        } else {
-            card.parentNode.style.display = "none"; // Hide the card if the search term is not found
-        }
+    cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.parentNode.style.display = title.includes(searchTerm) ? "block" : "none";
     });
 }
 
@@ -587,36 +520,32 @@ function sortAndFilterCards(inputId) {
  */
 function openAddTaskMenu(state) {
     currentTaskState = state;
-    // if (window.innerWidth < 1000) {
-    //     window.location.href = "add-task.html";
-    // } else {
     const div = document.getElementById("animationDiv");
     div.classList.remove("hidden");
     div.style = 'animation: blendIn 100ms ease-in-out forwards';
 
     const transitionDiv = document.getElementById("transition");
     transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
-    // }
 }
 
 
 /**
- * Adds the "d-none" class to the add task menu and clears the form.
- * It also removes the sliding animation from the menu.
+ * Hides the add task menu with an animation and clears the form.
  *
- * @param {string} assignedContactsAvatarDiv - The ID of the assigned contacts avatar div.
+ * @param {string} assignedContactsAvatarDivId - The ID of the assigned contacts avatar div.
  */
-function addDnonToAddTask(assignedContactsAvatarDiv) {
-    const transout = document.getElementById("transition");
-    const div = document.getElementById("animationDiv");
+function hideAddTaskMenu(assignedContactsAvatarDivId) {
+    const transitionDiv = document.getElementById("transition");
+    const animationDiv = document.getElementById("animationDiv");
 
-    div.style = 'animation: blendOut 100ms ease-in-out forwards;'
-    transout.style = 'animation: slideOutAddNew 100ms ease-in-out forwards;'
+    animationDiv.style.animation = 'blendOut 100ms ease-in-out forwards';
+    transitionDiv.style.animation = 'slideOutAddNew 100ms ease-in-out forwards';
+    
     setTimeout(() => {
-        transout.style = '';
-        div.classList.add("hidden");
+        animationDiv.classList.add("hidden");
     }, 100);
-    clearForm(assignedContactsAvatarDiv, 'subTasks');
+
+    clearForm(assignedContactsAvatarDivId, 'subTasks');
 }
 
 
@@ -629,7 +558,7 @@ function addDnonToAddTask(assignedContactsAvatarDiv) {
  */
 async function deleteOpenCard(i) {
     tasks.splice(i, 1);
-    sortTask();
+    renderTasks();
     closeCard(true);
     await setItem('tasks', tasks);
 }
