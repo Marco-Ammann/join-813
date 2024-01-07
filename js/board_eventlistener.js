@@ -1,4 +1,5 @@
 let isEditFormOpened = false;
+let cardIsOpened = false
 
 function setEditFormOpenedToFalse() {
     isEditFormOpened = false;
@@ -8,12 +9,12 @@ function setEditFormOpenedToFalse() {
 function handleOpenCardContainerClick() {
     if (isEditFormOpened) {
         closeCard();
-        sortTask();
         clearForm('assigned-contacts-popup', 'subTasks-popup');
         removeListeners('add-contact-input');
-        isEditFormOpened = false;
-    } else {
+    } else if (cardIsOpened) {
         closeCard();
-        sortTask();
     }
+    isEditFormOpened = cardIsOpened = false;
 }
+
+
