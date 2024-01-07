@@ -9,15 +9,12 @@ function setEditFormOpenedToFalse() {
 function handleOpenCardContainerClick() {
     if (isEditFormOpened) {
         closeCard();
-        sortTask();
         clearForm('assigned-contacts-popup', 'subTasks-popup');
         removeListeners('add-contact-input');
-        isEditFormOpened = false;
-    } else {
-             if (cardIsOpened){
+    } else if (cardIsOpened) {
         closeCard();
-        sortTask();
-        cardIsOpened = false;
-        }
     }
+    isEditFormOpened = cardIsOpened = false;
 }
+
+

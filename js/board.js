@@ -165,7 +165,6 @@ function openCard(taskIndex) {
     addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
     addTransition();
     addOpenCardSubtasks(taskIndex);
-
     setTimeout(() => {
         cardIsOpened = true;
     }, 100);
