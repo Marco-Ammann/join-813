@@ -861,6 +861,10 @@ div[id^="openCardSubtasks"] {
     margin-bottom: 2.5rem;
   }
 
+  .dragContainer {
+    display: flex;
+  }
+
   .toDoList {
     flex-direction: column;
   }
