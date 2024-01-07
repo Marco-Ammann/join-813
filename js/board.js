@@ -21,10 +21,7 @@ async function loadBoard() {
     await setTasks();
     await loadContacts();
     sortTask();
-    removeListeners('add-contact-input-popup');
-
-    mobileDragAndDrop()
-
+    removeListeners('add-contact-input');
     console.log(tasks);
 
 }
