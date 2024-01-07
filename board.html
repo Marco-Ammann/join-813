@@ -22,6 +22,7 @@
     <script src="./js/contacts.js"></script>
     <script src="./js/add_task_scripts/clear_values.js"></script>
     <script src="./js/add_task_scripts/add_task.js"></script>
+    <script src="./js/board_eventlistener.js"></script>
 
     <link rel="stylesheet" href="./assets/templates/header_sidebar.css">
     <script src="./js/login_signup/storage.js"></script>
@@ -39,18 +40,13 @@
 
 
 
-    <div id="openCardContainer" class="openCardContainer hidden">
-        <div id="openCard"></div>
+    <div id="openCardContainer" class="openCardContainer hidden" onclick="handleOpenCardContainerClick()">
+        <div id="openCard" onclick="event.stopPropagation();"></div>
     </div>
 
-
-
-
-
-
     <div class="mainAddTaskContainer hidden" id="animationDiv">
-        <div id="transition" class="add-tasks-popup-container">
-            <div class="add-tasks-popup">
+        <div id="transition" class="add-tasks-popup-container" onclick="addDnonToAddTask('assigned-contacts')">
+            <div class="add-tasks-popup" onclick="event.stopPropagation();">
 
 
 

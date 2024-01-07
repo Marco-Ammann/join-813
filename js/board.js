@@ -4,7 +4,6 @@
  */
 let currentDragedElement;
 
-
 /**
  * An array of task states.
  * @type {string[]}
@@ -21,7 +20,6 @@ async function loadBoard() {
     await setTasks();
     await loadContacts();
     sortTask();
-    removeListeners('add-contact-input');
     console.log(tasks);
 }
 
@@ -168,7 +166,7 @@ async function editCard(taskIndex) {
     const card = document.getElementById(`openCard`);
     card.innerHTML = generateEditCardHTML(taskIndex);
     setValuesInEditCard(taskIndex, 'subTasks-popup');
-
+    isEditFormOpened = true;
     await loadContacts();
     await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
 
@@ -369,7 +367,6 @@ function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
 function closeCard(deleted) {
     const transitionDiv = document.getElementById("openCard");
     const div = document.getElementById("openCardContainer");
-
     if (deleted) {
         div.classList.add("hidden");
         return;
