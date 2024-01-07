@@ -726,9 +726,6 @@ div[id^="openCardSubtasks"] {
   stroke: #29ABE2 !important;
 }
 
-.scrollBlocker {
-  overflow-y: hidden;
-}
 
 /* Animations */
 

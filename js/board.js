@@ -413,19 +413,6 @@ function addTransition() {
 function startDraggin(id) {
     currentDraggedElement = id;
     addRotation(id);
-    addScrollBlocker();
-}
-
-
-function addScrollBlocker () {
-    let containerToScrollblock = document.querySelector('.content');
-    containerToScrollblock.classList.add('scrollBlocker');
-}
-
-
-function removeScrollBlocker () {
-    let containerToScrollblock = document.querySelector('.content');
-    containerToScrollblock.classList.remove('scrollBlocker');
 }
 
 
@@ -489,7 +476,6 @@ async function moveTo(category) {
     await saveStateChangeAfterDroppingTask()
     sortTask();
     removeHighlight();
-    removeScrollBlocker();
 }
 
 
