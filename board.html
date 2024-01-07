@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./style/board.css" />
     <link rel="stylesheet" href="./style/add-task.css" />
 
-    <script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
+    <script src="./js/drag_and_drop.js"></script>
 
     <script src="./js/array.js"></script>
     <script src="./js/board_HTML_generation.js"></script>
@@ -373,8 +373,8 @@
                     <p>Done</p>
                 </div>
                 <div class="dragContainer" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
-                    <div id="DoneHoverContainer" class="hoverCardContainer d-none"></div>
                     <div class="listContainer" id="DoneContainer"></div>
+                    <div id="DoneHoverContainer" class="hoverCardContainer d-none"></div>
                 </div>
             </div>
         </div>
