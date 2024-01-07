@@ -21,6 +21,17 @@ async function loadBoard() {
     await loadContacts();
     sortTask();
     console.log(tasks);
+
+}
+
+
+function mobileDragAndDrop() {
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        document.getElementById(`card${i}`).addEventListener('touchstart', function(ev) {
+        console.log('card' + i)
+        });
+    }
 }
 
 
