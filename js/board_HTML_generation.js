@@ -138,7 +138,7 @@ function generateEditCardHTML(i) {
 
 
         <button id="createTaskBtn" type="submit" class="addTaskBtnOk createBtn"
-            onclick="acceptAndSetEditOfTask(${i}, 'popup')">
+            onclick="acceptAndSetEditOfTask(${i}, 'popup'), setEditFormOpenedToFalse()">
             <span>OK</span>
             <img src="./assets/img/Desktop/add-task/check.svg" alt="weißer Haken" />
         </button>
