@@ -394,6 +394,7 @@ function closeCard(deleted) {
         div.classList.add("hidden");
     }, 100);
     isEditFormOpened = cardIsOpened = false;
+    sortTask();
 }
 
 
