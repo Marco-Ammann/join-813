@@ -23,9 +23,7 @@ async function loadAddTaskPage() {
  * list of assignable contacts, the category options for tasks, and sets up listeners 
  * for handling dropdown interactions and filtering contacts.
  */
-async function loadFromAddTaskPage() {
-  await loadContacts();
-  generateAssignContacts('assignDropdown-popup', 'assigned-contacts');
+function loadFromAddTaskPage() {
   generateCategoryOptions();
 }
 

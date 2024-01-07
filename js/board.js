@@ -176,10 +176,10 @@ function openCard(taskIndex) {
 async function editCard(taskIndex) {
     const card = document.getElementById(`openCard`);
     card.innerHTML = generateEditCardHTML(taskIndex);
-    setValuesInEditCard(taskIndex, 'subTasks-popup');
-    isEditFormOpened = true;
     await loadContacts();
     await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
+    setValuesInEditCard(taskIndex, 'subTasks-popup');
+    isEditFormOpened = true;
 
     setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign');
     setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
