@@ -110,6 +110,7 @@ function render(taskStatus, taskIndex) {
     addProgressBar(taskIndex);
 }
 
+
 function category(text) {
     text = text.replace(/\s/g, '');
     return "header" + text;
@@ -164,6 +165,10 @@ function openCard(taskIndex) {
     addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
     addTransition();
     addOpenCardSubtasks(taskIndex);
+
+    setTimeout(() => {
+        cardIsOpened = true;
+    }, 100);
 }
 
 
