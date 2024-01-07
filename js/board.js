@@ -471,10 +471,20 @@ function removeHighlight() {
  * @param {string} category - The category to which the task should be moved.
  * @param {number} id - The ID of the task to be moved.
  */
-function moveTo(category) {
+async function moveTo(category) {
     tasks[currentDraggedElement][`state`] = category;
+    await saveStateChangeAfterDroppingTask()
     sortTask();
     removeHighlight();
+}
+
+
+/**
+ * Saves Tasks into Backend
+ */
+async function saveStateChangeAfterDroppingTask() {
+    let tasksToPush = tasks;
+    await setItem('tasks', tasksToPush);
 }
 
 
