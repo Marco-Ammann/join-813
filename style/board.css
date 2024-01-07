@@ -392,7 +392,7 @@
 }
 
 .pos-static {
-  position: static!important;
+  position: static !important;
 }
 
 .popup-wrapper {
@@ -637,6 +637,7 @@ div[id^="openCardSubtasks"] {
 
 .openCardHeader a {
   height: 2rem;
+  cursor: pointer;
 }
 
 .openCardHeader svg {
@@ -675,6 +676,10 @@ div[id^="openCardSubtasks"] {
   gap: 1rem;
   height: 1.25rem;
   padding: 0.375rem 1rem;
+}
+
+.openCardSubtasks:hover {
+  cursor: pointer;
 }
 
 #openCardSubtasks {
