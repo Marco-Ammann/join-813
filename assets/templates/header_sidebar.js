@@ -202,7 +202,9 @@ function moveDropDownMenu() {
         headerIcon.style.background = "#0C2E621F";
         container.style.display = "block";
         openDropDownAni();
-        dropDownIsOpen = true;
+        setTimeout(() => {            
+            dropDownIsOpen = true;
+        }, 50);
     } else {
         closeDropDownAni();
     }
