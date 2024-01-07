@@ -726,6 +726,10 @@ div[id^="openCardSubtasks"] {
   stroke: #29ABE2 !important;
 }
 
+.scrollBlocker {
+  overflow-y: hidden;
+}
+
 /* Animations */
 
 @keyframes slideInAddNew {
@@ -803,6 +807,18 @@ div[id^="openCardSubtasks"] {
   .MobileBoardHeaderControll h2 {
     font-size: 2.9375rem;
   }
+
+  .hoverCardContainer {
+    display: flex;
+    width: 33.625rem;
+    height: 12.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 1.875rem;
+    border: 1px dashed var(--icon, #A8A8A8);
+    margin: 0.875rem;
+}
 
   .addTaskButton {
     width: 2.125rem;
