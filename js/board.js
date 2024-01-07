@@ -17,11 +17,10 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
  * @function loadBoard
  */
 async function loadBoard() {
-    await setTasks();
-    await loadContacts();
-    renderTasks();
-    console.log(tasks);
-
+  await setTasks();
+  await loadContacts();
+  renderTasks();
+  console.log(tasks);
 }
 
 
@@ -33,12 +32,12 @@ async function loadBoard() {
  * @function setTasks
  */
 async function setTasks() {
-    let tasksToSet = await getTasksArray();
-    if (Array.isArray(tasksToSet)) {
-        tasks = tasksToSet;
-    } else {
-        tasks = [];
-    }
+  let tasksToSet = await getTasksArray();
+  if (Array.isArray(tasksToSet)) {
+    tasks = tasksToSet;
+  } else {
+    tasks = [];
+  }
 }
 
 
@@ -47,15 +46,20 @@ async function setTasks() {
  * Displays a message indicating there are no tasks in each container if there are no tasks.
  */
 function renderTasks() {
-    const containerIds = ["ToDoContainer", "InProgressContainer", "AwaitFeedbackContainer", "DoneContainer"];
+  const containerIds = [
+    "ToDoContainer",
+    "InProgressContainer",
+    "AwaitFeedbackContainer",
+    "DoneContainer",
+  ];
 
-    containerIds.forEach(id => document.getElementById(id).innerHTML = "");
+  containerIds.forEach((id) => (document.getElementById(id).innerHTML = ""));
 
-    if (tasks.length > 0) {
-        tasks.forEach((task, i) => renderTaskCard(task.state, i));
-    } else {
-        containerIds.forEach(addNoTaskHTML);
-    }
+  if (tasks.length > 0) {
+    tasks.forEach((task, i) => renderTaskCard(task.state, i));
+  } else {
+    containerIds.forEach(addNoTaskHTML);
+  }
 }
 
 
@@ -66,15 +70,15 @@ function renderTasks() {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function renderTaskCard(taskStatus, taskIndex) {
-    const containerId = `${taskStatus}Container`;
-    const container = document.getElementById(containerId);
-    const task = tasks[taskIndex];
+  const containerId = `${taskStatus}Container`;
+  const container = document.getElementById(containerId);
+  const task = tasks[taskIndex];
 
-    container.innerHTML += generateTaskCardHTML(task, taskIndex);
+  container.innerHTML += generateTaskCardHTML(task, taskIndex);
 
-    checkAndAddTasks(tasks);
-    addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
-    addProgressBar(taskIndex);
+  checkAndAddTasks(tasks);
+  addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
+  addProgressBar(taskIndex);
 }
 
 
@@ -84,18 +88,18 @@ function renderTaskCard(taskStatus, taskIndex) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function openCard(taskIndex) {
-    const content = document.getElementById(`openCard`);
-    content.innerHTML = "";
-    const openCardContainer = document.getElementById("openCardContainer");
-    openCardContainer.classList.remove("hidden");
+  const content = document.getElementById(`openCard`);
+  content.innerHTML = "";
+  const openCardContainer = document.getElementById("openCardContainer");
+  openCardContainer.classList.remove("hidden");
 
-    content.innerHTML = generateOpenCardHTML(taskIndex);
-    addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
-    addTransition();
-    addOpenCardSubtasks(taskIndex);
-    setTimeout(() => {
-        cardIsOpened = true;
-    }, 100);
+  content.innerHTML = generateOpenCardHTML(taskIndex);
+  addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
+  addTransition();
+  addOpenCardSubtasks(taskIndex);
+  setTimeout(() => {
+    cardIsOpened = true;
+  }, 100);
 }
 
 
@@ -106,20 +110,37 @@ function openCard(taskIndex) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 async function editCard(taskIndex) {
-    const card = document.getElementById(`openCard`);
-    card.innerHTML = generateEditCardHTML(taskIndex);
-    await loadContacts();
-    await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
-    setValuesInEditCard(taskIndex, 'subTasks-popup');
-    isEditFormOpened = true;
+  const card = document.getElementById(`openCard`);
+  card.innerHTML = generateEditCardHTML(taskIndex);
+  await loadContacts();
+  await generateAssignContacts(
+    "assignDropdown-popup",
+    "assigned-contacts-popup"
+  );
+  setValuesInEditCard(taskIndex, "subTasks-popup");
+  isEditFormOpened = true;
 
-    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign');
-    setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
+  setupDropdownCloseListener(
+    "assignDropdown-popup",
+    "add-contact-input",
+    "arrowAssign"
+  );
+  setupFilterListener("add-contact-input-popup", "assignDropdown-popup");
 
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-    setClickedContacts(taskIndex, 'assigned-contacts-popup');
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-    clickPriority(taskIndex)
+  toggleDropdown(
+    "assignDropdown-popup",
+    "add-contact-input-popup",
+    "arrowAssign-popup",
+    "Select contacts to assign"
+  );
+  setClickedContacts(taskIndex, "assigned-contacts-popup");
+  toggleDropdown(
+    "assignDropdown-popup",
+    "add-contact-input-popup",
+    "arrowAssign-popup",
+    "Select contacts to assign"
+  );
+  clickPriority(taskIndex);
 }
 
 
@@ -129,16 +150,16 @@ async function editCard(taskIndex) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function addOpenCardSubtasks(taskIndex) {
-    let content = document.getElementById(`openCardSubtasks${taskIndex}`);
-    content.innerHTML = "";
+  let content = document.getElementById(`openCardSubtasks${taskIndex}`);
+  content.innerHTML = "";
 
-    tasks[taskIndex]["subtasks"].forEach((subtask, i) => {
-        content.innerHTML += createIncompleteSubtaskHTML(subtask, i, taskIndex);
-    });
+  tasks[taskIndex]["subtasks"].forEach((subtask, i) => {
+    content.innerHTML += createIncompleteSubtaskHTML(subtask, i, taskIndex);
+  });
 
-    tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
-        content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
-    });
+  tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
+    content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
+  });
 }
 
 
@@ -149,13 +170,13 @@ function addOpenCardSubtasks(taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtask.
  */
 async function subtaskComplete(i, taskIndex) {
-    let content = document.getElementById(`subtask${i}`);
-    const subtask = tasks[taskIndex]["subtasks"][i];
-    content.innerHTML = createCompleteSubtaskHTML(subtask, i, taskIndex);
-    
-    moveSubtaskToDone(i, taskIndex);
-    await setItem('tasks', tasks);
-    addOpenCardSubtasks(taskIndex);
+  let content = document.getElementById(`subtask${i}`);
+  const subtask = tasks[taskIndex]["subtasks"][i];
+  content.innerHTML = createCompleteSubtaskHTML(subtask, i, taskIndex);
+
+  moveSubtaskToDone(i, taskIndex);
+  await setItem("tasks", tasks);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -166,13 +187,13 @@ async function subtaskComplete(i, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 async function subtaskUnComplete(i, taskIndex) {
-    let content = document.getElementById(`subtaskDone${i}`);
-    const subtask = tasks[taskIndex]["subtasksDone"][i];
-    content.innerHTML = createIncompleteSubtaskHTML(subtask, i, taskIndex);
-    
-    moveSubtaskToNotDone(i, taskIndex);
-    await setItem('tasks', tasks);
-    addOpenCardSubtasks(taskIndex);
+  let content = document.getElementById(`subtaskDone${i}`);
+  const subtask = tasks[taskIndex]["subtasksDone"][i];
+  content.innerHTML = createIncompleteSubtaskHTML(subtask, i, taskIndex);
+
+  moveSubtaskToNotDone(i, taskIndex);
+  await setItem("tasks", tasks);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -183,10 +204,10 @@ async function subtaskUnComplete(i, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 function moveSubtaskToDone(subTaskIndex, taskIndex) {
-    let subTaskToRemove = tasks[taskIndex]["subtasks"][subTaskIndex];
-    tasks[taskIndex]["subtasks"].splice(subTaskIndex, 1);
-    tasks[taskIndex]["subtasksDone"].push(subTaskToRemove);
-    addOpenCardSubtasks(taskIndex);
+  let subTaskToRemove = tasks[taskIndex]["subtasks"][subTaskIndex];
+  tasks[taskIndex]["subtasks"].splice(subTaskIndex, 1);
+  tasks[taskIndex]["subtasksDone"].push(subTaskToRemove);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -197,34 +218,34 @@ function moveSubtaskToDone(subTaskIndex, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
-    let subTaskToUndo = tasks[taskIndex]["subtasksDone"][subTaskIndex];
-    tasks[taskIndex]["subtasksDone"].splice(subTaskIndex, 1);
-    tasks[taskIndex]["subtasks"].push(subTaskToUndo);
-    addOpenCardSubtasks(taskIndex);
+  let subTaskToUndo = tasks[taskIndex]["subtasksDone"][subTaskIndex];
+  tasks[taskIndex]["subtasksDone"].splice(subTaskIndex, 1);
+  tasks[taskIndex]["subtasks"].push(subTaskToUndo);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
 /**
  * Closes the open task card and hides it from the view.
- * 
+ *
  * @param {boolean} deleted - Indicates whether the card was deleted or not.
  */
 function closeCard(deleted) {
-    const transitionDiv = document.getElementById("openCard");
-    const div = document.getElementById("openCardContainer");
+  const transitionDiv = document.getElementById("openCard");
+  const div = document.getElementById("openCardContainer");
 
-    if (deleted) {
-        div.classList.add("hidden");
-    } else {
-        div.style.animation = 'blendOut 100ms ease-out forwards';
-        transitionDiv.style.animation = 'slideOutCard 100ms ease-out forwards';
-        setTimeout(() => {
-            div.classList.add("hidden");
-        }, 100);
-    }
+  if (deleted) {
+    div.classList.add("hidden");
+  } else {
+    div.style.animation = "blendOut 100ms ease-out forwards";
+    transitionDiv.style.animation = "slideOutCard 100ms ease-out forwards";
+    setTimeout(() => {
+      div.classList.add("hidden");
+    }, 100);
+  }
 
-    isEditFormOpened = cardIsOpened = false;
-    renderTasks();
+  isEditFormOpened = cardIsOpened = false;
+  renderTasks();
 }
 
 
@@ -234,22 +255,30 @@ function closeCard(deleted) {
  * @param {string} containerId - The ID of the container to highlight.
  */
 function highlight(containerId) {
-    switch (containerId) {
-        case 'ToDo':
-            document.getElementById('InProgressHoverContainer').classList.remove('d-none');
-            break;
-        case 'InProgress':
-            document.getElementById('ToDoHoverContainer').classList.remove('d-none');
-            document.getElementById('AwaitFeedbackHoverContainer').classList.remove('d-none');
-            break;
-        case 'AwaitFeedback':
-            document.getElementById('InProgressHoverContainer').classList.remove('d-none');
-            document.getElementById('DoneHoverContainer').classList.remove('d-none');
-            break;
-        case 'Done':
-            document.getElementById('AwaitFeedbackHoverContainer').classList.remove('d-none');
-            break;
-    }
+  switch (containerId) {
+    case "ToDo":
+      document
+        .getElementById("InProgressHoverContainer")
+        .classList.remove("d-none");
+      break;
+    case "InProgress":
+      document.getElementById("ToDoHoverContainer").classList.remove("d-none");
+      document
+        .getElementById("AwaitFeedbackHoverContainer")
+        .classList.remove("d-none");
+      break;
+    case "AwaitFeedback":
+      document
+        .getElementById("InProgressHoverContainer")
+        .classList.remove("d-none");
+      document.getElementById("DoneHoverContainer").classList.remove("d-none");
+      break;
+    case "Done":
+      document
+        .getElementById("AwaitFeedbackHoverContainer")
+        .classList.remove("d-none");
+      break;
+  }
 }
 
 
@@ -257,12 +286,17 @@ function highlight(containerId) {
  * Removes the highlight from all hover containers.
  */
 function removeHighlight() {
-    const containerIds = ['ToDoHoverContainer', 'InProgressHoverContainer', 'DoneHoverContainer', 'AwaitFeedbackHoverContainer'];
-    
-    containerIds.forEach(id => {
-        const content = document.getElementById(id);
-        content.classList.add('d-none');
-    });
+  const containerIds = [
+    "ToDoHoverContainer",
+    "InProgressHoverContainer",
+    "DoneHoverContainer",
+    "AwaitFeedbackHoverContainer",
+  ];
+
+  containerIds.forEach((id) => {
+    const content = document.getElementById(id);
+    content.classList.add("d-none");
+  });
 }
 
 
@@ -272,15 +306,15 @@ function removeHighlight() {
  * @param {string} containerId - The ID of the container where the message should be added.
  */
 function addNoTaskHTML(containerId) {
-    const messages = {
-        'ToDoContainer': "No task To do",
-        'InProgressContainer': "No task in progress",
-        'AwaitFeedbackContainer': "No task awaiting feedback",
-        'DoneContainer': "No completed tasks"
-    };
+  const messages = {
+    ToDoContainer: "No task To do",
+    InProgressContainer: "No task in progress",
+    AwaitFeedbackContainer: "No task awaiting feedback",
+    DoneContainer: "No completed tasks",
+  };
 
-    const message = messages[containerId];
-    document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
+  const message = messages[containerId];
+  document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
 }
 
 
@@ -291,7 +325,7 @@ function addNoTaskHTML(containerId) {
  * @returns {string} HTML string for the "No Task" message.
  */
 function createNoTaskHTML(message) {
-    return /*html*/ `
+  return /*html*/ `
         <div class="noTaskFound">
             <p>${message}</p>
         </div>
@@ -307,13 +341,13 @@ function createNoTaskHTML(message) {
  * @param {string} state - The selected task state ("ToDo", "InProgress", "AwaitFeedback", "Done").
  */
 function openAddTaskMenu(state) {
-    currentTaskState = state;
-    const div = document.getElementById("animationDiv");
-    div.classList.remove("hidden");
-    div.style = 'animation: blendIn 100ms ease-in-out forwards';
+  currentTaskState = state;
+  const div = document.getElementById("animationDiv");
+  div.classList.remove("hidden");
+  div.style = "animation: blendIn 100ms ease-in-out forwards";
 
-    const transitionDiv = document.getElementById("transition");
-    transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
+  const transitionDiv = document.getElementById("transition");
+  transitionDiv.style = "animation: slideInAddNew 100ms ease-in-out forwards;";
 }
 
 
@@ -323,17 +357,17 @@ function openAddTaskMenu(state) {
  * @param {string} assignedContactsAvatarDivId - The ID of the assigned contacts avatar div.
  */
 function hideAddTaskMenu(assignedContactsAvatarDivId) {
-    const transitionDiv = document.getElementById("transition");
-    const animationDiv = document.getElementById("animationDiv");
+  const transitionDiv = document.getElementById("transition");
+  const animationDiv = document.getElementById("animationDiv");
 
-    animationDiv.style.animation = 'blendOut 100ms ease-in-out forwards';
-    transitionDiv.style.animation = 'slideOutAddNew 100ms ease-in-out forwards';
-    
-    setTimeout(() => {
-        animationDiv.classList.add("hidden");
-    }, 100);
+  animationDiv.style.animation = "blendOut 100ms ease-in-out forwards";
+  transitionDiv.style.animation = "slideOutAddNew 100ms ease-in-out forwards";
 
-    clearForm(assignedContactsAvatarDivId, 'subTasks');
+  setTimeout(() => {
+    animationDiv.classList.add("hidden");
+  }, 100);
+
+  clearForm(assignedContactsAvatarDivId, "subTasks");
 }
 
 
@@ -345,8 +379,8 @@ function hideAddTaskMenu(assignedContactsAvatarDivId) {
  * @param {number} i - The index of the task to delete.
  */
 async function deleteOpenCard(i) {
-    tasks.splice(i, 1);
-    renderTasks();
-    closeCard(true);
-    await setItem('tasks', tasks);
+  tasks.splice(i, 1);
+  renderTasks();
+  closeCard(true);
+  await setItem("tasks", tasks);
 }

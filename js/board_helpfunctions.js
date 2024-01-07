@@ -5,9 +5,8 @@
  * @returns {string} A formatted category class name.
  */
 function category(text) {
-    return "header" + text.replace(/\s/g, '');
+  return "header" + text.replace(/\s/g, "");
 }
-
 
 
 /**
@@ -18,18 +17,18 @@ function category(text) {
  * @returns {string} Truncated text ending with an ellipsis if it exceeds the specified length.
  */
 function addDescription(text, maxLength = 40) {
-    if (text.length <= maxLength) {
-        return text;
-    }
+  if (text.length <= maxLength) {
+    return text;
+  }
 
-    let truncatedText = text.substring(0, maxLength);
-    const lastSpaceIndex = truncatedText.lastIndexOf(' ');
+  let truncatedText = text.substring(0, maxLength);
+  const lastSpaceIndex = truncatedText.lastIndexOf(" ");
 
-    if (lastSpaceIndex !== -1) {
-        truncatedText = truncatedText.substring(0, lastSpaceIndex);
-    }
+  if (lastSpaceIndex !== -1) {
+    truncatedText = truncatedText.substring(0, lastSpaceIndex);
+  }
 
-    return truncatedText + '...';
+  return truncatedText + "...";
 }
 
 
@@ -39,16 +38,16 @@ function addDescription(text, maxLength = 40) {
  * @param {number} i - The index of the task in the tasks array.
  */
 function addProgressBar(i) {
-    let task = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
-    if (task > 0) {
-        let calculatetSubtask = 100 / task;
-        calculatetSubtask = calculatetSubtask * tasks[i]["subtasksDone"].length;
-        content = document.getElementById(`progressbar${i}`);
-        content.innerHTML = /*html*/ `
+  let task = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
+  if (task > 0) {
+    let calculatetSubtask = 100 / task;
+    calculatetSubtask = calculatetSubtask * tasks[i]["subtasksDone"].length;
+    content = document.getElementById(`progressbar${i}`);
+    content.innerHTML = /*html*/ `
                 <progress max="100" value="${calculatetSubtask}"></progress>
                 <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
                 `;
-    }
+  }
 }
 
 
@@ -58,8 +57,8 @@ function addProgressBar(i) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function clickPriority(taskIndex) {
-    let setPriority = tasks[taskIndex].priority;
-    setPrio(setPriority);
+  let setPriority = tasks[taskIndex].priority;
+  setPrio(setPriority);
 }
 
 
@@ -70,13 +69,13 @@ function clickPriority(taskIndex) {
  * @param {number} x - The index of the task in the tasks array.
  */
 function addOpenTaskIcon(id, x) {
-    let content = document.getElementById(id);
-    tasks[x]["assignedTo"].forEach(assignedContact => {
-        let contact = contacts.find(c => c.id === assignedContact.id);
-        if (contact) {
-            content.innerHTML += createContactIcon(contact);
-        }
-    });
+  let content = document.getElementById(id);
+  tasks[x]["assignedTo"].forEach((assignedContact) => {
+    let contact = contacts.find((c) => c.id === assignedContact.id);
+    if (contact) {
+      content.innerHTML += createContactIcon(contact);
+    }
+  });
 }
 
 
@@ -87,16 +86,16 @@ function addOpenTaskIcon(id, x) {
  * @param {number} x - The index of the task in the tasks array.
  */
 function addTaskIcon(id, x) {
-    let content = document.getElementById(id);
-    const assignedContacts = tasks[x]["assignedTo"];
-    assignedContacts.forEach((assignedContact, index) => {
-        let contact = contacts.find(c => c.id === assignedContact.id);
-        if (contact) {
-            content.innerHTML += createContactIconHTML(contact, index);
-        }
+  let content = document.getElementById(id);
+  const assignedContacts = tasks[x]["assignedTo"];
+  assignedContacts.forEach((assignedContact, index) => {
+    let contact = contacts.find((c) => c.id === assignedContact.id);
+    if (contact) {
+      content.innerHTML += createContactIconHTML(contact, index);
+    }
 
-        if (index === 3) return;
-    });
+    if (index === 3) return;
+  });
 }
 
 
@@ -104,12 +103,12 @@ function addTaskIcon(id, x) {
  * Adds a transition effect to show the open task card.
  */
 function addTransition() {
-    const openCardContainer = document.getElementById("openCardContainer");
-    const openCard = document.getElementById("openCard");
+  const openCardContainer = document.getElementById("openCardContainer");
+  const openCard = document.getElementById("openCard");
 
-    openCardContainer.classList.remove("hidden");
-    openCardContainer.style.animation = 'blendIn 100ms ease-out forwards';
-    openCard.style.animation = 'slideInCard 100ms ease-out forwards';
+  openCardContainer.classList.remove("hidden");
+  openCardContainer.style.animation = "blendIn 100ms ease-out forwards";
+  openCard.style.animation = "slideInCard 100ms ease-out forwards";
 }
 
 
@@ -119,8 +118,8 @@ function addTransition() {
  * @param {number} id - The unique identifier of the element being dragged.
  */
 function startDraggin(id) {
-    currentDraggedElement = id;
-    addRotation(id);
+  currentDraggedElement = id;
+  addRotation(id);
 }
 
 
@@ -130,7 +129,7 @@ function startDraggin(id) {
  * @param {Event} ev - The dragover event.
  */
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
 
@@ -141,10 +140,10 @@ function allowDrop(ev) {
  * @param {number} id - The ID of the task to be moved.
  */
 async function moveTo(category) {
-    tasks[currentDraggedElement][`state`] = category;
-    await saveStateChangeAfterDroppingTask()
-    renderTasks();
-    removeHighlight();
+  tasks[currentDraggedElement][`state`] = category;
+  await saveStateChangeAfterDroppingTask();
+  renderTasks();
+  removeHighlight();
 }
 
 
@@ -152,8 +151,8 @@ async function moveTo(category) {
  * Saves Tasks into Backend
  */
 async function saveStateChangeAfterDroppingTask() {
-    let tasksToPush = tasks;
-    await setItem('tasks', tasksToPush);
+  let tasksToPush = tasks;
+  await setItem("tasks", tasksToPush);
 }
 
 
@@ -163,8 +162,8 @@ async function saveStateChangeAfterDroppingTask() {
  * @param {number} id - The ID of the task card to which the rotation class should be added.
  */
 function addRotation(id) {
-    let card = document.getElementById('card' + `${id}`);
-    card.classList.add('rotateCard')
+  let card = document.getElementById("card" + `${id}`);
+  card.classList.add("rotateCard");
 }
 
 
@@ -174,13 +173,13 @@ function addRotation(id) {
  * @param {Array} tasks - An array of tasks to be checked.
  */
 function checkAndAddTasks(tasks) {
-    states.forEach((state) => {
-        const filteredTasks = tasks.filter((task) => task.state === state);
+  states.forEach((state) => {
+    const filteredTasks = tasks.filter((task) => task.state === state);
 
-        if (filteredTasks.length === 0) {
-            addNoTaskHTML(state + "Container");
-        }
-    });
+    if (filteredTasks.length === 0) {
+      addNoTaskHTML(state + "Container");
+    }
+  });
 }
 
 
@@ -191,11 +190,13 @@ function checkAndAddTasks(tasks) {
  * @param {string} inputId - The ID of the input element containing the search term.
  */
 function sortAndFilterCards(inputId) {
-    const searchTerm = document.getElementById(inputId).value.toLowerCase();
-    const cards = document.querySelectorAll(".toDoCard");
+  const searchTerm = document.getElementById(inputId).value.toLowerCase();
+  const cards = document.querySelectorAll(".toDoCard");
 
-    cards.forEach(card => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        card.parentNode.style.display = title.includes(searchTerm) ? "block" : "none";
-    });
+  cards.forEach((card) => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    card.parentNode.style.display = title.includes(searchTerm)
+      ? "block"
+      : "none";
+  });
 }
