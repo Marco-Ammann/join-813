@@ -328,7 +328,7 @@ function generateTaskCardHTML(task, taskIndex) {
                 <div class="${category(task.category)} headerUserStoryPopUp">${task.category}</div>
                 <div>
                     <h3>${task.taskTitle}</h3>
-                    <p>${addDesscription(task.description)}</p>
+                    <p>${addDescription(task.description)}</p>
                 </div>
                 <div id="progressbar${taskIndex}" class="progressbar"></div>
                 <div class="toDoCardFooter">
