@@ -1,6 +1,6 @@
 function generateEditCardHTML(i) {
     return /*HTML*/`
-<div class="add-tasks-popup">
+<div class="add-tasks-popup pos-static">
 
 <div class="editor-wrapper">
     <div class="addTaskHeader">
