@@ -1,5 +1,11 @@
+/**
+ * Generates HTML markup for the edit task card popup.
+ *
+ * @param {number} i - The index of the task to be edited.
+ * @returns {string} HTML markup for the edit task card.
+ */
 function generateEditCardHTML(i) {
-    return /*HTML*/`
+  return /*HTML*/ `
 <div class="add-tasks-popup pos-static">
 
 <div class="editor-wrapper">
@@ -149,11 +155,14 @@ function generateEditCardHTML(i) {
     `;
 }
 
-
-
-
+/**
+ * Generates HTML markup for an open task card.
+ *
+ * @param {number} taskIndex - The index of the task in the tasks array.
+ * @returns {string} HTML markup for the open task card.
+ */
 function generateOpenCardHTML(taskIndex) {
-    return /*html*/ `        
+  return /*html*/ `        
     <div class="toDoCard openCard">
         <div class="openCardHeader">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
@@ -169,17 +178,26 @@ function generateOpenCardHTML(taskIndex) {
             </a>
         </div>
         <div class="openCardContent">
-            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
-            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
+            <h3 id="openCardTitle${taskIndex}">${
+    tasks[taskIndex][`taskTitle`]
+  }</h3>
+            <h4 id="openCardDescription${taskIndex}">${
+    tasks[taskIndex][`description`]
+  }</h4>
             <div class="openCardTable">
-            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
+            <p>Due date:</p><span id="openCardDate${taskIndex}">${
+    tasks[taskIndex][`dueDate`]
+  }<span>
             </div>
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span id="openCardPriority${taskIndex}">${tasks[taskIndex][`priority`]}</span>
-                <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]
-        }.svg">
+                <span id="openCardPriority${taskIndex}">${
+    tasks[taskIndex][`priority`]
+  }</span>
+                <img src="./assets/img/Desktop/board/priority_symbols/${
+                  tasks[taskIndex][`priority`]
+                }.svg">
                 </div>
             </div>
         </div>
@@ -219,7 +237,114 @@ function generateOpenCardHTML(taskIndex) {
         </div>
     </div>
     `;
-
 }
 
+/**
+ * Creates an icon for a contact.
+ *
+ * @param {Object} contact - The contact object.
+ * @returns {string} - HTML string for the contact icon.
+ */
+function createContactIcon(contact) {
+  let color = contact["color"];
+  const nameParts = contact["name"].split(" ");
+  const firstNameInitial = nameParts[0].charAt(0);
+  const lastNameInitial =
+    nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
 
+  return /*html*/ `
+        <div class="openCardIcon">
+          <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+          <p>${contact["name"]}</p>
+        </div>
+    `;
+}
+
+/**
+ * Generates HTML for a contact icon.
+ *
+ * @param {Object} contact - The contact object.
+ * @param {number} index - The current index in the loop.
+ * @returns {string} HTML string for the contact icon.
+ */
+function createContactIconHTML(contact, index) {
+  if (index === 3) {
+    return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>`;
+  }
+
+  let names = getInitials(contact["name"]);
+  return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${names}</div>`;
+}
+
+/**
+ * Creates HTML for an incomplete subtask.
+ *
+ * @param {string} subtask - The subtask text.
+ * @param {number} index - The index of the subtask.
+ * @param {number} taskIndex - The index of the task.
+ * @returns {string} HTML string for the incomplete subtask.
+ */
+function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
+  return /*html*/ `
+        <div class="hoverPointer openCardSubtasks" id="subtask${index}" onclick="subtaskComplete(${index}, ${taskIndex})">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+          </svg>
+          ${subtask}
+        </div>
+    `;
+}
+
+/**
+ * Creates HTML for a completed subtask.
+ *
+ * @param {string} subtask - The subtask text.
+ * @param {number} index - The index of the subtask.
+ * @param {number} taskIndex - The index of the task.
+ * @returns {string} HTML string for the completed subtask.
+ */
+function createCompleteSubtaskHTML(subtask, index, taskIndex) {
+  return /*html*/ `
+        <div class="openCardSubtasks" id="subtaskDone${index}" onclick="subtaskUnComplete(${index}, ${taskIndex})">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="textCross">
+            ${subtask}
+          </p>
+        </div>
+    `;
+}
+
+/**
+ * Generates HTML markup for a task card.
+ *
+ * @param {Object} task - The task object.
+ * @param {number} taskIndex - The index of the task in the tasks array.
+ * @returns {string} HTML markup for the task card.
+ */
+function generateTaskCardHTML(task, taskIndex) {
+  return /*html*/ `    
+        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${
+    task.state
+  }')">
+            <div class="toDoCard">
+                <div class="${category(task.category)} headerUserStoryPopUp">${
+    task.category
+  }</div>
+                <div>
+                    <h3>${task.taskTitle}</h3>
+                    <p>${addDescription(task.description)}</p>
+                </div>
+                <div id="progressbar${taskIndex}" class="progressbar"></div>
+                <div class="toDoCardFooter">
+                    <div id="cardIcon${taskIndex}" class="userIcon"></div>
+                    <img src="./assets/img/Desktop/board/priority_symbols/${
+                      task.priority
+                    }.svg">
+                </div>
+            </div>
+        </div>
+    `;
+}

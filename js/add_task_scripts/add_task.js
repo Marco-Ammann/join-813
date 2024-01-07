@@ -107,7 +107,7 @@ async function validateAndCreateTaskPopup(assignedContactsAvatarDiv, subTaskDiv,
   if (isValidTitle && isValidDescription && isValidDueDate && isValidCategory) {
     await createTask(context);
     clearForm(assignedContactsAvatarDiv, subTaskDiv);
-    setTimeout(() => addDnonToAddTask(assignedContactsAvatarDiv), 150);
+    setTimeout(() => hideAddTaskMenu(assignedContactsAvatarDiv), 150);
     currentTaskState = 'ToDo';
     loadBoard();
   }

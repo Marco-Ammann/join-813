@@ -17,21 +17,10 @@ const states = ["InProgress", "Done", "AwaitFeedback", "ToDo"];
  * @function loadBoard
  */
 async function loadBoard() {
-    await setTasks();
-    await loadContacts();
-    sortTask();
-    console.log(tasks);
-
-}
-
-
-function mobileDragAndDrop() {
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
-        document.getElementById(`card${i}`).addEventListener('touchstart', function(ev) {
-        console.log('card' + i)
-        });
-    }
+  await setTasks();
+  await loadContacts();
+  renderTasks();
+  console.log(tasks);
 }
 
 
@@ -43,38 +32,34 @@ function mobileDragAndDrop() {
  * @function setTasks
  */
 async function setTasks() {
-    let tasksToSet = await getTasksArray();
-    if (Array.isArray(tasksToSet)) {
-        tasks = tasksToSet;
-    } else {
-        tasks = [];
-    }
+  let tasksToSet = await getTasksArray();
+  if (Array.isArray(tasksToSet)) {
+    tasks = tasksToSet;
+  } else {
+    tasks = [];
+  }
 }
 
 
 /**
  * Sorts tasks and renders them in their respective containers based on their state.
- * If there are no tasks, displays a message indicating there are no tasks in each container.
+ * Displays a message indicating there are no tasks in each container if there are no tasks.
  */
-function sortTask() {
-    // Clear the task containers
-    document.getElementById("ToDoContainer").innerHTML = "";
-    document.getElementById("InProgressContainer").innerHTML = "";
-    document.getElementById("AwaitFeedbackContainer").innerHTML = "";
-    document.getElementById("DoneContainer").innerHTML = "";
+function renderTasks() {
+  const containerIds = [
+    "ToDoContainer",
+    "InProgressContainer",
+    "AwaitFeedbackContainer",
+    "DoneContainer",
+  ];
 
-    if (tasks.length > 0) {
-        for (let i = 0; i < tasks.length; i++) {
-            const taskStatus = tasks[i]['state'];
-            render(taskStatus, i);
-        }
-    } else {
-        // If there are no tasks, add a message indicating there are no tasks in each container
-        addNoTaskHTML('ToDoContainer');
-        addNoTaskHTML('InProgressContainer');
-        addNoTaskHTML('AwaitFeedbackContainer');
-        addNoTaskHTML('DoneContainer');
-    }
+  containerIds.forEach((id) => (document.getElementById(id).innerHTML = ""));
+
+  if (tasks.length > 0) {
+    tasks.forEach((task, i) => renderTaskCard(task.state, i));
+  } else {
+    containerIds.forEach(addNoTaskHTML);
+  }
 }
 
 
@@ -84,69 +69,16 @@ function sortTask() {
  * @param {string} taskStatus - The status of the task (ToDo, InProgress, AwaitFeedback, Done).
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
-function render(taskStatus, taskIndex) {
-    taskStatus = taskStatus + "Container";
-    let sortetContainer = document.getElementById(taskStatus);
-    sortetContainer.innerHTML += /*html*/ `    
-        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${tasks[taskIndex][`state`]}')">
-            <div class="toDoCard">
-                <div class="${category(tasks[taskIndex][`category`])} headerUserStoryPopUp">${tasks[taskIndex][`category`]}</div>
-                <div>
-                    <h3>${tasks[taskIndex][`taskTitle`]}</h3>
-                    <p>${addDesscription(tasks[taskIndex][`description`])}</p>
-                </div>
-                <div id="progressbar${taskIndex}" class="progressbar">
-                </div>
-                <div class="toDoCardFooter">
-                    <div id="cardIcon${taskIndex}" class="userIcon">
-                    </div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]}.svg">
-                </div>
-            </div>
-        </div>
-`;
-    checkAndAddTasks(tasks);
-    addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
-    addProgressBar(taskIndex);
-}
+function renderTaskCard(taskStatus, taskIndex) {
+  const containerId = `${taskStatus}Container`;
+  const container = document.getElementById(containerId);
+  const task = tasks[taskIndex];
 
+  container.innerHTML += generateTaskCardHTML(task, taskIndex);
 
-function category(text) {
-    text = text.replace(/\s/g, '');
-    return "header" + text;
-    console.log(text);
-}
-function addDesscription(text) {
-    if (text.length <= 40) {
-        return text;
-    } else {
-        let gekuerzterText = text.substring(0, 40); // Die ersten 50 Zeichen nehmen
-        let letztesLeerzeichenIndex = gekuerzterText.lastIndexOf(' ');
-
-        if (letztesLeerzeichenIndex !== -1) {
-            gekuerzterText = gekuerzterText.substring(0, letztesLeerzeichenIndex); // Kürzen bis zum letzten Leerzeichen
-        }
-
-        return gekuerzterText + '...';
-    }
-}
-
-/**
- * Adds a progress bar to a task card based on the completion of subtasks.
- *
- * @param {number} i - The index of the task in the tasks array.
- */
-function addProgressBar(i) {
-    let task = tasks[i]["subtasks"].length + tasks[i]["subtasksDone"].length;
-    if (task > 0) {
-        let calculatetSubtask = 100 / task;
-        calculatetSubtask = calculatetSubtask * tasks[i]["subtasksDone"].length;
-        content = document.getElementById(`progressbar${i}`);
-        content.innerHTML = /*html*/ `
-                <progress max="100" value="${calculatetSubtask}"></progress>
-                <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
-                `;
-    }
+  checkAndAddTasks(tasks);
+  addTaskIcon(`cardIcon${taskIndex}`, taskIndex);
+  addProgressBar(taskIndex);
 }
 
 
@@ -156,18 +88,18 @@ function addProgressBar(i) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function openCard(taskIndex) {
-    const content = document.getElementById(`openCard`);
-    content.innerHTML = "";
-    const openCardContainer = document.getElementById("openCardContainer");
-    openCardContainer.classList.remove("hidden");
+  const content = document.getElementById(`openCard`);
+  content.innerHTML = "";
+  const openCardContainer = document.getElementById("openCardContainer");
+  openCardContainer.classList.remove("hidden");
 
-    content.innerHTML = generateOpenCardHTML(taskIndex);
-    addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
-    addTransition();
-    addOpenCardSubtasks(taskIndex);
-    setTimeout(() => {
-        cardIsOpened = true;
-    }, 100);
+  content.innerHTML = generateOpenCardHTML(taskIndex);
+  addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
+  addTransition();
+  addOpenCardSubtasks(taskIndex);
+  setTimeout(() => {
+    cardIsOpened = true;
+  }, 100);
 }
 
 
@@ -178,91 +110,38 @@ function openCard(taskIndex) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 async function editCard(taskIndex) {
-    const card = document.getElementById(`openCard`);
-    card.innerHTML = generateEditCardHTML(taskIndex);
-    await loadContacts();
-    await generateAssignContacts('assignDropdown-popup', 'assigned-contacts-popup');
-    setValuesInEditCard(taskIndex, 'subTasks-popup');
-    isEditFormOpened = true;
+  const card = document.getElementById(`openCard`);
+  card.innerHTML = generateEditCardHTML(taskIndex);
+  await loadContacts();
+  await generateAssignContacts(
+    "assignDropdown-popup",
+    "assigned-contacts-popup"
+  );
+  setValuesInEditCard(taskIndex, "subTasks-popup");
+  isEditFormOpened = true;
 
-    setupDropdownCloseListener('assignDropdown-popup', 'add-contact-input', 'arrowAssign');
-    setupFilterListener('add-contact-input-popup', 'assignDropdown-popup');
+  setupDropdownCloseListener(
+    "assignDropdown-popup",
+    "add-contact-input",
+    "arrowAssign"
+  );
+  setupFilterListener("add-contact-input-popup", "assignDropdown-popup");
 
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-    setClickedContacts(taskIndex, 'assigned-contacts-popup');
-    toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');
-    clickPriority(taskIndex)
+  toggleDropdown(
+    "assignDropdown-popup",
+    "add-contact-input-popup",
+    "arrowAssign-popup",
+    "Select contacts to assign"
+  );
+  setClickedContacts(taskIndex, "assigned-contacts-popup");
+  toggleDropdown(
+    "assignDropdown-popup",
+    "add-contact-input-popup",
+    "arrowAssign-popup",
+    "Select contacts to assign"
+  );
+  clickPriority(taskIndex);
 }
-
-
-/**
- * Sets the priority of the task to match the specified priority.
- *
- * @param {number} taskIndex - The index of the task in the tasks array.
- */
-function clickPriority(taskIndex) {
-    let setPriority = tasks[taskIndex].priority;
-    setPrio(setPriority);
-}
-
-
-/**
- * Adds icons for assigned contacts to the open card.
- *
- * @param {string} id - The ID of the HTML element where icons will be added.
- * @param {number} x - The index of the task in the tasks array.
- */
-function addOpenTaskIcon(id, x) {
-    let content = document.getElementById(id);
-    for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let assignedContactId = tasks[x]["assignedTo"][i].id;
-        let contact = contacts.find(c => c.id === assignedContactId);
-        if (contact) {
-            let color = contact["color"];
-            const nameParts = contact["name"].split(" ");
-            const firstNameInitial = nameParts[0].charAt(0);
-            const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
-
-            content.innerHTML += /*html*/ `
-            <div class="openCardIcon">
-              <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-              <p>${contact["name"]}</p>
-            </div>
-            `;
-        }
-    }
-}
-
-
-/**
- * Adds icons for assigned contacts to a task card.
- *
- * @param {string} id - The ID of the HTML element where icons will be added.
- * @param {number} x - The index of the task in the tasks array.
- */
-function addTaskIcon(id, x) {
-    let content = document.getElementById(id);
-    for (let i = 0; i < tasks[x]["assignedTo"].length; i++) {
-        let assignedContactId = tasks[x]["assignedTo"][i].id;
-        let contact = contacts.find(c => c.id === assignedContactId);
-        if (contact) {
-            let color = contact["color"];
-            let names = getInitials(contact['name']);
-
-            if (i == 3) {
-                content.innerHTML += /*html*/ `
-                <div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>
-              `;
-              return;
-            }
-
-            content.innerHTML += /*html*/ `
-              <div class="icon" style="background-color: ${color};">${names}</div>
-            `;
-        }
-    }
-}
-
 
 
 /**
@@ -271,36 +150,16 @@ function addTaskIcon(id, x) {
  * @param {number} taskIndex - The index of the task in the tasks array.
  */
 function addOpenCardSubtasks(taskIndex) {
-    // Get the HTML element where subtasks will be added
-    let content = document.getElementById(`openCardSubtasks${taskIndex}`);
-    content.innerHTML = "";
+  let content = document.getElementById(`openCardSubtasks${taskIndex}`);
+  content.innerHTML = "";
 
-    // Add incomplete subtasks
-    for (let i = 0; i < tasks[taskIndex]["subtasks"].length; i++) {
-        content.innerHTML += /*html*/ `
-        <div class="hoverPointer openCardSubtasks" id="subtask${i}" onclick="subtaskComplete(${i}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-          </svg>
-          ${tasks[taskIndex]["subtasks"][i]}
-        </div>
-      `;
-    }
+  tasks[taskIndex]["subtasks"].forEach((subtask, i) => {
+    content.innerHTML += createIncompleteSubtaskHTML(subtask, i, taskIndex);
+  });
 
-    // Add completed subtasks
-    for (let y = 0; y < tasks[taskIndex]["subtasksDone"].length; y++) {
-        content.innerHTML += /*html*/ `
-        <div class="openCardSubtasks" id="subtaskDone${y}" onclick="subtaskUnComplete(${y}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <p class="textCross">
-            ${tasks[taskIndex]["subtasksDone"][y]}
-          </p>
-        </div>
-      `;
-    }
+  tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
+    content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
+  });
 }
 
 
@@ -311,19 +170,13 @@ function addOpenCardSubtasks(taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtask.
  */
 async function subtaskComplete(i, taskIndex) {
-    let content = document.getElementById(`subtask${i}`);
-    content.innerHTML = /*html*/ `
-    <div class="openCardSubtasks" id="subtaskDone${i}" onclick="subtaskUnComplete(${i}, ${taskIndex})">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ${tasks[taskIndex]["subtasks"][i]}
-    </div>
-    `;
-    moveSubtaskToDone(i, taskIndex);
-    await setItem('tasks', tasks);
-    addOpenCardSubtasks(taskIndex);
+  let content = document.getElementById(`subtask${i}`);
+  const subtask = tasks[taskIndex]["subtasks"][i];
+  content.innerHTML = createCompleteSubtaskHTML(subtask, i, taskIndex);
+
+  moveSubtaskToDone(i, taskIndex);
+  await setItem("tasks", tasks);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -334,16 +187,13 @@ async function subtaskComplete(i, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 async function subtaskUnComplete(i, taskIndex) {
-    let content = document.getElementById(`subtaskDone${i}`);
-    content.innerHTML = /*html*/ `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                </svg>
-                ${tasks[taskIndex]["subtasks"]}
-    `;
-    moveSubtaskToNotDone(i, taskIndex);
-    await setItem('tasks', tasks);
-    addOpenCardSubtasks(taskIndex);
+  let content = document.getElementById(`subtaskDone${i}`);
+  const subtask = tasks[taskIndex]["subtasksDone"][i];
+  content.innerHTML = createIncompleteSubtaskHTML(subtask, i, taskIndex);
+
+  moveSubtaskToNotDone(i, taskIndex);
+  await setItem("tasks", tasks);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -354,10 +204,10 @@ async function subtaskUnComplete(i, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 function moveSubtaskToDone(subTaskIndex, taskIndex) {
-    let subTaskToRemove = tasks[taskIndex]["subtasks"][subTaskIndex];
-    tasks[taskIndex]["subtasks"].splice(subTaskIndex, 1);
-    tasks[taskIndex]["subtasksDone"].push(subTaskToRemove);
-    addOpenCardSubtasks(taskIndex);
+  let subTaskToRemove = tasks[taskIndex]["subtasks"][subTaskIndex];
+  tasks[taskIndex]["subtasks"].splice(subTaskIndex, 1);
+  tasks[taskIndex]["subtasksDone"].push(subTaskToRemove);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
@@ -368,156 +218,85 @@ function moveSubtaskToDone(subTaskIndex, taskIndex) {
  * @param {number} taskIndex - Index of the task containing the subtasks.
  */
 function moveSubtaskToNotDone(subTaskIndex, taskIndex) {
-    let subTaskToUndo = tasks[taskIndex]["subtasksDone"][subTaskIndex];
-    tasks[taskIndex]["subtasksDone"].splice(subTaskIndex, 1);
-    tasks[taskIndex]["subtasks"].push(subTaskToUndo);
-    addOpenCardSubtasks(taskIndex);
+  let subTaskToUndo = tasks[taskIndex]["subtasksDone"][subTaskIndex];
+  tasks[taskIndex]["subtasksDone"].splice(subTaskIndex, 1);
+  tasks[taskIndex]["subtasks"].push(subTaskToUndo);
+  addOpenCardSubtasks(taskIndex);
 }
 
 
 /**
  * Closes the open task card and hides it from the view.
- * @param {boolean} deleted - 
+ *
+ * @param {boolean} deleted - Indicates whether the card was deleted or not.
  */
 function closeCard(deleted) {
-    const transitionDiv = document.getElementById("openCard");
-    const div = document.getElementById("openCardContainer");
-    if (deleted) {
-        div.classList.add("hidden");
-        return;
-    };
+  const transitionDiv = document.getElementById("openCard");
+  const div = document.getElementById("openCardContainer");
 
-    div.style = 'animation: blendOut 100ms ease-out forwards'
-    transitionDiv.style = 'animation: slideOutCard 100ms ease-out forwards;';
+  if (deleted) {
+    div.classList.add("hidden");
+  } else {
+    div.style.animation = "blendOut 100ms ease-out forwards";
+    transitionDiv.style.animation = "slideOutCard 100ms ease-out forwards";
     setTimeout(() => {
-        transitionDiv.style = '';
-        div.classList.add("hidden");
+      div.classList.add("hidden");
     }, 100);
-    isEditFormOpened = cardIsOpened = false;
-    sortTask();
+  }
+
+  isEditFormOpened = cardIsOpened = false;
+  renderTasks();
 }
 
 
 /**
- * Adds a transition effect to show the open task card.
- */
-function addTransition() {
-    const div = document.getElementById("openCardContainer");
-    div.classList.remove("hidden");
-    div.style = 'animation: blendIn 100ms ease-out forwards'
-
-    const transitionDiv = document.getElementById("openCard");
-    transitionDiv.style = 'animation: slideInCard 100ms ease-out forwards;';
-}
-
-
-/**
- * Initiates the drag operation when an element is being dragged.
+ * Highlights the appropriate hover containers based on the given container ID.
  *
- * @param {number} id - The unique identifier of the element being dragged.
+ * @param {string} containerId - The ID of the container to highlight.
  */
-function startDraggin(id) {
-    currentDraggedElement = id;
-    addRotation(id);
-}
-
-
-/**
- * Allows a drop operation by preventing the default behavior of the dragover event.
- *
- * @param {Event} ev - The dragover event.
- */
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
 function highlight(containerId) {
-
-    if (containerId === 'ToDo') {
-        let content = document.getElementById('InProgressHoverContainer');
-        content.classList.remove('d-none');
-    }
-
-    if (containerId === 'InProgress') {
-        let content1 = document.getElementById('ToDoHoverContainer');
-        content1.classList.remove('d-none');
-        let content2 = document.getElementById('AwaitFeedbackHoverContainer');
-        content2.classList.remove('d-none');
-    }
-
-    if (containerId === 'AwaitFeedback') {
-        let content1 = document.getElementById('InProgressHoverContainer');
-        content1.classList.remove('d-none');
-        let content2 = document.getElementById('DoneHoverContainer');
-        content2.classList.remove('d-none');
-    }
-
-    if (containerId === 'Done') {
-        let content = document.getElementById('AwaitFeedbackHoverContainer');
-        content.classList.remove('d-none');
-    }
-
+  switch (containerId) {
+    case "ToDo":
+      document
+        .getElementById("InProgressHoverContainer")
+        .classList.remove("d-none");
+      break;
+    case "InProgress":
+      document.getElementById("ToDoHoverContainer").classList.remove("d-none");
+      document
+        .getElementById("AwaitFeedbackHoverContainer")
+        .classList.remove("d-none");
+      break;
+    case "AwaitFeedback":
+      document
+        .getElementById("InProgressHoverContainer")
+        .classList.remove("d-none");
+      document.getElementById("DoneHoverContainer").classList.remove("d-none");
+      break;
+    case "Done":
+      document
+        .getElementById("AwaitFeedbackHoverContainer")
+        .classList.remove("d-none");
+      break;
+  }
 }
 
+
+/**
+ * Removes the highlight from all hover containers.
+ */
 function removeHighlight() {
-    let content1 = document.getElementById('ToDoHoverContainer');
-    content1.classList.add('d-none');
-    let content2 = document.getElementById('InProgressHoverContainer');
-    content2.classList.add('d-none');
-    let content3 = document.getElementById('DoneHoverContainer');
-    content3.classList.add('d-none');
-    let content4 = document.getElementById('AwaitFeedbackHoverContainer');
-    content4.classList.add('d-none');
+  const containerIds = [
+    "ToDoHoverContainer",
+    "InProgressHoverContainer",
+    "DoneHoverContainer",
+    "AwaitFeedbackHoverContainer",
+  ];
 
-}
-
-/**
- * Moves a task to a different category.
- *
- * @param {string} category - The category to which the task should be moved.
- * @param {number} id - The ID of the task to be moved.
- */
-async function moveTo(category) {
-    tasks[currentDraggedElement][`state`] = category;
-    await saveStateChangeAfterDroppingTask()
-    sortTask();
-    removeHighlight();
-}
-
-
-/**
- * Saves Tasks into Backend
- */
-async function saveStateChangeAfterDroppingTask() {
-    let tasksToPush = tasks;
-    await setItem('tasks', tasksToPush);
-}
-
-
-/**
- * Adds a rotation class to a task card element.
- *
- * @param {number} id - The ID of the task card to which the rotation class should be added.
- */
-function addRotation(id) {
-    let card = document.getElementById('card' + `${id}`);
-    card.classList.add('rotateCard')
-}
-
-
-/**
- * Checks if there are tasks for each state and adds a "No Task" message if no tasks exist.
- *
- * @param {Array} tasks - An array of tasks to be checked.
- */
-function checkAndAddTasks(tasks) {
-    states.forEach((state) => {
-        const filteredTasks = tasks.filter((task) => task.state === state);
-
-        if (filteredTasks.length === 0) {
-            addNoTaskHTML(state + "Container");
-        }
-    });
+  containerIds.forEach((id) => {
+    const content = document.getElementById(id);
+    content.classList.add("d-none");
+  });
 }
 
 
@@ -527,15 +306,15 @@ function checkAndAddTasks(tasks) {
  * @param {string} containerId - The ID of the container where the message should be added.
  */
 function addNoTaskHTML(containerId) {
-    const messages = {
-        'ToDoContainer': "No task To do",
-        'InProgressContainer': "No task in progress",
-        'AwaitFeedbackContainer': "No task awaiting feedback",
-        'DoneContainer': "No completed tasks"
-    };
+  const messages = {
+    ToDoContainer: "No task To do",
+    InProgressContainer: "No task in progress",
+    AwaitFeedbackContainer: "No task awaiting feedback",
+    DoneContainer: "No completed tasks",
+  };
 
-    const message = messages[containerId];
-    document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
+  const message = messages[containerId];
+  document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
 }
 
 
@@ -546,35 +325,11 @@ function addNoTaskHTML(containerId) {
  * @returns {string} HTML string for the "No Task" message.
  */
 function createNoTaskHTML(message) {
-    return /*html*/ `
+  return /*html*/ `
         <div class="noTaskFound">
             <p>${message}</p>
         </div>
     `;
-}
-
-
-
-/**
- * Sorts and filters the cards based on a search term.
- * Retrieves the search term from the "sortTasksInput" input field, converts it to lowercase,
- * and filters the cards with titles or descriptions that contain the search term.
- * Displays matching cards and hides non-matching cards.
- */
-function sortAndFilterCards(inputId) {
-    const searchTerm = document.getElementById(`${inputId}`).value.toLowerCase(); // Get the entered search term and convert it to lowercase
-    const cards = document.querySelectorAll(".toDoCard"); // Get all cards with the class 'toDoCard'
-
-    cards.forEach((card) => {
-        const title = card.querySelector("h3").textContent.toLowerCase(); // Get the title of the card and convert it to lowercase
-
-        // Check if the search term is found in the title or description of the card
-        if (title.includes(searchTerm)) {
-            card.parentNode.style.display = "block"; // Display the card if the search term is found
-        } else {
-            card.parentNode.style.display = "none"; // Hide the card if the search term is not found
-        }
-    });
 }
 
 
@@ -586,37 +341,33 @@ function sortAndFilterCards(inputId) {
  * @param {string} state - The selected task state ("ToDo", "InProgress", "AwaitFeedback", "Done").
  */
 function openAddTaskMenu(state) {
-    currentTaskState = state;
-    // if (window.innerWidth < 1000) {
-    //     window.location.href = "add-task.html";
-    // } else {
-    const div = document.getElementById("animationDiv");
-    div.classList.remove("hidden");
-    div.style = 'animation: blendIn 100ms ease-in-out forwards';
+  currentTaskState = state;
+  const div = document.getElementById("animationDiv");
+  div.classList.remove("hidden");
+  div.style = "animation: blendIn 100ms ease-in-out forwards";
 
-    const transitionDiv = document.getElementById("transition");
-    transitionDiv.style = 'animation: slideInAddNew 100ms ease-in-out forwards;'
-    // }
+  const transitionDiv = document.getElementById("transition");
+  transitionDiv.style = "animation: slideInAddNew 100ms ease-in-out forwards;";
 }
 
 
 /**
- * Adds the "d-none" class to the add task menu and clears the form.
- * It also removes the sliding animation from the menu.
+ * Hides the add task menu with an animation and clears the form.
  *
- * @param {string} assignedContactsAvatarDiv - The ID of the assigned contacts avatar div.
+ * @param {string} assignedContactsAvatarDivId - The ID of the assigned contacts avatar div.
  */
-function addDnonToAddTask(assignedContactsAvatarDiv) {
-    const transout = document.getElementById("transition");
-    const div = document.getElementById("animationDiv");
+function hideAddTaskMenu(assignedContactsAvatarDivId) {
+  const transitionDiv = document.getElementById("transition");
+  const animationDiv = document.getElementById("animationDiv");
 
-    div.style = 'animation: blendOut 100ms ease-in-out forwards;'
-    transout.style = 'animation: slideOutAddNew 100ms ease-in-out forwards;'
-    setTimeout(() => {
-        transout.style = '';
-        div.classList.add("hidden");
-    }, 100);
-    clearForm(assignedContactsAvatarDiv, 'subTasks');
+  animationDiv.style.animation = "blendOut 100ms ease-in-out forwards";
+  transitionDiv.style.animation = "slideOutAddNew 100ms ease-in-out forwards";
+
+  setTimeout(() => {
+    animationDiv.classList.add("hidden");
+  }, 100);
+
+  clearForm(assignedContactsAvatarDivId, "subTasks");
 }
 
 
@@ -628,8 +379,8 @@ function addDnonToAddTask(assignedContactsAvatarDiv) {
  * @param {number} i - The index of the task to delete.
  */
 async function deleteOpenCard(i) {
-    tasks.splice(i, 1);
-    sortTask();
-    closeCard(true);
-    await setItem('tasks', tasks);
+  tasks.splice(i, 1);
+  renderTasks();
+  closeCard(true);
+  await setItem("tasks", tasks);
 }
