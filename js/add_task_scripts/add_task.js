@@ -198,8 +198,8 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
  * @param {string} setValue - The value to set for the input field when the dropdown is closed.
  */
 function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
-  dropdown.classList.add("d-none");
   inputfield.value = `${setValue}`;
+  dropdown.classList.add("d-none");
   dropdownState = "closed";
   arrowImage.src = "./assets/img/Desktop/add-task/arrow_dropdown_down.svg";
 }

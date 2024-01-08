@@ -118,7 +118,7 @@ async function editCard(taskIndex) {
   setValuesInEditCard(taskIndex, "subTasks-popup");
   isEditFormOpened = true;
 
-  setupDropdownCloseListener("assignDropdown-popup", "add-contact-input", "arrowAssign");
+  setupDropdownCloseListener("assignDropdown-popup", "add-contact-input-popup", "arrowAssign");
   setupFilterListener("add-contact-input-popup", "assignDropdown-popup");
 
   toggleDropdown("assignDropdown-popup", "add-contact-input-popup", "arrowAssign-popup", "Select contacts to assign");
