@@ -301,6 +301,10 @@ body {
     gap: 0.625rem;
 }
 
+.input-password img, .input-password-confirm img{
+    cursor: pointer;
+}
+
 .fail-login {
     width: 26.375rem;
     height: 0.75rem;
