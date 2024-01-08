@@ -34,10 +34,8 @@ async function setTasks() {
   let tasksToSet = await getTasksArray();
   if (Array.isArray(tasksToSet)) {
     tasks = tasksToSet;
-    console.log('Tasks loaded')
   } else {
     tasks = [];
-    console.log('Tasks failed to load')
   }
 }
 

@@ -756,6 +756,27 @@ div[id^="openCardSubtasks"] {
   transition: 300ms 10ms ease-out;
 }
 
+.allertNoTasksFoundContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -15;
+  pointer-events: none;
+}
+
+.allertNoTasksFound {
+  position: absolute;
+  z-index: 10;
+}
+
+.modal {
+  display: block !important;
+  pointer-events: auto !important;
+}
+
 /* Animations */
 
 @keyframes slideInAddNew {

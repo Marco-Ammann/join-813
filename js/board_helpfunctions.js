@@ -1,3 +1,5 @@
+let taskFound = false;
+
 /**
  * Formats a given text into a category class name by removing spaces.
  *
@@ -177,13 +179,35 @@ function checkAndAddTasks(tasks) {
  * @param {string} inputId - The ID of the input element containing the search term.
  */
 function sortAndFilterCards(inputId) {
+  document.getElementById('allertNoTasksFoundContainer').innerHTML = '';
   const searchTerm = document.getElementById(inputId).value.toLowerCase();
   const cards = document.querySelectorAll(".toDoCard");
 
   cards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
-    card.parentNode.style.display = title.includes(searchTerm)
-      ? "block"
-      : "none";
+    if (title.includes(searchTerm)) {
+      card.parentNode.style.display = "block";
+      taskFound = true;
+    } else {
+      card.parentNode.style.display = "none";
+    }
   });
+
+  if (taskFound === false) {
+    let content = document.getElementById('allertNoTasksFoundContainer');
+    content.innerHTML += /*html*/`
+    <div onclick="RemoveNoTaksFound()" id="registrationModal" class="modal">
+        <div class="modal-content">
+            <p>No Tasks found</p>
+        </div>
+    </div>
+      `;
+    document.getElementById('allertNoTasksFoundContainer').style.zIndex = "10";
+  }
+  taskFound = false;
+}
+
+function RemoveNoTaksFound() {
+  console.log('test');
+  document.getElementById('allertNoTasksFoundContainer').innerHTML = '';
 }
