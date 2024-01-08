@@ -33,27 +33,12 @@ function loadFromAddTaskPage() {
  * 
  * @async
  */
-async function clearAllTasksInBackend() {
+async function clearAllTasksInBackend() { //DO NOT DELETE THIS FUNCTION
   try {
     await setItem('tasks', []);
     console.log('All tasks have been successfully cleared.');
   } catch (error) {
     console.error('Error while clearing tasks: ', error);
-  }
-}
-
-
-/**
- * Logs the current tasks from the backend to the console.
- * 
- * @async
- */
-async function logCurrentTasks() {
-  try {
-    const currentTasks = await getTasksArray();
-    console.log('Current tasks:', currentTasks);
-  } catch (error) {
-    console.error('Error while loading tasks: ', error);
   }
 }
 

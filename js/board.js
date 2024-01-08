@@ -20,7 +20,6 @@ async function loadBoard() {
   await setTasks();
   await loadContacts();
   renderTasks();
-  console.log(tasks);
 }
 
 
@@ -35,8 +34,10 @@ async function setTasks() {
   let tasksToSet = await getTasksArray();
   if (Array.isArray(tasksToSet)) {
     tasks = tasksToSet;
+    console.log('Tasks loaded')
   } else {
     tasks = [];
+    console.log('Tasks failed to load')
   }
 }
 
@@ -113,33 +114,16 @@ async function editCard(taskIndex) {
   const card = document.getElementById(`openCard`);
   card.innerHTML = generateEditCardHTML(taskIndex);
   await loadContacts();
-  await generateAssignContacts(
-    "assignDropdown-popup",
-    "assigned-contacts-popup"
-  );
+  await generateAssignContacts("assignDropdown-popup", "assigned-contacts-popup");
   setValuesInEditCard(taskIndex, "subTasks-popup");
   isEditFormOpened = true;
 
-  setupDropdownCloseListener(
-    "assignDropdown-popup",
-    "add-contact-input",
-    "arrowAssign"
-  );
+  setupDropdownCloseListener("assignDropdown-popup", "add-contact-input", "arrowAssign");
   setupFilterListener("add-contact-input-popup", "assignDropdown-popup");
 
-  toggleDropdown(
-    "assignDropdown-popup",
-    "add-contact-input-popup",
-    "arrowAssign-popup",
-    "Select contacts to assign"
-  );
+  toggleDropdown("assignDropdown-popup", "add-contact-input-popup", "arrowAssign-popup", "Select contacts to assign");
   setClickedContacts(taskIndex, "assigned-contacts-popup");
-  toggleDropdown(
-    "assignDropdown-popup",
-    "add-contact-input-popup",
-    "arrowAssign-popup",
-    "Select contacts to assign"
-  );
+  toggleDropdown("assignDropdown-popup", "add-contact-input-popup", "arrowAssign-popup", "Select contacts to assign");
   clickPriority(taskIndex);
 }
 
