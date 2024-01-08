@@ -54,11 +54,11 @@ function generateEditCardHTML(i) {
                     <div class="input-div-wrapper">
                         <div class="input-div">
                             <input id="add-contact-input-popup" class="add-contact-input" type="text"
-                                value="Select contacts to assign" required
-                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');" />
+                                placeholder="Select contacts to assign" required
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
                             <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
                                 src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
                         </div>
                         <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
                     </div>

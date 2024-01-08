@@ -136,11 +136,10 @@ function removeAvatar(contact, container) {
  * @param {string} inputfieldId - The ID of the input field associated with the dropdown.
  * @param {string} svgId - The ID of the SVG icon used in the dropdown.
  */
-function openDropdownState(dropdownId, inputfieldId, svgId) {
+function openDropdownState(dropdownId, svgId) {
   const dropdown = document.getElementById(dropdownId);
-  const inputfield = document.getElementById(inputfieldId);
   const arrowImage = document.getElementById(svgId);
-  openDropdown(dropdown, inputfield, arrowImage);
+  openDropdown(dropdown, arrowImage);
 }
 
 
@@ -150,13 +149,11 @@ function openDropdownState(dropdownId, inputfieldId, svgId) {
  * @param {string} dropdownId - The ID of the dropdown menu.
  * @param {string} inputfieldId - The ID of the input field associated with the dropdown.
  * @param {string} svgId - The ID of the SVG icon used in the dropdown.
- * @param {string} standardValue - The standard value to set for the input field when the dropdown is closed.
  */
-function closeDropdownState(dropdownId, inputfieldId, svgId, standardValue) {
+function closeDropdownState(dropdownId, svgId) {
   const dropdown = document.getElementById(dropdownId);
-  const inputfield = document.getElementById(inputfieldId);
   const arrowImage = document.getElementById(svgId);
-  closeDropdown(dropdown, inputfield, arrowImage, standardValue);
+  closeDropdown(dropdown, arrowImage);
 }
 
 
@@ -270,13 +267,12 @@ async function createTask(context) {
  * @param {string} dropdownId - The ID of the dropdown menu.
  * @param {string} inputfieldId - The ID of the input field associated with the dropdown.
  * @param {string} svgId - The ID of the SVG icon used in the dropdown.
- * @param {string} standardValue - The value to set for the input field when the dropdown is closed.
  */
-function toggleDropdown(dropdownId, inputfieldId, svgId, standardValue) {
+function toggleDropdown(dropdownId, svgId) {
   if (dropdownState === "closed") {
-    openDropdownState(dropdownId, inputfieldId, svgId);
+    openDropdownState(dropdownId, svgId);
   } else {
-    closeDropdownState(dropdownId, inputfieldId, svgId, standardValue);
+    closeDropdownState(dropdownId, svgId);
   }
 }
 

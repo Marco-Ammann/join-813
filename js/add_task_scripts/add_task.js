@@ -180,9 +180,8 @@ function toggleContact(index, container) {
  * @param {HTMLElement} selectedElement - The element whose value is to be cleared.
  * @param {HTMLElement} arrowImage - The image element used as an arrow indicator.
  */
-function openDropdown(dropdown, selectedElement, arrowImage) {
+function openDropdown(dropdown, arrowImage) {
   dropdown.classList.remove("d-none");
-  selectedElement.value = "";
   dropdownState = "open";
   arrowImage.src = "assets/img/Desktop/add-task/arrow_dropdown_up.svg";
 }
@@ -195,10 +194,8 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
  * @param {HTMLElement} dropdown - The dropdown element to be closed.
  * @param {HTMLElement} inputfield - The input field whose value is to be set.
  * @param {HTMLElement} arrowImage - The image element used as an arrow indicator.
- * @param {string} setValue - The value to set for the input field when the dropdown is closed.
  */
-function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
-  inputfield.value = `${setValue}`;
+function closeDropdown(dropdown, arrowImage) {
   dropdown.classList.add("d-none");
   dropdownState = "closed";
   arrowImage.src = "./assets/img/Desktop/add-task/arrow_dropdown_down.svg";
