@@ -119,7 +119,6 @@ function addTransition() {
  */
 function startDraggin(id) {
   currentDraggedElement = id;
-  addRotation(id);
 }
 
 
@@ -154,18 +153,6 @@ async function saveStateChangeAfterDroppingTask() {
   let tasksToPush = tasks;
   await setItem("tasks", tasksToPush);
 }
-
-
-/**
- * Adds a rotation class to a task card element.
- *
- * @param {number} id - The ID of the task card to which the rotation class should be added.
- */
-function addRotation(id) {
-  let card = document.getElementById("card" + `${id}`);
-  card.classList.add("rotateCard");
-}
-
 
 /**
  * Checks if there are tasks for each state and adds a "No Task" message if no tasks exist.
