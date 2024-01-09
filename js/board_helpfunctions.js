@@ -89,15 +89,18 @@ function addOpenTaskIcon(id, x) {
  */
 function addTaskIcon(id, x) {
   let content = document.getElementById(id);
+  let contactsLeft;
   const assignedContacts = tasks[x]["assignedTo"];
-  assignedContacts.forEach((assignedContact, index) => {
-    let contact = contacts.find((c) => c.id === assignedContact.id);
-    if (contact) {
-      content.innerHTML += createContactIconHTML(contact, index);
-    }
 
-    if (index === 3) return;
-  });
+  for (let i = 0; i < assignedContacts.length; i++) {
+    const contact = assignedContacts[i];
+    contactsLeft = assignedContacts.length - i;
+    content.innerHTML += createContactIconHTML(contact, i, contactsLeft);
+
+    if (i == 3) {
+      return;
+    }
+  }
 }
 
 

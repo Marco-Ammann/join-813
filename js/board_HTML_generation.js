@@ -262,9 +262,9 @@ function createContactIcon(contact) {
  * @param {number} index - The current index in the loop.
  * @returns {string} HTML string for the contact icon.
  */
-function createContactIconHTML(contact, index) {
+function createContactIconHTML(contact, index, contactsLeft) {
     if (index === 3) {
-        return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>`;
+        return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647;"><b style="font-weight: 900; margin-left: -0.25rem;">+${contactsLeft}</b></div>`;
     }
 
     let names = getInitials(contact["name"]);

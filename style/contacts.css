@@ -181,11 +181,6 @@ body {
     background: var(--Boton-gradient, linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%));
 }
 
-.user:active {
-    background: #2A3647 !important;
-    color: #FFF;
-}
-
 .user,
 .info-buttons div,
 .add-new-button,
