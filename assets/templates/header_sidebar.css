@@ -135,6 +135,7 @@ a {
 
 .hover-menu-btn:hover {
     background: #2A3D59;
+    transition: 100ms ease-in;
 }
 
 .current-color-hover {

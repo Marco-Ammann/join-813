@@ -300,9 +300,9 @@ function removeHighlight() {
  */
 function addNoTaskHTML(containerId) {
   const messages = {
-    ToDoContainer: "No task To do",
-    InProgressContainer: "No task in progress",
-    AwaitFeedbackContainer: "No task awaiting feedback",
+    ToDoContainer: "No tasks to do",
+    InProgressContainer: "No tasks in progress",
+    AwaitFeedbackContainer: "No tasks awaiting feedback",
     DoneContainer: "No completed tasks",
   };
 
