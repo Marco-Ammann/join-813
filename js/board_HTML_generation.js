@@ -200,7 +200,7 @@ function generateOpenCardHTML(taskIndex) {
         </div>
 
         <div class="openCardSubtasks-container">
-            <p>Subtask</p>
+            <p id="opencardSubtaskTitle">Subtask</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
         <div class="openCardFooter">
