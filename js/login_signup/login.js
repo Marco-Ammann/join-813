@@ -78,7 +78,7 @@ function loginCheckEmailAndPassword() {
         showTextFailLogin();
     } else {
         isUserOfRegisertUser(email, password);
-        if (registerUser === false) {
+        if (!registerUser) {
             showTextFailLogin();
         }
         registerUser = false;
@@ -108,15 +108,15 @@ abledDisabledBtn(false);
 async function isUserOfRegisertUser(email, password) {
     abledDisabledBtn(true);
     for (let user of registerUsers) {
-        if (user.email === email && user.password === password) {
+        if (user.email !== email || user.password !== password) 
+        continue;
             registerUser = true;
             currentUser = user;
             await setItem("currentUser", JSON.stringify(currentUser));
             if (saveRememberMe === "true") {
                 RememberMeSaveToLocalStorage();
             }
-            emailAndPasswordIsValid();
-        }
+            emailAndPasswordIsValid();     
     }
 }
 
