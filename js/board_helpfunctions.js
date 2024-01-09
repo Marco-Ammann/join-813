@@ -189,37 +189,23 @@ function sortAndFilterCards(inputId) {
   document.getElementById('allertNoTasksFoundContainer').innerHTML = '';
   const searchTerm = document.getElementById(inputId).value.toLowerCase();
   const cards = document.querySelectorAll(".toDoCard");
-  const states = [
-    "ToDo",
-    "InProgress",
-    "Done",
-    "AwaitFeedback",
-  ];
-
-  if (searchTerm) {
-    states.forEach((state) => {
-      removeNoTaskHTML(state);
-    });
-  } else if (!searchTerm) {
-    checkAndAddTasks(tasks);
-  }
-
+  let taskFound = false; 
   cards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
-    if (title.includes(searchTerm)) {
-      card.parentNode.style.display = "block";
+    const description = card.querySelector("p").textContent.toLowerCase(); 
+    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+      card.style.display = "block";
       taskFound = true;
     } else {
-      card.parentNode.style.display = "none";
+      card.style.display = "none";
     }
   });
 
-  if (taskFound === false) {
+  if (!taskFound) {
     let content = document.getElementById('allertNoTasksFoundContainer');
     content.innerHTML = 'No task found';
     document.getElementById('allertNoTasksFoundContainer').style.zIndex = "10";
   }
-  taskFound = false;
 }
 
 function RemoveNoTaksFound() {
