@@ -60,7 +60,6 @@ function visibilityOnOffImage() {
 async function loadUsers() {
     try {
         registerUsers = JSON.parse(await getItem("users"));
-        console.log(registerUsers);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -130,7 +129,6 @@ function emailAndPasswordIsValid() {
     document.getElementById(`loginPassword`).value = "";
     document.getElementById("rememberMeEmptyImageBox").src =
         "assets/img/Desktop/login_signup/checkbox/empty.svg";
-    console.log(currentUser);
     window.location.href = "summary.html";
 }
 

@@ -60,7 +60,6 @@ async function isUserEmailNotfound(users){
         generateArrayUsers();
         await loadContacts();
         await addUserToContacts();
-        console.log(users);
         await setItem("users", JSON.stringify(users));
         await loadUsers("successfully");
         resetForm();
