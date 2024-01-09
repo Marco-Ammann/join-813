@@ -1137,6 +1137,32 @@ div[id^="openCardSubtasks"] {
 
   .assignDropdown-popup {
     max-height: 35vh;
+    width: 100%!important;
+    height: 12.5rem!important;
+    position: relative;
+    width: 24.6rem;
+    top: -1rem;
+    left: 0rem;
+  }
+
+  .addTaskPopupDropdown {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      height: 16rem;
+      border-radius: 0 0 0.625rem 0.625rem;
+      background-color: rgba(255, 255, 255, 1);
+      border: 1px solid var(--border-default);
+      border-top: none;
+      position: relative;
+      z-index: 999;
+      top: -1rem;
+      left: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
   }
 
   .task-forms {
