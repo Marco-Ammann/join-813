@@ -118,11 +118,21 @@ body {
 .popup-buttons button:last-child:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: 100ms ease-in-out;
+}
+
+.add-new-button:active,
+.popup-buttons button:last-child:active {
+    background: #091931;
+    transition: 100ms ease-in-out;
 }
 
 .add-new-button:hover {
-    border: 0;
-    margin: 1px;
+    border-color: transparent;
+}
+
+.add-new-button:active {
+    box-shadow: unset;
 }
 
 .add-new-button span {
@@ -483,13 +493,24 @@ button,
     transition: 100ms ease-in-out;
 }
 
+.popup-buttons button:first-child:active {
+    border-color: #091931;
+    outline-color: transparent;
+    color: #091931;
+    transition: 100ms ease-in-out;
+}
+
+.popup-buttons button:first-child:active img {
+    content: url('../assets/img/Desktop/contacts/iconoir_cancel_black.svg');
+    transition: 100ms ease-in-out;
+}
+
 .popup-buttons button:last-child {
     color: #FFF;
     font-size: 1.3125rem;
     font-weight: 700;
     background: #2A3647;
     border: 0;
-    transition: 100ms ease-in-out;
 }
 
 .message-container {

@@ -20,7 +20,6 @@ async function loadBoard() {
   await setTasks();
   await loadContacts();
   renderTasks();
-  console.log(tasks);
 }
 
 
@@ -113,33 +112,16 @@ async function editCard(taskIndex) {
   const card = document.getElementById(`openCard`);
   card.innerHTML = generateEditCardHTML(taskIndex);
   await loadContacts();
-  await generateAssignContacts(
-    "assignDropdown-popup",
-    "assigned-contacts-popup"
-  );
+  await generateAssignContacts("assignDropdown-popup", "assigned-contacts-popup");
   setValuesInEditCard(taskIndex, "subTasks-popup");
   isEditFormOpened = true;
 
-  setupDropdownCloseListener(
-    "assignDropdown-popup",
-    "add-contact-input",
-    "arrowAssign"
-  );
+  setupDropdownCloseListener("assignDropdown-popup", "add-contact-input-popup", "arrowAssign");
   setupFilterListener("add-contact-input-popup", "assignDropdown-popup");
 
-  toggleDropdown(
-    "assignDropdown-popup",
-    "add-contact-input-popup",
-    "arrowAssign-popup",
-    "Select contacts to assign"
-  );
+  toggleDropdown("assignDropdown-popup", "add-contact-input-popup", "arrowAssign-popup", "Select contacts to assign");
   setClickedContacts(taskIndex, "assigned-contacts-popup");
-  toggleDropdown(
-    "assignDropdown-popup",
-    "add-contact-input-popup",
-    "arrowAssign-popup",
-    "Select contacts to assign"
-  );
+  toggleDropdown("assignDropdown-popup", "add-contact-input-popup", "arrowAssign-popup", "Select contacts to assign");
   clickPriority(taskIndex);
 }
 
@@ -160,6 +142,10 @@ function addOpenCardSubtasks(taskIndex) {
   tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
     content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
   });
+
+  if (content.innerHTML === "") {
+    document.getElementById('opencardSubtaskTitle').style.display = 'none';
+  }
 }
 
 
@@ -302,14 +288,29 @@ function updateHoverContainer(containerId) {
  */
 function addNoTaskHTML(containerId) {
   const messages = {
-    ToDoContainer: "No task To do",
-    InProgressContainer: "No task in progress",
-    AwaitFeedbackContainer: "No task awaiting feedback",
+    ToDoContainer: "No tasks to do",
+    InProgressContainer: "No tasks in progress",
+    AwaitFeedbackContainer: "No tasks awaiting feedback",
     DoneContainer: "No completed tasks",
   };
 
   const message = messages[containerId];
   document.getElementById(containerId).innerHTML = createNoTaskHTML(message);
+}
+
+
+/**
+ * Removes the "No Task" message of the container with the state if its displaed.
+ * @param {string} state - 'ToDo', 'InProgress', 'AwaitFeedback', or 'Done'
+ */
+function removeNoTaskHTML(state) {
+  const filteredTasks = tasks.filter((task) => task.state === state);
+
+  if (filteredTasks.length === 0) {
+    let container = document.getElementById(state + 'Container');
+    container.parentNode.style = 'gap: 0;'
+    container.innerHTML = '';
+  }
 }
 
 
@@ -321,7 +322,7 @@ function addNoTaskHTML(containerId) {
  */
 function createNoTaskHTML(message) {
   return /*html*/ `
-        <div class="noTaskFound">
+        <div class="noTaskFound noselect">
             <p>${message}</p>
         </div>
     `;

@@ -1,5 +1,9 @@
-.hoverPointer :hover {
+.hoverPointer:hover {
   cursor: pointer;
+}
+
+.hoverPointer:active:not(.AddTaskButton, .openCardSubtasks) {
+  transform: rotate(5deg);
 }
 
 .textCross {
@@ -49,6 +53,11 @@
   line-height: 1.5rem;
 }
 
+.sortTasks:focus-within {
+  border-color: #29ABE2;
+  transition: 100ms ease-out;
+}
+
 .sortTasks button {
   display: flex;
   justify-content: center;
@@ -73,6 +82,17 @@
 .sortTasksButton img {
   width: 2rem;
   height: 2rem;
+  border-radius: 50%;
+}
+
+.sortTasksButton img:hover {
+  background-color: #EEE;
+  cursor: pointer;
+}
+
+.sortTasksButton img:active {
+  content: url('../assets/img/Desktop/board/search/clicked.svg');
+  background-color: unset;
 }
 
 .addTaskButton {
@@ -85,6 +105,19 @@
   border: 1px solid #2a3647;
   background: #2a3647;
   color: white;
+  cursor: pointer
+}
+
+.addTaskButton:hover {
+  background-color: #29ABE2;
+  border-color: #29ABE2;
+  transition: 100ms ease-in-out;
+}
+
+.addTaskButton:active {
+  background-color: #091931;
+  border-color: #2A3647;
+  transition: 100ms ease-in-out;
 }
 
 .addTaskButton p {
@@ -97,10 +130,6 @@
 .addTaskButton svg {
   width: 2rem;
   height: 2rem;
-}
-
-.addTaskButton :hover {
-  cursor: pointer;
 }
 
 .addTaskBtnOk {
@@ -170,9 +199,10 @@
   width: 15.75rem;
   margin-bottom: 0.97rem;
   align-items: center;
+  height: 1.5rem;
 }
 
-.toDoListCategories img {
+.toDoListCategories svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -252,12 +282,12 @@
 
 .noTaskFound p {
   color: var(--icon, #a8a8a8);
-
   font-family: Open Sans;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.2rem;
+  text-align: center;
 }
 
 .headerUserStory {
@@ -340,6 +370,12 @@
   background-color: red;
 }
 
+.dragContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .listContainer {
   display: flex;
   flex-direction: column;
@@ -381,7 +417,7 @@
   align-items: center;
   position: absolute;
   width: 61.75rem;
-  height: 46.375rem;
+  height: 48.375rem;
   background-color: white;
   padding: 4rem;
   border-radius: 50px;
@@ -449,21 +485,29 @@
 .assignDropdown-popup {
   display: flex;
   box-sizing: border-box;
-  width: 100%;
-  max-height: 16vh;
+  width: 27.6rem;
+  height: 16rem;
   border-radius: 0 0 0.625rem 0.625rem;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
   border-top: none;
-  position: relative;
+  position: absolute;
   z-index: 999;
-  top: -0.4rem;
-  left: 0rem;
+  top: 37rem;
+  left: 4.2rem;
   overflow-y: auto;
   overflow-x: hidden;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.25rem;
+}
+
+.editTaskDropdownHeight {
+  height: 12.5rem!important;
+  position: absolute;
+  width: 27.6rem;
+  top: 32rem;
+  left: 4.2rem;
 }
 
 .task-forms {
@@ -501,7 +545,7 @@
 }
 
 .subTasks {
-  max-height: 8rem;
+  max-height: 5rem;
   width: 100%;
   overflow: auto;
 }
@@ -570,13 +614,17 @@ div[id^="openCardSubtasks"] {
   overflow-y: auto;
 }
 
+.openCardAssigned {
+  max-height: 15rem;
+  overflow-y: auto;
+}
 
 .openCardPriority span,
 .openCardTable p,
 .openCardTable span,
 .openCardIcon p,
 .openCardSubtasks,
-.openCardAssigned p,
+.openCardAssignedTitle p,
 .openCardSubtasks-container p {
   color: #000;
   font-family: "Inter";
@@ -690,10 +738,17 @@ div[id^="openCardSubtasks"] {
   gap: 0.25rem;
 }
 
-.openCardSubtasks svg:not(.hoverPointer svg) {
-  width: 1rem;
-  height: 1rem;
+.openCardSubtasks img {
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0.25rem;
+  margin-left: -0.15rem;
+}
+
+.openCardSubtasks img:not(.hoverPointer img) {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 0.15rem 0 0;
 }
 
 .openCardSubtasks-container p:not(.openCardSubtasks p) {
@@ -718,14 +773,34 @@ div[id^="openCardSubtasks"] {
   border: 1px dashed var(--icon, #A8A8A8);
 }
 
-.AddTaskButton:hover path {
-  stroke: #29ABE2 !important;
+.AddTaskButton:hover path, .AddTaskButton:hover rect {
+  stroke: #29ABE2;
 }
 
-.AddTaskButton:hover rect {
-  stroke: #29ABE2 !important;
+.AddTaskButton:active path, .AddTaskButton:active rect {
+  stroke: #091931;
+  transition: 300ms 10ms ease-out;
 }
 
+.allertNoTasksFoundContainer {
+  position: absolute;
+  inset: 6rem 0 0 14.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -15;
+  pointer-events: none;
+}
+
+.allertNoTasksFound {
+  position: absolute;
+  z-index: 10;
+}
+
+.modal {
+  display: block !important;
+  pointer-events: auto !important;
+}
 
 /* Animations */
 
@@ -806,16 +881,10 @@ div[id^="openCardSubtasks"] {
   }
 
   .hoverCardContainer {
-    display: flex;
-    min-width: 16rem;
-    width: 33.625rem;
-    height: 12.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.625rem;
-    border-radius: 1.875rem;
-    border: 1px dashed var(--icon, #A8A8A8);
-    margin: 0.875rem;
+    width: calc(100vw - 2rem);
+    height: 3rem;
+    border-radius: 0.625rem;
+    margin: -0.875rem 0 0.875rem 0;
   }
 
   .addTaskButton {
@@ -875,10 +944,6 @@ div[id^="openCardSubtasks"] {
     margin-bottom: 2.5rem;
   }
 
-  .dragContainer {
-    display: flex;
-  }
-
   .toDoList {
     flex-direction: column;
   }
@@ -900,7 +965,7 @@ div[id^="openCardSubtasks"] {
 
   .noTaskFound {
     text-align: center;
-    width: 24.5rem;
+    width: calc(100vw - 3.75rem);
     height: 3rem;
   }
 
@@ -949,7 +1014,7 @@ div[id^="openCardSubtasks"] {
   .openCardTable span,
   .openCardIcon p,
   .openCardSubtasks,
-  .openCardAssigned p,
+  .openCardAssignedTitle p,
   .openCardSubtasks-container p {
     font-size: 1rem;
   }
@@ -979,7 +1044,33 @@ div[id^="openCardSubtasks"] {
 
   .openCardAssigned {
     gap: 0.25rem;
+    max-height: 5rem;
   }
+
+  .openCardAssigned::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  [id^="openCardSubtasks"] {
+    max-height: 5rem;
+}
+
+  .openCardIcon {
+    padding: 0.2rem 1rem;
+}
+
+[id^="openCardSubtasks"]::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.openCardIcon div{
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+}
+
+.openCardIcon p{
+  font-size: 0.8rem;
+}
 
   .add-tasks-popup {
     width: 80vw;
@@ -1044,6 +1135,32 @@ div[id^="openCardSubtasks"] {
 
   .assignDropdown-popup {
     max-height: 35vh;
+    width: 100%!important;
+    height: 12.5rem!important;
+    position: relative;
+    width: 24.6rem;
+    top: -1rem;
+    left: 0rem;
+  }
+
+  .addTaskPopupDropdown {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      height: 16rem;
+      border-radius: 0 0 0.625rem 0.625rem;
+      background-color: rgba(255, 255, 255, 1);
+      border: 1px solid var(--border-default);
+      border-top: none;
+      position: relative;
+      z-index: 999;
+      top: -1rem;
+      left: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
   }
 
   .task-forms {
@@ -1063,6 +1180,7 @@ div[id^="openCardSubtasks"] {
     flex-direction: column;
   }
 }
+
 
 @media (max-width: 590px) {
   .add-tasks-popup {

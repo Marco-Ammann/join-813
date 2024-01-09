@@ -5,13 +5,13 @@
  * @returns {string} HTML markup for the edit task card.
  */
 function generateEditCardHTML(i) {
-  return /*HTML*/ `
+   return /*HTML*/ `
 <div class="add-tasks-popup pos-static">
 
 <div class="editor-wrapper">
     <div class="addTaskHeader">
-        <h1 class="content-title">Add Task</h1>
-        <button id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
+        <h1 class="content-title">Edit Task</h1>
+        <button class="noselect" id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -31,7 +31,7 @@ function generateEditCardHTML(i) {
             <div class="forms-sides">
                 <div class="form-div">
                     <span class="form-span required-asteriks">Title</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
                         <input id="task-title-input-popup" maxlength="48" class="task-title-input" type="text"
                             placeholder="Enter a title" required />
                         <p class="input-required-warning invisible" id="requiredTextTitle">This field is
@@ -41,7 +41,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span required-asteriks">Description</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
                         <textarea id="task-description-textarea-popup" class="task-description-textarea"
                             name="inputDescription" placeholder="Enter a Description" required></textarea>
                         <p class="input-required-warning invisible" id="requiredTextDescription">This
@@ -51,18 +51,18 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Assigned to</span>
-                    <div class="input-div-wrapper">
+                    <div class="input-div-wrapper noselect">
                         <div class="input-div">
                             <input id="add-contact-input-popup" class="add-contact-input" type="text"
-                                value="Select contacts to assign" required
-                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign');" />
+                                placeholder="Select contacts to assign" required
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
                             <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
                                 src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                onclick="toggleDropdown('assignDropdown-popup', 'add-contact-input-popup', 'arrowAssign-popup', 'Select contacts to assign')" />
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
                         </div>
-                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
+                        <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
                     </div>
-                    <div class="assigned-contacts" id="assigned-contacts-popup"></div>
+                    <div class="assigned-contacts noselect" id="assigned-contacts-popup"></div>
 
                 </div>
             </div>
@@ -73,7 +73,7 @@ function generateEditCardHTML(i) {
                 <div class="form-div">
                     <span class="form-span required-asteriks">Due
                         date</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
 
                         <div class="input-div">
                             <input id="due-date-input-popup" maxlength="48" class="due-date-input" type="date"
@@ -88,7 +88,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Prio</span>
-                    <div class="prio-buttons">
+                    <div class="prio-buttons noselect">
                         <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                             <span>Urgent</span>
                             <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg" id="urgentSymbol" />
@@ -107,7 +107,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Subtasks</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
 
                         <div class="input-div" id="subtask-input-div">
                             <input id="subtask-input-popup" maxlength="48" class="subtask-input" type="text"
@@ -137,7 +137,7 @@ function generateEditCardHTML(i) {
     </div>
 </div>
 
-<div class="footer-container">
+<div class="footer-container noselect">
 
 
     <div class="footer-btn-container">
@@ -162,9 +162,9 @@ function generateEditCardHTML(i) {
  * @returns {string} HTML markup for the open task card.
  */
 function generateOpenCardHTML(taskIndex) {
-  return /*html*/ `        
+   return /*html*/ `        
     <div class="toDoCard openCard">
-        <div class="openCardHeader">
+        <div class="openCardHeader noselect">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
             <a onclick="closeCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -178,37 +178,32 @@ function generateOpenCardHTML(taskIndex) {
             </a>
         </div>
         <div class="openCardContent">
-            <h3 id="openCardTitle${taskIndex}">${
-    tasks[taskIndex][`taskTitle`]
-  }</h3>
-            <h4 id="openCardDescription${taskIndex}">${
-    tasks[taskIndex][`description`]
-  }</h4>
+            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
+            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
             <div class="openCardTable">
-            <p>Due date:</p><span id="openCardDate${taskIndex}">${
-    tasks[taskIndex][`dueDate`]
-  }<span>
+            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
             </div>
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span id="openCardPriority${taskIndex}">${
-    tasks[taskIndex][`priority`]
-  }</span>
-                <img src="./assets/img/Desktop/board/priority_symbols/${
-                  tasks[taskIndex][`priority`]
+                <span id="openCardPriority${taskIndex}">${capFirstLetter(tasks[taskIndex][`priority`])}</span>
+                <img class="noselect" src="./assets/img/Desktop/board/priority_symbols/${
+                   tasks[taskIndex][`priority`]
                 }.svg">
                 </div>
             </div>
         </div>
-        <div id="openCardIcon${taskIndex}" class="openCardAssigned">
+
+        <div class="openCardAssignedTitle">
             <p>Assigned To:</p>
+            <div id="openCardIcon${taskIndex}" class="openCardAssigned"></div>
         </div>
+
         <div class="openCardSubtasks-container">
-            <p>Subtask</p>
+            <p id="opencardSubtaskTitle">Subtasks</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
-        <div class="openCardFooter">
+        <div class="openCardFooter noselect">
             <a href="#" onclick="deleteOpenCard(${taskIndex})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_2295" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
@@ -246,15 +241,14 @@ function generateOpenCardHTML(taskIndex) {
  * @returns {string} - HTML string for the contact icon.
  */
 function createContactIcon(contact) {
-  let color = contact["color"];
-  const nameParts = contact["name"].split(" ");
-  const firstNameInitial = nameParts[0].charAt(0);
-  const lastNameInitial =
-    nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
+   let color = contact['color'];
+   const nameParts = contact['name'].split(' ');
+   const firstNameInitial = nameParts[0].charAt(0);
+   const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : '';
 
-  return /*html*/ `
+   return /*html*/ `
         <div class="openCardIcon">
-          <div class="icon" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+          <div class="icon noselect" style="background-color: ${color};">${getInitials(contact["name"])}</div>
           <p>${contact["name"]}</p>
         </div>
     `;
@@ -267,13 +261,13 @@ function createContactIcon(contact) {
  * @param {number} index - The current index in the loop.
  * @returns {string} HTML string for the contact icon.
  */
-function createContactIconHTML(contact, index) {
-  if (index === 3) {
-    return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647"><b>...</b></div>`;
-  }
+function createContactIconHTML(contact, index, contactsLeft) {
+   if (index === 3) {
+      return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647;"><b style="font-weight: 900; margin-left: -0.25rem;">+${contactsLeft}</b></div>`;
+   }
 
-  let names = getInitials(contact["name"]);
-  return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${names}</div>`;
+    let name = getInitials(contact["name"]);
+    return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${name}</div>`;
 }
 
 /**
@@ -285,11 +279,9 @@ function createContactIconHTML(contact, index) {
  * @returns {string} HTML string for the incomplete subtask.
  */
 function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
-  return /*html*/ `
+   return /*html*/ `
         <div class="hoverPointer openCardSubtasks" id="subtask${index}" onclick="subtaskComplete(${index}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-          </svg>
+        <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox.svg">
           ${subtask}
         </div>
     `;
@@ -304,12 +296,9 @@ function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
  * @returns {string} HTML string for the completed subtask.
  */
 function createCompleteSubtaskHTML(subtask, index, taskIndex) {
-  return /*html*/ `
+   return /*html*/ `
         <div class="openCardSubtasks" id="subtaskDone${index}" onclick="subtaskUnComplete(${index}, ${taskIndex})">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox_checked.svg">
           <p class="textCross">
             ${subtask}
           </p>
@@ -325,14 +314,12 @@ function createCompleteSubtaskHTML(subtask, index, taskIndex) {
  * @returns {string} HTML markup for the task card.
  */
 function generateTaskCardHTML(task, taskIndex) {
-  return /*html*/ `    
+   return /*html*/ `    
         <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${
-    task.state
-  }')">
+      task.state
+   }')">
             <div class="toDoCard">
-                <div class="${category(task.category)} headerUserStoryPopUp">${
-    task.category
-  }</div>
+                <div class="${category(task.category)} headerUserStoryPopUp">${task.category}</div>
                 <div>
                     <h3>${task.taskTitle}</h3>
                     <p>${addDescription(task.description)}</p>
@@ -340,9 +327,7 @@ function generateTaskCardHTML(task, taskIndex) {
                 <div id="progressbar${taskIndex}" class="progressbar"></div>
                 <div class="toDoCardFooter">
                     <div id="cardIcon${taskIndex}" class="userIcon"></div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${
-                      task.priority
-                    }.svg">
+                    <img src="./assets/img/Desktop/board/priority_symbols/${task.priority}.svg">
                 </div>
             </div>
         </div>

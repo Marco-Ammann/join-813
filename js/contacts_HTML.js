@@ -61,10 +61,10 @@ function returnContactListHTML(num, letter, i, color, initials, name, email) {
  */
 function returnContactInfoHTML(color, initials, name, email, phone, i) {
     return /* html */ `<div class="info-title">
-        <div class="user-icon icon-big" style="background-color: ${color};">${initials}</div>
+        <div class="user-icon icon-big noselect" style="background-color: ${color};">${initials}</div>
         <div class="info-name">
             <h2>${name}</h2>
-            <div class="info-buttons">
+            <div class="info-buttons noselect">
                 <div onclick="openEditContact(${i})">
                     <img src="./assets/img/Desktop/contacts/edit.svg" alt="Edit">
                     <span name="Edit">Edit</span>

@@ -33,27 +33,12 @@ function loadFromAddTaskPage() {
  * 
  * @async
  */
-async function clearAllTasksInBackend() {
+async function clearAllTasksInBackend() { //DO NOT DELETE THIS FUNCTION
   try {
     await setItem('tasks', []);
     console.log('All tasks have been successfully cleared.');
   } catch (error) {
     console.error('Error while clearing tasks: ', error);
-  }
-}
-
-
-/**
- * Logs the current tasks from the backend to the console.
- * 
- * @async
- */
-async function logCurrentTasks() {
-  try {
-    const currentTasks = await getTasksArray();
-    console.log('Current tasks:', currentTasks);
-  } catch (error) {
-    console.error('Error while loading tasks: ', error);
   }
 }
 
@@ -195,9 +180,8 @@ function toggleContact(index, container) {
  * @param {HTMLElement} selectedElement - The element whose value is to be cleared.
  * @param {HTMLElement} arrowImage - The image element used as an arrow indicator.
  */
-function openDropdown(dropdown, selectedElement, arrowImage) {
+function openDropdown(dropdown, arrowImage) {
   dropdown.classList.remove("d-none");
-  selectedElement.value = "";
   dropdownState = "open";
   arrowImage.src = "assets/img/Desktop/add-task/arrow_dropdown_up.svg";
 }
@@ -210,11 +194,9 @@ function openDropdown(dropdown, selectedElement, arrowImage) {
  * @param {HTMLElement} dropdown - The dropdown element to be closed.
  * @param {HTMLElement} inputfield - The input field whose value is to be set.
  * @param {HTMLElement} arrowImage - The image element used as an arrow indicator.
- * @param {string} setValue - The value to set for the input field when the dropdown is closed.
  */
-function closeDropdown(dropdown, inputfield, arrowImage, setValue) {
+function closeDropdown(dropdown, arrowImage) {
   dropdown.classList.add("d-none");
-  inputfield.value = `${setValue}`;
   dropdownState = "closed";
   arrowImage.src = "./assets/img/Desktop/add-task/arrow_dropdown_down.svg";
 }

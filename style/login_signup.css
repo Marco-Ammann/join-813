@@ -17,6 +17,22 @@ body {
     font-size: 1rem;
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
 .login-content-body {
     height: 100vh;
     width: 100vw;
@@ -301,6 +317,10 @@ body {
     gap: 0.625rem;
 }
 
+.input-password img, .input-password-confirm img{
+    cursor: pointer;
+}
+
 .fail-login {
     width: 26.375rem;
     height: 0.75rem;
@@ -319,11 +339,16 @@ body {
     padding-left: 2.44rem;
 }
 
+.login-content-checkbox img {
+    border-radius: 4px;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .login-content-checkbox img:hover {
     background-color: #EDF2FA;
-    border-radius: 4px;
-    height: 25px;
-    width: 25px;
+    
+
     cursor: pointer;
 }
 
@@ -363,6 +388,13 @@ body {
     background: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.btn-login:active:enabled,
+.login-header button:active {
+    background: #091931;
+    transition: 100ms ease-in-out;
 }
 
 .btn-guest {
@@ -374,6 +406,7 @@ body {
     gap: 0.625rem;
     border-radius: 0.5rem;
     border: 1px solid #2A3647;
+    outline: 1px solid transparent;
     background: #FFF;
     color: #2A3647;
     font-size: 1.3125rem;
@@ -382,10 +415,19 @@ body {
 }
 
 .btn-guest:hover:enabled {
-    border: 2px solid #29ABE2;
+    border-color: #29ABE2;
+    outline-color: #29ABE2;
     color: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.btn-guest:active:enabled {
+    border-color: #091931;
+    outline-color: transparent;
+    color: #091931;
+    transition: 100ms ease-in-out;
 }
 
 .login-footer {
@@ -462,19 +504,22 @@ body {
     text-decoration: none;
     color: #29ABE2;
     line-height: 120%;
+    font-weight: 500;
 }
 
-.privacy-policy-content-checkbox:hover span a {
-    font-weight: 500;
+.privacy-policy-content-checkbox img {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 4px;
+}
+
+.privacy-policy-content-checkbox span a:hover {
     text-decoration-line: underline;
     cursor: pointer;
 }
 
-.privacy-policy-content-checkbox:hover img {
+.privacy-policy-content-checkbox img:hover {
     background-color: #EDF2FA;
-    border-radius: 4px;
-    height: 25px;
-    width: 25px;
     cursor: pointer;
 }
 
@@ -482,13 +527,16 @@ body {
     position: absolute;
     margin-left: -29rem;
     margin-top: 0.8rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .arrow-left-default:hover {
-    height: min-content;
-    background-color: #EEEEEE;
-    scale: 1.1;
-    border-radius: 50%;
+    transform: scale(1.25);
+    background-color: #EEE;
+    transition: 80ms ease-out;
     cursor: pointer;
 }
 

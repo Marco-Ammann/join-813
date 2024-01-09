@@ -35,6 +35,7 @@ async function loadUsers(ok) {
  *
  */
 async function register() {
+    let failConfirmPassword = document.getElementById("fail-confirm-password");
     if (password.value === confirmPassword.value) {
         registerBtn.disabled = true;
         for (let user of users) {
@@ -43,6 +44,8 @@ async function register() {
             }
         }
         isUserEmailNotfound(users);
+    } else {
+        failConfirmPassword.style.color = "#FF8190";
     }
 }
 
@@ -163,7 +166,7 @@ function confirmPrivacyPolicy() {
     let emptyImagePath = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 
     if (policyImage.src.endsWith(emptyImagePath)) {
-        policyImage.src = "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+        policyImage.src = "assets/img/Desktop/login_signup/checkbox/checked.svg";
         registerBtn.disabled = false;
     } else {
         policyImage.src = emptyImagePath;

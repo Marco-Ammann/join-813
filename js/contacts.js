@@ -144,12 +144,13 @@ function resetInput() {
  * Opens the clicked contact and deselects previous one if it exists
  * @param {number} i - Index of the choosen contact
  */
-function openContact(i) {
+async function openContact(i) {
+    await renderContactList();
+    
     let contact = contacts[i];
     let contactsInfo = document.getElementById('contactsInfo');
     let contactElement = document.getElementById(`contact${i}`);
 
-    renderContactList();
     contactsInfo.innerHTML = '';
     contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     contactsInfo.innerHTML = returnContactInfoHTML(contact['color'], getInitials(contact['name']), contact['name'], contact['email'], contact['phone'], i);
@@ -374,9 +375,6 @@ async function loadContacts() {
     let contactsArray = await getContactsArray()
     if (Array.isArray(contactsArray)) {
         contacts = contactsArray;
-        console.log('contacts loaded')
-    } else {
-        console.error('Loading error');
     }
 }
 
