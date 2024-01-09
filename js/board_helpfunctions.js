@@ -47,7 +47,7 @@ function addProgressBar(i) {
     content = document.getElementById(`progressbar${i}`);
     content.innerHTML = /*html*/ `
                 <progress max="100" value="${calculatetSubtask}"></progress>
-                <span>${tasks[i]["subtasksDone"].length}/${task} Subtasks</span>
+                <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
                 `;
   } else {
     document.getElementById(`progressbar${i}`).remove();
@@ -189,23 +189,37 @@ function sortAndFilterCards(inputId) {
   document.getElementById('allertNoTasksFoundContainer').innerHTML = '';
   const searchTerm = document.getElementById(inputId).value.toLowerCase();
   const cards = document.querySelectorAll(".toDoCard");
-  let taskFound = false; 
+  const states = [
+    "ToDo",
+    "InProgress",
+    "Done",
+    "AwaitFeedback",
+  ];
+
+  if (searchTerm) {
+    states.forEach((state) => {
+      removeNoTaskHTML(state);
+    });
+  } else if (!searchTerm) {
+    checkAndAddTasks(tasks);
+  }
+
   cards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
-    const description = card.querySelector("p").textContent.toLowerCase(); 
-    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-      card.style.display = "block";
+    if (title.includes(searchTerm)) {
+      card.parentNode.style.display = "block";
       taskFound = true;
     } else {
-      card.style.display = "none";
+      card.parentNode.style.display = "none";
     }
   });
 
-  if (!taskFound) {
+  if (taskFound === false) {
     let content = document.getElementById('allertNoTasksFoundContainer');
     content.innerHTML = 'No task found';
     document.getElementById('allertNoTasksFoundContainer').style.zIndex = "10";
   }
+  taskFound = false;
 }
 
 function RemoveNoTaksFound() {
