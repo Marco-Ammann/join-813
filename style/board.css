@@ -485,16 +485,16 @@
 .assignDropdown-popup {
   display: flex;
   box-sizing: border-box;
-  width: 100%;
+  width: 27.6rem;
   height: 16rem;
   border-radius: 0 0 0.625rem 0.625rem;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-default);
   border-top: none;
-  position: relative;
+  position: absolute;
   z-index: 999;
-  top: -0.4rem;
-  left: 0rem;
+  top: 37rem;
+  left: 4.2rem;
   overflow-y: auto;
   overflow-x: hidden;
   flex-direction: column;
@@ -504,6 +504,10 @@
 
 .editTaskDropdownHeight {
   height: 12.5rem!important;
+  position: absolute;
+  width: 27.6rem;
+  top: 32rem;
+  left: 4.2rem;
 }
 
 .task-forms {
