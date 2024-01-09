@@ -249,7 +249,7 @@ function createContactIcon(contact) {
 
     return /*html*/ `
         <div class="openCardIcon">
-          <div class="icon nosele" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
+          <div class="icon nosele" style="background-color: ${color};">${getInitials(contact["name"])}</div>
           <p>${contact["name"]}</p>
         </div>
     `;
@@ -267,8 +267,8 @@ function createContactIconHTML(contact, index, contactsLeft) {
         return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647;"><b style="font-weight: 900; margin-left: -0.25rem;">+${contactsLeft}</b></div>`;
     }
 
-    let names = getInitials(contact["name"]);
-    return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${names}</div>`;
+    let name = getInitials(contact["name"]);
+    return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${name}</div>`;
 }
 
 /**

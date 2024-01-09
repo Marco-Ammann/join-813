@@ -49,6 +49,8 @@ function addProgressBar(i) {
                 <progress max="100" value="${calculatetSubtask}"></progress>
                 <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
                 `;
+  } else {
+    document.getElementById(`progressbar${i}`).remove();
   }
 }
 
@@ -92,8 +94,10 @@ function addTaskIcon(id, x) {
   let contactsLeft;
   const assignedContacts = tasks[x]["assignedTo"];
 
+  id = id.slice(-1);
+
   for (let i = 0; i < assignedContacts.length; i++) {
-    const contact = assignedContacts[i];
+    let contact = contacts.find((c) => c.id === assignedContacts[i].id)
     contactsLeft = assignedContacts.length - i;
     content.innerHTML += createContactIconHTML(contact, i, contactsLeft);
 
