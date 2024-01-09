@@ -606,6 +606,10 @@ div[id^="openCardSubtasks"] {
   overflow-y: auto;
 }
 
+.openCardAssigned {
+  max-height: 15rem;
+  overflow-y: auto;
+}
 
 .openCardPriority span,
 .openCardTable p,

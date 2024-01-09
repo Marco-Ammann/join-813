@@ -248,6 +248,12 @@ leftside forms
 .assigned-contacts {
   display: flex;
   z-index: 0;
+  max-width: 27.5rem;
+  overflow-x: auto;
+}
+
+.assigned-contacts::-webkit-scrollbar {
+  height: 0.5rem;
 }
 
 .contactDiv {
@@ -292,7 +298,7 @@ leftside forms
   cursor: pointer;
   z-index: 10;
   height: 2.625rem;
-  width: 2.625rem;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 2px solid white;
   display: flex;
