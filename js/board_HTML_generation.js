@@ -5,7 +5,7 @@
  * @returns {string} HTML markup for the edit task card.
  */
 function generateEditCardHTML(i) {
-    return /*HTML*/ `
+   return /*HTML*/ `
 <div class="add-tasks-popup pos-static">
 
 <div class="editor-wrapper">
@@ -162,7 +162,7 @@ function generateEditCardHTML(i) {
  * @returns {string} HTML markup for the open task card.
  */
 function generateOpenCardHTML(taskIndex) {
-    return /*html*/ `        
+   return /*html*/ `        
     <div class="toDoCard openCard">
         <div class="openCardHeader">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
@@ -178,27 +178,27 @@ function generateOpenCardHTML(taskIndex) {
             </a>
         </div>
         <div class="openCardContent">
-            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]
-        }</h3>
-            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]
-        }</h4>
+            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
+            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
             <div class="openCardTable">
-            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]
-        }<span>
+            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
             </div>
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span id="openCardPriority${taskIndex}">${tasks[taskIndex][`priority`]
-        }</span>
-                <img src="./assets/img/Desktop/board/priority_symbols/${tasks[taskIndex][`priority`]
-        }.svg">
+                <span id="openCardPriority${taskIndex}">${tasks[taskIndex][`priority`]}</span>
+                <img src="./assets/img/Desktop/board/priority_symbols/${
+                   tasks[taskIndex][`priority`]
+                }.svg">
                 </div>
             </div>
         </div>
-        <div id="openCardIcon${taskIndex}" class="openCardAssigned">
+
+        <div class="openCardAssignedTitle">
             <p>Assigned To:</p>
+            <div id="openCardIcon${taskIndex}" class="openCardAssigned"></div>
         </div>
+
         <div class="openCardSubtasks-container">
             <p>Subtask</p>
             <div id="openCardSubtasks${taskIndex}"></div>
@@ -241,16 +241,15 @@ function generateOpenCardHTML(taskIndex) {
  * @returns {string} - HTML string for the contact icon.
  */
 function createContactIcon(contact) {
-    let color = contact["color"];
-    const nameParts = contact["name"].split(" ");
-    const firstNameInitial = nameParts[0].charAt(0);
-    const lastNameInitial =
-        nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : "";
+   let color = contact['color'];
+   const nameParts = contact['name'].split(' ');
+   const firstNameInitial = nameParts[0].charAt(0);
+   const lastNameInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0) : '';
 
-    return /*html*/ `
+   return /*html*/ `
         <div class="openCardIcon">
           <div class="icon nosele" style="background-color: ${color};">${firstNameInitial}${lastNameInitial}</div>
-          <p>${contact["name"]}</p>
+          <p>${contact['name']}</p>
         </div>
     `;
 }
@@ -263,12 +262,12 @@ function createContactIcon(contact) {
  * @returns {string} HTML string for the contact icon.
  */
 function createContactIconHTML(contact, index, contactsLeft) {
-    if (index === 3) {
-        return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647;"><b style="font-weight: 900; margin-left: -0.25rem;">+${contactsLeft}</b></div>`;
-    }
+   if (index === 3) {
+      return /*html*/ `<div class="icon" style="background-color: #F6F7F8; color: #2A3647;"><b style="font-weight: 900; margin-left: -0.25rem;">+${contactsLeft}</b></div>`;
+   }
 
-    let names = getInitials(contact["name"]);
-    return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${names}</div>`;
+   let names = getInitials(contact['name']);
+   return /*html*/ `<div class="icon" style="background-color: ${contact['color']};">${names}</div>`;
 }
 
 /**
@@ -280,7 +279,7 @@ function createContactIconHTML(contact, index, contactsLeft) {
  * @returns {string} HTML string for the incomplete subtask.
  */
 function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
-    return /*html*/ `
+   return /*html*/ `
         <div class="hoverPointer openCardSubtasks" id="subtask${index}" onclick="subtaskComplete(${index}, ${taskIndex})">
         <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox.svg">
           ${subtask}
@@ -297,7 +296,7 @@ function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
  * @returns {string} HTML string for the completed subtask.
  */
 function createCompleteSubtaskHTML(subtask, index, taskIndex) {
-    return /*html*/ `
+   return /*html*/ `
         <div class="openCardSubtasks" id="subtaskDone${index}" onclick="subtaskUnComplete(${index}, ${taskIndex})">
         <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox_checked.svg">
           <p class="textCross">
@@ -315,12 +314,12 @@ function createCompleteSubtaskHTML(subtask, index, taskIndex) {
  * @returns {string} HTML markup for the task card.
  */
 function generateTaskCardHTML(task, taskIndex) {
-    return /*html*/ `    
-        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${task.state
-        }')">
+   return /*html*/ `    
+        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${
+      task.state
+   }')">
             <div class="toDoCard">
-                <div class="${category(task.category)} headerUserStoryPopUp">${task.category
-        }</div>
+                <div class="${category(task.category)} headerUserStoryPopUp">${task.category}</div>
                 <div>
                     <h3>${task.taskTitle}</h3>
                     <p>${addDescription(task.description)}</p>
@@ -328,8 +327,7 @@ function generateTaskCardHTML(task, taskIndex) {
                 <div id="progressbar${taskIndex}" class="progressbar"></div>
                 <div class="toDoCardFooter">
                     <div id="cardIcon${taskIndex}" class="userIcon"></div>
-                    <img src="./assets/img/Desktop/board/priority_symbols/${task.priority
-        }.svg">
+                    <img src="./assets/img/Desktop/board/priority_symbols/${task.priority}.svg">
                 </div>
             </div>
         </div>
