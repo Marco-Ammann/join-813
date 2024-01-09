@@ -1038,7 +1038,33 @@ div[id^="openCardSubtasks"] {
 
   .openCardAssigned {
     gap: 0.25rem;
+    max-height: 5rem;
   }
+
+  .openCardAssigned::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  [id^="openCardSubtasks"] {
+    max-height: 5rem;
+}
+
+  .openCardIcon {
+    padding: 0.2rem 1rem;
+}
+
+[id^="openCardSubtasks"]::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.openCardIcon div{
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+}
+
+.openCardIcon p{
+  font-size: 0.8rem;
+}
 
   .add-tasks-popup {
     width: 80vw;
@@ -1122,6 +1148,7 @@ div[id^="openCardSubtasks"] {
     flex-direction: column;
   }
 }
+
 
 @media (max-width: 590px) {
   .add-tasks-popup {
