@@ -255,48 +255,43 @@ function closeCard(deleted) {
  * @param {string} containerId - The ID of the container to highlight.
  */
 function highlight(containerId) {
-  switch (containerId) {
-    case "ToDo":
-      document
-        .getElementById("InProgressHoverContainer")
-        .classList.remove("d-none");
-      break;
-    case "InProgress":
-      document.getElementById("ToDoHoverContainer").classList.remove("d-none");
-      document
-        .getElementById("AwaitFeedbackHoverContainer")
-        .classList.remove("d-none");
-      break;
-    case "AwaitFeedback":
-      document
-        .getElementById("InProgressHoverContainer")
-        .classList.remove("d-none");
-      document.getElementById("DoneHoverContainer").classList.remove("d-none");
-      break;
-    case "Done":
-      document
-        .getElementById("AwaitFeedbackHoverContainer")
-        .classList.remove("d-none");
-      break;
-  }
+  const hoverMap = {
+      "ToDo": ["InProgress"],
+      "InProgress": ["ToDo", "AwaitFeedback"],
+      "AwaitFeedback": ["InProgress", "Done"],
+      "Done": ["AwaitFeedback"]
+  };
+
+  hideAllHoverContainers();
+  const relatedContainers = hoverMap[containerId] || [];
+  relatedContainers.forEach(updateHoverContainer);
 }
 
 
 /**
- * Removes the highlight from all hover containers.
+ * Hides all hover containers.
  */
-function removeHighlight() {
-  const containerIds = [
-    "ToDoHoverContainer",
-    "InProgressHoverContainer",
-    "DoneHoverContainer",
-    "AwaitFeedbackHoverContainer",
-  ];
-
-  containerIds.forEach((id) => {
-    const content = document.getElementById(id);
-    content.classList.add("d-none");
+function hideAllHoverContainers() {
+  const hoverContainers = ["ToDo", "InProgress", "AwaitFeedback", "Done"];
+  hoverContainers.forEach(containerId => {
+      const container = document.getElementById(containerId + "HoverContainer");
+      if (container) {
+          container.classList.add("d-none");
+      }
   });
+}
+
+
+/**
+ * Shows a specific hover container based on the provided container ID.
+ *
+ * @param {string} containerId - The ID of the container to show.
+ */
+function updateHoverContainer(containerId) {
+  const hoverContainer = document.getElementById(containerId + "HoverContainer");
+  if (hoverContainer) {
+      hoverContainer.classList.remove("d-none");
+  }
 }
 
 

@@ -145,7 +145,7 @@ async function moveTo(category) {
   tasks[currentDraggedElement][`state`] = category;
   await saveStateChangeAfterDroppingTask();
   renderTasks();
-  removeHighlight();
+  hideAllHoverContainers();
 }
 
 
