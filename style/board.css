@@ -502,6 +502,10 @@
   padding: 1.25rem;
 }
 
+.editTaskDropdownHeight {
+  height: 12.5rem!important;
+}
+
 .task-forms {
   margin-top: 0 !important;
 }
