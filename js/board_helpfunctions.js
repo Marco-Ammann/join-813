@@ -9,6 +9,8 @@ function category(text) {
 }
 
 
+
+
 /**
  * Truncates the text to a specified length, ending at the last complete word within the limit.
  *
