@@ -35,6 +35,7 @@ async function loadUsers(ok) {
  *
  */
 async function register() {
+    let failConfirmPassword = document.getElementById("fail-confirm-password");
     if (password.value === confirmPassword.value) {
         registerBtn.disabled = true;
         for (let user of users) {
@@ -43,6 +44,8 @@ async function register() {
             }
         }
         isUserEmailNotfound(users);
+    } else {
+        failConfirmPassword.style.color = "#FF8190";
     }
 }
 
@@ -147,7 +150,7 @@ function checkConfirmPassword() {
     let secondPassword = confirmPassword.value.trim();
     let failConfirmPassword = document.getElementById("fail-confirm-password");
 
-    if (firstPassword !==  secondPassword) {
+    if (!firstPassword.startsWith(secondPassword)) {
         failConfirmPassword.style.color = "#FF8190";
     } else {
         failConfirmPassword.style.color = "transparent";
