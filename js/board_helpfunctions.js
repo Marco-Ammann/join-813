@@ -182,6 +182,20 @@ function sortAndFilterCards(inputId) {
   document.getElementById('allertNoTasksFoundContainer').innerHTML = '';
   const searchTerm = document.getElementById(inputId).value.toLowerCase();
   const cards = document.querySelectorAll(".toDoCard");
+  const states = [
+    "ToDo",
+    "InProgress",
+    "Done",
+    "AwaitFeedback",
+  ];
+
+  if (searchTerm) {
+    states.forEach((state) => {
+      removeNoTaskHTML(state);
+    });
+  } else if (!searchTerm) {
+    checkAndAddTasks(tasks);
+  }
 
   cards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
@@ -195,13 +209,7 @@ function sortAndFilterCards(inputId) {
 
   if (taskFound === false) {
     let content = document.getElementById('allertNoTasksFoundContainer');
-    content.innerHTML += /*html*/`
-    <div onclick="RemoveNoTaksFound()" id="registrationModal" class="modal">
-        <div class="modal-content">
-            <p>No Tasks found</p>
-        </div>
-    </div>
-      `;
+    content.innerHTML = 'No task found';
     document.getElementById('allertNoTasksFoundContainer').style.zIndex = "10";
   }
   taskFound = false;

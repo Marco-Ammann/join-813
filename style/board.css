@@ -761,6 +761,7 @@ div[id^="openCardSubtasks"] {
   gap: 0.625rem;
   border-radius: 1.875rem;
   border: 1px dashed var(--icon, #A8A8A8);
+  margin: -0.875rem 0 0.875rem 0;
 }
 
 .AddTaskButton:hover path, .AddTaskButton:hover rect {
@@ -773,12 +774,11 @@ div[id^="openCardSubtasks"] {
 }
 
 .allertNoTasksFoundContainer {
+  position: absolute;
+  inset: 6rem 0 0 14.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
   z-index: -15;
   pointer-events: none;
 }
@@ -872,16 +872,9 @@ div[id^="openCardSubtasks"] {
   }
 
   .hoverCardContainer {
-    display: flex;
-    min-width: 16rem;
-    width: 33.625rem;
-    height: 12.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.625rem;
-    border-radius: 1.875rem;
-    border: 1px dashed var(--icon, #A8A8A8);
-    margin: 0.875rem;
+    width: calc(100vw - 2rem);
+    height: 3rem;
+    border-radius: 0.625rem;
   }
 
   .addTaskButton {
@@ -962,7 +955,7 @@ div[id^="openCardSubtasks"] {
 
   .noTaskFound {
     text-align: center;
-    width: 24.5rem;
+    width: calc(100vw - 3.75rem);
     height: 3rem;
   }
 
