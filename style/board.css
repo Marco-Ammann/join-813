@@ -616,7 +616,7 @@ div[id^="openCardSubtasks"] {
 .openCardTable span,
 .openCardIcon p,
 .openCardSubtasks,
-.openCardAssigned p,
+.openCardAssignedTitle p,
 .openCardSubtasks-container p {
   color: #000;
   font-family: "Inter";
@@ -1008,7 +1008,7 @@ div[id^="openCardSubtasks"] {
   .openCardTable span,
   .openCardIcon p,
   .openCardSubtasks,
-  .openCardAssigned p,
+  .openCardAssignedTitle p,
   .openCardSubtasks-container p {
     font-size: 1rem;
   }

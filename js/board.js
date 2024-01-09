@@ -142,6 +142,10 @@ function addOpenCardSubtasks(taskIndex) {
   tasks[taskIndex]["subtasksDone"].forEach((subtask, y) => {
     content.innerHTML += createCompleteSubtaskHTML(subtask, y, taskIndex);
   });
+
+  if (content.innerHTML === "") {
+    document.getElementById('opencardSubtaskTitle').style.display = 'none';
+  }
 }
 
 
