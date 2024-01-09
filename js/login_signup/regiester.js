@@ -163,7 +163,7 @@ function confirmPrivacyPolicy() {
     let emptyImagePath = "assets/img/Desktop/login_signup/checkbox/empty.svg";
 
     if (policyImage.src.endsWith(emptyImagePath)) {
-        policyImage.src = "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+        policyImage.src = "assets/img/Desktop/login_signup/checkbox/checked.svg";
         registerBtn.disabled = false;
     } else {
         policyImage.src = emptyImagePath;

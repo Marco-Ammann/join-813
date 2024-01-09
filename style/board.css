@@ -743,8 +743,6 @@ div[id^="openCardSubtasks"] {
   margin: 0 0.15rem 0 0;
 }
 
-/* TODO: Fix shifting */
-
 .openCardSubtasks-container p:not(.openCardSubtasks p) {
   font-size: 1.25rem;
   color: #2a3647;

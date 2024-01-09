@@ -153,7 +153,7 @@ function addRememberMe() {
     let emptyImagebox = "assets/img/Desktop/login_signup/checkbox/empty.svg";
     let currentImagebox = document.getElementById("rememberMeEmptyImageBox");
     if (currentImagebox.src.endsWith(emptyImagebox)) {
-        currentImagebox.src = "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+        currentImagebox.src = "assets/img/Desktop/login_signup/checkbox/checked.svg";
         saveRememberMe = "true";
     } else {
         currentImagebox.src = emptyImagebox;
@@ -215,7 +215,7 @@ function loadFillInput() {
     loginEmail.value = ArrayToSave["email"];
     passwordLogin.value = ArrayToSave["password"];
     document.getElementById("rememberMeEmptyImageBox").src =
-        "assets/img/Desktop/login_signup/checkbox/hover_checked.svg";
+        "assets/img/Desktop/login_signup/checkbox/checked.svg";
 }
 
 

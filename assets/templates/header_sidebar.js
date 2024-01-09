@@ -325,3 +325,13 @@ function handleLogoState(logo) {
 function handleLogoClick() {
     location.href = "summary.html";
 }
+
+
+/**
+ * Capitalizes the first letter of a string
+ * @param {string} string 
+ * @returns - edited string
+ */
+function capFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

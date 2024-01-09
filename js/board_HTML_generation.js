@@ -186,7 +186,7 @@ function generateOpenCardHTML(taskIndex) {
             <div class="openCardTable">
             <p>Priority:</p>
                 <div class="openCardPriority">
-                <span id="openCardPriority${taskIndex}">${tasks[taskIndex][`priority`]}</span>
+                <span id="openCardPriority${taskIndex}">${capFirstLetter(tasks[taskIndex][`priority`])}</span>
                 <img src="./assets/img/Desktop/board/priority_symbols/${
                    tasks[taskIndex][`priority`]
                 }.svg">
@@ -200,7 +200,7 @@ function generateOpenCardHTML(taskIndex) {
         </div>
 
         <div class="openCardSubtasks-container">
-            <p id="opencardSubtaskTitle">Subtask</p>
+            <p id="opencardSubtaskTitle">Subtasks</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
         <div class="openCardFooter">

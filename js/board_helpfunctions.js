@@ -47,7 +47,7 @@ function addProgressBar(i) {
     content = document.getElementById(`progressbar${i}`);
     content.innerHTML = /*html*/ `
                 <progress max="100" value="${calculatetSubtask}"></progress>
-                <span>${tasks[i]["subtasksDone"].length}/${task} Subtask</span>
+                <span>${tasks[i]["subtasksDone"].length}/${task} Subtasks</span>
                 `;
   } else {
     document.getElementById(`progressbar${i}`).remove();
