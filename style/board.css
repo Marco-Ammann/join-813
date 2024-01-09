@@ -293,7 +293,7 @@
 .headerUserStory {
   display: flex;
   padding: 0.25rem 1rem;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.625rem;
   border-radius: 0.5rem;
   background: #0038ff;
