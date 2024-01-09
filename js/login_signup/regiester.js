@@ -147,7 +147,7 @@ function checkConfirmPassword() {
     let secondPassword = confirmPassword.value.trim();
     let failConfirmPassword = document.getElementById("fail-confirm-password");
 
-    if (!firstPassword.startsWith(secondPassword)) {
+    if (firstPassword !==  secondPassword) {
         failConfirmPassword.style.color = "#FF8190";
     } else {
         failConfirmPassword.style.color = "transparent";
