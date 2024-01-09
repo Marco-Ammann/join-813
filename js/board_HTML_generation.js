@@ -11,7 +11,7 @@ function generateEditCardHTML(i) {
 <div class="editor-wrapper">
     <div class="addTaskHeader">
         <h1 class="content-title">Edit Task</h1>
-        <button id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
+        <button class="noselect" id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                     width="24" height="24">
@@ -31,7 +31,7 @@ function generateEditCardHTML(i) {
             <div class="forms-sides">
                 <div class="form-div">
                     <span class="form-span required-asteriks">Title</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
                         <input id="task-title-input-popup" maxlength="48" class="task-title-input" type="text"
                             placeholder="Enter a title" required />
                         <p class="input-required-warning invisible" id="requiredTextTitle">This field is
@@ -41,7 +41,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span required-asteriks">Description</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
                         <textarea id="task-description-textarea-popup" class="task-description-textarea"
                             name="inputDescription" placeholder="Enter a Description" required></textarea>
                         <p class="input-required-warning invisible" id="requiredTextDescription">This
@@ -51,7 +51,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Assigned to</span>
-                    <div class="input-div-wrapper">
+                    <div class="input-div-wrapper noselect">
                         <div class="input-div">
                             <input id="add-contact-input-popup" class="add-contact-input" type="text"
                                 placeholder="Select contacts to assign" required
@@ -62,7 +62,7 @@ function generateEditCardHTML(i) {
                         </div>
                         <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
                     </div>
-                    <div class="assigned-contacts" id="assigned-contacts-popup"></div>
+                    <div class="assigned-contacts noselect" id="assigned-contacts-popup"></div>
 
                 </div>
             </div>
@@ -73,7 +73,7 @@ function generateEditCardHTML(i) {
                 <div class="form-div">
                     <span class="form-span required-asteriks">Due
                         date</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
 
                         <div class="input-div">
                             <input id="due-date-input-popup" maxlength="48" class="due-date-input" type="date"
@@ -88,7 +88,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Prio</span>
-                    <div class="prio-buttons">
+                    <div class="prio-buttons noselect">
                         <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                             <span>Urgent</span>
                             <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg" id="urgentSymbol" />
@@ -107,7 +107,7 @@ function generateEditCardHTML(i) {
 
                 <div class="form-div">
                     <span class="form-span">Subtasks</span>
-                    <div class="form-subcontainer">
+                    <div class="form-subcontainer noselect">
 
                         <div class="input-div" id="subtask-input-div">
                             <input id="subtask-input-popup" maxlength="48" class="subtask-input" type="text"
@@ -137,7 +137,7 @@ function generateEditCardHTML(i) {
     </div>
 </div>
 
-<div class="footer-container">
+<div class="footer-container noselect">
 
 
     <div class="footer-btn-container">
@@ -164,7 +164,7 @@ function generateEditCardHTML(i) {
 function generateOpenCardHTML(taskIndex) {
    return /*html*/ `        
     <div class="toDoCard openCard">
-        <div class="openCardHeader">
+        <div class="openCardHeader noselect">
         <div class="headerUserStory headerUserStoryPopUp">User Story</div>
             <a onclick="closeCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -187,7 +187,7 @@ function generateOpenCardHTML(taskIndex) {
             <p>Priority:</p>
                 <div class="openCardPriority">
                 <span id="openCardPriority${taskIndex}">${capFirstLetter(tasks[taskIndex][`priority`])}</span>
-                <img src="./assets/img/Desktop/board/priority_symbols/${
+                <img class="noselect" src="./assets/img/Desktop/board/priority_symbols/${
                    tasks[taskIndex][`priority`]
                 }.svg">
                 </div>
@@ -203,7 +203,7 @@ function generateOpenCardHTML(taskIndex) {
             <p id="opencardSubtaskTitle">Subtasks</p>
             <div id="openCardSubtasks${taskIndex}"></div>
         </div>
-        <div class="openCardFooter">
+        <div class="openCardFooter noselect">
             <a href="#" onclick="deleteOpenCard(${taskIndex})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_118031_2295" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
@@ -248,7 +248,7 @@ function createContactIcon(contact) {
 
    return /*html*/ `
         <div class="openCardIcon">
-          <div class="icon nosele" style="background-color: ${color};">${getInitials(contact["name"])}</div>
+          <div class="icon noselect" style="background-color: ${color};">${getInitials(contact["name"])}</div>
           <p>${contact["name"]}</p>
         </div>
     `;

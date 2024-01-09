@@ -25,40 +25,40 @@
 <body onload="registerInit()">
     <div class="login-content-body">
 
-        <img class="join-logo-static-signup" src="./assets/img/Desktop/login_signup/Capa 2.svg" alt="Join Logo">
+        <img class="join-logo-static-signup" src="./assets/img/Desktop/login_signup/Capa 2.svg" alt="Join">
 
         <div class="signUp-content-border">
-            <a class="arrow-left-default" href="./index.html"><img
+            <a class="arrow-left-default noselect" href="./index.html"><img
                     src="./assets/img/Desktop/login_signup/arrow-left-default.svg" alt="Zurückpfeil"></a>
 
             <div class="signUp-content">
                 <div class="login-content-header">
                     <div class="log-sign-title">
-                        <a href="javascript:history.back()"><img src="./assets/img/Desktop/general_elements/arrow_left/default.svg" alt="Go Back"></a>
+                        <a class="noselect" href="javascript:history.back()"><img src="./assets/img/Desktop/general_elements/arrow_left/default.svg" alt="Go Back"></a>
                         <h1>Sign up</h1>
                     </div>
                     <img src="./assets/img/Desktop/login_signup/Vector 5.svg" alt="">
                 </div>
 
                 <form onsubmit="register(); return false;" class="signUp-content-form">
-                    <div class="input-name">
+                    <div class="input-name noselect">
                         <input required id="userName" type="text" placeholder="Name" class="input-remove-border">
                         <img src="./assets/img/Desktop/login_signup/person.svg" alt="Name Icon">
                     </div>
 
-                    <div class="input-email signUp-email margin-top">
+                    <div class="input-email signUp-email margin-top noselect">
                         <input required id="email" type="email" placeholder="Email" class="input-remove-border">
                         <img src="./assets/img/Desktop/login_signup/mail.svg" alt="Email Icon">
                     </div>
 
-                    <div class="input-password margin-top">
+                    <div class="input-password margin-top noselect">
                         <input required id="firstPassword" type="password" placeholder="Password"
                             class="input-remove-border">
                         <img src="./assets/img/Desktop/login_signup/lock.svg" id="imagePassword"
                             onclick="visibilityOnOffImage('', 'first')" alt="Schloss Icon">
                     </div>
 
-                    <div class="input-password-confirm margin-top">
+                    <div class="input-password-confirm margin-top noselect">
                         <input required id="confirmPassword" type="password" onkeyup="checkConfirmPassword()"
                             placeholder="Confirm Password" class="input-remove-border">
                         <img src="./assets/img/Desktop/login_signup/lock.svg" id="imageConfirmPassword"
@@ -66,15 +66,15 @@
                     </div>
                     <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" title="Mindestens 8 Zeichen, 1 Buchstabe, 1 Zahl, 1 Sonderzeichen, keine Leerzeichen" -->
 <!-- TODO: add pattern in passwordinputfield -->
-                    <span class="fail-confirm-password" id="fail-confirm-password">Ups! your password don’t match</span>
+                    <span class="fail-confirm-password noselect" id="fail-confirm-password">Ups! your password don’t match</span>
 
                     <div class="privacy-policy-content-checkbox">
                         <img src="./assets/img/Desktop/login_signup/checkbox/empty.svg" id="privacyPolicyImage"
-                            onclick="confirmPrivacyPolicy()" alt="empty checkbox">
+                            onclick="confirmPrivacyPolicy()" class="noselect" alt="empty checkbox">
                         <span>I accept the <a href="./privacy-policy.html" onclick="withoutSidebarLinks()">Privacy Policy</a></span>
                     </div>
 
-                    <div class="signup-content-btn">
+                    <div class="signup-content-btn noselect">
                         <button id="registerBtn" class="btn-login" disabled>Sign up</button>
                     </div>
                 </form>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="login-footer">
+        <div class="login-footer noselect">
             <a href="./privacy-policy.html" target="_blank" onclick="withoutSidebarLinks()">Privacy Policy</a>
             <a href="./legal-notice.html" target="_blank" onclick="withoutSidebarLinks()">Legal Notice</a>
         </div>

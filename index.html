@@ -26,13 +26,13 @@
 
         <header class="login-header">
             <span>Not a Join user?</span>
-            <a href="./sign-up.html"><button>Sign up</button></a>
+            <a class="noselect" href="./sign-up.html"><button>Sign up</button></a>
         </header>
 
         <!-- Logo Dialog und Animation -->
         <div class="animation-container" id="animationContainer"></div>
         <img class="join-logo-static" id="join-logo-static" src="./assets/img/Desktop/login_signup/Capa 2.svg"
-            alt="Join Logo">
+            alt="Join">
 
         <div class="login-content-border">
             <div class="login-content">
@@ -41,7 +41,7 @@
                     <img src="./assets/img/Desktop/login_signup/Vector 5.svg" alt="">
                 </div>
 
-                <form onsubmit="loginUser(); return false;" class="login-content-form">
+                <form onsubmit="loginUser(); return false;" class="login-content-form noselect">
                     <div class="input-email">
                         <input type="text" placeholder="Email" id="loginEmail" required
                             onkeyup="changeShowTextFailLogin()" class="input-remove-border">
@@ -58,11 +58,11 @@
 
                 <div class="login-content-checkbox">
                     <img src="./assets/img/Desktop/login_signup/checkbox/empty.svg" id="rememberMeEmptyImageBox"
-                        onclick="addRememberMe()" alt="empty checkbox">
+                        onclick="addRememberMe()" class="noselect" alt="empty checkbox">
                     <span>Remember me</span>
                 </div>
 
-                <div class="login-content-btn">
+                <div class="login-content-btn noselect">
                     <button class="btn-login" id="btn-login" onclick="loginCheckEmailAndPassword()" disabled>Log in</button>
                     <button class="btn-guest" id="btn-guest" onclick="guestAccount()" disabled>Guest Log in</button>
                 </div>
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class="login-footer">
+        <div class="login-footer noselect">
             <a href="./privacy-policy.html" target="_blank" onclick="withoutSidebarLinks()">Privacy Policy</a>
             <a href="./legal-notice.html" target="_blank" onclick="withoutSidebarLinks()">Legal Notice</a>
         </div>

@@ -51,7 +51,7 @@
 
                     <div class="addTaskHeader">
                         <h1 class="content-title">Add Task</h1>
-                        <button id="closeAddTaskButton" onclick="hideAddTaskMenu('assigned-contacts')">
+                        <button class="noselect" id="closeAddTaskButton" onclick="hideAddTaskMenu('assigned-contacts')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -72,7 +72,7 @@
                             <div class="forms-sides">
                                 <div class="form-div">
                                     <span class="form-span required-asteriks">Title</span>
-                                    <div class="form-subcontainer">
+                                    <div class="form-subcontainer noselect">
                                         <input id="task-title-input" maxlength="48" class="task-title-input" type="text"
                                             placeholder="Enter a title" required />
                                         <p class="input-required-warning invisible" id="requiredTextTitle">This
@@ -83,7 +83,7 @@
 
                                 <div class="form-div">
                                     <span class="form-span required-asteriks">Description</span>
-                                    <div class="form-subcontainer">
+                                    <div class="form-subcontainer noselect">
                                         <textarea id="task-description-textarea" class="task-description-textarea"
                                             name="inputDescription" placeholder="Enter a Description"
                                             required></textarea>
@@ -95,7 +95,7 @@
                                 <div class="form-div">
                                     <span class="form-span">Assigned
                                         to</span>
-                                    <div class="input-div-wrapper">
+                                    <div class="input-div-wrapper noselect">
                                         <div class="input-div">
                                             <input id="add-contact-input" class="add-contact-input" type="text"
                                                 placeholder="Select contacts to assign" required
@@ -118,7 +118,7 @@
                                 <div class="form-div">
                                     <span class="form-span required-asteriks">Due
                                         date</span>
-                                    <div class="form-subcontainer">
+                                    <div class="form-subcontainer noselect">
 
                                         <div class="input-div">
                                             <input id="due-date-input" maxlength="48" class="due-date-input" type="date"
@@ -134,7 +134,7 @@
 
                                 <div class="form-div">
                                     <span class="form-span">Prio</span>
-                                    <div class="prio-buttons">
+                                    <div class="prio-buttons noselect">
                                         <button type="button" class="prio-btn" id="urgentBtn"
                                             onclick="setPrio('urgent')">
                                             <span>Urgent</span>
@@ -157,12 +157,12 @@
 
                                 <div class="form-div">
                                     <span class="form-span required-asteriks">Category</span>
-                                    <div class="input-div-wrapper">
+                                    <div class="input-div-wrapper noselect">
                                         <div class="input-div">
                                             <input
                                                 onclick="switchVisibility('categoryDropdown'), generateCategoryOptions()"
                                                 id="add-category-input" class="add-category-input" type="text"
-                                                value="Select task category" required readonly/>
+                                                placeholder="Select task category" required readonly/>
 
                                             <img onclick="switchVisibility('categoryDropdown'), generateCategoryOptions()"
                                                 class="arrow-symbol input-symbol" id="arrowCategory"
@@ -179,7 +179,7 @@
 
                                 <div class="form-div">
                                     <span class="form-span">Subtasks</span>
-                                    <div class="form-subcontainer">
+                                    <div class="form-subcontainer noselect">
 
                                         <div class="input-div" id="subtask-input-div">
                                             <input id="subtask-input" maxlength="48" class="subtask-input" type="text"
@@ -217,7 +217,7 @@
                         This field is required
                     </span>
 
-                    <div class="footer-btn-container">
+                    <div class="footer-btn-container noselect">
                         <button id="clearBtn" type="button" class="addTaskBtn clearBtn"
                             onclick="clearForm('assigned-contacts', 'subTasks')">
                             Clear
@@ -276,8 +276,8 @@
 
         <div class="boardHeader">
             <h2>Board</h2>
-            <div class="boardHeaderControll">
-                <div class="sortTasks noselect">
+            <div class="boardHeaderControll noselect">
+                <div class="sortTasks">
                     <input onkeyup="sortAndFilterCards('sortTasksInput')" class="searchInput" id="sortTasksInput"
                         placeholder="Find Task">
                     <div class="sortTasksButton">
@@ -287,7 +287,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton noselect" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage(), setPrio('medium')">
+                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage(), setPrio('medium')">
                     <p>Add task</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -306,25 +306,25 @@
 
         <div class="toDoList">
             <div>
-                <div class="toDoListCategories noselect">
+                <div class="toDoListCategories">
                     <p>To do</p>
-                    <a class="hoverPointer AddTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage(), setPrio('medium')"><svg
+                    <a class="hoverPointer AddTaskButton noselect" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage(), setPrio('medium')"><svg
                             width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                             <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                             <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                         </svg></a>
                 </div>
-                <div class="dragContainer" ondrop="moveTo('ToDo')" ondragover="allowDrop(event)">
+                <div class="dragContainer noselect" ondrop="moveTo('ToDo')" ondragover="allowDrop(event)">
                     <div class="listContainer" id="ToDoContainer"></div>
                     <div id="ToDoHoverContainer" class="hoverCardContainer d-none"></div>
                 </div>
             </div>
             <div>
 
-                <div class="toDoListCategories noselect">
+                <div class="toDoListCategories">
                     <p>In progress</p>
-                    <a class="hoverPointer AddTaskButton"
+                    <a class="hoverPointer AddTaskButton noselect"
                         onclick="openAddTaskMenu('InProgress'), loadAddTaskPage(), setPrio('medium')"><svg width="24" height="24"
                             viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
@@ -333,16 +333,16 @@
                         </svg>
                     </a>
                 </div>
-                <div class="dragContainer" ondrop="moveTo('InProgress')" ondragover="allowDrop(event)">
+                <div class="dragContainer noselect" ondrop="moveTo('InProgress')" ondragover="allowDrop(event)">
                     <div class="listContainer" id="InProgressContainer"></div>
                     <div id="InProgressHoverContainer" class="hoverCardContainer d-none"></div>
                 </div>
             </div>
 
             <div>
-                <div class="toDoListCategories noselect">
+                <div class="toDoListCategories">
                     <p>Await feedback</p>
-                    <a class="hoverPointer AddTaskButton" onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage(), setPrio('medium')">
+                    <a class="hoverPointer AddTaskButton noselect" onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage(), setPrio('medium')">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                             <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
@@ -350,17 +350,17 @@
                         </svg>
                     </a>
                 </div>
-                <div class="dragContainer" ondrop="moveTo('AwaitFeedback')" ondragover="allowDrop(event)">
+                <div class="dragContainer noselect" ondrop="moveTo('AwaitFeedback')" ondragover="allowDrop(event)">
                     <div class="listContainer" id="AwaitFeedbackContainer"></div>
                     <div id="AwaitFeedbackHoverContainer" class="hoverCardContainer d-none"></div>
                 </div>
             </div>
 
             <div>
-                <div class="toDoListCategories noselect">
+                <div class="toDoListCategories">
                     <p>Done</p>
                 </div>
-                <div class="dragContainer" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
+                <div class="dragContainer noselect" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
                     <div class="listContainer" id="DoneContainer"></div>
                     <div id="DoneHoverContainer" class="hoverCardContainer d-none"></div>
                 </div>

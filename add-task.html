@@ -47,7 +47,7 @@
           <div class="forms-sides">
             <div class="form-div">
               <span class="form-span required-asteriks">Title</span>
-              <div class="form-subcontainer">
+              <div class="form-subcontainer noselect">
                 <input id="task-title-input" maxlength="48" class="task-title-input" type="text"
                   placeholder="Enter a title" required />
                 <p class="input-required-warning invisible" id="requiredTextTitle">This field is required</p>
@@ -56,7 +56,7 @@
 
             <div class="form-div">
               <span class="form-span required-asteriks">Description</span>
-              <div class="form-subcontainer">
+              <div class="form-subcontainer noselect">
                 <textarea id="task-description-textarea" class="task-description-textarea" name="inputDescription"
                   placeholder="Enter a Description" required></textarea>
                 <p class="input-required-warning invisible" id="requiredTextDescription">This field is required</p>
@@ -65,7 +65,7 @@
 
             <div class="form-div">
               <span class="form-span">Assigned to</span>
-              <div class="input-div-wrapper">
+              <div class="input-div-wrapper noselect">
                 <div class="input-div">
                   <input id="add-contact-input" class="add-contact-input" type="text" placeholder="Select contacts to assign"
                     required
@@ -86,7 +86,7 @@
           <div class="forms-sides">
             <div class="form-div">
               <span class="form-span required-asteriks">Due date</span>
-              <div class="form-subcontainer">
+              <div class="form-subcontainer noselect">
 
                 <div class="input-div">
                   <input id="due-date-input" maxlength="48" class="due-date-input" type="date" placeholder="dd/mm/yyyy"
@@ -100,7 +100,7 @@
 
             <div class="form-div">
               <span class="form-span">Prio</span>
-              <div class="prio-buttons">
+              <div class="prio-buttons noselect">
                 <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                   <span>Urgent</span>
                   <img src="./assets/img/Desktop/add-task/priority_icons/urgent.svg" id="urgentSymbol" />
@@ -118,10 +118,10 @@
 
             <div class="form-div">
               <span class="form-span required-asteriks">Category</span>
-              <div class="input-div-wrapper">
+              <div class="input-div-wrapper noselect">
                 <div class="input-div">
                   <input onclick="switchVisibility('categoryDropdown')" id="add-category-input"
-                    class="add-category-input" type="text" value="Select task category" required readonly/>
+                    class="add-category-input" type="text" placeholder="Select task category" required readonly/>
 
                   <img onclick="switchVisibility('categoryDropdown')" class="arrow-symbol input-symbol"
                     id="arrowCategory" src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter" />
@@ -134,7 +134,7 @@
 
             <div class="form-div">
               <span class="form-span">Subtasks</span>
-              <div class="form-subcontainer">
+              <div class="form-subcontainer noselect">
 
                 <div class="input-div" id="subtask-input-div">
                   <input id="subtask-input" maxlength="48" class="subtask-input" type="text"
@@ -163,7 +163,7 @@
         <span class="footer-required-field required-asteriks-before">This
           field is required</span>
 
-        <div class="footer-btn-container">
+        <div class="footer-btn-container noselect">
           <button id="clearBtn" type="button" class="addTaskBtn clearBtn" onclick="clearForm('assigned-contacts', 'subTasks')">
             <span>Clear</span>
             <img src="./assets/img/Desktop/add-task/cancel.svg" alt="weißer Haken" class="clearBtnImage"/>

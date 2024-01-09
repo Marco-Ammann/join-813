@@ -34,7 +34,7 @@
     <!-- Content -->
     <div id="content" class="content d-flex">
         <div id="contact-list-container">
-            <div class="add-new">
+            <div class="add-new noselect">
                 <div onclick="openAddNewContact()" class="add-new-button">
                     <span>Add new contact</span>
                     <img src="./assets/img/Desktop/contacts/person_add.svg">
@@ -43,7 +43,7 @@
             <div onclick="openAddNewContact()" class="add-new-mobile">
                 <img src="./assets/img/Desktop/contacts/person_add.svg">
             </div>
-            <div id="contactList" class="contact-list">
+            <div id="contactList" class="contact-list noselect">
 
             </div>
         </div>
@@ -73,7 +73,7 @@
                     <img class="mobile-x" onclick="closePopUp()" src="./assets/img/Mobile/contacts_mobile/close.svg"
                         alt="Close">
                     <div class="p-relative">
-                        <img class="popup-logo" src="./assets/img/Desktop/general_elements/join_light.svg" alt="Logo">
+                        <img class="popup-logo" src="./assets/img/Desktop/general_elements/join_light.svg" alt="Join">
                     </div>
                     <h1 id="popUpTitle">Add contact</h1>
                     <span id="popUpSubtitle">Tasks are better with a team!</span>
@@ -81,13 +81,13 @@
                 </div>
                 <div class="popup-fields">
                     <div>
-                        <img class="x-button" onclick="closePopUp()" src="./assets/img/Desktop/contacts/close.svg"
+                        <img class="x-button noselect" onclick="closePopUp()" src="./assets/img/Desktop/contacts/close.svg"
                             alt="Close">
                     </div>
                     <div class="popup-section">
-                        <div id="popUpProfile" class="popup-profile"><img src="./assets/img/Desktop/contacts/person.svg"
+                        <div id="popUpProfile" class="popup-profile noselect"><img src="./assets/img/Desktop/contacts/person.svg"
                                 alt="Profile-Image"></div>
-                        <form class="popup-input" onsubmit="return addNewContact()">
+                        <form class="popup-input noselect" onsubmit="return addNewContact()">
                             <input pattern="[a-zA-Z ]+" type="text" placeholder="Name" id="popUpName" required>
                             <input type="email" placeholder="Email" id="popUpEmail" required>
                             <input title="Only +, numbers & spaces are allowed" pattern="[+]?[\d ]*" type="tel"
