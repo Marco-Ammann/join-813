@@ -190,23 +190,14 @@ function sortAndFilterCards(inputId) {
 
    cards.forEach((card) => {
       const title = card.querySelector('h3').textContent.toLowerCase();
-      if (title.includes(searchTerm)) {
+      const description = card.querySelector('p').textContent.toLowerCase();
+      if (title.includes(searchTerm) || description.includes(searchTerm)) {
          card.parentNode.style.display = 'block';
          taskFound = true;
       } else {
          card.parentNode.style.display = 'none';
       }
    });
-
-   cards.forEach((card) => {
-    const description = card.querySelector('p').textContent.toLowerCase();
-    if (description.includes(searchTerm)) {
-       card.parentNode.style.display = 'block';
-       taskFound = true;
-    } else {
-       card.parentNode.style.display = 'none';
-    }
- });
 
    if (taskFound === false) {
       let content = document.getElementById('allertNoTasksFoundContainer');
