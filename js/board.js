@@ -91,8 +91,9 @@ function openCard(taskIndex) {
   content.innerHTML = "";
   const openCardContainer = document.getElementById("openCardContainer");
   openCardContainer.classList.remove("hidden");
+  let categoryName = tasks[taskIndex]["category"];
 
-  content.innerHTML = generateOpenCardHTML(taskIndex);
+  content.innerHTML = generateOpenCardHTML(taskIndex, categoryName);
   addOpenTaskIcon(`openCardIcon${taskIndex}`, taskIndex);
   addTransition();
   addOpenCardSubtasks(taskIndex);
