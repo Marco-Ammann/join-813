@@ -10,7 +10,7 @@ function generateEditCardHTML(i) {
 
 <div class="editor-wrapper">
     <div class="addTaskHeader">
-        <h1 class="content-title">Add Task</h1>
+        <h1 class="content-title">Edit Task</h1>
         <button id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -60,7 +60,7 @@ function generateEditCardHTML(i) {
                                 src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
                                 onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
                         </div>
-                        <div class="assignDropdown-popup d-none" id="assignDropdown-popup"></div>
+                        <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
                     </div>
                     <div class="assigned-contacts" id="assigned-contacts-popup"></div>
 
