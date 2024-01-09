@@ -261,7 +261,7 @@
             </div>
             <div class="boardHeaderControll">
 
-                <div class="sortTasks">
+                <div class="sortTasks noselect">
                     <input onkeyup="sortAndFilterCards('sortTasksInputMobile')" class="searchInput"
                         id="sortTasksInputMobile" placeholder="Find Task">
                     <div class="sortTasksButton">
@@ -277,7 +277,7 @@
         <div class="boardHeader">
             <h2>Board</h2>
             <div class="boardHeaderControll">
-                <div class="sortTasks">
+                <div class="sortTasks noselect">
                     <input onkeyup="sortAndFilterCards('sortTasksInput')" class="searchInput" id="sortTasksInput"
                         placeholder="Find Task">
                     <div class="sortTasksButton">
@@ -287,7 +287,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="addTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()">
+                <button class="addTaskButton noselect" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()">
                     <p>Add task</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <mask id="mask0_111266_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -306,7 +306,7 @@
 
         <div class="toDoList">
             <div>
-                <div class="toDoListCategories">
+                <div class="toDoListCategories noselect">
                     <p>To do</p>
                     <a class="hoverPointer AddTaskButton" onclick="openAddTaskMenu('ToDo'), loadAddTaskPage()"><svg
                             width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -322,7 +322,7 @@
             </div>
             <div>
 
-                <div class="toDoListCategories">
+                <div class="toDoListCategories noselect">
                     <p>In progress</p>
                     <a class="hoverPointer AddTaskButton"
                         onclick="openAddTaskMenu('InProgress'), loadAddTaskPage()"><svg width="24" height="24"
@@ -340,7 +340,7 @@
             </div>
 
             <div>
-                <div class="toDoListCategories">
+                <div class="toDoListCategories noselect">
                     <p>Await feedback</p>
                     <a class="hoverPointer AddTaskButton" onclick="openAddTaskMenu('AwaitFeedback'), loadAddTaskPage()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -357,7 +357,7 @@
             </div>
 
             <div>
-                <div class="toDoListCategories">
+                <div class="toDoListCategories noselect">
                     <p>Done</p>
                 </div>
                 <div class="dragContainer" ondrop="moveTo('Done')" ondragover="allowDrop(event)">

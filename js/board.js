@@ -242,23 +242,29 @@ function highlight(containerId) {
       document
         .getElementById("InProgressHoverContainer")
         .classList.remove("d-none");
+      removeNoTaskHTML('InProgress');
       break;
     case "InProgress":
       document.getElementById("ToDoHoverContainer").classList.remove("d-none");
+      removeNoTaskHTML('ToDo');
       document
         .getElementById("AwaitFeedbackHoverContainer")
         .classList.remove("d-none");
+        removeNoTaskHTML('AwaitFeedback');
       break;
     case "AwaitFeedback":
       document
         .getElementById("InProgressHoverContainer")
         .classList.remove("d-none");
+        removeNoTaskHTML('InProgress');
       document.getElementById("DoneHoverContainer").classList.remove("d-none");
+      removeNoTaskHTML('Done');
       break;
     case "Done":
       document
         .getElementById("AwaitFeedbackHoverContainer")
         .classList.remove("d-none");
+        removeNoTaskHTML('AwaitFeedback');
       break;
   }
 }
@@ -278,6 +284,7 @@ function removeHighlight() {
   containerIds.forEach((id) => {
     const content = document.getElementById(id);
     content.classList.add("d-none");
+    content.parentNode.style = '';
   });
 }
 
@@ -301,6 +308,21 @@ function addNoTaskHTML(containerId) {
 
 
 /**
+ * Removes the "No Task" message of the container with the state if its displaed.
+ * @param {string} state - 'ToDo', 'InProgress', 'AwaitFeedback', or 'Done'
+ */
+function removeNoTaskHTML(state) {
+  const filteredTasks = tasks.filter((task) => task.state === state);
+
+  if (filteredTasks.length === 0) {
+    let container = document.getElementById(state + 'Container');
+    container.parentNode.style = 'gap: 0;'
+    container.innerHTML = '';
+  }
+}
+
+
+/**
  * Creates HTML for displaying a "No Task" message with the specified message text.
  *
  * @param {string} message - The message text to display.
@@ -308,7 +330,7 @@ function addNoTaskHTML(containerId) {
  */
 function createNoTaskHTML(message) {
   return /*html*/ `
-        <div class="noTaskFound">
+        <div class="noTaskFound noselect">
             <p>${message}</p>
         </div>
     `;

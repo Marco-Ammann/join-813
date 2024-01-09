@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 
-.hoverPointer:active:not(.AddTaskButton) {
+.hoverPointer:active:not(.AddTaskButton, .openCardSubtasks) {
   transform: rotate(5deg);
 }
 
@@ -199,9 +199,10 @@
   width: 15.75rem;
   margin-bottom: 0.97rem;
   align-items: center;
+  height: 1.5rem;
 }
 
-.toDoListCategories img {
+.toDoListCategories svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -367,6 +368,12 @@
 
 .drag-area-highlight {
   background-color: red;
+}
+
+.dragContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .listContainer {
@@ -719,11 +726,20 @@ div[id^="openCardSubtasks"] {
   gap: 0.25rem;
 }
 
-.openCardSubtasks svg:not(.hoverPointer svg) {
-  width: 1rem;
-  height: 1rem;
+.openCardSubtasks img {
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0.25rem;
+  margin-left: -0.15rem;
 }
+
+.openCardSubtasks img:not(.hoverPointer img) {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 0.15rem 0 0;
+}
+
+/* TODO: Fix shifting */
 
 .openCardSubtasks-container p:not(.openCardSubtasks p) {
   font-size: 1.25rem;
@@ -923,10 +939,6 @@ div[id^="openCardSubtasks"] {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2.5rem;
-  }
-
-  .dragContainer {
-    display: flex;
   }
 
   .toDoList {
