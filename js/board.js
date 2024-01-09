@@ -243,30 +243,25 @@ function closeCard(deleted) {
 function highlight(containerId) {
   switch (containerId) {
     case "ToDo":
-      document
-        .getElementById("InProgressHoverContainer")
-        .classList.remove("d-none");
+      document.getElementById("InProgressHoverContainer").classList.remove("d-none");
       removeNoTaskHTML('InProgress');
       break;
     case "InProgress":
       document.getElementById("ToDoHoverContainer").classList.remove("d-none");
       removeNoTaskHTML('ToDo');
-      document
-        .getElementById("AwaitFeedbackHoverContainer")
+      document.getElementById("AwaitFeedbackHoverContainer")
         .classList.remove("d-none");
         removeNoTaskHTML('AwaitFeedback');
       break;
     case "AwaitFeedback":
-      document
-        .getElementById("InProgressHoverContainer")
+      document.getElementById("InProgressHoverContainer")
         .classList.remove("d-none");
         removeNoTaskHTML('InProgress');
       document.getElementById("DoneHoverContainer").classList.remove("d-none");
       removeNoTaskHTML('Done');
       break;
     case "Done":
-      document
-        .getElementById("AwaitFeedbackHoverContainer")
+      document.getElementById("AwaitFeedbackHoverContainer")
         .classList.remove("d-none");
         removeNoTaskHTML('AwaitFeedback');
       break;
