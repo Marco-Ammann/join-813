@@ -10,6 +10,7 @@ function category(text) {
    return 'header' + text.replace(/\s/g, '');
 }
 
+
 /**
  * Truncates the text to a specified length, ending at the last complete word within the limit.
  *
@@ -139,10 +140,10 @@ function allowDrop(ev) {
  * @param {number} id - The ID of the task to be moved.
  */
 async function moveTo(category) {
-   tasks[currentDraggedElement][`state`] = category;
-   await saveStateChangeAfterDroppingTask();
-   renderTasks();
-   removeHighlight();
+  tasks[currentDraggedElement][`state`] = category;
+  await saveStateChangeAfterDroppingTask();
+  renderTasks();
+  hideAllHoverContainers();
 }
 
 /**
