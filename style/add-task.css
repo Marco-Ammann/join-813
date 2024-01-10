@@ -469,6 +469,8 @@ rightside forms
 
 .subTasks {
   width: 100%;
+  max-height: 5rem;
+  overflow-y: auto;
 }
 
 .subTask-Wrapper {
