@@ -282,7 +282,7 @@ function updateHoverContainer(containerId) {
   const hoverContainer = document.getElementById(containerId + "HoverContainer");
   if (hoverContainer) {
       hoverContainer.classList.remove("d-none");
-      removeNoTaskHTML(containerId); // Only call if the hoverContainer exists
+      // removeNoTaskHTML(containerId); // Only call if the hoverContainer exists
   }
 }
 
@@ -318,6 +318,8 @@ function removeNoTaskHTML(state) {
     if (!hasTasks) {
       container.innerHTML = ''; // Remove the "No Task" message
       container.parentNode.style = 'gap: 0;'; // Apply specific style when empty
+    } else {
+      container.parentNode.style = '';
     }
   }
 }
