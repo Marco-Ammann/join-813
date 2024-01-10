@@ -192,6 +192,7 @@
   color: #000;
   font-size: 0.75rem;
   line-height: 0.9rem;
+  text-align: center;
 }
 
 .toDoListCategories {
@@ -565,6 +566,15 @@
   overflow: hidden;
 }
 
+.openCardOverflow {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.openCardOverflow::-webkit-scrollbar {
+  width: 0;
+}
+
 .openCard {
   width: 27.8125rem;
   max-height: 85vh;
@@ -610,12 +620,12 @@
 }
 
 div[id^="openCardSubtasks"] {
-  height: 8rem;
+  height: 11.5rem;
   overflow-y: auto;
 }
 
 .openCardAssigned {
-  max-height: 15rem;
+  max-height: 11.5rem;
   overflow-y: auto;
 }
 
@@ -656,6 +666,7 @@ div[id^="openCardSubtasks"] {
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+  word-break: break-word;
 }
 
 #openCardIcon {
@@ -722,8 +733,8 @@ div[id^="openCardSubtasks"] {
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  height: 1.25rem;
   padding: 0.375rem 1rem;
+  word-break: break-word;
 }
 
 .openCardSubtasks:hover {

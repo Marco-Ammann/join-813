@@ -177,31 +177,33 @@ function generateOpenCardHTML(taskIndex, categoryName) {
                 </svg>
             </a>
         </div>
-        <div class="openCardContent">
-            <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
-            <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
-            <div class="openCardTable">
-            <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
-            </div>
-            <div class="openCardTable">
-            <p>Priority:</p>
-                <div class="openCardPriority">
-                <span id="openCardPriority${taskIndex}">${capFirstLetter(tasks[taskIndex][`priority`])}</span>
-                <img class="noselect" src="./assets/img/Desktop/board/priority_symbols/${
-                   tasks[taskIndex][`priority`]
-                }.svg">
+        <div class="openCardOverflow">
+            <div class="openCardContent">
+                <h3 id="openCardTitle${taskIndex}">${tasks[taskIndex][`taskTitle`]}</h3>
+                <h4 id="openCardDescription${taskIndex}">${tasks[taskIndex][`description`]}</h4>
+                <div class="openCardTable">
+                <p>Due date:</p><span id="openCardDate${taskIndex}">${tasks[taskIndex][`dueDate`]}<span>
+                </div>
+                <div class="openCardTable">
+                <p>Priority:</p>
+                    <div class="openCardPriority">
+                    <span id="openCardPriority${taskIndex}">${capFirstLetter(tasks[taskIndex][`priority`])}</span>
+                    <img class="noselect" src="./assets/img/Desktop/board/priority_symbols/${
+                    tasks[taskIndex][`priority`]
+                    }.svg">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="openCardAssignedTitle">
-            <p>Assigned To:</p>
-            <div id="openCardIcon${taskIndex}" class="openCardAssigned"></div>
-        </div>
+            <div class="openCardAssignedTitle">
+                <p>Assigned To:</p>
+                <div id="openCardIcon${taskIndex}" class="openCardAssigned"></div>
+            </div>
 
-        <div class="openCardSubtasks-container">
-            <p id="opencardSubtaskTitle">Subtasks</p>
-            <div id="openCardSubtasks${taskIndex}"></div>
+            <div class="openCardSubtasks-container">
+                <p id="opencardSubtaskTitle">Subtasks</p>
+                <div id="openCardSubtasks${taskIndex}"></div>
+            </div>
         </div>
         <div class="openCardFooter noselect">
             <a href="#" onclick="deleteOpenCard(${taskIndex})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
