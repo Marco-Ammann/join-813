@@ -36,6 +36,7 @@ General CSS
 .content-title {
   color: var(--black);
   font-size: 3.8125rem;
+  line-height: 120%;
 }
 
 .task-forms {
@@ -75,6 +76,7 @@ General CSS
   border: 1px solid var(--border-default);
   background-color: white;
   border-radius: 0.625rem;
+  line-height: 120%;
   width: 27.5rem;
   padding: 1.125rem 1rem;
 }
@@ -92,6 +94,7 @@ General CSS
 .form-span {
   font-size: 1.25rem;
   font-weight: 400;
+  line-height: 120%;
 }
 
 .form-subcontainer {
@@ -483,6 +486,15 @@ rightside forms
   word-wrap: break-word;
 }
 
+.subTaskDiv li {
+  word-break: break-word;
+  width: calc(100% - 3.5rem);
+}
+
+.subTaskDiv li::marker {
+  word-break: ;
+}
+
 .edit-subtask-div {
   display: flex;
   justify-content: space-between;
@@ -577,7 +589,7 @@ footer of add task section
 .footer-container {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }
 
