@@ -238,6 +238,7 @@ function closeCard(deleted) {
 
 /**
  * Highlights the appropriate hover containers based on the given container ID.
+ * Also, removes the "No Task" message from the related hover containers.
  *
  * @param {string} containerId - The ID of the container to highlight.
  */
@@ -251,7 +252,10 @@ function highlight(containerId) {
 
   hideAllHoverContainers();
   const relatedContainers = hoverMap[containerId] || [];
-  relatedContainers.forEach(updateHoverContainer);
+  relatedContainers.forEach(container => {
+      updateHoverContainer(container);
+      removeNoTaskHTML(container);
+  });
 }
 
 
@@ -278,6 +282,7 @@ function updateHoverContainer(containerId) {
   const hoverContainer = document.getElementById(containerId + "HoverContainer");
   if (hoverContainer) {
       hoverContainer.classList.remove("d-none");
+      removeNoTaskHTML(containerId); // Only call if the hoverContainer exists
   }
 }
 
@@ -301,16 +306,19 @@ function addNoTaskHTML(containerId) {
 
 
 /**
- * Removes the "No Task" message of the container with the state if its displaed.
- * @param {string} state - 'ToDo', 'InProgress', 'AwaitFeedback', or 'Done'
+ * Removes the "No Task" message from the container if it's displayed.
+ *
+ * @param {string} state - The state of the task container ('ToDo', 'InProgress', 'AwaitFeedback', or 'Done').
  */
 function removeNoTaskHTML(state) {
-  const filteredTasks = tasks.filter((task) => task.state === state);
+  const container = document.getElementById(state + 'Container');
+  if (container && container.parentNode) {
+    const hasTasks = tasks.some((task) => task.state === state);
 
-  if (filteredTasks.length === 0) {
-    let container = document.getElementById(state + 'Container');
-    container.parentNode.style = 'gap: 0;'
-    container.innerHTML = '';
+    if (!hasTasks) {
+      container.innerHTML = ''; // Remove the "No Task" message
+      container.parentNode.style = 'gap: 0;'; // Apply specific style when empty
+    }
   }
 }
 

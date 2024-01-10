@@ -315,9 +315,7 @@ function createCompleteSubtaskHTML(subtask, index, taskIndex) {
  */
 function generateTaskCardHTML(task, taskIndex) {
    return /*html*/ `    
-        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${
-      task.state
-   }')">
+        <div class="hoverPointer" onclick="openCard(${taskIndex})" id="card${taskIndex}" draggable="true" ondragstart="startDraggin(${taskIndex}), highlight('${task.state}')">
             <div class="toDoCard">
                 <div class="${category(task.category)} headerUserStoryPopUp">${task.category}</div>
                 <div>
