@@ -118,10 +118,10 @@ function addTransition() {
 /**
  * Initiates the drag operation when an element is being dragged.
  *
- * @param {number} id - The unique identifier of the element being dragged.
+ * @param {number} index - The unique identifier of the element being dragged.
  */
-function startDraggin(id) {
-   currentDraggedElement = id;
+function startDraggin(index) {
+   currentDraggedElement = index;
 }
 
 /**
@@ -140,10 +140,15 @@ function allowDrop(ev) {
  * @param {number} id - The ID of the task to be moved.
  */
 async function moveTo(category) {
-  tasks[currentDraggedElement][`state`] = category;
-  await saveStateChangeAfterDroppingTask();
-  renderTasks();
-  hideAllHoverContainers();
+   let task = tasks[currentDraggedElement];
+
+   tasks.splice(currentDraggedElement, 1);
+   tasks.push(task);
+
+   tasks[tasks.length - 1][`state`] = category;
+   await saveStateChangeAfterDroppingTask();
+   renderTasks();
+   hideAllHoverContainers();
 }
 
 /**
