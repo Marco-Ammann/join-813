@@ -281,7 +281,7 @@ function createContactIconHTML(contact, index, contactsLeft) {
 function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
    return /*html*/ `
         <div class="hoverPointer openCardSubtasks" id="subtask${index}" onclick="subtaskComplete(${index}, ${taskIndex})">
-        <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox.svg">
+        <img class="noselect" src="../assets/img/Desktop/add-task/subtasks_icons/checkbox.svg">
           ${subtask}
         </div>
     `;
@@ -298,7 +298,7 @@ function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
 function createCompleteSubtaskHTML(subtask, index, taskIndex) {
    return /*html*/ `
         <div class="openCardSubtasks" id="subtaskDone${index}" onclick="subtaskUnComplete(${index}, ${taskIndex})">
-        <img src="../assets/img/Desktop/add-task/subtasks_icons/checkbox_checked.svg">
+        <img class="noselect" src="../assets/img/Desktop/add-task/subtasks_icons/checkbox_checked.svg">
           <p class="textCross">
             ${subtask}
           </p>
