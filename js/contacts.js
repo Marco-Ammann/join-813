@@ -221,9 +221,9 @@ function closePopUp(submitted) {
 
 
 /**
- * Deletes the clicked contact and removes open contact info
+ * Deletes a selected contact and updates the UI.
  * 
- * @param {number} i - Index of the choosen contact
+ * @param {number} i - The index of the contact to delete.
  */
 async function deleteContact(i) {
     deleteContactFromTasks(i);
@@ -240,6 +240,11 @@ async function deleteContact(i) {
 }
 
 
+/**
+ * Removes a contact from all tasks it's assigned to.
+ * 
+ * @param {number} i - The index of the contact to remove from tasks.
+ */
 async function deleteContactFromTasks(i) {
     let contactToDelete = contacts[i];
     for (let j = 0; j < tasks.length; j++) {
@@ -250,7 +255,7 @@ async function deleteContactFromTasks(i) {
             if (contact == contactToDelete.name) {
                 task.assignedTo.splice(z, 1);
                 await setItem('tasks', tasks);
-            } 
+            }
         }
     }
 }
