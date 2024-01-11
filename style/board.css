@@ -213,7 +213,7 @@
   flex-direction: column;
   background-color: white;
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 1.875rem;
   gap: 1.5rem;
   width: 13.75rem;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
@@ -228,6 +228,7 @@
   line-height: 120%;
   word-break: break-word;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .toDoCard p {
@@ -302,7 +303,7 @@
   width: fit-content;
 }
 
-.headerUserStoryPopUp {
+.headerUserStoryPopUp:not(.headerUserStory) {
   padding: 0.25rem 1.5rem;
 }
 
@@ -341,10 +342,10 @@
   color: #fff;
   text-align: center;
   font-size: 0.75rem;
-  min-width: calc(2.625rem - 2px);
-  min-height: calc(2.625rem - 2px);
+  min-width: calc(2rem - 1px);
+  min-height: calc(2rem - 1px);
   border-radius: 50%;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .icon:nth-child(1) {
@@ -428,6 +429,47 @@
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.edit-tasks-popup {
+  background: #FFF;
+  width: 27.8125rem;
+  padding: 3rem 2.5rem;
+  border-radius: 1.875rem;
+  gap: 1.5rem;
+}
+
+.edit-tasks-popup .editor-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-tasks-popup .task-forms {
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(85vh - 7rem);
+  scrollbar-width: none;
+}
+
+.footer-edit-task .footer-btn-container {
+  justify-content: flex-end;
+}
+
+.footer-edit-task .addTaskBtnOk {
+  font-size: 1.3125rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.edit-tasks-popup .task-forms::-webkit-scrollbar {
+  width: 0;
+}
+
+.editTaskHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .pos-static {
   position: static !important;
 }
@@ -471,16 +513,24 @@
   align-items: center;
 }
 
-#closeAddTaskButton {
+#closeAddTaskButton svg {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: white;
-  border: none;
-  padding: 0px;
+  padding: 0.25rem;
 }
 
-#closeAddTaskButton :hover {
+#closeAddTaskButton {
+  background-color: white;
+  border: none;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+#closeAddTaskButton:hover {
   cursor: pointer;
+  background-color: #EEE;
 }
 
 .assignDropdown-popup {
@@ -649,7 +699,7 @@ div[id^="openCardSubtasks"] {
   line-height: 120%;
 }
 
-.openCardAssignedTitle p {
+.openCardAssignedTitle p:not(.openCardIcon p) {
   margin-bottom: 0.5rem;
 }
 
@@ -693,6 +743,12 @@ div[id^="openCardSubtasks"] {
   gap: 1rem;
   align-items: center;
   font-size: 1.1875rem;
+}
+
+.openCardIcon .icon {
+  min-width: calc(2.625rem - 2px);
+  min-height: calc(2.625rem - 2px);
+  border: 2px solid white;
 }
 
 .openCardAssigned p:not(.openCardIcon p) {
@@ -978,7 +1034,6 @@ div[id^="openCardSubtasks"] {
 
   .hoverPointer {
     display: flex;
-    align-items: stretch;
   }
 
   .toDoList {
@@ -1098,11 +1153,6 @@ div[id^="openCardSubtasks"] {
     font-size: 1rem;
   }
 
-  div[id^="openCardSubtasks"] {
-    height: 6rem;
-    overflow-y: auto;
-  }
-
   .toDoCard {
     gap: 1rem;
     max-height: 90vh;
@@ -1115,16 +1165,11 @@ div[id^="openCardSubtasks"] {
 
   .openCardAssigned {
     gap: 0.25rem;
-    max-height: 5rem;
   }
 
   .openCardAssigned::-webkit-scrollbar {
     width: 0.4rem;
   }
-
-  [id^="openCardSubtasks"] {
-    max-height: 5rem;
-}
 
   .openCardIcon {
     padding: 0.2rem 1rem;
@@ -1135,12 +1180,8 @@ div[id^="openCardSubtasks"] {
 }
 
 .openCardIcon div{
-  min-height: 1.5rem;
-  min-width: 1.5rem;
-}
-
-.openCardIcon p{
-  font-size: 0.8rem;
+  min-height: 2.625rem;
+  min-width: 2.625rem;
 }
 
   .add-tasks-popup {

@@ -145,7 +145,7 @@ function addOpenCardSubtasks(taskIndex) {
   });
 
   if (content.innerHTML === "") {
-    document.getElementById('opencardSubtaskTitle').style.display = 'none';
+    document.getElementById('opencardSubtaskTitle').parentNode.style.display = 'none';
   }
 }
 

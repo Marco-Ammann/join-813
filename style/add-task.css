@@ -81,6 +81,10 @@ General CSS
   padding: 1.125rem 1rem;
 }
 
+.task-title-input:focus, .task-description-textarea:focus {
+  outline: 0;
+}
+
 .task-title-input:placeholder, .task-description-textarea:placeholder, .add-contact-input:placeholder, .due-date-input:placeholder, .add-category-input:placeholder, .subtask-input:placeholder, .edit-subtask-input:placeholder {
   color: var(--border-default);
   font-size: 1.25rem;
@@ -171,18 +175,15 @@ image styles
 }
 
 #urgentSymbol {
-  height: 1.5rem;
-  width: 1.5rem;
+  width: 1.25rem;
 }
 
 #mediumSymbol {
-  height: 1.5rem;
-  width: 1.5rem;
+  width: 1.25rem;
 }
 
 #lowSymbol {
-  height: 1.5rem;
-  width: 1.5rem;
+  width: 1.25rem;
 }
 
 
@@ -332,11 +333,15 @@ rightside forms
 
 /*-----Due Date */
 .due-date-input {
-  padding: 0.75rem 1.3125rem;
+  padding: 0.75rem 1rem;
   font-size: 1.25rem;
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.due-date-input::-webkit-datetime-edit-day-field {
+  border-color: var(--border-focus);
 }
 
 
@@ -358,7 +363,7 @@ rightside forms
   border: none;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  font-size: 1.3125rem;
+  font-size: 1.25rem;
   color: black;
   font-weight: 400;
   width: 8.5rem;
@@ -486,6 +491,7 @@ rightside forms
   border-radius: 0.625rem;
   transition: 0.3s ease-in-out;
   word-wrap: break-word;
+  min-height: 2rem;
 }
 
 .subTaskDiv li {

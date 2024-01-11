@@ -6,11 +6,10 @@
  */
 function generateEditCardHTML(i) {
    return /*HTML*/ `
-<div class="add-tasks-popup pos-static">
+<div class="edit-tasks-popup pos-static">
 
 <div class="editor-wrapper">
-    <div class="addTaskHeader">
-        <h1 class="content-title">Edit Task</h1>
+    <div class="editTaskHeader">
         <button class="noselect" id="closeAddTaskButton" onclick="closeCard(), clearForm('assigned-contacts-popup', 'subTasks-popup'), removeListeners('add-contact-input'),setEditFormOpenedToFalse();"><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_116223_1910" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -26,10 +25,8 @@ function generateEditCardHTML(i) {
         </button>
     </div>
 
-    <div>
         <section class="task-forms task-forms-editor">
-            <div class="forms-sides">
-                <div class="form-div">
+                <div class="form-div" style="margin-top: 1.5rem">
                     <span class="form-span required-asteriks">Title</span>
                     <div class="form-subcontainer noselect">
                         <input id="task-title-input-popup" maxlength="48" class="task-title-input" type="text"
@@ -49,28 +46,7 @@ function generateEditCardHTML(i) {
                     </div>
                 </div>
 
-                <div class="form-div">
-                    <span class="form-span">Assigned to</span>
-                    <div class="input-div-wrapper noselect">
-                        <div class="input-div">
-                            <input id="add-contact-input-popup" class="add-contact-input" type="text"
-                                placeholder="Select contacts to assign" required
-                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
-                            <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
-                                src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
-                        </div>
-                        <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
-                    </div>
-                    <div class="assigned-contacts noselect" id="assigned-contacts-popup"></div>
-
-                </div>
-            </div>
-
-            <div class="seperator-vertical"></div>
-
-            <div class="forms-sides">
-                <div class="form-div">
+                <div class="form-div" style="margin-bottom: 0.5rem">
                     <span class="form-span required-asteriks">Due
                         date</span>
                     <div class="form-subcontainer noselect">
@@ -86,8 +62,11 @@ function generateEditCardHTML(i) {
                     </div>
                 </div>
 
-                <div class="form-div">
-                    <span class="form-span">Prio</span>
+
+
+
+                <div class="form-div" style="margin-bottom: 0.5rem">
+                    <span class="form-span">Priority</span>
                     <div class="prio-buttons noselect">
                         <button type="button" class="prio-btn" id="urgentBtn" onclick="setPrio('urgent')">
                             <span>Urgent</span>
@@ -104,6 +83,21 @@ function generateEditCardHTML(i) {
                     </div>
                 </div>
 
+                <div class="form-div" style="margin-bottom: 0.5rem">
+                    <span class="form-span">Assigned to</span>
+                    <div class="input-div-wrapper noselect">
+                        <div class="input-div">
+                            <input id="add-contact-input-popup" class="add-contact-input" type="text"
+                                placeholder="Select contacts to assign" required
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
+                            <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
+                                src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
+                        </div>
+                        <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
+                    </div>
+                    <div class="assigned-contacts noselect" id="assigned-contacts-popup"></div>
+                </div>
 
                 <div class="form-div">
                     <span class="form-span">Subtasks</span>
@@ -132,12 +126,11 @@ function generateEditCardHTML(i) {
                         </div>
                     </div>
                     <div id="subTasks-popup" class="subTasks"></div>
-                </div>
+                </div>    
         </section>
-    </div>
 </div>
 
-<div class="footer-container noselect">
+<div class="footer-edit-task noselect">
 
 
     <div class="footer-btn-container">
@@ -145,7 +138,7 @@ function generateEditCardHTML(i) {
 
         <button id="createTaskBtn" type="submit" class="addTaskBtnOk createBtn"
             onclick="acceptAndSetEditOfTask(${i}, 'popup'), setEditFormOpenedToFalse()">
-            <span>OK</span>
+            <span>Ok</span>
             <img src="./assets/img/Desktop/add-task/check.svg" alt="weißer Haken" />
         </button>
     </div>
