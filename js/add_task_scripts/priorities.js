@@ -52,6 +52,9 @@ function resetPriorityClasses() {
 }
 
 
+/**
+ * Sets the standard priority visually always to "medium"
+ */
 function addstandardPrioMedium () {
   let standardBtn = document.getElementById('mediumBtn');
   standardBtn.classList.add('medium');

@@ -2,6 +2,7 @@ let assignedContacts = [];
 let clickedPriority = "medium";
 let currentTaskState = "ToDo";
 
+
 /**
  * Gathers task-related information from user input fields based on the specified context.
  * 
@@ -92,6 +93,7 @@ function getAssignedContacts() {
   }
   return assignedContactDetails;
 }
+
 
 /**
  * Retrieves the due date of the task and formats it to dd/mm/yyyy, depending on the context.

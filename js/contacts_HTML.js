@@ -1,5 +1,6 @@
 /**
  * Returns the requested HTML Code for the contact menu
+ * 
  * @param {number} i - Index of the choosen contact
  * @returns - HTML Code as string
  */
@@ -20,6 +21,7 @@ function returnContactMenuHTML(i) {
 
 /**
  * Returns the requested HTML Code for the contact list
+ * 
  * @param {number} num - 0 for First-Letter HTML Code / 1 for Contact-User HTML Code
  * @param {string} letter - First letter of the name
  * @param {number} i - Index of the choosen contact
@@ -51,6 +53,7 @@ function returnContactListHTML(num, letter, i, color, initials, name, email) {
 
 /**
  * Returns HTML Code for the opened contact info
+ * 
  * @param {string} color - Color of the contact icon
  * @param {string} initials - Initials for the first / first & last name
  * @param {string} name - First / First & last name

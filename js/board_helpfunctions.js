@@ -1,5 +1,6 @@
 let taskFound = false;
 
+
 /**
  * Formats a given text into a category class name by removing spaces.
  *
@@ -33,6 +34,7 @@ function addDescription(text, maxLength = 40) {
    return truncatedText + '...';
 }
 
+
 /**
  * Adds a progress bar to a task card based on the completion of subtasks.
  *
@@ -53,6 +55,7 @@ function addProgressBar(i) {
    }
 }
 
+
 /**
  * Sets the priority of the task to match the specified priority.
  *
@@ -62,6 +65,7 @@ function clickPriority(taskIndex) {
    let setPriority = tasks[taskIndex].priority;
    setPrio(setPriority);
 }
+
 
 /**
  * Adds icons for assigned contacts to the open card.
@@ -78,6 +82,7 @@ function addOpenTaskIcon(id, x) {
       }
    });
 }
+
 
 /**
  * Adds icons for assigned contacts to a task card.
@@ -103,6 +108,7 @@ function addTaskIcon(id, x) {
    }
 }
 
+
 /**
  * Adds a transition effect to show the open task card.
  */
@@ -115,6 +121,7 @@ function addTransition() {
    openCard.style.animation = 'slideInCard 100ms ease-out forwards';
 }
 
+
 /**
  * Initiates the drag operation when an element is being dragged.
  *
@@ -124,6 +131,7 @@ function startDraggin(index) {
    currentDraggedElement = index;
 }
 
+
 /**
  * Allows a drop operation by preventing the default behavior of the dragover event.
  *
@@ -132,6 +140,7 @@ function startDraggin(index) {
 function allowDrop(ev) {
    ev.preventDefault();
 }
+
 
 /**
  * Moves a task to a different category.
@@ -151,6 +160,7 @@ async function moveTo(category) {
    hideAllHoverContainers();
 }
 
+
 /**
  * Saves Tasks into Backend
  */
@@ -158,6 +168,7 @@ async function saveStateChangeAfterDroppingTask() {
    let tasksToPush = tasks;
    await setItem('tasks', tasksToPush);
 }
+
 
 /**
  * Checks if there are tasks for each state and adds a "No Task" message if no tasks exist.
@@ -173,6 +184,7 @@ function checkAndAddTasks(tasks) {
       }
    });
 }
+
 
 /**
  * Sorts and filters task cards based on a given search term. It searches within card titles and
@@ -214,8 +226,9 @@ function sortAndFilterCards(inputId) {
 }
 
 
-
-
+/**
+ * Hides the "No Tasks Found"-Message
+ */
 function RemoveNoTaksFound() {
    console.log('test');
    document.getElementById('allertNoTasksFoundContainer').innerHTML = '';

@@ -342,8 +342,8 @@
   color: #fff;
   text-align: center;
   font-size: 0.75rem;
-  min-width: calc(2rem - 1px);
-  min-height: calc(2rem - 1px);
+  width: calc(2rem - 1px);
+  height: calc(2rem - 1px);
   border-radius: 50%;
   border: 1px solid white;
 }
@@ -555,10 +555,10 @@
 
 .editTaskDropdownHeight {
   height: 12.5rem!important;
-  position: absolute;
+  position: relative;
   width: 27.6rem;
-  top: 32rem;
-  left: 4.2rem;
+  top: -0.4rem;
+  left: 0;
 }
 
 .task-forms {

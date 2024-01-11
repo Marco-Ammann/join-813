@@ -133,11 +133,17 @@ function emailAndPasswordIsValid() {
 }
 
 
+/**
+ * Shows the fail login message
+ */
 function showTextFailLogin() {
     document.getElementById("fail-login").style.color = "#FF8190";
 }
 
 
+/**
+ * Hides the fail login message
+ */
 function changeShowTextFailLogin() {
     document.getElementById("fail-login").style.color = "transparent";
 }

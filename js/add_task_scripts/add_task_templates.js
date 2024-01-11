@@ -11,9 +11,8 @@ function generateAssignContactsHTML(contact, index, container) {
   return `
     <div class="contactDiv" id="contact${index}" onclick="handleClickOnAssignedContact(${index}, '${container}')">
         <div class="contactDiv-sub">
-            <div class="contact-avatar" style="background-color: ${
-              contact.color
-            };">${getInitials(name)}</div>
+            <div class="contact-avatar" style="background-color: ${contact.color
+    };">${getInitials(name)}</div>
             ${contact.name}
         </div>
         <img class="checkbox" id="checkbox${index}" src="./assets/img/Desktop/add-task/check_button.svg" alt="">
@@ -47,8 +46,7 @@ function generateCategoryOptionsHTML(category, index) {
  */
 function generateAvatar(contact) {
   return `
-    <div class="contact-avatar" style="background-color: ${
-      contact.color
+    <div class="contact-avatar" style="background-color: ${contact.color
     };">${getInitials(contact.name)}</div>
     `;
 }

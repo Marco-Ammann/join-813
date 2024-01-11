@@ -148,6 +148,7 @@ function generateEditCardHTML(i) {
     `;
 }
 
+
 /**
  * Generates HTML markup for an open task card.
  *
@@ -215,6 +216,7 @@ function generateOpenCardHTML(taskIndex, categoryName) {
     `;
 }
 
+
 /**
  * Creates an icon for a contact.
  *
@@ -235,6 +237,7 @@ function createContactIcon(contact) {
     `;
 }
 
+
 /**
  * Generates HTML for a contact icon.
  *
@@ -250,6 +253,7 @@ function createContactIconHTML(contact, index, contactsLeft) {
     let name = getInitials(contact["name"]);
     return /*html*/ `<div class="icon" style="background-color: ${contact["color"]};">${name}</div>`;
 }
+
 
 /**
  * Creates HTML for an incomplete subtask.
@@ -267,6 +271,7 @@ function createIncompleteSubtaskHTML(subtask, index, taskIndex) {
         </div>
     `;
 }
+
 
 /**
  * Creates HTML for a completed subtask.
@@ -286,6 +291,7 @@ function createCompleteSubtaskHTML(subtask, index, taskIndex) {
         </div>
     `;
 }
+
 
 /**
  * Generates HTML markup for a task card.

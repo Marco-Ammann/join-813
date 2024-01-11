@@ -5,6 +5,7 @@ let clickedStates = [];
 let dropdownCloseListener;
 let filterListener;
 
+
 /**
  * Initializes the Add Task page by loading necessary components. It generates the 
  * list of assignable contacts, the category options for tasks, and sets up listeners 
@@ -17,6 +18,7 @@ async function loadAddTaskPage() {
   setupDropdownCloseListener('assignDropdown', 'add-contact-input', 'arrowAssign');
   setupFilterListener('add-contact-input', 'assignDropdown');
 }
+
 
 /**
  * Initializes the Add Task page by loading necessary components. It generates the 

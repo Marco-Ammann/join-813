@@ -60,7 +60,8 @@ function renderSummaryGreeting() {
 
 /**
  * Displays the name of the registered user in the greeting or leaves it blank
- * @param {DOM element} greet - Greeting DOM HTML Element
+ * 
+ * @param {element} greet - Greeting DOM HTML Element
  */
 async function loadUserGreeting(greet) {
     let nameElement = greet.lastElementChild;
@@ -100,6 +101,7 @@ async function playGreetingAni() {
 
 /**
  *  Searches in the tasks-array for matches in the subcategory
+ * 
  * @param {string} subcategory - JSON Key in tasks-array 
  * @param {string} match - JSON Value in tasks-array
  * @returns - count of matches
@@ -144,6 +146,7 @@ function renderDeadlineBox() {
 
 /**
  * Sorts Dates from closest to farthest and formats it in 'month DD, YYYY'
+ * 
  * @param {array} dates - Array with all dates of tasks seperated
  * @returns - formatted closest date to today
  */
@@ -157,6 +160,7 @@ function sortDates(dates) {
 
 /**
  * Formats date to be compatible with javascript date methods
+ * 
  * @param {string} dateString - date as a string
  * @returns formatted date
  */

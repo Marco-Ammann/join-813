@@ -8,6 +8,10 @@ let confirmPassword = document.getElementById("confirmPassword");
 let registerBtn = document.getElementById("registerBtn");
 let policyImage = document.getElementById("privacyPolicyImage");
 
+
+/**
+ * Initializes the register
+ */
 async function registerInit() {
     loadUsers();
 }

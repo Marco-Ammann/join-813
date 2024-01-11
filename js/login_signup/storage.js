@@ -32,14 +32,6 @@ async function getItem(key) {
     });
 }
 
-/**
- * Make the Array empty = []; key = 'users'; key = 'currentUser';
- * 
- */
-// async function deleteItem(key){
-//     await setItem("key", []);
-// }
-
 
 /**
  * Retrieves the tasks array from the backend storage and parses it.
