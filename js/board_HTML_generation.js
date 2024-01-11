@@ -92,7 +92,7 @@ function generateEditCardHTML(i) {
                                 onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
                             <img class="arrow-symbol input-symbol" id="arrowAssign-popup"
                                 src="./assets/img/Desktop/add-task/arrow_dropdown_down.svg" alt="Pfeil runter"
-                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup')" />
+                                onclick="toggleDropdown('assignDropdown-popup', 'arrowAssign-popup');" />
                         </div>
                         <div class="assignDropdown-popup editTaskDropdownHeight d-none" id="assignDropdown-popup"></div>
                     </div>
