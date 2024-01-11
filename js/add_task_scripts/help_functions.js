@@ -66,13 +66,23 @@ function changeSrc(element, src) {
 
 
 /**
- * Toggles the visibility of an element using the 'd-none' CSS class.
+ * Toggles the visibility of an element using the 'd-none' CSS class and changes the arrow image source.
  *
  * @param {string} elementId - ID of the DOM element to be toggled.
+ * @param {string} arrowId - ID of the arrow image element.
  */
-function switchVisibility(elementId) {
+function switchVisibility(elementId, arrowId) {
   const element = document.getElementById(elementId);
-  element.classList.toggle("d-none");
+  const arrowDown = document.getElementById(arrowId);
+
+  // Toggle the visibility of the element
+  if (element.classList.contains("d-none")) {
+    element.classList.remove("d-none");
+    arrowDown.src = './assets/img/Desktop/add-task/arrow_dropdown_up.svg';
+  } else {
+    element.classList.add("d-none");
+    arrowDown.src = './assets/img/Desktop/add-task/arrow_dropdown_down.svg';
+  }
 }
 
 

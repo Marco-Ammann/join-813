@@ -501,7 +501,7 @@ rightside forms
 }
 
 .subTaskDiv li::marker {
-  word-break: ;
+  word-break: break-word;
 }
 
 .edit-subtask-div {

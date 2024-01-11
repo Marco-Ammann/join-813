@@ -274,7 +274,7 @@ function createDropdownCloseListener(dropdownId, inputfieldId, arrowId) {
     const arrowImage = document.getElementById(arrowId);
 
     if (!dropdown.contains(event.target) && event.target !== inputField && event.target !== arrowImage) {
-      closeDropdown(dropdown, inputField, arrowImage, "Select contacts to assign");
+      closeDropdown(dropdown, arrowImage);
     }
   };
 }
