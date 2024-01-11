@@ -1,8 +1,9 @@
 /**
  * Initializes the contacts.html
  */
-function initContacts() {
+async function initContacts() {
     renderContactList();
+    tasks = await getTasksArray();
 }
 
 
@@ -151,7 +152,7 @@ function resetInput() {
  */
 async function openContact(i) {
     await renderContactList();
-    
+
     let contact = contacts[i];
     let contactsInfo = document.getElementById('contactsInfo');
     let contactElement = document.getElementById(`contact${i}`);
@@ -225,6 +226,7 @@ function closePopUp(submitted) {
  * @param {number} i - Index of the choosen contact
  */
 async function deleteContact(i) {
+    deleteContactFromTasks(i);
     contacts.splice(i, 1);
     await saveContacts();
 
@@ -234,8 +236,23 @@ async function deleteContact(i) {
     if ((window.matchMedia("(max-width: 1000px)").matches)) {
         document.getElementById('contact-list-container').classList.remove('d-none');
     }
-
     closePopUp(true);
+}
+
+
+async function deleteContactFromTasks(i) {
+    let contactToDelete = contacts[i];
+    for (let j = 0; j < tasks.length; j++) {
+        const task = tasks[j];
+        for (let z = 0; z < task.assignedTo.length; z++) {
+            const contact = task.assignedTo[z].name;
+
+            if (contact == contactToDelete.name) {
+                task.assignedTo.splice(z, 1);
+                await setItem('tasks', tasks);
+            } 
+        }
+    }
 }
 
 
